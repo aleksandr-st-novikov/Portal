@@ -1,11 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="manageUsers.aspx.cs" Inherits="Portal.Pages.Admin.Users.manageUsers" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Admin/Users/UsersMain.master" AutoEventWireup="true" CodeBehind="manageUsers.aspx.cs" Inherits="Portal.Pages.Admin.Users.manageUsers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <dx:ASPxGridView ID="ASPxGridViewManageUsers" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceManageUsers" KeyFieldName="Id">
+        <SettingsEditing Mode="PopupEditForm" UseFormLayout="False"></SettingsEditing>
+
         <Settings ShowFilterRow="True"></Settings>
+
+        <SettingsBehavior ConfirmDelete="True"></SettingsBehavior>
+
+        <SettingsPopup>
+            <EditForm Width="900px" HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter"></EditForm>
+        </SettingsPopup>
 
         <SettingsSearchPanel Visible="True"></SettingsSearchPanel>
         <Columns>
-            <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" ShowEditButton="True" ShowDeleteButton="True"></dx:GridViewCommandColumn>
+            <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" ShowEditButton="True" ShowDeleteButton="True" ButtonRenderMode="Image" ButtonType="Image" FixedStyle="Left" ShowInCustomizationForm="True" Caption=" "></dx:GridViewCommandColumn>
             <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" VisibleIndex="7" Visible="False"></dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="Email" VisibleIndex="2" Caption="E-Mail"></dx:GridViewDataTextColumn>
             <dx:GridViewDataCheckColumn FieldName="EmailConfirmed" VisibleIndex="8" Visible="False"></dx:GridViewDataCheckColumn>
@@ -19,6 +27,25 @@
             <dx:GridViewDataTextColumn FieldName="AccessFailedCount" VisibleIndex="6" Caption="Ошибка при входе" Visible="False"></dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="UserName" VisibleIndex="1" Caption="Имя пользователя"></dx:GridViewDataTextColumn>
         </Columns>
+        <SettingsCommandButton>
+            <NewButton>
+                <Image ToolTip="Создать" IconID="actions_additem_16x16office2013">
+                </Image>
+            </NewButton>
+            <EditButton>
+                <Image ToolTip="Редактировать" IconID="edit_edit_16x16office2013" />
+            </EditButton>
+            <DeleteButton>
+                <Image ToolTip="Удалить" IconID="actions_deletelist_16x16office2013" />
+            </DeleteButton>
+            <UpdateButton RenderMode="Button">
+            </UpdateButton>
+            <CancelButton RenderMode="Button">
+            </CancelButton>
+        </SettingsCommandButton>
+        <SettingsPopup>
+            <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" />
+        </SettingsPopup>
     </dx:ASPxGridView>
     <asp:SqlDataSource runat="server" ID="SqlDataSourceManageUsers" ConflictDetection="CompareAllValues" ConnectionString='<%$ ConnectionStrings:ApplicationServices %>' DeleteCommand="DELETE FROM [AspNetUsers] WHERE [Id] = @original_Id AND (([Email] = @original_Email) OR ([Email] IS NULL AND @original_Email IS NULL)) AND [EmailConfirmed] = @original_EmailConfirmed AND (([PasswordHash] = @original_PasswordHash) OR ([PasswordHash] IS NULL AND @original_PasswordHash IS NULL)) AND (([SecurityStamp] = @original_SecurityStamp) OR ([SecurityStamp] IS NULL AND @original_SecurityStamp IS NULL)) AND (([PhoneNumber] = @original_PhoneNumber) OR ([PhoneNumber] IS NULL AND @original_PhoneNumber IS NULL)) AND [PhoneNumberConfirmed] = @original_PhoneNumberConfirmed AND [TwoFactorEnabled] = @original_TwoFactorEnabled AND (([LockoutEndDateUtc] = @original_LockoutEndDateUtc) OR ([LockoutEndDateUtc] IS NULL AND @original_LockoutEndDateUtc IS NULL)) AND [LockoutEnabled] = @original_LockoutEnabled AND [AccessFailedCount] = @original_AccessFailedCount AND [UserName] = @original_UserName" InsertCommand="INSERT INTO [AspNetUsers] ([Id], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (@Id, @Email, @EmailConfirmed, @PasswordHash, @SecurityStamp, @PhoneNumber, @PhoneNumberConfirmed, @TwoFactorEnabled, @LockoutEndDateUtc, @LockoutEnabled, @AccessFailedCount, @UserName)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [AspNetUsers] ORDER BY [UserName]" UpdateCommand="UPDATE [AspNetUsers] SET [Email] = @Email, [EmailConfirmed] = @EmailConfirmed, [PasswordHash] = @PasswordHash, [SecurityStamp] = @SecurityStamp, [PhoneNumber] = @PhoneNumber, [PhoneNumberConfirmed] = @PhoneNumberConfirmed, [TwoFactorEnabled] = @TwoFactorEnabled, [LockoutEndDateUtc] = @LockoutEndDateUtc, [LockoutEnabled] = @LockoutEnabled, [AccessFailedCount] = @AccessFailedCount, [UserName] = @UserName WHERE [Id] = @original_Id AND (([Email] = @original_Email) OR ([Email] IS NULL AND @original_Email IS NULL)) AND [EmailConfirmed] = @original_EmailConfirmed AND (([PasswordHash] = @original_PasswordHash) OR ([PasswordHash] IS NULL AND @original_PasswordHash IS NULL)) AND (([SecurityStamp] = @original_SecurityStamp) OR ([SecurityStamp] IS NULL AND @original_SecurityStamp IS NULL)) AND (([PhoneNumber] = @original_PhoneNumber) OR ([PhoneNumber] IS NULL AND @original_PhoneNumber IS NULL)) AND [PhoneNumberConfirmed] = @original_PhoneNumberConfirmed AND [TwoFactorEnabled] = @original_TwoFactorEnabled AND (([LockoutEndDateUtc] = @original_LockoutEndDateUtc) OR ([LockoutEndDateUtc] IS NULL AND @original_LockoutEndDateUtc IS NULL)) AND [LockoutEnabled] = @original_LockoutEnabled AND [AccessFailedCount] = @original_AccessFailedCount AND [UserName] = @original_UserName">
         <DeleteParameters>

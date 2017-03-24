@@ -138,6 +138,7 @@
     <Content Include="App_Data\aspnetdb_log.ldf">
       <DependentUpon>aspnetdb.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Append.css" />
     <Content Include="Pages\Account\AddPhoneNumber.aspx" />
     <Content Include="Pages\Account\ChangePassword.aspx" />
     <Content Include="Pages\Account\ChangePasswordSuccess.aspx" />
@@ -161,6 +162,7 @@
     <Content Include="Content\Images\PlasticBlueHeader.jpg" />
     <Content Include="Content\Images\RedWineHeader.jpg" />
     <Content Include="Content\Site.css" />
+    <Content Include="Pages\Admin\Users\AddUser.aspx" />
     <Content Include="Pages\Admin\Users\ManageRoles.aspx" />
     <Content Include="Pages\Admin\Users\ManageUsers.aspx" />
     <Content Include="Pages\Default.aspx" />
@@ -183,6 +185,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="packages.config" />
+    <Content Include="Pages\Admin\Users\UsersMain.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -191,6 +194,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Admin\Users\UsersMain.master.cs">
+      <DependentUpon>UsersMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\UsersMain.master.designer.cs">
+      <DependentUpon>UsersMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\AddUser.aspx.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\AddUser.aspx.designer.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Account\AddPhoneNumber.aspx.cs">
       <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

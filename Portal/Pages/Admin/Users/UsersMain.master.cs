@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Portal {
-    public partial class UsersMainMaster : System.Web.UI.MasterPage {
+    public partial class MainMaster : System.Web.UI.MasterPage {
         protected void Page_Load(object sender, EventArgs e) {
 
         }

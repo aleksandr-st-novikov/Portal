@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="ManageRoles.aspx.cs" Inherits="Portal.Pages.Admin.Users.ManageRoles" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Admin/Users/UsersMain.master" AutoEventWireup="true" CodeBehind="ManageRoles.aspx.cs" Inherits="Portal.Pages.Admin.Users.ManageRoles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <dx:ASPxGridView ID="ASPxGridViewManageRoles" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceManageRoles" KeyFieldName="Id" OnInitNewRow="ASPxGridViewManageRoles_InitNewRow" OnRowInserting="ASPxGridViewManageRoles_RowInserting">
