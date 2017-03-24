@@ -22,12 +22,18 @@
             <dx:GridViewDataTextColumn FieldName="PhoneNumber" VisibleIndex="3" Caption="Телефон"></dx:GridViewDataTextColumn>
             <dx:GridViewDataCheckColumn FieldName="PhoneNumberConfirmed" VisibleIndex="11" Visible="False"></dx:GridViewDataCheckColumn>
             <dx:GridViewDataCheckColumn FieldName="TwoFactorEnabled" VisibleIndex="12" Visible="False"></dx:GridViewDataCheckColumn>
-            <dx:GridViewDataDateColumn FieldName="LockoutEndDateUtc" VisibleIndex="5" Caption="Дата разблокировки"></dx:GridViewDataDateColumn>
-            <dx:GridViewDataCheckColumn FieldName="LockoutEnabled" VisibleIndex="4" Caption="Разрешена блокировка"></dx:GridViewDataCheckColumn>
+            <dx:GridViewDataDateColumn FieldName="LockoutEndDateUtc" VisibleIndex="4" Caption="Дата разблокировки"></dx:GridViewDataDateColumn>
+            <dx:GridViewDataCheckColumn FieldName="LockoutEnabled" VisibleIndex="5" Caption="Разрешена блокировка" Visible="False">
+                <EditFormSettings Visible="True" />
+            </dx:GridViewDataCheckColumn>
             <dx:GridViewDataTextColumn FieldName="AccessFailedCount" VisibleIndex="6" Caption="Ошибка при входе" Visible="False"></dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="UserName" VisibleIndex="1" Caption="Имя пользователя"></dx:GridViewDataTextColumn>
         </Columns>
         <SettingsCommandButton>
+<ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
+
+<HideAdaptiveDetailButton ButtonType="Image"></HideAdaptiveDetailButton>
+
             <NewButton>
                 <Image ToolTip="Создать" IconID="actions_additem_16x16office2013">
                 </Image>

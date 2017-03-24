@@ -12,14 +12,14 @@
             <ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
             <HideAdaptiveDetailButton ButtonType="Image"></HideAdaptiveDetailButton>
             <NewButton>
-                <Image ToolTip="Создать" IconID="actions_additem_32x32office2013">
+                <Image ToolTip="Создать" IconID="actions_additem_16x16office2013">
                 </Image>
             </NewButton>
             <EditButton>
-                <Image ToolTip="Редактировать" IconID="edit_edit_32x32office2013" />
+                <Image ToolTip="Редактировать" IconID="edit_edit_16x16office2013" />
             </EditButton>
             <DeleteButton>
-                <Image ToolTip="Удалить" IconID="actions_deletelist_32x32office2013" />
+                <Image ToolTip="Удалить" IconID="actions_deletelist_16x16office2013" />
             </DeleteButton>
             <UpdateButton RenderMode="Button">
             </UpdateButton>

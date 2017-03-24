@@ -1,3 +1,8 @@
 ﻿.input-element {
     padding: 0 0 10px 10px;
 }
+
+img[class^="dx"] /*Bootstrap correction*/
+{
+    max-width: none;
+}
