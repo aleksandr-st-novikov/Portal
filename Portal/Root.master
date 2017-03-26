@@ -38,13 +38,10 @@
                                         <a href="~/Pages/Account/Register.aspx" runat="server" id="registerLink">Register</a>
                                         </AnonymousTemplate>
                                         <LoggedInTemplate>
-                                            Welcome <span class="bold">
-                                                <a runat="server" href="~/Pages/Account/Manage.aspx" title="Manage your account">
+                                            Здравствуйте, 
                                                     <asp:LoginName ID="HeadLoginName" runat="server" />
-                                                </a></span>! [
-                                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
-                                            LogoutPageUrl="~/" OnLoggingOut="HeadLoginStatus_LoggingOut" />
-                                            ]
+                                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="[Выйти]"
+                                                LogoutPageUrl="~/" OnLoggingOut="HeadLoginStatus_LoggingOut" />
                                         </LoggedInTemplate>
                                     </asp:LoginView>
                                 </div>
@@ -56,20 +53,6 @@
                                         <dx:MenuItem Text="Журналы"></dx:MenuItem>
                                         <dx:MenuItem Text="Отчеты"></dx:MenuItem>
                                         <dx:MenuItem Text="Обслуживание"></dx:MenuItem>
-                                        <dx:MenuItem Text="Администрирование" DropDownMode="True">
-                                            <Image IconID="setup_properties_16x16office2013">
-                                            </Image>
-                                            <Items>
-                                                <dx:MenuItem Text="Пользователи" NavigateUrl="~/Pages/Admin/Users/ManageUsers.aspx">
-                                                    <Image IconID="people_usergroup_16x16office2013">
-                                                    </Image>
-                                                </dx:MenuItem>
-                                                <dx:MenuItem Text="Настройки">
-                                                    <Image IconID="programming_technology_16x16office2013">
-                                                    </Image>
-                                                </dx:MenuItem>
-                                            </Items>
-                                        </dx:MenuItem>
                                     </Items>
                                     <Border BorderWidth="0px" />
                                     <Paddings Padding="0px" />

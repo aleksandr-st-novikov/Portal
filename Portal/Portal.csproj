@@ -181,6 +181,7 @@
     <Content Include="Pages\Account\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\Site.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

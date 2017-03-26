@@ -7,12 +7,37 @@ using System.Web.UI.WebControls;
 using DevExpress.Web;
 using Microsoft.AspNet.Identity;
 
-namespace Portal {
-    public partial class RootMaster : System.Web.UI.MasterPage {
-        protected void Page_Load(object sender, EventArgs e) {
+namespace Portal
+{
+    public partial class RootMaster : System.Web.UI.MasterPage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //меню
+            if (Context.User.IsInRole("Администраторы"))
+            {
+                DevExpress.Web.MenuItem itemAdmin = new DevExpress.Web.MenuItem()
+                {
+                    Text = "Администрирование",
+                    DropDownMode = true
+                };
+                itemAdmin.Image.IconID = "setup_properties_16x16office2013";
+
+                DevExpress.Web.MenuItem itemAdminUsers = new DevExpress.Web.MenuItem()
+                {
+                    Text = "Управление пользователями",
+                    NavigateUrl = "~/Pages/Admin/Users/ManageUsers.aspx"
+                };
+                itemAdminUsers.Image.IconID = "people_usergroup_16x16office2013";
+                itemAdmin.Items.Add(itemAdminUsers);
+
+                ASPxMenuMain.Items.Add(itemAdmin);
+            }
+
             ASPxLabel2.Text = DateTime.Now.Year + Server.HtmlDecode(" &copy; Copyright by [company name]");
         }
-        protected void HeadLoginStatus_LoggingOut(object sender, LoginCancelEventArgs e) {
+        protected void HeadLoginStatus_LoggingOut(object sender, LoginCancelEventArgs e)
+        {
             Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
     }

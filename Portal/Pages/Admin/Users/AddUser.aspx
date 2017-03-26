@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Admin/Users/UsersMain.master" AutoEventWireup="true" CodeBehind="AddUser.aspx.cs" Inherits="Portal.Pages.Admin.Users.AddUser" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="padding:10px;">
+    <div class="content">
         <h4>Добавить пользователя</h4>
         <p style="color: red">
             <asp:Literal runat="server" ID="ErrorMessage" />

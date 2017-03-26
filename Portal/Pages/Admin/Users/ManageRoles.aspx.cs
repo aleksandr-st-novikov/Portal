@@ -11,7 +11,11 @@ namespace Portal.Pages.Admin.Users
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!User.IsInRole("Администраторы"))
+            {
+                Response.Redirect("/");
+                return;
+            }
         }
 
         protected void ASPxGridViewManageRoles_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)

@@ -14,7 +14,11 @@ namespace Portal.Pages.Admin.Users
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!User.IsInRole("Администраторы"))
+            {
+                Response.Redirect("/");
+                return;
+            }
         }
 
         protected void ASPxButtonSave_Click(object sender, EventArgs e)
