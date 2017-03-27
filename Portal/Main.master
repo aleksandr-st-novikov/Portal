@@ -3,14 +3,14 @@
 <%-- DXCOMMENT: Page Main.master is a master page that contains central area layout --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <dx:ASPxSplitter ID="ContentSplitter" runat="server" Width="100%" Height="100%">
-                <ClientSideEvents PaneResized="function(s, e) { 
+        <ClientSideEvents PaneResized="function(s, e) { 
             if(window.ASPxGridView1 && e.pane.name == 'ContentCenter')
                 ASPxGridView1.SetHeight(e.pane.GetClientHeight());
             }" />
-                        <Styles>
+        <Styles>
             <Pane>
                 <Paddings Padding="0px" />
-                <Border BorderWidth="0px" />
+                <border borderwidth="0px" />
             </Pane>
         </Styles>
         <Panes>
@@ -23,28 +23,28 @@
                     <dx:SplitterContentControl>
                         <div class="leftPanel">
                             <%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
-<dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="True" EnableAnimation="True" Width="100%">
-    <Border BorderWidth="0px" />
-    <Paddings Padding="0px" />
-    <Groups>
-        <dx:NavBarGroup Text="Group 1">
-            <Items>
-                <dx:NavBarItem Text="Item 1"></dx:NavBarItem>
-                <dx:NavBarItem Text="Item 2"></dx:NavBarItem>
-                <dx:NavBarItem Text="Item 3"></dx:NavBarItem>
-            </Items>
-        </dx:NavBarGroup>
-        <dx:NavBarGroup Text="Group 2">
-            <Items>
-                <dx:NavBarItem Text="Item 1"></dx:NavBarItem>
-                <dx:NavBarItem Text="Item 2"></dx:NavBarItem>
-                <dx:NavBarItem Text="Item 3"></dx:NavBarItem>
-                <dx:NavBarItem Text="Item 4"></dx:NavBarItem>
-                <dx:NavBarItem Text="Item 5"></dx:NavBarItem>
-            </Items>
-        </dx:NavBarGroup>
-    </Groups>
-</dx:ASPxNavBar>
+                            <dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="True" EnableAnimation="True" Width="100%">
+                                <Border BorderWidth="0px" />
+                                <Paddings Padding="0px" />
+                                <Groups>
+                                    <dx:NavBarGroup Text="Group 1">
+                                        <Items>
+                                            <dx:NavBarItem Text="Item 1"></dx:NavBarItem>
+                                            <dx:NavBarItem Text="Item 2"></dx:NavBarItem>
+                                            <dx:NavBarItem Text="Item 3"></dx:NavBarItem>
+                                        </Items>
+                                    </dx:NavBarGroup>
+                                    <dx:NavBarGroup Text="Group 2">
+                                        <Items>
+                                            <dx:NavBarItem Text="Item 1"></dx:NavBarItem>
+                                            <dx:NavBarItem Text="Item 2"></dx:NavBarItem>
+                                            <dx:NavBarItem Text="Item 3"></dx:NavBarItem>
+                                            <dx:NavBarItem Text="Item 4"></dx:NavBarItem>
+                                            <dx:NavBarItem Text="Item 5"></dx:NavBarItem>
+                                        </Items>
+                                    </dx:NavBarGroup>
+                                </Groups>
+                            </dx:ASPxNavBar>
                         </div>
                     </dx:SplitterContentControl>
                 </ContentCollection>
@@ -53,7 +53,7 @@
                 <PaneStyle CssClass="contentPane"></PaneStyle>
                 <Separator Visible="True">
                     <SeparatorStyle>
-                        <Border BorderWidth="1px" />
+                        <border borderwidth="1px" />
                         <BorderTop BorderWidth="0px" />
                     </SeparatorStyle>
                 </Separator>
@@ -63,7 +63,7 @@
                     </dx:SplitterContentControl>
                 </ContentCollection>
             </dx:SplitterPane>
-            
+
         </Panes>
     </dx:ASPxSplitter>
 </asp:Content>

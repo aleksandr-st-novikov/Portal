@@ -13,39 +13,48 @@ namespace Portal {
     public partial class Login {
         
         /// <summary>
-        /// tbUserName control.
+        /// ASPxRoundPanelLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox tbUserName;
+        protected global::DevExpress.Web.ASPxRoundPanel ASPxRoundPanelLogin;
         
         /// <summary>
-        /// tbPassword control.
+        /// ASPxTextBoxUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox tbPassword;
+        protected global::DevExpress.Web.ASPxTextBox ASPxTextBoxUserName;
         
         /// <summary>
-        /// btnLogin control.
+        /// ASPxTextBoxPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnLogin;
+        protected global::DevExpress.Web.ASPxTextBox ASPxTextBoxPassword;
         
         /// <summary>
-        /// OpenAuthLogin control.
+        /// ASPxPanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.OpenAuthProviders OpenAuthLogin;
+        protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
+        
+        /// <summary>
+        /// ASPxButtonLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButtonLogin;
     }
 }

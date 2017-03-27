@@ -13,6 +13,51 @@ namespace Portal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ASPxLabel2.Text = DateTime.Now.Year + Server.HtmlDecode(" &copy; Copyright by [company name]");
+
+            if (Context.Request.Path.Contains("Login"))
+            {
+                ASPxMenuMain.Visible = false;
+                HeadLoginView.Visible = false;
+                return;
+            }
+
+            DevExpress.Web.MenuItem itemJournal = new DevExpress.Web.MenuItem();
+            bool itemJournalAdd = false;
+
+            if (!Context.User.Identity.IsAuthenticated)
+            {
+                ASPxMenuMain.Visible = false;
+                return;
+            }
+            else
+            {
+                itemJournal.Text = "Журналы";
+                itemJournal.Image.IconID = "layout_paneloff_16x16devav";
+            }
+
+            if (Context.User.IsInRole("Администраторы")
+                || Context.User.IsInRole("Заявка на канцтовары - Сотрудник") 
+                || Context.User.IsInRole("Заявка на канцтовары - Управление") 
+                || Context.User.IsInRole("Заявка на канцтовары - Утверждение"))
+            {
+                DevExpress.Web.MenuItem itemJournalCants = new DevExpress.Web.MenuItem()
+                {
+                    Text = "Заявка на канцтовары",
+                    NavigateUrl = "~/Pages/Admin/Users/ManageUsers.aspx"
+                };
+                itemJournalCants.Image.IconID = "print_tasklist_16x16devav";
+                itemJournal.Items.Add(itemJournalCants);
+                itemJournal.DropDownMode = true;
+
+                if (itemJournalAdd == false)
+                {
+                    ASPxMenuMain.Items.Add(itemJournal);
+                    itemJournalAdd = true;
+                }
+                
+            };
+
             //меню
             if (Context.User.IsInRole("Администраторы"))
             {
@@ -33,9 +78,8 @@ namespace Portal
 
                 ASPxMenuMain.Items.Add(itemAdmin);
             }
-
-            ASPxLabel2.Text = DateTime.Now.Year + Server.HtmlDecode(" &copy; Copyright by [company name]");
         }
+
         protected void HeadLoginStatus_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

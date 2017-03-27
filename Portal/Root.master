@@ -30,17 +30,16 @@
                                 <div class="templateTitle">
                                     <a id="TitleLink" href="~/" runat="server">Бобруйский Торговый центр «Корона»</a>
                                 </div>
-                                <div class="loginControl">
+                                <div class="loginControl" style="text-align:right;">
                                     <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                                         <AnonymousTemplate>
-                                            <a href="~/Account/Login.aspx" runat="server" id="loginLink">Log In</a>
-                                            | 
-                                        <a href="~/Pages/Account/Register.aspx" runat="server" id="registerLink">Register</a>
+                                            <a href="~/Pages/Account/Login.aspx" runat="server" id="loginLink">Войти</a>
                                         </AnonymousTemplate>
                                         <LoggedInTemplate>
                                             Здравствуйте, 
                                                     <asp:LoginName ID="HeadLoginName" runat="server" />
-                                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="[Выйти]"
+                                            <br />
+                                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Выйти"
                                                 LogoutPageUrl="~/" OnLoggingOut="HeadLoginStatus_LoggingOut" />
                                         </LoggedInTemplate>
                                     </asp:LoginView>
@@ -50,9 +49,6 @@
                                 <%-- DXCOMMENT: Configure the header menu --%>
                                 <dx:ASPxMenu ID="ASPxMenuMain" runat="server" ItemAutoWidth="False" Width="100%">
                                     <Items>
-                                        <dx:MenuItem Text="Журналы"></dx:MenuItem>
-                                        <dx:MenuItem Text="Отчеты"></dx:MenuItem>
-                                        <dx:MenuItem Text="Обслуживание"></dx:MenuItem>
                                     </Items>
                                     <Border BorderWidth="0px" />
                                     <Paddings Padding="0px" />

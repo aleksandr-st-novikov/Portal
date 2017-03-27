@@ -8,8 +8,8 @@
 //------------------------------------------------------------------------------
 
 namespace Portal {
-
-
+    
+    
     public partial class MainMaster {
         
         /// <summary>
@@ -30,16 +30,6 @@ namespace Portal {
         /// </remarks>
         protected global::DevExpress.Web.ASPxNavBar ASPxNavBar1;
         
-        
-        /// <summary>
-        /// ASPxMenu2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxMenu ASPxMenu2;
-        
         /// <summary>
         /// MainContent control.
         /// </summary>
@@ -48,24 +38,5 @@ namespace Portal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
-        
-        /// <summary>
-        /// SplitterContentControl2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.SplitterContentControl SplitterContentControl2;
-        
-        /// <summary>
-        /// ASPxCloudControl1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxCloudControl ASPxCloudControl1;
-
     }
 }

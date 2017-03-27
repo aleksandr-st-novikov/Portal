@@ -9,7 +9,7 @@ using System;
     namespace Portal {
         public class Global_asax : System.Web.HttpApplication {
             void Application_Start(object sender, EventArgs e) {
-            System.Web.Routing.RouteTable.Routes.MapPageRoute("defaultRoute", "", "~/Pages/Account/Login.aspx");
+            System.Web.Routing.RouteTable.Routes.MapPageRoute("defaultRoute", "", "~/Pages/Default.aspx");
             DevExpress.Web.ASPxWebControl.CallbackError += new EventHandler(Application_Error);
             }
 

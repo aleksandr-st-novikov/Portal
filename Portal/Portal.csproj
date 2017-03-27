@@ -139,6 +139,7 @@
       <DependentUpon>aspnetdb.mdf</DependentUpon>
     </Content>
     <Content Include="Content\Append.css" />
+    <Content Include="Content\Images\login-back.jpg" />
     <Content Include="Pages\Account\AddPhoneNumber.aspx" />
     <Content Include="Pages\Account\ChangePassword.aspx" />
     <Content Include="Pages\Account\ChangePasswordSuccess.aspx" />
@@ -187,6 +188,7 @@
     </Content>
     <Content Include="packages.config" />
     <Content Include="Pages\Admin\Users\UsersMain.master" />
+    <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -379,7 +381,10 @@
     </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\EFContext\" />
+    <Folder Include="Models\Entities\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>

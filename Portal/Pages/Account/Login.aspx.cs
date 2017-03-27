@@ -13,7 +13,7 @@ namespace Portal {
             
         }
 
-        protected void btnLogin_Click(object sender, EventArgs e) {
+        protected void ASPxButtonLogin_Click(object sender, EventArgs e) {
             if(IsValid) {
                 // Validate the user password
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
@@ -21,14 +21,14 @@ namespace Portal {
 
                 // This doen't count login failures towards account lockout
                 // To enable password failures to trigger lockout, change to shouldLockout: true
-                var result = signinManager.PasswordSignIn(tbUserName.Text, tbPassword.Text, isPersistent: false, shouldLockout: false);
+                var result = signinManager.PasswordSignIn(ASPxTextBoxUserName.Text, ASPxTextBoxPassword.Text, isPersistent: true, shouldLockout: false);
 
                 switch(result) {
                     case SignInStatus.Success:
                         IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                         break;
                     case SignInStatus.LockedOut:
-                        Response.Redirect("~/Account/Lockout.aspx");
+                        Response.Redirect("~/PagesAccount/Lockout.aspx");
                         break;
                     case SignInStatus.RequiresVerification:
                         Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn.aspx?ReturnUrl={0}&RememberMe={1}",
@@ -38,8 +38,8 @@ namespace Portal {
                         break;
                     case SignInStatus.Failure:
                     default:
-                        tbUserName.ErrorText = "Invalid user";
-                        tbUserName.IsValid = false;
+                        ASPxTextBoxUserName.ErrorText = "Нет такого пользователя!";
+                        ASPxTextBoxUserName.IsValid = false;
                         break;
                 }
             }
