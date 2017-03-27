@@ -44,7 +44,7 @@ namespace Portal
                 DevExpress.Web.MenuItem itemJournalCants = new DevExpress.Web.MenuItem()
                 {
                     Text = "Заявка на канцтовары",
-                    NavigateUrl = "~/Pages/Admin/Users/ManageUsers.aspx"
+                    NavigateUrl = "~/Pages/Journal/Stationery/ManageStationery.aspx"
                 };
                 itemJournalCants.Image.IconID = "print_tasklist_16x16devav";
                 itemJournal.Items.Add(itemJournalCants);
