@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201703221121515_InitialCreate.Designer.cs">
       <DependentUpon>201703221121515_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703280901284_Stationery.cs" />
+    <Compile Include="Migrations\201703280901284_Stationery.Designer.cs">
+      <DependentUpon>201703280901284_Stationery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Stationery.cs" />
     <Compile Include="Pages\Admin\Users\UsersMain.master.cs">
@@ -417,6 +421,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703221121515_InitialCreate.resx">
       <DependentUpon>201703221121515_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703280901284_Stationery.resx">
+      <DependentUpon>201703280901284_Stationery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>

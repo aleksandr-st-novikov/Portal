@@ -13,5 +13,16 @@ namespace Portal.Pages.Journal.Stationery
         {
 
         }
+
+        protected void ASPxGridViewStationeryStock_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+        {
+            e.NewValues["Unit"] = "шт.";
+        }
+
+        protected void ASPxGridViewStationeryStock_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            e.NewValues["Price"] = 0;
+            e.NewValues["GroupId"] = 0;
+        }
     }
 }
