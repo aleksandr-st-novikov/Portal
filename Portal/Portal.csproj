@@ -101,8 +101,8 @@
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -163,6 +163,8 @@
     <Content Include="Content\Images\PlasticBlueHeader.jpg" />
     <Content Include="Content\Images\RedWineHeader.jpg" />
     <Content Include="Content\Site.css" />
+    <Content Include="Pages\Admin\Employee\ImportEmployee.aspx" />
+    <Content Include="Pages\Admin\Employee\ManageEmployee.aspx" />
     <Content Include="Pages\Admin\Users\AddUser.aspx" />
     <Content Include="Pages\Admin\Users\ManageRoles.aspx" />
     <Content Include="Pages\Admin\Users\ManageUsers.aspx" />
@@ -191,6 +193,7 @@
     <Content Include="packages.config" />
     <Content Include="Pages\Admin\Users\UsersMain.master" />
     <Content Include="Pages\Journal\Stationery\StationeryMain.master" />
+    <Content Include="Pages\Admin\Employee\EmployeeMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -209,7 +212,30 @@
       <DependentUpon>201703280901284_Stationery.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Entities\Department.cs" />
+    <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Stationery.cs" />
+    <Compile Include="Pages\Admin\Employee\EmployeeMain.master.cs">
+      <DependentUpon>EmployeeMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\EmployeeMain.master.designer.cs">
+      <DependentUpon>EmployeeMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ImportEmployee.aspx.cs">
+      <DependentUpon>ImportEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ImportEmployee.aspx.designer.cs">
+      <DependentUpon>ImportEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ManageEmployee.aspx.cs">
+      <DependentUpon>ManageEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ManageEmployee.aspx.designer.cs">
+      <DependentUpon>ManageEmployee.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Admin\Users\UsersMain.master.cs">
       <DependentUpon>UsersMain.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

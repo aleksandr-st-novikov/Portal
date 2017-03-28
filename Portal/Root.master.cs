@@ -76,6 +76,14 @@ namespace Portal
                 itemAdminUsers.Image.IconID = "people_usergroup_16x16office2013";
                 itemAdmin.Items.Add(itemAdminUsers);
 
+                DevExpress.Web.MenuItem itemAdminEmployee = new DevExpress.Web.MenuItem()
+                {
+                    Text = "Сотрудники предприятия",
+                    NavigateUrl = "~/Pages/Admin/Employee/ManageEmployee.aspx"
+                };
+                itemAdminEmployee.Image.IconID = "people_team_16x16office2013";
+                itemAdmin.Items.Add(itemAdminEmployee);
+
                 ASPxMenuMain.Items.Add(itemAdmin);
             }
         }
