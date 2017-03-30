@@ -30,9 +30,10 @@ namespace Portal.Models.Entities
         [StringLength(150, ErrorMessage = "Длина должна быть от {2} до {1} символов!", MinimumLength = 2)]
         public string Prof { get; set; }
 
-        public int DepartmentId { get; set; }
-        public DateTime DateIn { get; set; }
-        public DateTime DateBirth { get; set; }
+        public int? DepartmentId { get; set; }
+        public DateTime? DateIn { get; set; }
+        public DateTime? DateBirth { get; set; }
         public string Category { get; set; }
+        public virtual Department Department { get; set; }
     }
 }

@@ -35,7 +35,7 @@
                                                 <Image IconID="people_team_16x16office2013">
                                                 </Image>
                                             </dx:NavBarItem>
-                                            <dx:NavBarItem Text="Импорт сотрудников" NavigateUrl="~/Pages/Admin/Employee/ImportEmployee.aspx">
+                                            <dx:NavBarItem Text="Импорт" NavigateUrl="~/Pages/Admin/Employee/ImportEmployee.aspx">
                                                 <Image IconID="people_assignto_16x16office2013">
                                                 </Image>
                                             </dx:NavBarItem>

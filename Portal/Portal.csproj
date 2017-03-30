@@ -43,7 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Web.ASPxTreeList.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.Resources.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -164,6 +166,7 @@
     <Content Include="Content\Images\RedWineHeader.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Pages\Admin\Employee\ImportEmployee.aspx" />
+    <Content Include="Pages\Admin\Employee\ManageDepartment.aspx" />
     <Content Include="Pages\Admin\Employee\ManageEmployee.aspx" />
     <Content Include="Pages\Admin\Users\AddUser.aspx" />
     <Content Include="Pages\Admin\Users\ManageRoles.aspx" />
@@ -211,7 +214,20 @@
     <Compile Include="Migrations\201703280901284_Stationery.Designer.cs">
       <DependentUpon>201703280901284_Stationery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703291001209_Employee.cs" />
+    <Compile Include="Migrations\201703291001209_Employee.Designer.cs">
+      <DependentUpon>201703291001209_Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703300659089_department_nodenum.cs" />
+    <Compile Include="Migrations\201703300659089_department_nodenum.Designer.cs">
+      <DependentUpon>201703300659089_department_nodenum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703300959019_Department_1.cs" />
+    <Compile Include="Migrations\201703300959019_Department_1.Designer.cs">
+      <DependentUpon>201703300959019_Department_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EFContext\DepartmentContext.cs" />
     <Compile Include="Models\Entities\Department.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Stationery.cs" />
@@ -228,6 +244,13 @@
     </Compile>
     <Compile Include="Pages\Admin\Employee\ImportEmployee.aspx.designer.cs">
       <DependentUpon>ImportEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ManageDepartment.aspx.cs">
+      <DependentUpon>ManageDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ManageDepartment.aspx.designer.cs">
+      <DependentUpon>ManageDepartment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Admin\Employee\ManageEmployee.aspx.cs">
       <DependentUpon>ManageEmployee.aspx</DependentUpon>
@@ -441,15 +464,22 @@
     </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\EFContext\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703221121515_InitialCreate.resx">
       <DependentUpon>201703221121515_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703280901284_Stationery.resx">
       <DependentUpon>201703280901284_Stationery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703291001209_Employee.resx">
+      <DependentUpon>201703291001209_Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703300659089_department_nodenum.resx">
+      <DependentUpon>201703300659089_department_nodenum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703300959019_Department_1.resx">
+      <DependentUpon>201703300959019_Department_1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>

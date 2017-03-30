@@ -13,6 +13,24 @@ namespace Portal.Pages.Admin.Employee {
     public partial class ImportEmployee {
         
         /// <summary>
+        /// ASPxCallbackImport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback ASPxCallbackImport;
+        
+        /// <summary>
+        /// ASPxCallbackImportEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback ASPxCallbackImportEmployee;
+        
+        /// <summary>
         /// ASPxRoundPanel1 control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,24 @@ namespace Portal.Pages.Admin.Employee {
         protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
         
         /// <summary>
+        /// ASPxButtonImportDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButtonImportDepartment;
+        
+        /// <summary>
+        /// ASPxPanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel ASPxPanel2;
+        
+        /// <summary>
         /// ASPxButtonImportEmployee control.
         /// </summary>
         /// <remarks>
@@ -47,5 +83,14 @@ namespace Portal.Pages.Admin.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton ASPxButtonImportEmployee;
+        
+        /// <summary>
+        /// ASPxLoadingPanelLoad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLoadingPanel ASPxLoadingPanelLoad;
     }
 }
