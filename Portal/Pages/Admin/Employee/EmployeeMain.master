@@ -31,15 +31,19 @@
                                 <Groups>
                                     <dx:NavBarGroup Text="Сотрудники">
                                         <Items>
-                                            <dx:NavBarItem Text="Сотрудники" NavigateUrl="~/Pages/Admin/Employee/ManageEmployee.aspx">
-                                                <Image IconID="people_team_16x16office2013">
-                                                </Image>
-                                            </dx:NavBarItem>
                                             <dx:NavBarItem Text="Импорт" NavigateUrl="~/Pages/Admin/Employee/ImportEmployee.aspx">
                                                 <Image IconID="people_assignto_16x16office2013">
                                                 </Image>
                                             </dx:NavBarItem>
+                                            <dx:NavBarItem Text="Сотрудники" NavigateUrl="~/Pages/Admin/Employee/ManageEmployee.aspx">
+                                                <Image IconID="people_team_16x16office2013">
+                                                </Image>
+                                            </dx:NavBarItem>
                                             <dx:NavBarItem Text="Подразделения" NavigateUrl="~/Pages/Admin/Employee/ManageDepartment.aspx">
+                                                <Image IconID="people_customeremployees_16x16devav">
+                                                </Image>
+                                            </dx:NavBarItem>
+                                            <dx:NavBarItem Text="Должности" NavigateUrl="~/Pages/Admin/Employee/ManagePosition.aspx">
                                                 <Image IconID="people_customeremployees_16x16devav">
                                                 </Image>
                                             </dx:NavBarItem>

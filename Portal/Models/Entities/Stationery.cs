@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace Portal.Models.Entities
 {
@@ -26,6 +22,8 @@ namespace Portal.Models.Entities
 
         [Display(Name = "Цена")]
         public double Price { get; set; }
-        public int GroupId { get; set; }
+
+        public Boolean IsActive { get; set; }
+        //public int GroupId { get; set; }
     }
 }

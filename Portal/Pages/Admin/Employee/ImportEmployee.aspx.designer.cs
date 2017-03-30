@@ -13,15 +13,6 @@ namespace Portal.Pages.Admin.Employee {
     public partial class ImportEmployee {
         
         /// <summary>
-        /// ASPxCallbackImport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxCallback ASPxCallbackImport;
-        
-        /// <summary>
         /// ASPxCallbackImportEmployee control.
         /// </summary>
         /// <remarks>
@@ -47,24 +38,6 @@ namespace Portal.Pages.Admin.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox ASPxTextBoxPathDBF;
-        
-        /// <summary>
-        /// ASPxPanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
-        
-        /// <summary>
-        /// ASPxButtonImportDepartment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButtonImportDepartment;
         
         /// <summary>
         /// ASPxPanel2 control.

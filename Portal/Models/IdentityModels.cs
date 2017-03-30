@@ -44,11 +44,17 @@ namespace Portal.Models
         public DbSet<Stationery> Stationery { get; set; }
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Department> Department { get; set; }
+        public DbSet<Position> Position { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            //modelBuilder.Entity<Position>().Property(c => c.IsActive).HasColumnAnnotation("DefaultValue", 1);
+            //modelBuilder.Entity<Department>().Property(c => c.IsActive).HasColumnAnnotation("DefaultValue", 1);
+            //modelBuilder.Entity<Stationery>().Property(c => c.Unit).HasColumnAnnotation("DefaultValue", "רע.");
+            //modelBuilder.Entity<Stationery>().Property(c => c.IsActive).HasColumnAnnotation("DefaultValue", 1);
         }
     }
 }

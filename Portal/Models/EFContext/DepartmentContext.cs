@@ -38,25 +38,35 @@ namespace Portal.Models.EFContext
         public async Task AddDepartment(Department department)
         {
             Department entry = await context.Department.FirstOrDefaultAsync(d => d.Name == department.Name);
-            if(entry == null)
+            if (entry == null)
             {
                 context.Department.Add(department);
             }
         }
 
-        public async Task AddRangeDepartment(List<Department> departments)
+        public async Task AddRangeDepartment(List<string> departments)
         {
-            foreach (Department dep in departments)
+            foreach (string dep in departments)
             {
-                Department entry = await context.Department.FirstOrDefaultAsync(d => d.Name == dep.Name);
+                Department entry = await context.Department.FirstOrDefaultAsync(d => d.Name == dep);
                 if (entry == null)
                 {
-                    context.Department.Add(dep);
+                    Department forAdd = new Department()
+                    {
+                        Name = dep,
+                        IsActive = true
+                    };
+                    context.Department.Add(forAdd);
+                }
+                else
+                {
+                    entry.Name = dep;
+                    entry.IsActive = true;
                 }
             }
         }
 
-        public async Task<bool> SaveCahnges()
+        public async Task<bool> SaveChanges()
         {
             try
             {
