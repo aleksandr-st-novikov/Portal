@@ -58,6 +58,15 @@ namespace Portal.Pages.Admin.Users {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceManageUsers;
         
         /// <summary>
+        /// SqlDataSourceEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEmployee;
+        
+        /// <summary>
         /// ASPxPopupControlRoles control.
         /// </summary>
         /// <remarks>

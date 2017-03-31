@@ -15,6 +15,9 @@ namespace Portal.Models
     // You can add User data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public int? EmployeeId { get; set; }
+        public virtual Employee Employee { get; set; }
+
         public ClaimsIdentity GenerateUserIdentity(ApplicationUserManager manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -45,6 +48,7 @@ namespace Portal.Models
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Department> Department { get; set; }
         public DbSet<Position> Position { get; set; }
+        public DbSet<AdmissionSRT> AdmissionSRT { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

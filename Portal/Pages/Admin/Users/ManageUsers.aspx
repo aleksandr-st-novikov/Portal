@@ -61,37 +61,31 @@
                         </dx:GridViewCommandColumnCustomButton>
                     </CustomButtons>
                 </dx:GridViewCommandColumn>
-                <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" VisibleIndex="7" Visible="False"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="Email" VisibleIndex="2" Caption="E-Mail"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataCheckColumn FieldName="EmailConfirmed" VisibleIndex="8" Visible="False"></dx:GridViewDataCheckColumn>
-                <dx:GridViewDataTextColumn FieldName="PasswordHash" VisibleIndex="9" Visible="False"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="SecurityStamp" VisibleIndex="10" Visible="False"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="PhoneNumber" VisibleIndex="4" Caption="Телефон" Visible="False"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataCheckColumn FieldName="PhoneNumberConfirmed" VisibleIndex="11" Visible="False"></dx:GridViewDataCheckColumn>
-                <dx:GridViewDataCheckColumn FieldName="TwoFactorEnabled" VisibleIndex="12" Visible="False"></dx:GridViewDataCheckColumn>
-                <dx:GridViewDataDateColumn FieldName="LockoutEndDateUtc" VisibleIndex="3" Caption="Дата разблокировки"></dx:GridViewDataDateColumn>
-                <dx:GridViewDataCheckColumn FieldName="LockoutEnabled" VisibleIndex="5" Caption="Разрешена блокировка" Visible="False">
+                <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" VisibleIndex="8" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="Email" VisibleIndex="2" Caption="E-Mail" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataCheckColumn FieldName="EmailConfirmed" VisibleIndex="9" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
+                <dx:GridViewDataTextColumn FieldName="PasswordHash" VisibleIndex="10" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="SecurityStamp" VisibleIndex="11" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="PhoneNumber" VisibleIndex="5" Caption="Телефон" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataCheckColumn FieldName="PhoneNumberConfirmed" VisibleIndex="12" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
+                <dx:GridViewDataCheckColumn FieldName="TwoFactorEnabled" VisibleIndex="13" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
+                <dx:GridViewDataDateColumn FieldName="LockoutEndDateUtc" VisibleIndex="3" Caption="Дата разблокировки" ShowInCustomizationForm="True"></dx:GridViewDataDateColumn>
+                <dx:GridViewDataCheckColumn FieldName="LockoutEnabled" VisibleIndex="6" Caption="Разрешена блокировка" Visible="False" ShowInCustomizationForm="True">
                     <EditFormSettings Visible="True" />
                 </dx:GridViewDataCheckColumn>
-                <dx:GridViewDataTextColumn FieldName="AccessFailedCount" VisibleIndex="6" Caption="Ошибка при входе" Visible="False"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="UserName" VisibleIndex="1" Caption="Имя пользователя"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="AccessFailedCount" VisibleIndex="7" Caption="Ошибка при входе" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="UserName" VisibleIndex="1" Caption="Имя пользователя" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataComboBoxColumn Caption="Сотрудник предприятия" FieldName="EmployeeId" Visible="False" VisibleIndex="4">
+                    <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" TextField="FIO" ValueField="Id">
+                    </PropertiesComboBox>
+                    <EditFormSettings Visible="True" />
+                </dx:GridViewDataComboBoxColumn>
             </Columns>
         </dx:ASPxGridView>
     </div>
-    <asp:SqlDataSource runat="server" ID="SqlDataSourceManageUsers" ConflictDetection="CompareAllValues" ConnectionString='<%$ ConnectionStrings:ApplicationServices %>' DeleteCommand="DELETE FROM [AspNetUsers] WHERE [Id] = @original_Id AND (([Email] = @original_Email) OR ([Email] IS NULL AND @original_Email IS NULL)) AND [EmailConfirmed] = @original_EmailConfirmed AND (([PasswordHash] = @original_PasswordHash) OR ([PasswordHash] IS NULL AND @original_PasswordHash IS NULL)) AND (([SecurityStamp] = @original_SecurityStamp) OR ([SecurityStamp] IS NULL AND @original_SecurityStamp IS NULL)) AND (([PhoneNumber] = @original_PhoneNumber) OR ([PhoneNumber] IS NULL AND @original_PhoneNumber IS NULL)) AND [PhoneNumberConfirmed] = @original_PhoneNumberConfirmed AND [TwoFactorEnabled] = @original_TwoFactorEnabled AND (([LockoutEndDateUtc] = @original_LockoutEndDateUtc) OR ([LockoutEndDateUtc] IS NULL AND @original_LockoutEndDateUtc IS NULL)) AND [LockoutEnabled] = @original_LockoutEnabled AND [AccessFailedCount] = @original_AccessFailedCount AND [UserName] = @original_UserName" InsertCommand="INSERT INTO [AspNetUsers] ([Id], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (@Id, @Email, @EmailConfirmed, @PasswordHash, @SecurityStamp, @PhoneNumber, @PhoneNumberConfirmed, @TwoFactorEnabled, @LockoutEndDateUtc, @LockoutEnabled, @AccessFailedCount, @UserName)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [AspNetUsers] ORDER BY [UserName]" UpdateCommand="UPDATE [AspNetUsers] SET [Email] = @Email, [EmailConfirmed] = @EmailConfirmed, [PasswordHash] = @PasswordHash, [SecurityStamp] = @SecurityStamp, [PhoneNumber] = @PhoneNumber, [PhoneNumberConfirmed] = @PhoneNumberConfirmed, [TwoFactorEnabled] = @TwoFactorEnabled, [LockoutEndDateUtc] = @LockoutEndDateUtc, [LockoutEnabled] = @LockoutEnabled, [AccessFailedCount] = @AccessFailedCount, [UserName] = @UserName WHERE [Id] = @original_Id AND (([Email] = @original_Email) OR ([Email] IS NULL AND @original_Email IS NULL)) AND [EmailConfirmed] = @original_EmailConfirmed AND (([PasswordHash] = @original_PasswordHash) OR ([PasswordHash] IS NULL AND @original_PasswordHash IS NULL)) AND (([SecurityStamp] = @original_SecurityStamp) OR ([SecurityStamp] IS NULL AND @original_SecurityStamp IS NULL)) AND (([PhoneNumber] = @original_PhoneNumber) OR ([PhoneNumber] IS NULL AND @original_PhoneNumber IS NULL)) AND [PhoneNumberConfirmed] = @original_PhoneNumberConfirmed AND [TwoFactorEnabled] = @original_TwoFactorEnabled AND (([LockoutEndDateUtc] = @original_LockoutEndDateUtc) OR ([LockoutEndDateUtc] IS NULL AND @original_LockoutEndDateUtc IS NULL)) AND [LockoutEnabled] = @original_LockoutEnabled AND [AccessFailedCount] = @original_AccessFailedCount AND [UserName] = @original_UserName">
+    <asp:SqlDataSource runat="server" ID="SqlDataSourceManageUsers" ConnectionString='<%$ ConnectionStrings:ApplicationServices %>' DeleteCommand="DELETE FROM [AspNetUsers] WHERE [Id] = @original_Id" InsertCommand="INSERT INTO [AspNetUsers] ([Id], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName], [EmployeeId]) VALUES (@Id, @Email, @EmailConfirmed, @PasswordHash, @SecurityStamp, @PhoneNumber, @PhoneNumberConfirmed, @TwoFactorEnabled, @LockoutEndDateUtc, @LockoutEnabled, @AccessFailedCount, @UserName, @EmployeeId)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [AspNetUsers] ORDER BY [UserName]" UpdateCommand="UPDATE [AspNetUsers] SET [Email] = @Email, [EmailConfirmed] = @EmailConfirmed, [PasswordHash] = @PasswordHash, [SecurityStamp] = @SecurityStamp, [PhoneNumber] = @PhoneNumber, [PhoneNumberConfirmed] = @PhoneNumberConfirmed, [TwoFactorEnabled] = @TwoFactorEnabled, [LockoutEndDateUtc] = @LockoutEndDateUtc, [LockoutEnabled] = @LockoutEnabled, [AccessFailedCount] = @AccessFailedCount, [UserName] = @UserName, [EmployeeId] = @EmployeeId WHERE [Id] = @original_Id">
         <DeleteParameters>
             <asp:Parameter Name="original_Id" Type="String"></asp:Parameter>
-            <asp:Parameter Name="original_Email" Type="String"></asp:Parameter>
-            <asp:Parameter Name="original_EmailConfirmed" Type="Boolean"></asp:Parameter>
-            <asp:Parameter Name="original_PasswordHash" Type="String"></asp:Parameter>
-            <asp:Parameter Name="original_SecurityStamp" Type="String"></asp:Parameter>
-            <asp:Parameter Name="original_PhoneNumber" Type="String"></asp:Parameter>
-            <asp:Parameter Name="original_PhoneNumberConfirmed" Type="Boolean"></asp:Parameter>
-            <asp:Parameter Name="original_TwoFactorEnabled" Type="Boolean"></asp:Parameter>
-            <asp:Parameter Name="original_LockoutEndDateUtc" Type="DateTime"></asp:Parameter>
-            <asp:Parameter Name="original_LockoutEnabled" Type="Boolean"></asp:Parameter>
-            <asp:Parameter Name="original_AccessFailedCount" Type="Int32"></asp:Parameter>
-            <asp:Parameter Name="original_UserName" Type="String"></asp:Parameter>
         </DeleteParameters>
         <InsertParameters>
             <asp:Parameter Name="Id" Type="String"></asp:Parameter>
@@ -106,6 +100,7 @@
             <asp:Parameter Name="LockoutEnabled" Type="Boolean"></asp:Parameter>
             <asp:Parameter Name="AccessFailedCount" Type="Int32"></asp:Parameter>
             <asp:Parameter Name="UserName" Type="String"></asp:Parameter>
+            <asp:Parameter Name="EmployeeId" Type="Int32"></asp:Parameter>
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="Email" Type="String"></asp:Parameter>
@@ -119,21 +114,16 @@
             <asp:Parameter Name="LockoutEnabled" Type="Boolean"></asp:Parameter>
             <asp:Parameter Name="AccessFailedCount" Type="Int32"></asp:Parameter>
             <asp:Parameter Name="UserName" Type="String"></asp:Parameter>
+            <asp:Parameter Name="EmployeeId" Type="Int32"></asp:Parameter>
             <asp:Parameter Name="original_Id" Type="String"></asp:Parameter>
-            <asp:Parameter Name="original_Email" Type="String"></asp:Parameter>
-            <asp:Parameter Name="original_EmailConfirmed" Type="Boolean"></asp:Parameter>
-            <asp:Parameter Name="original_PasswordHash" Type="String"></asp:Parameter>
-            <asp:Parameter Name="original_SecurityStamp" Type="String"></asp:Parameter>
-            <asp:Parameter Name="original_PhoneNumber" Type="String"></asp:Parameter>
-            <asp:Parameter Name="original_PhoneNumberConfirmed" Type="Boolean"></asp:Parameter>
-            <asp:Parameter Name="original_TwoFactorEnabled" Type="Boolean"></asp:Parameter>
-            <asp:Parameter Name="original_LockoutEndDateUtc" Type="DateTime"></asp:Parameter>
-            <asp:Parameter Name="original_LockoutEnabled" Type="Boolean"></asp:Parameter>
-            <asp:Parameter Name="original_AccessFailedCount" Type="Int32"></asp:Parameter>
-            <asp:Parameter Name="original_UserName" Type="String"></asp:Parameter>
         </UpdateParameters>
     </asp:SqlDataSource>
-
+    <asp:SqlDataSource ID="SqlDataSourceEmployee" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+        SelectCommand="SELECT [Id], CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] WHERE ([IsWork] = @IsWork) ORDER BY [FIO]">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="True" Name="IsWork" Type="Boolean" />
+        </SelectParameters>
+    </asp:SqlDataSource>
 
     <dx:ASPxPopupControl ID="ASPxPopupControlRoles" ClientInstanceName="ASPxClientPopupControlRoles" runat="server" HeaderText="Роли пользователя" Width="500px" PopupHorizontalAlign="WindowCenter" AllowDragging="True" CloseAction="CloseButton" Modal="True" PopupVerticalOffset="100">
         <ContentCollection>

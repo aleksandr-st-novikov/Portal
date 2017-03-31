@@ -29,6 +29,12 @@ namespace Portal.Pages.Admin.Employee
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.IsInRole("Администраторы"))
+            {
+                Response.Redirect("/");
+                return;
+            }
+
             ASPxTextBoxPathDBF.Text = @"e:\VS\Portal\IW\exp_ej.DBF";
             ASPxLoadingPanelLoad.ContainerElementID = "ASPxPanel2";
         }
@@ -69,22 +75,69 @@ namespace Portal.Pages.Admin.Employee
                     });
                 }
             }
-            
+
             //записываем подразделения
+            await SaveDepartment(md);
+            //записываем должности
+            await SavePosition(md);
+            //записываем сотрудников
+            await SaveEmployee(md);
+            //записываем руководителей
+            await SetHead(md);
+            //уволенные сотрудники
+            await SetFired(md);
+        }
+
+        private static async System.Threading.Tasks.Task SetFired(List<MidData> md)
+        {
+            using (EmployeeContext context = new EmployeeContext())
+            {
+                await context.SetFired(md);
+                await context.SaveChanges();
+            }
+        }
+
+        private static async System.Threading.Tasks.Task SetHead(List<MidData> md)
+        {
+            List<string> headers = new List<string>()
+            {
+                "Главный бухгалтер",
+                "Главный инженер",
+                "Заведующий",
+                "Заведующий складом",
+                "Начальник",
+                "Управляющий филиалом"
+            };
+            List<MidData> head = md.Where(m => headers.Contains(m.Position)).ToList();
+            using (DepartmentContext context = new DepartmentContext())
+            {
+                await context.SetHeadDepartment(head);
+                await context.SaveChanges();
+            }
+        }
+
+        private static async System.Threading.Tasks.Task SaveDepartment(List<MidData> md)
+        {
             List<string> depDispose = md.GroupBy(d => d.Department).Select(g => g.First()).ToList().Select(g => g.Department).ToList();
             using (DepartmentContext context = new DepartmentContext())
             {
                 await context.AddRangeDepartment(depDispose);
                 await context.SaveChanges();
             }
-            //записываем должности
+        }
+
+        private static async System.Threading.Tasks.Task SavePosition(List<MidData> md)
+        {
             List<string> posDispose = md.GroupBy(d => d.Position).Select(g => g.First()).ToList().Select(g => g.Position).ToList();
             using (PositionContext context = new PositionContext())
             {
                 await context.AddRangePosition(posDispose);
                 await context.SaveChanges();
             }
-            //записываем сотрудников
+        }
+
+        private static async System.Threading.Tasks.Task SaveEmployee(List<MidData> md)
+        {
             using (EmployeeContext context = new EmployeeContext())
             {
                 foreach (var empl in md)
@@ -93,7 +146,6 @@ namespace Portal.Pages.Admin.Employee
                 }
                 await context.SaveChanges();
             }
-
         }
     }
 }

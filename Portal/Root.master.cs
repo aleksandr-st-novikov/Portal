@@ -58,6 +58,26 @@ namespace Portal
                 
             };
 
+            if (Context.User.IsInRole("Администраторы")
+                || Context.User.IsInRole("Допуски работников СРТ"))
+            {
+                DevExpress.Web.MenuItem itemJournalAdmissionSRT = new DevExpress.Web.MenuItem()
+                {
+                    Text = "Допуски работников СРТ",
+                    NavigateUrl = "~/Pages/Journal/AdmissionSRT/ManageAdmissionSRT.aspx"
+                };
+                itemJournalAdmissionSRT.Image.IconID = "print_tasklist_16x16devav";
+                itemJournal.Items.Add(itemJournalAdmissionSRT);
+                itemJournal.DropDownMode = true;
+
+                if (itemJournalAdd == false)
+                {
+                    ASPxMenuMain.Items.Add(itemJournal);
+                    itemJournalAdd = true;
+                }
+
+            };
+
             //меню
             if (Context.User.IsInRole("Администраторы"))
             {

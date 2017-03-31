@@ -1,4 +1,6 @@
-﻿using Portal.Models.Entities;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Portal.Models.Entities;
+using Portal.Pages.Admin.Employee;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -66,6 +68,19 @@ namespace Portal.Models.EFContext
             }
         }
 
+        public async Task SetHeadDepartment(List<MidData> data)
+        {
+            foreach(var dat in data)
+            {
+                Department dep = await context.Department.FirstOrDefaultAsync(d => d.Name == dat.Department);
+                Employee empl = await context.Employee.FirstOrDefaultAsync(e => e.TabN == dat.TabNo);
+                if(dep != null)
+                {
+                    dep.HeadId = empl.Id;
+                }
+            }
+        }
+
         public async Task<bool> SaveChanges()
         {
             try
@@ -77,6 +92,15 @@ namespace Portal.Models.EFContext
             {
                 return false;
             }
+        }
+
+        public string GetDepartmentByUser(string userName)
+        {
+            ApplicationDbContext mycontext = new ApplicationDbContext();
+            UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(mycontext);
+            ApplicationUserManager UserManager = new ApplicationUserManager(userStore);
+
+            return user.Employee.Department.Name;
         }
     }
 }

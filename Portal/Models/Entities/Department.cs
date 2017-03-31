@@ -16,10 +16,15 @@ namespace Portal.Models.Entities
         public int? HeadId { get; set; }
 
         [Required(ErrorMessage = "Поле {0} обязательно.")]
-        [StringLength(300, ErrorMessage = "Длина должна быть от {2} до {1} символов!", MinimumLength = 2)]
+        [StringLength(300)]
         [Display(Name = "Наименование")]
         [ConcurrencyCheck]
         public string Name { get; set; }
+
+        [StringLength(100)]
+        [Display(Name = "Краткое наименование")]
+        [ConcurrencyCheck]
+        public string ShortName { get; set; }
 
         [Display(Name = "Активен")]
         [ConcurrencyCheck]

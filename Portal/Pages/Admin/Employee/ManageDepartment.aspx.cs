@@ -11,7 +11,16 @@ namespace Portal.Pages.Admin.Employee
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.IsInRole("Администраторы"))
+            {
+                Response.Redirect("/");
+                return;
+            }
+        }
 
+        protected void ASPxTreeList1_InitNewNode(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+        {
+            e.NewValues["IsActive"] = true;
         }
     }
 }

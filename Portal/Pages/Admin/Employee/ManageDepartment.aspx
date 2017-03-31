@@ -4,38 +4,39 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="content">
-        <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" DeleteCommand="DELETE FROM [Department] WHERE [Id] = @original_Id AND (([HeadId] = @original_HeadId) OR ([HeadId] IS NULL AND @original_HeadId IS NULL)) AND [Name] = @original_Name AND (([ParentId] = @original_ParentId) OR ([ParentId] IS NULL AND @original_ParentId IS NULL))" InsertCommand="INSERT INTO [Department] ([HeadId], [Name], [ParentId]) VALUES (@HeadId, @Name, @ParentId)" OldValuesParameterFormatString="original_{0}"
-            SelectCommand="SELECT * FROM [Department] ORDER BY [Name]" UpdateCommand="UPDATE [Department] SET [HeadId] = @HeadId, [Name] = @Name, [ParentId] = @ParentId WHERE [Id] = @original_Id AND (([HeadId] = @original_HeadId) OR ([HeadId] IS NULL AND @original_HeadId IS NULL)) AND [Name] = @original_Name AND (([ParentId] = @original_ParentId) OR ([ParentId] IS NULL AND @original_ParentId IS NULL))">
+        <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" DeleteCommand="DELETE FROM [Department] WHERE [Id] = @original_Id" InsertCommand="INSERT INTO [Department] ([HeadId], [Name], [ParentId], [IsActive], [ShortName]) VALUES (@HeadId, @Name, @ParentId, @IsActive, @ShortName)" OldValuesParameterFormatString="original_{0}"
+            SelectCommand="SELECT * FROM [Department] ORDER BY [Name]" UpdateCommand="UPDATE [Department] SET [HeadId] = @HeadId, [Name] = @Name, [ParentId] = @ParentId, [IsActive] = @IsActive, [ShortName] = @ShortName WHERE [Id] = @original_Id">
             <DeleteParameters>
                 <asp:Parameter Name="original_Id" Type="Int32" />
-                <asp:Parameter Name="original_HeadId" Type="Int32" />
-                <asp:Parameter Name="original_Name" Type="String" />
-                <asp:Parameter Name="original_ParentId" Type="Int32" />
             </DeleteParameters>
             <InsertParameters>
                 <asp:Parameter Name="HeadId" Type="Int32" />
                 <asp:Parameter Name="Name" Type="String" />
                 <asp:Parameter Name="ParentId" Type="Int32" />
+                <asp:Parameter Name="IsActive" Type="Boolean" />
+                <asp:Parameter Name="ShortName" Type="String" />
             </InsertParameters>
             <UpdateParameters>
                 <asp:Parameter Name="HeadId" Type="Int32" />
                 <asp:Parameter Name="Name" Type="String" />
                 <asp:Parameter Name="ParentId" Type="Int32" />
+                <asp:Parameter Name="IsActive" Type="Boolean" />
+                <asp:Parameter Name="ShortName" Type="String" />
                 <asp:Parameter Name="original_Id" Type="Int32" />
-                <asp:Parameter Name="original_HeadId" Type="Int32" />
-                <asp:Parameter Name="original_Name" Type="String" />
-                <asp:Parameter Name="original_ParentId" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
-        <dx:ASPxTreeList ID="ASPxTreeList1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceDepartment" KeyFieldName="Id" ParentFieldName="ParentId" Width="900px">
+        <dx:ASPxTreeList ID="ASPxTreeList1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceDepartment" KeyFieldName="Id" ParentFieldName="ParentId" Width="900px" OnInitNewNode="ASPxTreeList1_InitNewNode">
             <Columns>
-                <dx:TreeListTextColumn FieldName="HeadId" VisibleIndex="2" Caption="Руководитель">
+                <dx:TreeListTextColumn Caption="Наименование" FieldName="Name" VisibleIndex="0" Width="320px">
                 </dx:TreeListTextColumn>
-                <dx:TreeListTextColumn FieldName="Name" VisibleIndex="0" Caption="Наименование подразделения" Width="400px">
-                    <EditFormSettings VisibleIndex="1" />
+                <dx:TreeListCheckColumn Caption="Активный" FieldName="IsActive" Visible="False" VisibleIndex="4">
+                    <EditFormSettings Visible="True" />
+                </dx:TreeListCheckColumn>
+                <dx:TreeListTextColumn FieldName="ShortName" VisibleIndex="1" Caption="Краткое наименование" Width="160px">
+                    <EditFormSettings Visible="True" />
                 </dx:TreeListTextColumn>
-                <dx:TreeListCommandColumn VisibleIndex="4" Caption=" " ShowInCustomizationForm="False" ShowNewButtonInHeader="True" Width="50px">
-                    <EditButton Visible="True" Text=" ">
+                <dx:TreeListCommandColumn Caption=" " VisibleIndex="5" Width="20px" ShowNewButtonInHeader="True">
+                    <EditButton Text=" " Visible="True">
                         <Image IconID="edit_edit_16x16office2013">
                         </Image>
                     </EditButton>
@@ -43,25 +44,31 @@
                         <Image IconID="actions_additem_16x16office2013">
                         </Image>
                     </NewButton>
-                    <DeleteButton Visible="True" Text=" ">
+                    <DeleteButton Text=" " Visible="True">
                         <Image IconID="actions_deletelist_16x16office2013">
                         </Image>
                     </DeleteButton>
                 </dx:TreeListCommandColumn>
-                <dx:TreeListTextColumn Caption="Код" FieldName="Id" Name="Id" VisibleIndex="1" Width="20px" Visible="False">
-                    <EditFormSettings Visible="True" VisibleIndex="0" />
-                </dx:TreeListTextColumn>
-                <dx:TreeListComboBoxColumn Caption="Вышестоящее подразделение" FieldName="ParentId" Visible="False" VisibleIndex="3">
+                <dx:TreeListComboBoxColumn Caption="Подчинение" FieldName="ParentId" Visible="False" VisibleIndex="3">
                     <PropertiesComboBox DataSourceID="SqlDataSourceDepartment" TextField="Name" ValueField="Id">
-                        <ClearButton DisplayMode="Always">
-                        </ClearButton>
                     </PropertiesComboBox>
                     <EditFormSettings Visible="True" />
+                </dx:TreeListComboBoxColumn>
+                <dx:TreeListComboBoxColumn Caption="Руководитель" FieldName="HeadId" VisibleIndex="2">
+                    <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" TextField="FIO" ValueField="Id">
+                    </PropertiesComboBox>
+                    <CellStyle HorizontalAlign="Left">
+                    </CellStyle>
                 </dx:TreeListComboBoxColumn>
             </Columns>
             <SettingsBehavior AllowFocusedNode="True" />
             <SettingsEditing Mode="PopupEditForm" />
             <SettingsPopupEditForm Modal="True" VerticalAlign="Above" Width="800px" />
         </dx:ASPxTreeList>
+        <asp:SqlDataSource ID="SqlDataSourceEmployee" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] WHERE ([IsWork] = @IsWork) ORDER BY [FIO]">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="True" Name="IsWork" Type="Boolean" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </div>
 </asp:Content>

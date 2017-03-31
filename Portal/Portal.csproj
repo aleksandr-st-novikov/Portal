@@ -182,6 +182,7 @@
     <Content Include="Main.master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\Journal\AdmissionSRT\ManageAdmissionSRT.aspx" />
     <Content Include="Pages\Journal\Stationery\ManageStationery.aspx" />
     <Content Include="Pages\Journal\Stationery\ManageStock.aspx" />
     <Content Include="Root.master" />
@@ -198,6 +199,7 @@
     <Content Include="Pages\Admin\Users\UsersMain.master" />
     <Content Include="Pages\Journal\Stationery\StationeryMain.master" />
     <Content Include="Pages\Admin\Employee\EmployeeMain.master" />
+    <Content Include="Pages\Journal\AdmissionSRT\AdmissionSRTMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -239,10 +241,23 @@
     <Compile Include="Migrations\201703301730446_Employee2.Designer.cs">
       <DependentUpon>201703301730446_Employee2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703310540435_Department.cs" />
+    <Compile Include="Migrations\201703310540435_Department.Designer.cs">
+      <DependentUpon>201703310540435_Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311026513_User.cs" />
+    <Compile Include="Migrations\201703311026513_User.Designer.cs">
+      <DependentUpon>201703311026513_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311238158_AdmissionSRT.cs" />
+    <Compile Include="Migrations\201703311238158_AdmissionSRT.Designer.cs">
+      <DependentUpon>201703311238158_AdmissionSRT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\DepartmentContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
     <Compile Include="Models\EFContext\PositionContext.cs" />
+    <Compile Include="Models\Entities\AdmissionSRT.cs" />
     <Compile Include="Models\Entities\Department.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Position.cs" />
@@ -455,6 +470,20 @@
       <DependentUpon>Main.master</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Pages\Journal\AdmissionSRT\AdmissionSRTMain.master.cs">
+      <DependentUpon>AdmissionSRTMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\AdmissionSRT\AdmissionSRTMain.master.designer.cs">
+      <DependentUpon>AdmissionSRTMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\AdmissionSRT\ManageAdmissionSRT.aspx.cs">
+      <DependentUpon>ManageAdmissionSRT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\AdmissionSRT\ManageAdmissionSRT.aspx.designer.cs">
+      <DependentUpon>ManageAdmissionSRT.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Journal\Stationery\ManageStationery.aspx.cs">
       <DependentUpon>ManageStationery.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -511,6 +540,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703301730446_Employee2.resx">
       <DependentUpon>201703301730446_Employee2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703310540435_Department.resx">
+      <DependentUpon>201703310540435_Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311026513_User.resx">
+      <DependentUpon>201703311026513_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311238158_AdmissionSRT.resx">
+      <DependentUpon>201703311238158_AdmissionSRT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
