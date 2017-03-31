@@ -10,34 +10,9 @@ using System.Web;
 
 namespace Portal.Models.EFContext
 {
-    public class DepartmentContext : IDisposable
+    public class DepartmentContext : ApplicationContext
     {
-        private ApplicationDbContext context = new ApplicationDbContext();
-
-        bool disposed = false;
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
-            {
-                context.Dispose();
-            }
-
-            // Free any unmanaged objects here. 
-            //
-            disposed = true;
-        }
-
-        public async Task AddDepartment(Department department)
+        public async Task AddDepartmentAsync(Department department)
         {
             Department entry = await context.Department.FirstOrDefaultAsync(d => d.Name == department.Name);
             if (entry == null)
@@ -46,7 +21,7 @@ namespace Portal.Models.EFContext
             }
         }
 
-        public async Task AddRangeDepartment(List<string> departments)
+        public async Task AddRangeDepartmentAsync(List<string> departments)
         {
             foreach (string dep in departments)
             {
@@ -68,7 +43,7 @@ namespace Portal.Models.EFContext
             }
         }
 
-        public async Task SetHeadDepartment(List<MidData> data)
+        public async Task SetHeadDepartmentAsync(List<MidData> data)
         {
             foreach(var dat in data)
             {
@@ -81,26 +56,14 @@ namespace Portal.Models.EFContext
             }
         }
 
-        public async Task<bool> SaveChanges()
-        {
-            try
-            {
-                await context.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public string GetDepartmentByUser(string userName)
+        public async Task<Department> GetDepartmentByUserAsync(string userName)
         {
             ApplicationDbContext mycontext = new ApplicationDbContext();
             UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(mycontext);
             ApplicationUserManager UserManager = new ApplicationUserManager(userStore);
+            ApplicationUser user = await UserManager.FindByNameAsync(userName);
 
-            return user.Employee.Department.Name;
+            return user.Employee.Department;
         }
     }
 }

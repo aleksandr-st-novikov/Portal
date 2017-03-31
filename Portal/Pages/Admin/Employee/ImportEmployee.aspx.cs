@@ -92,8 +92,8 @@ namespace Portal.Pages.Admin.Employee
         {
             using (EmployeeContext context = new EmployeeContext())
             {
-                await context.SetFired(md);
-                await context.SaveChanges();
+                await context.SetFiredAsync(md);
+                await context.SaveChangesAsync();
             }
         }
 
@@ -111,8 +111,8 @@ namespace Portal.Pages.Admin.Employee
             List<MidData> head = md.Where(m => headers.Contains(m.Position)).ToList();
             using (DepartmentContext context = new DepartmentContext())
             {
-                await context.SetHeadDepartment(head);
-                await context.SaveChanges();
+                await context.SetHeadDepartmentAsync(head);
+                await context.SaveChangesAsync();
             }
         }
 
@@ -121,8 +121,8 @@ namespace Portal.Pages.Admin.Employee
             List<string> depDispose = md.GroupBy(d => d.Department).Select(g => g.First()).ToList().Select(g => g.Department).ToList();
             using (DepartmentContext context = new DepartmentContext())
             {
-                await context.AddRangeDepartment(depDispose);
-                await context.SaveChanges();
+                await context.AddRangeDepartmentAsync(depDispose);
+                await context.SaveChangesAsync();
             }
         }
 
@@ -131,8 +131,8 @@ namespace Portal.Pages.Admin.Employee
             List<string> posDispose = md.GroupBy(d => d.Position).Select(g => g.First()).ToList().Select(g => g.Position).ToList();
             using (PositionContext context = new PositionContext())
             {
-                await context.AddRangePosition(posDispose);
-                await context.SaveChanges();
+                await context.AddRangePositionAsync(posDispose);
+                await context.SaveChangesAsync();
             }
         }
 
@@ -142,9 +142,9 @@ namespace Portal.Pages.Admin.Employee
             {
                 foreach (var empl in md)
                 {
-                    await context.AddEmployee(empl);
+                    await context.AddEmployeeAsync(empl);
                 }
-                await context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
     }

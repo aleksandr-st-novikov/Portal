@@ -22,6 +22,15 @@ namespace Portal.Pages.Journal.AdmissionSRT {
         protected global::DevExpress.Web.ASPxCallback ASPxCallbackImportEmployee;
         
         /// <summary>
+        /// ASPxLabelDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel ASPxLabelDepartment;
+        
+        /// <summary>
         /// ASPxPanel1 control.
         /// </summary>
         /// <remarks>
@@ -40,15 +49,6 @@ namespace Portal.Pages.Journal.AdmissionSRT {
         protected global::DevExpress.Web.ASPxButton ASPxButtonPopulateEmployee;
         
         /// <summary>
-        /// ASPxLabelDepartment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel ASPxLabelDepartment;
-        
-        /// <summary>
         /// ASPxGridViewAdmissionSRT control.
         /// </summary>
         /// <remarks>
@@ -65,6 +65,24 @@ namespace Portal.Pages.Journal.AdmissionSRT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAdmissionSRT;
+        
+        /// <summary>
+        /// SqlDataSourceEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEmployee;
+        
+        /// <summary>
+        /// SqlDataSourcePosition control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourcePosition;
         
         /// <summary>
         /// ASPxLoadingPanelLoad control.

@@ -8,34 +8,9 @@ using System.Web;
 
 namespace Portal.Models.EFContext
 {
-    public class PositionContext : IDisposable
+    public class PositionContext : ApplicationContext
     {
-        private ApplicationDbContext context = new ApplicationDbContext();
-
-        bool disposed = false;
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
-            {
-                context.Dispose();
-            }
-
-            // Free any unmanaged objects here. 
-            //
-            disposed = true;
-        }
-
-        public async Task AddRangePosition(List<string> positions)
+        public async Task AddRangePositionAsync(List<string> positions)
         {
             foreach (string pos in positions)
             {
@@ -57,17 +32,5 @@ namespace Portal.Models.EFContext
             }
         }
 
-        public async Task<bool> SaveChanges()
-        {
-            try
-            {
-                await context.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
     }
 }

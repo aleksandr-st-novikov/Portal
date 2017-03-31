@@ -253,7 +253,21 @@
     <Compile Include="Migrations\201703311238158_AdmissionSRT.Designer.cs">
       <DependentUpon>201703311238158_AdmissionSRT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703311701422_AdmissionSRT1.cs" />
+    <Compile Include="Migrations\201703311701422_AdmissionSRT1.Designer.cs">
+      <DependentUpon>201703311701422_AdmissionSRT1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311823205_AdmissionSRT2.cs" />
+    <Compile Include="Migrations\201703311823205_AdmissionSRT2.Designer.cs">
+      <DependentUpon>201703311823205_AdmissionSRT2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311828165_AdmissionSRT3.cs" />
+    <Compile Include="Migrations\201703311828165_AdmissionSRT3.Designer.cs">
+      <DependentUpon>201703311828165_AdmissionSRT3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EFContext\AdmissionSRTContext.cs" />
+    <Compile Include="Models\EFContext\ApplicationContext.cs" />
     <Compile Include="Models\EFContext\DepartmentContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
     <Compile Include="Models\EFContext\PositionContext.cs" />
@@ -549,6 +563,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703311238158_AdmissionSRT.resx">
       <DependentUpon>201703311238158_AdmissionSRT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311701422_AdmissionSRT1.resx">
+      <DependentUpon>201703311701422_AdmissionSRT1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311823205_AdmissionSRT2.resx">
+      <DependentUpon>201703311823205_AdmissionSRT2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311828165_AdmissionSRT3.resx">
+      <DependentUpon>201703311828165_AdmissionSRT3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>

@@ -9,34 +9,9 @@ using System.Web;
 
 namespace Portal.Models.EFContext
 {
-    public class EmployeeContext : IDisposable
+    public class EmployeeContext : ApplicationContext
     {
-        private ApplicationDbContext context = new ApplicationDbContext();
-
-        bool disposed = false;
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
-            {
-                context.Dispose();
-            }
-
-            // Free any unmanaged objects here. 
-            //
-            disposed = true;
-        }
-
-        public async Task AddEmployee(MidData employee)
+        public async Task AddEmployeeAsync(MidData employee)
         {
             Employee entry = await context.Employee.FirstOrDefaultAsync(d => d.TabN == employee.TabNo);
             Department department = await context.Department.FirstOrDefaultAsync(d => d.Name == employee.Department);
@@ -67,26 +42,13 @@ namespace Portal.Models.EFContext
             }
         }
 
-        public async Task SetFired(List<MidData> data)
+        public async Task SetFiredAsync(List<MidData> data)
         {
             List<string> dataTabN = data.Select(d => d.TabNo).ToList();
             List<Employee> uv = await context.Employee.Where(e => !dataTabN.Contains(e.TabN)).ToListAsync();
-            foreach(Employee empl in uv)
+            foreach (Employee empl in uv)
             {
                 empl.IsWork = false;
-            }
-        }
-
-        public async Task<bool> SaveChanges()
-        {
-            try
-            {
-                await context.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
             }
         }
     }
