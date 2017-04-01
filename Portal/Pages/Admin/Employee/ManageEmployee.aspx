@@ -82,8 +82,11 @@
                 </dx:GridViewFormatConditionHighlight>
             </FormatConditions>
         </dx:ASPxGridView>
-        <asp:SqlDataSource ID="SqlDataSourceEmployee" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" DeleteCommand="DELETE FROM [Employee] WHERE [Id] = @original_Id AND [TabN] = @original_TabN AND [Lastname] = @original_Lastname AND (([Firstname] = @original_Firstname) OR ([Firstname] IS NULL AND @original_Firstname IS NULL)) AND (([Patronymic] = @original_Patronymic) OR ([Patronymic] IS NULL AND @original_Patronymic IS NULL)) AND (([DepartmentId] = @original_DepartmentId) OR ([DepartmentId] IS NULL AND @original_DepartmentId IS NULL)) AND (([DateIn] = @original_DateIn) OR ([DateIn] IS NULL AND @original_DateIn IS NULL)) AND (([DateBirth] = @original_DateBirth) OR ([DateBirth] IS NULL AND @original_DateBirth IS NULL)) AND (([Category] = @original_Category) OR ([Category] IS NULL AND @original_Category IS NULL)) AND (([Department_Id] = @original_Department_Id) OR ([Department_Id] IS NULL AND @original_Department_Id IS NULL)) AND (([PositionId] = @original_PositionId) OR ([PositionId] IS NULL AND @original_PositionId IS NULL))" InsertCommand="INSERT INTO [Employee] ([TabN], [Lastname], [Firstname], [Patronymic], [DepartmentId], [DateIn], [DateBirth], [Category], [Department_Id], [PositionId]) VALUES (@TabN, @Lastname, @Firstname, @Patronymic, @DepartmentId, @DateIn, @DateBirth, @Category, @Department_Id, @PositionId)" OldValuesParameterFormatString="original_{0}"
-            SelectCommand="SELECT *, CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] ORDER BY [Lastname], [Firstname], [Patronymic]" UpdateCommand="UPDATE [Employee] SET [TabN] = @TabN, [Lastname] = @Lastname, [Firstname] = @Firstname, [Patronymic] = @Patronymic, [DepartmentId] = @DepartmentId, [DateIn] = @DateIn, [DateBirth] = @DateBirth, [Category] = @Category, [Department_Id] = @Department_Id, [PositionId] = @PositionId WHERE [Id] = @original_Id AND [TabN] = @original_TabN AND [Lastname] = @original_Lastname AND (([Firstname] = @original_Firstname) OR ([Firstname] IS NULL AND @original_Firstname IS NULL)) AND (([Patronymic] = @original_Patronymic) OR ([Patronymic] IS NULL AND @original_Patronymic IS NULL)) AND (([DepartmentId] = @original_DepartmentId) OR ([DepartmentId] IS NULL AND @original_DepartmentId IS NULL)) AND (([DateIn] = @original_DateIn) OR ([DateIn] IS NULL AND @original_DateIn IS NULL)) AND (([DateBirth] = @original_DateBirth) OR ([DateBirth] IS NULL AND @original_DateBirth IS NULL)) AND (([Category] = @original_Category) OR ([Category] IS NULL AND @original_Category IS NULL)) AND (([Department_Id] = @original_Department_Id) OR ([Department_Id] IS NULL AND @original_Department_Id IS NULL)) AND (([PositionId] = @original_PositionId) OR ([PositionId] IS NULL AND @original_PositionId IS NULL))">
+        <asp:SqlDataSource ID="SqlDataSourceEmployee" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+            DeleteCommand="DELETE FROM [Employee] WHERE [Id] = @original_Id AND [TabN] = @original_TabN AND [Lastname] = @original_Lastname AND (([Firstname] = @original_Firstname) OR ([Firstname] IS NULL AND @original_Firstname IS NULL)) AND (([Patronymic] = @original_Patronymic) OR ([Patronymic] IS NULL AND @original_Patronymic IS NULL)) AND (([DepartmentId] = @original_DepartmentId) OR ([DepartmentId] IS NULL AND @original_DepartmentId IS NULL)) AND (([DateIn] = @original_DateIn) OR ([DateIn] IS NULL AND @original_DateIn IS NULL)) AND (([DateBirth] = @original_DateBirth) OR ([DateBirth] IS NULL AND @original_DateBirth IS NULL)) AND (([Category] = @original_Category) OR ([Category] IS NULL AND @original_Category IS NULL)) AND (([Department_Id] = @original_Department_Id) OR ([Department_Id] IS NULL AND @original_Department_Id IS NULL)) AND (([PositionId] = @original_PositionId) OR ([PositionId] IS NULL AND @original_PositionId IS NULL))" 
+            InsertCommand="INSERT INTO [Employee] ([TabN], [Lastname], [Firstname], [Patronymic], [DepartmentId], [DateIn], [DateBirth], [Category], [Department_Id], [PositionId], [IsWork]) VALUES (@TabN, @Lastname, @Firstname, @Patronymic, @DepartmentId, @DateIn, @DateBirth, @Category, @Department_Id, @PositionId, @IsWork)" OldValuesParameterFormatString="original_{0}"
+            SelectCommand="SELECT *, CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] ORDER BY [Lastname], [Firstname], [Patronymic]" 
+            UpdateCommand="UPDATE [Employee] SET [TabN] = @TabN, [Lastname] = @Lastname, [Firstname] = @Firstname, [Patronymic] = @Patronymic, [DepartmentId] = @DepartmentId, [DateIn] = @DateIn, [DateBirth] = @DateBirth, [Category] = @Category, [Department_Id] = @Department_Id, [PositionId] = @PositionId, [IsWork] = @IsWork WHERE [Id] = @original_Id AND [TabN] = @original_TabN AND [Lastname] = @original_Lastname AND [IsWork] = @original_IsWork AND (([Firstname] = @original_Firstname) OR ([Firstname] IS NULL AND @original_Firstname IS NULL)) AND (([Patronymic] = @original_Patronymic) OR ([Patronymic] IS NULL AND @original_Patronymic IS NULL)) AND (([DepartmentId] = @original_DepartmentId) OR ([DepartmentId] IS NULL AND @original_DepartmentId IS NULL)) AND (([DateIn] = @original_DateIn) OR ([DateIn] IS NULL AND @original_DateIn IS NULL)) AND (([DateBirth] = @original_DateBirth) OR ([DateBirth] IS NULL AND @original_DateBirth IS NULL)) AND (([Category] = @original_Category) OR ([Category] IS NULL AND @original_Category IS NULL)) AND (([Department_Id] = @original_Department_Id) OR ([Department_Id] IS NULL AND @original_Department_Id IS NULL)) AND (([PositionId] = @original_PositionId) OR ([PositionId] IS NULL AND @original_PositionId IS NULL))">
             <DeleteParameters>
                 <asp:Parameter Name="original_Id" Type="Int32" />
                 <asp:Parameter Name="original_TabN" Type="String" />
@@ -108,6 +111,7 @@
                 <asp:Parameter Name="Category" Type="String" />
                 <asp:Parameter Name="Department_Id" Type="Int32" />
                 <asp:Parameter Name="PositionId" Type="Int32" />
+                <asp:Parameter Name="IsWork" Type="Boolean" />
             </InsertParameters>
             <UpdateParameters>
                 <asp:Parameter Name="TabN" Type="String" />
@@ -120,6 +124,7 @@
                 <asp:Parameter Name="Category" Type="String" />
                 <asp:Parameter Name="Department_Id" Type="Int32" />
                 <asp:Parameter Name="PositionId" Type="Int32" />
+                <asp:Parameter Name="IsWork" Type="Boolean" />
                 <asp:Parameter Name="original_Id" Type="Int32" />
                 <asp:Parameter Name="original_TabN" Type="String" />
                 <asp:Parameter Name="original_Lastname" Type="String" />
@@ -131,6 +136,7 @@
                 <asp:Parameter Name="original_Category" Type="String" />
                 <asp:Parameter Name="original_Department_Id" Type="Int32" />
                 <asp:Parameter Name="original_PositionId" Type="Int32" />
+                <asp:Parameter Name="original_IsWork" Type="Boolean" />
             </UpdateParameters>
         </asp:SqlDataSource>
 

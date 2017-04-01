@@ -13,7 +13,7 @@ namespace Portal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ASPxLabel2.Text = DateTime.Now.Year + Server.HtmlDecode(" &copy; Copyright by [company name]");
+            //ASPxLabel2.Text = DateTime.Now.Year + Server.HtmlDecode(" &copy; Copyright by [company name]");
 
             if (Context.Request.Path.Contains("Login"))
             {
@@ -59,15 +59,15 @@ namespace Portal
             };
 
             if (Context.User.IsInRole("Администраторы")
-                || Context.User.IsInRole("Допуски работников СРТ"))
+                || Context.User.IsInRole("Допуски сотрудников"))
             {
-                DevExpress.Web.MenuItem itemJournalAdmissionSRT = new DevExpress.Web.MenuItem()
+                DevExpress.Web.MenuItem itemJournalAdmission = new DevExpress.Web.MenuItem()
                 {
-                    Text = "Допуски работников СРТ",
-                    NavigateUrl = "~/Pages/Journal/AdmissionSRT/ManageAdmissionSRT.aspx"
+                    Text = "Допуски сотрудников",
+                    NavigateUrl = "~/Pages/Journal/Admission/ManageAdmission.aspx"
                 };
-                itemJournalAdmissionSRT.Image.IconID = "print_tasklist_16x16devav";
-                itemJournal.Items.Add(itemJournalAdmissionSRT);
+                itemJournalAdmission.Image.IconID = "print_tasklist_16x16devav";
+                itemJournal.Items.Add(itemJournalAdmission);
                 itemJournal.DropDownMode = true;
 
                 if (itemJournalAdd == false)

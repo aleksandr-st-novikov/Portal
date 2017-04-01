@@ -18,3 +18,9 @@ img[class^="dx"] /*Bootstrap correction*/ {
 .button-panel {
     margin: 15px;
 }
+
+.btnInline {
+
+display: inline-table;
+
+}

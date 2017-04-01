@@ -43,8 +43,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.ASPxTreeList.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.Resources.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1.Web, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -182,7 +193,7 @@
     <Content Include="Main.master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\Journal\AdmissionSRT\ManageAdmissionSRT.aspx" />
+    <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
     <Content Include="Pages\Journal\Stationery\ManageStationery.aspx" />
     <Content Include="Pages\Journal\Stationery\ManageStock.aspx" />
     <Content Include="Root.master" />
@@ -199,7 +210,8 @@
     <Content Include="Pages\Admin\Users\UsersMain.master" />
     <Content Include="Pages\Journal\Stationery\StationeryMain.master" />
     <Content Include="Pages\Admin\Employee\EmployeeMain.master" />
-    <Content Include="Pages\Journal\AdmissionSRT\AdmissionSRTMain.master" />
+    <Content Include="Pages\Journal\Admission\AdmissionMain.master" />
+    <Content Include="Pages\Journal\Admission\AdmissionMain1.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -265,13 +277,17 @@
     <Compile Include="Migrations\201703311828165_AdmissionSRT3.Designer.cs">
       <DependentUpon>201703311828165_AdmissionSRT3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704010743447_Admission.cs" />
+    <Compile Include="Migrations\201704010743447_Admission.Designer.cs">
+      <DependentUpon>201704010743447_Admission.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\EFContext\AdmissionSRTContext.cs" />
+    <Compile Include="Models\EFContext\AdmissionContext.cs" />
     <Compile Include="Models\EFContext\ApplicationContext.cs" />
     <Compile Include="Models\EFContext\DepartmentContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
     <Compile Include="Models\EFContext\PositionContext.cs" />
-    <Compile Include="Models\Entities\AdmissionSRT.cs" />
+    <Compile Include="Models\Entities\Admission.cs" />
     <Compile Include="Models\Entities\Department.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Position.cs" />
@@ -484,19 +500,26 @@
       <DependentUpon>Main.master</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Pages\Journal\AdmissionSRT\AdmissionSRTMain.master.cs">
-      <DependentUpon>AdmissionSRTMain.master</DependentUpon>
+    <Compile Include="Pages\Journal\Admission\AdmissionMain1.master.cs">
+      <DependentUpon>AdmissionMain1.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Journal\AdmissionSRT\AdmissionSRTMain.master.designer.cs">
-      <DependentUpon>AdmissionSRTMain.master</DependentUpon>
+    <Compile Include="Pages\Journal\Admission\AdmissionMain1.master.designer.cs">
+      <DependentUpon>AdmissionMain1.master</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Journal\AdmissionSRT\ManageAdmissionSRT.aspx.cs">
-      <DependentUpon>ManageAdmissionSRT.aspx</DependentUpon>
+    <Compile Include="Pages\Journal\Admission\AdmissionMain.master.cs">
+      <DependentUpon>AdmissionMain.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Journal\AdmissionSRT\ManageAdmissionSRT.aspx.designer.cs">
-      <DependentUpon>ManageAdmissionSRT.aspx</DependentUpon>
+    <Compile Include="Pages\Journal\Admission\AdmissionMain.master.designer.cs">
+      <DependentUpon>AdmissionMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Admission\ManageAdmission.aspx.cs">
+      <DependentUpon>ManageAdmission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Admission\ManageAdmission.aspx.designer.cs">
+      <DependentUpon>ManageAdmission.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Journal\Stationery\ManageStationery.aspx.cs">
       <DependentUpon>ManageStationery.aspx</DependentUpon>
@@ -520,6 +543,18 @@
       <DependentUpon>StationeryMain.master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\AdmissionReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\AdmissionReport.Designer.cs">
+      <DependentUpon>AdmissionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TestReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TestReport.Designer.cs">
+      <DependentUpon>TestReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Root.master.cs">
       <DependentUpon>Root.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -573,7 +608,16 @@
     <EmbeddedResource Include="Migrations\201703311828165_AdmissionSRT3.resx">
       <DependentUpon>201703311828165_AdmissionSRT3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704010743447_Admission.resx">
+      <DependentUpon>201704010743447_Admission.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\AdmissionReport.resx">
+      <DependentUpon>AdmissionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TestReport.resx">
+      <DependentUpon>TestReport.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
