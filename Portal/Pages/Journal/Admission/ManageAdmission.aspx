@@ -1,13 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Journal/Admission/AdmissionMain.master" AutoEventWireup="true" CodeBehind="ManageAdmission.aspx.cs" Inherits="Portal.Pages.Journal.Admission.ManageAdmission" Async="true" %>
-
-<%@ Register Assembly="DevExpress.XtraReports.v16.1.Web, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
+<%@ Register TagPrefix="uc" TagName="DocumentViewPopup" Src="~/Reports/DocumentViewPopup.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <dx:ASPxCallback ID="ASPxCallbackSave" runat="server" ClientInstanceName="ASPxClientCallbackSave" OnCallback="ASPxCallbackSave_Callback">
+    <dx:ASPxCallback ID="ASPxCallbackSetParameters" runat="server" ClientInstanceName="ASPxClientCallbackSetParameters" OnCallback="ASPxCallbackSetParameters_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {
-	            ASPxClientPopupControlSaveParams.Hide();
-                ASPxClientPopupControlReport.Show();
-            }" />
+	window.open('/Reports/DocumentView.aspx', '_blank')
+}" />
     </dx:ASPxCallback>
     <dx:ASPxCallback ID="ASPxCallbackImportEmployee" runat="server" ClientInstanceName="ASPxClientCallbackImportEmployee" OnCallback="ASPxCallbackImportEmployee_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {
@@ -29,14 +27,14 @@
 	                            ASPxClientLoadingPanelLoad.Show();
                             }" />
                     </dx:ASPxButton>
-                    <dx:ASPxButton ID="ASPxButtonShowSaveParams" runat="server" AutoPostBack="False" ClientInstanceName="ASPxClientButtonShowSaveParams" Text="Сохранить">
+                    <dx:ASPxButton ID="ASPxButtonShowReportParams" runat="server" AutoPostBack="False" ClientInstanceName="ASPxClientButtonShowReportParams" Text="Отчет">
                         <ClientSideEvents Click="function(s, e) {
-	                            ASPxClientPopupControlSaveParams.Show();
+	                            ASPxClientPopupControlReportParams.Show();
                             }" />
-                        <Image IconID="export_exporttoxls_16x16office2013">
+                        <Image IconID="export_exportfile_16x16office2013">
                         </Image>
                     </dx:ASPxButton>
-                    <dx:ASPxPopupControl ID="ASPxPopupControlSaveParams" runat="server" ClientInstanceName="ASPxClientPopupControlSaveParams" HeaderText="Параметры отчета" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="100" Width="450px">
+                    <dx:ASPxPopupControl ID="ASPxPopupControlReportParams" runat="server" ClientInstanceName="ASPxClientPopupControlReportParams" HeaderText="Параметры отчета" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="100" Width="450px" OnLoad="ASPxPopupControlReportParams_Load">
                         <ContentCollection>
                             <dx:PopupControlContentControl runat="server">
                                 <dx:ASPxPanel ID="ASPxPanel2" runat="server" RightToLeft="False" Width="100%">
@@ -44,18 +42,18 @@
                                         <dx:PanelContent runat="server">
                                             <dx:ASPxFormLayout ID="ASPxFormLayoutSave" runat="server" ColCount="2">
                                                 <Items>
-                                                    <dx:LayoutItem Caption="Период с">
+                                                    <dx:LayoutItem Caption="Период с" RequiredMarkDisplayMode="Required">
                                                         <LayoutItemNestedControlCollection>
                                                             <dx:LayoutItemNestedControlContainer runat="server">
-                                                                <dx:ASPxDateEdit ID="ASPxFormLayoutSaveDateFrom" runat="server" EditFormat="Custom" EditFormatString="dd.MM.yyyy">
+                                                                <dx:ASPxDateEdit ID="ASPxFormLayoutSaveDateFrom" runat="server" EditFormat="Custom" EditFormatString="dd.MM.yyyy" ClientInstanceName="ASPxClientFormLayoutSaveDateFrom">
                                                                 </dx:ASPxDateEdit>
                                                             </dx:LayoutItemNestedControlContainer>
                                                         </LayoutItemNestedControlCollection>
                                                     </dx:LayoutItem>
-                                                    <dx:LayoutItem Caption="по">
+                                                    <dx:LayoutItem Caption="по" RequiredMarkDisplayMode="Required">
                                                         <LayoutItemNestedControlCollection>
                                                             <dx:LayoutItemNestedControlContainer runat="server">
-                                                                <dx:ASPxDateEdit ID="ASPxFormLayoutSaveDateTo" runat="server">
+                                                                <dx:ASPxDateEdit ID="ASPxFormLayoutSaveDateTo" runat="server" ClientInstanceName="ASPxClientFormLayoutSaveDateTo">
                                                                 </dx:ASPxDateEdit>
                                                             </dx:LayoutItemNestedControlContainer>
                                                         </LayoutItemNestedControlCollection>
@@ -68,16 +66,20 @@
                                                     <dx:PanelContent runat="server">
                                                         <dx:ASPxButton ID="ASPxButtonCancel" runat="server" AutoPostBack="False" Text="Отмена">
                                                             <ClientSideEvents Click="function(s, e) {
-	                                                                ASPxClientPopupControlSaveParams.Hide();
+	                                                                ASPxClientPopupControlReportParams.Hide();
                                                                 }" />
                                                         </dx:ASPxButton>
                                                         <dx:ASPxButton ID="ASPxButtonSave" runat="server" AutoPostBack="False" Text="Сохранить">
                                                             <ClientSideEvents Click="function(s, e) {
-	                                                                //ASPxClientCallbackSave.PerformCallback();
-                                                                    ASPxClientCallbackPanel1.PerformCallback();
-                                                                    //document.getElementById('hf').value = s.GetSelectedItem().value;
-				                                                    //ASPxClientDocumentViewerReport.GetViewer().Refresh();
-                                                                    //ASPxClientDocumentViewerReport.Refresh();
+                                                                var dateFrom = ASPxClientFormLayoutSaveDateFrom.GetValue();
+                                                                var dateTo = ASPxClientFormLayoutSaveDateTo.GetValue();
+                                                                    //ASPxClientCallbackPanelReport.PerformCallback('Admission' + '|' + 
+                                                                    //    new Date(dateFrom.getFullYear(), dateFrom.getMonth(), dateFrom.getDate()) + '|' + 
+                                                                    //    new Date(dateTo.getFullYear(), dateTo.getMonth(), dateTo.getDate()));
+                                                                    ASPxClientCallbackSetParameters.PerformCallback('Admission' + '|' + 
+                                                                        dateFrom.getDate() + '.' + (dateFrom.getMonth() + 1) + '.' + dateFrom.getFullYear() + '|' + 
+                                                                        dateTo.getDate() + '.' + (dateTo.getMonth() + 1) + '.' + dateTo.getFullYear());
+                                                                    ASPxClientPopupControlReportParams.Hide();
                                                                 }" />
                                                         </dx:ASPxButton>
                                                     </dx:PanelContent>
@@ -221,19 +223,6 @@
     </div>
     <dx:ASPxLoadingPanel ID="ASPxLoadingPanelLoad" runat="server" ClientInstanceName="ASPxClientLoadingPanelLoad" Modal="True">
     </dx:ASPxLoadingPanel>
-    <dx:ASPxCallbackPanel ID="ASPxCallbackPanel1" ClientInstanceName="ASPxClientCallbackPanel1" runat="server" OnCallback="ASPxCallbackPanel1_Callback" Width="1000px" Height="500px">
-        <ClientSideEvents EndCallback="function(s, e) {
-	//ASPxClientDocumentViewerReport.GetViewer().Refresh();
-                                                                    //ASPxClientDocumentViewerReport.Refresh();
-}" />
-        <PanelCollection>
-            <dx:PanelContent runat="server">
-                <br />
-                <asp:HiddenField ID="hf" runat="server" />
-                <dx:ASPxDocumentViewer ID="ASPxDocumentViewerReport" runat="server" Height="100%" ClientInstanceName="ASPxClientDocumentViewerReport" OnCacheReportDocument="ASPxDocumentViewerReport_CacheReportDocument" OnRestoreReportDocumentFromCache="ASPxDocumentViewerReport_RestoreReportDocumentFromCache">
-                    <SettingsReportViewer ShouldDisposeReport="False" />
-                </dx:ASPxDocumentViewer>
-            </dx:PanelContent>
-        </PanelCollection>
-    </dx:ASPxCallbackPanel>
+
+    <uc:DocumentViewPopup ID="DocumentViewPopupAdmission" runat="server" />
 </asp:Content>

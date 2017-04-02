@@ -13,13 +13,13 @@ namespace Portal.Pages.Journal.Admission {
     public partial class ManageAdmission {
         
         /// <summary>
-        /// ASPxCallbackSave control.
+        /// ASPxCallbackSetParameters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCallback ASPxCallbackSave;
+        protected global::DevExpress.Web.ASPxCallback ASPxCallbackSetParameters;
         
         /// <summary>
         /// ASPxCallbackImportEmployee control.
@@ -58,22 +58,22 @@ namespace Portal.Pages.Journal.Admission {
         protected global::DevExpress.Web.ASPxButton ASPxButtonPopulateEmployee;
         
         /// <summary>
-        /// ASPxButtonShowSaveParams control.
+        /// ASPxButtonShowReportParams control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButtonShowSaveParams;
+        protected global::DevExpress.Web.ASPxButton ASPxButtonShowReportParams;
         
         /// <summary>
-        /// ASPxPopupControlSaveParams control.
+        /// ASPxPopupControlReportParams control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlSaveParams;
+        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlReportParams;
         
         /// <summary>
         /// ASPxPanel2 control.
@@ -184,30 +184,12 @@ namespace Portal.Pages.Journal.Admission {
         protected global::DevExpress.Web.ASPxLoadingPanel ASPxLoadingPanelLoad;
         
         /// <summary>
-        /// ASPxCallbackPanel1 control.
+        /// DocumentViewPopupAdmission control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCallbackPanel ASPxCallbackPanel1;
-        
-        /// <summary>
-        /// hf control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hf;
-        
-        /// <summary>
-        /// ASPxDocumentViewerReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.XtraReports.Web.ASPxDocumentViewer ASPxDocumentViewerReport;
+        protected global::Portal.Reports.DocumentViewPopup DocumentViewPopupAdmission;
     }
 }

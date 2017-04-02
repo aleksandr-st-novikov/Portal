@@ -196,6 +196,8 @@
     <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
     <Content Include="Pages\Journal\Stationery\ManageStationery.aspx" />
     <Content Include="Pages\Journal\Stationery\ManageStock.aspx" />
+    <Content Include="Reports\DocumentView.aspx" />
+    <Content Include="Reports\DocumentViewPopup.ascx" />
     <Content Include="Root.master" />
   </ItemGroup>
   <ItemGroup>
@@ -548,6 +550,20 @@
     </Compile>
     <Compile Include="Reports\AdmissionReport.Designer.cs">
       <DependentUpon>AdmissionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DocumentView.aspx.cs">
+      <DependentUpon>DocumentView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DocumentView.aspx.designer.cs">
+      <DependentUpon>DocumentView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DocumentViewPopup.ascx.cs">
+      <DependentUpon>DocumentViewPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DocumentViewPopup.ascx.designer.cs">
+      <DependentUpon>DocumentViewPopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Reports\TestReport.cs">
       <SubType>Component</SubType>

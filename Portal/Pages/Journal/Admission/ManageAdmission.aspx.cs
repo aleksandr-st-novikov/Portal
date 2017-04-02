@@ -41,21 +41,6 @@ namespace Portal.Pages.Journal.Admission
                     }
                 }
             }
-
-            if (ASPxDocumentViewerReport.IsCallback)
-            {
-                //AdmissionReport rep = new AdmissionReport();
-                ////rep.Parameters["dateFrom"].Value = (DateTime)ASPxFormLayoutSaveDateFrom.Value;
-                //rep.sqlDataSourceAdmission.Queries[0].Parameters[0].Value = DateTime.Now.AddDays(-10).Date;
-                ////rep.Parameters["dateTo"].Value = DateTime.Parse(ASPxFormLayoutSaveDateTo.Value.ToString());
-                //rep.sqlDataSourceAdmission.Queries[0].Parameters[1].Value = DateTime.Now.Date;
-                //rep.sqlDataSourceAdmission.Queries[0].Parameters[2].Value = Int32.Parse(Session["DepartmentId"].ToString());
-
-                TestReport rep = new TestReport();
-
-                ASPxDocumentViewerReport.Report = rep;
-                ASPxDocumentViewerReport.DataBind();
-            }
         }
 
         protected async void ASPxCallbackImportEmployee_Callback(object source, DevExpress.Web.CallbackEventArgs e)
@@ -70,70 +55,21 @@ namespace Portal.Pages.Journal.Admission
             }
         }
 
-        protected void ASPxCallbackSave_Callback(object source, DevExpress.Web.CallbackEventArgs e)
+        protected void ASPxCallbackSetParameters_Callback(object source, DevExpress.Web.CallbackEventArgs e)
         {
-            //AdmissionReport rep = new AdmissionReport();
-            ////rep.Parameters["dateFrom"].Value = (DateTime)ASPxFormLayoutSaveDateFrom.Value;
-            //rep.sqlDataSourceAdmission.Queries[0].Parameters[0].Value = DateTime.Now.AddDays(-10).Date;
-            ////rep.Parameters["dateTo"].Value = DateTime.Parse(ASPxFormLayoutSaveDateTo.Value.ToString());
-            //rep.sqlDataSourceAdmission.Queries[0].Parameters[1].Value = DateTime.Now.Date;
-            //rep.sqlDataSourceAdmission.Queries[0].Parameters[2].Value = Int32.Parse(Session["DepartmentId"].ToString());
-
-            //ASPxDocumentViewerReport.Report = rep;
-
-            //ASPxPopupControlReport.ShowOnPageLoad = true;
-
-            //XlsxExportOptions xlsxOptions = rep.ExportOptions.Xlsx;
-
-            //// Set XLSX-specific export options.
-            //xlsxOptions.ShowGridLines = true;
-            //xlsxOptions.TextExportMode = TextExportMode.Value;
-            //xlsxOptions.ExportHyperlinks = true;
-            //xlsxOptions.SheetName = "Лист 1";
-
-            ////string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            ////rep.ExportToXlsx("rep.xlsx");
-
-            //Response.Clear();
-            //Response.Buffer = true;
-            //Response.Charset = "";
-            //Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            //Response.AddHeader("content-disposition", "attachment;filename=SqlExport.xlsx");
-            //using (MemoryStream MyMemoryStream = new MemoryStream())
-            //{
-            //    rep.ExportToXlsx(MyMemoryStream);
-            //    MyMemoryStream.WriteTo(Response.OutputStream);
-            //    Response.Flush();
-            //    Response.End();
-            //}
-
+            List<string> parameters = e.Parameter.Split(new char[] { '|' }).ToList();
+            Session["reportName"] = parameters[0];
+            for (int i = 1; i <= parameters.Count - 1; i++)
+            {
+                Session["param" + i.ToString()] = parameters[i];
+            }
+            //HttpContext.Current.Response.Redirect(ResolveUrl("~/Reports/DocumentView.aspx"), false);
         }
 
-        protected void ASPxCallbackPanel1_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
+        protected void ASPxPopupControlReportParams_Load(object sender, EventArgs e)
         {
-            //AdmissionReport rep = new AdmissionReport();
-            ////rep.Parameters["dateFrom"].Value = (DateTime)ASPxFormLayoutSaveDateFrom.Value;
-            //rep.sqlDataSourceAdmission.Queries[0].Parameters[0].Value = DateTime.Now.AddDays(-10).Date;
-            ////rep.Parameters["dateTo"].Value = DateTime.Parse(ASPxFormLayoutSaveDateTo.Value.ToString());
-            //rep.sqlDataSourceAdmission.Queries[0].Parameters[1].Value = DateTime.Now.Date;
-            //rep.sqlDataSourceAdmission.Queries[0].Parameters[2].Value = Int32.Parse(Session["DepartmentId"].ToString());
-
-            TestReport rep = new TestReport();
-            ASPxDocumentViewerReport.Report = rep;
-            ASPxDocumentViewerReport.DataBind();
-        }
-
-        protected void ASPxDocumentViewerReport_CacheReportDocument(object sender, DevExpress.XtraReports.Web.CacheReportDocumentEventArgs e)
-        {
-            //e.Key = this.hf.Value;
-            //Page.Session[e.Key] = e.SaveDocumentToMemoryStream();
-        }
-
-        protected void ASPxDocumentViewerReport_RestoreReportDocumentFromCache(object sender, DevExpress.XtraReports.Web.RestoreReportDocumentFromCacheEventArgs e)
-        {
-            //Stream stream = Page.Session[e.Key] as Stream;
-            //if (stream != null)
-            //    e.RestoreDocumentFromStream(stream);
+            ASPxFormLayoutSaveDateFrom.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            ASPxFormLayoutSaveDateTo.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
         }
     }
 }
