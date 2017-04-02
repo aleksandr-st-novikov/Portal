@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
 using Microsoft.AspNet.Identity;
+using Portal.Models.EFContext;
+using Portal.Models.Entities;
 
 namespace Portal
 {
@@ -14,6 +16,21 @@ namespace Portal
         protected void Page_Load(object sender, EventArgs e)
         {
             //ASPxLabel2.Text = DateTime.Now.Year + Server.HtmlDecode(" &copy; Copyright by [company name]");
+
+            if(!Page.IsCallback && !Page.IsPostBack)
+            {
+                if (Context.User.Identity.IsAuthenticated)
+                {
+                    using (EmployeeContext context = new EmployeeContext())
+                    {
+                        Employee employee = context.GetEmployeeByUser(Context.User.Identity.Name);
+                        if (employee != null)
+                        {
+                            ASPxLabelEmployee.Text = employee.Lastname + " " + employee.Firstname + " " + employee.Patronymic;
+                        }
+                    }
+                }
+            }
 
             if (Context.Request.Path.Contains("Login"))
             {

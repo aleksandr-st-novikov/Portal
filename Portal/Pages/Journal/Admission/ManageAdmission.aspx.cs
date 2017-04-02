@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraPrinting;
+using DevExpress.XtraReports.UI;
 using Portal.Models;
 using Portal.Models.EFContext;
 using Portal.Models.Entities;
@@ -16,7 +17,6 @@ namespace Portal.Pages.Journal.Admission
 {
     public partial class ManageAdmission : System.Web.UI.Page
     {
-        private Department department;
         protected async void Page_Load(object sender, EventArgs e)
         {
             if (!(User.IsInRole("Администраторы")
@@ -33,7 +33,7 @@ namespace Portal.Pages.Journal.Admission
                 ASPxLoadingPanelLoad.ContainerElementID = "ASPxPanel1";
                 using (DepartmentContext context = new DepartmentContext())
                 {
-                    department = await context.GetDepartmentByUserAsync(User.Identity.Name);
+                    Department department = await context.GetDepartmentByUserAsync(User.Identity.Name);
                     if (department != null)
                     {
                         ASPxLabelDepartment.Text = "Допуски сотрудников: " + department.Name;
@@ -45,31 +45,21 @@ namespace Portal.Pages.Journal.Admission
 
         protected async void ASPxCallbackImportEmployee_Callback(object source, DevExpress.Web.CallbackEventArgs e)
         {
-            if (department != null)
+            if (Session["DepartmentId"] != null)
             {
                 using (AdmissionContext context = new AdmissionContext())
                 {
-                    await context.PopulateByDepartmentAsync(department.Id);
+                    await context.PopulateByDepartmentAsync((int)Session["DepartmentId"]);
                     await context.SaveChangesAsync();
                 }
             }
         }
 
-        protected void ASPxCallbackSetParameters_Callback(object source, DevExpress.Web.CallbackEventArgs e)
-        {
-            List<string> parameters = e.Parameter.Split(new char[] { '|' }).ToList();
-            Session["reportName"] = parameters[0];
-            for (int i = 1; i <= parameters.Count - 1; i++)
-            {
-                Session["param" + i.ToString()] = parameters[i];
-            }
-            //HttpContext.Current.Response.Redirect(ResolveUrl("~/Reports/DocumentView.aspx"), false);
-        }
-
         protected void ASPxPopupControlReportParams_Load(object sender, EventArgs e)
         {
-            ASPxFormLayoutSaveDateFrom.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            ASPxFormLayoutSaveDateTo.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+            ASPxDateEditFrom.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            ASPxDateEditTo.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
         }
+
     }
 }

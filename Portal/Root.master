@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Root.master.cs" Inherits="Portal.RootMaster" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Root.master.cs" Inherits="Portal.RootMaster"%>
 
 <%-- DXCOMMENT: Page Root.master is a master page that contains the root layout (it includes Header, Cental Area, and Footer) --%>
 <!DOCTYPE html>
@@ -31,13 +31,14 @@
                                     <a id="TitleLink" href="~/" runat="server">Бобруйский Торговый центр «Корона»</a>
                                 </div>
                                 <div class="loginControl" style="text-align:right;">
+                                    <dx:ASPxLabel ID="ASPxLabelEmployee" runat="server" Text=""></dx:ASPxLabel>
                                     <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                                         <AnonymousTemplate>
                                             <a href="~/Pages/Account/Login.aspx" runat="server" id="loginLink">Войти</a>
                                         </AnonymousTemplate>
                                         <LoggedInTemplate>
-                                            Здравствуйте, 
-                                                    <asp:LoginName ID="HeadLoginName" runat="server" />
+                                            <%--Здравствуйте, 
+                                                    <asp:LoginName ID="HeadLoginName" runat="server" />--%>
                                             <br />
                                             <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Выйти"
                                                 LogoutPageUrl="~/" OnLoggingOut="HeadLoginStatus_LoggingOut" />

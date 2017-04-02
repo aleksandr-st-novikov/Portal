@@ -213,7 +213,6 @@
     <Content Include="Pages\Journal\Stationery\StationeryMain.master" />
     <Content Include="Pages\Admin\Employee\EmployeeMain.master" />
     <Content Include="Pages\Journal\Admission\AdmissionMain.master" />
-    <Content Include="Pages\Journal\Admission\AdmissionMain1.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -502,13 +501,6 @@
       <DependentUpon>Main.master</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Pages\Journal\Admission\AdmissionMain1.master.cs">
-      <DependentUpon>AdmissionMain1.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Journal\Admission\AdmissionMain1.master.designer.cs">
-      <DependentUpon>AdmissionMain1.master</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Journal\Admission\AdmissionMain.master.cs">
       <DependentUpon>AdmissionMain.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

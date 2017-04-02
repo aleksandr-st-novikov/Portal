@@ -1,12 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Journal/Admission/AdmissionMain.master" AutoEventWireup="true" CodeBehind="ManageAdmission.aspx.cs" Inherits="Portal.Pages.Journal.Admission.ManageAdmission" Async="true" %>
+
 <%@ Register TagPrefix="uc" TagName="DocumentViewPopup" Src="~/Reports/DocumentViewPopup.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <dx:ASPxCallback ID="ASPxCallbackSetParameters" runat="server" ClientInstanceName="ASPxClientCallbackSetParameters" OnCallback="ASPxCallbackSetParameters_Callback">
-        <ClientSideEvents CallbackComplete="function(s, e) {
-	window.open('/Reports/DocumentView.aspx', '_blank')
-}" />
-    </dx:ASPxCallback>
     <dx:ASPxCallback ID="ASPxCallbackImportEmployee" runat="server" ClientInstanceName="ASPxClientCallbackImportEmployee" OnCallback="ASPxCallbackImportEmployee_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {
 	            ASPxClientLoadingPanelLoad.Hide();
@@ -26,6 +22,8 @@
                                 ASPxClientCallbackImportEmployee.PerformCallback();
 	                            ASPxClientLoadingPanelLoad.Show();
                             }" />
+                        <Image IconID="actions_reset_16x16office2013">
+                        </Image>
                     </dx:ASPxButton>
                     <dx:ASPxButton ID="ASPxButtonShowReportParams" runat="server" AutoPostBack="False" ClientInstanceName="ASPxClientButtonShowReportParams" Text="Отчет">
                         <ClientSideEvents Click="function(s, e) {
@@ -34,33 +32,36 @@
                         <Image IconID="export_exportfile_16x16office2013">
                         </Image>
                     </dx:ASPxButton>
-                    <dx:ASPxPopupControl ID="ASPxPopupControlReportParams" runat="server" ClientInstanceName="ASPxClientPopupControlReportParams" HeaderText="Параметры отчета" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="100" Width="450px" OnLoad="ASPxPopupControlReportParams_Load">
+                    <dx:ASPxPopupControl ID="ASPxPopupControlReportParams" runat="server" ClientInstanceName="ASPxClientPopupControlReportParams" HeaderText="Параметры отчета" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="100" Width="410px" OnLoad="ASPxPopupControlReportParams_Load">
                         <ContentCollection>
                             <dx:PopupControlContentControl runat="server">
                                 <dx:ASPxPanel ID="ASPxPanel2" runat="server" RightToLeft="False" Width="100%">
                                     <PanelCollection>
                                         <dx:PanelContent runat="server">
-                                            <dx:ASPxFormLayout ID="ASPxFormLayoutSave" runat="server" ColCount="2">
-                                                <Items>
-                                                    <dx:LayoutItem Caption="Период с" RequiredMarkDisplayMode="Required">
-                                                        <LayoutItemNestedControlCollection>
-                                                            <dx:LayoutItemNestedControlContainer runat="server">
-                                                                <dx:ASPxDateEdit ID="ASPxFormLayoutSaveDateFrom" runat="server" EditFormat="Custom" EditFormatString="dd.MM.yyyy" ClientInstanceName="ASPxClientFormLayoutSaveDateFrom">
-                                                                </dx:ASPxDateEdit>
-                                                            </dx:LayoutItemNestedControlContainer>
-                                                        </LayoutItemNestedControlCollection>
-                                                    </dx:LayoutItem>
-                                                    <dx:LayoutItem Caption="по" RequiredMarkDisplayMode="Required">
-                                                        <LayoutItemNestedControlCollection>
-                                                            <dx:LayoutItemNestedControlContainer runat="server">
-                                                                <dx:ASPxDateEdit ID="ASPxFormLayoutSaveDateTo" runat="server" ClientInstanceName="ASPxClientFormLayoutSaveDateTo">
-                                                                </dx:ASPxDateEdit>
-                                                            </dx:LayoutItemNestedControlContainer>
-                                                        </LayoutItemNestedControlCollection>
-                                                    </dx:LayoutItem>
-                                                </Items>
-                                                <Paddings PaddingBottom="20px" />
-                                            </dx:ASPxFormLayout>
+                                            <dx:ASPxPanel ID="ASPxPanel4" runat="server" Width="100%">
+                                                <PanelCollection>
+                                                    <dx:PanelContent runat="server">
+                                                        <table style="width: 100%; margin: 15px 0 20px 0;">
+                                                            <tr style="vertical-align:top;">
+                                                                <td style="width: 50%; padding-left: 10px;">
+                                                                    <dx:ASPxDateEdit ID="ASPxDateEditFrom" runat="server" ClientInstanceName="ASPxClientDateEditFrom" CssClass="btnInline" Caption="Период с">
+                                                                        <ValidationSettings ValidationGroup="FormValidationGroup" Display="Dynamic" ErrorTextPosition="Bottom" ErrorDisplayMode="Text">
+                                                                            <RequiredField ErrorText="Дата не указана." IsRequired="true" />
+                                                                        </ValidationSettings>
+                                                                    </dx:ASPxDateEdit>
+                                                                </td>
+                                                                <td style="width: 50%; text-align: right; padding-left: 30px;">
+                                                                    <dx:ASPxDateEdit ID="ASPxDateEditTo" runat="server" ClientInstanceName="ASPxClientDateEditTo" CssClass="btnInline" Caption="по">
+                                                                        <ValidationSettings ValidationGroup="FormValidationGroup" Display="Dynamic" ErrorTextPosition="Bottom" ErrorDisplayMode="Text">
+                                                                            <RequiredField ErrorText="Дата не указана." IsRequired="true" />
+                                                                        </ValidationSettings>
+                                                                    </dx:ASPxDateEdit>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </dx:PanelContent>
+                                                </PanelCollection>
+                                            </dx:ASPxPanel>
                                             <dx:ASPxPanel ID="ASPxPanel3" runat="server" RightToLeft="True" Width="100%">
                                                 <PanelCollection>
                                                     <dx:PanelContent runat="server">
@@ -69,14 +70,11 @@
 	                                                                ASPxClientPopupControlReportParams.Hide();
                                                                 }" />
                                                         </dx:ASPxButton>
-                                                        <dx:ASPxButton ID="ASPxButtonSave" runat="server" AutoPostBack="False" Text="Сохранить">
+                                                        <dx:ASPxButton ID="ASPxButtonShowReport" runat="server" AutoPostBack="False" Text="Показать">
                                                             <ClientSideEvents Click="function(s, e) {
-                                                                var dateFrom = ASPxClientFormLayoutSaveDateFrom.GetValue();
-                                                                var dateTo = ASPxClientFormLayoutSaveDateTo.GetValue();
-                                                                    //ASPxClientCallbackPanelReport.PerformCallback('Admission' + '|' + 
-                                                                    //    new Date(dateFrom.getFullYear(), dateFrom.getMonth(), dateFrom.getDate()) + '|' + 
-                                                                    //    new Date(dateTo.getFullYear(), dateTo.getMonth(), dateTo.getDate()));
-                                                                    ASPxClientCallbackSetParameters.PerformCallback('Admission' + '|' + 
+                                                                var dateFrom = ASPxClientDateEditFrom.GetValue();
+                                                                var dateTo = ASPxClientDateEditTo.GetValue();
+                                                                    ASPxClientCallbackPanelReport.PerformCallback('Admission' + '|' + 
                                                                         dateFrom.getDate() + '.' + (dateFrom.getMonth() + 1) + '.' + dateFrom.getFullYear() + '|' + 
                                                                         dateTo.getDate() + '.' + (dateTo.getMonth() + 1) + '.' + dateTo.getFullYear());
                                                                     ASPxClientPopupControlReportParams.Hide();
@@ -225,4 +223,5 @@
     </dx:ASPxLoadingPanel>
 
     <uc:DocumentViewPopup ID="DocumentViewPopupAdmission" runat="server" />
+
 </asp:Content>

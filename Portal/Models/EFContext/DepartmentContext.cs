@@ -65,5 +65,15 @@ namespace Portal.Models.EFContext
 
             return user.Employee.Department;
         }
+
+        public Department GetDepartmentByUser(string userName)
+        {
+            ApplicationDbContext mycontext = new ApplicationDbContext();
+            UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(mycontext);
+            ApplicationUserManager UserManager = new ApplicationUserManager(userStore);
+            ApplicationUser user = (UserManager.FindByNameAsync(userName)).Result;
+
+            return user.Employee.Department;
+        }
     }
 }

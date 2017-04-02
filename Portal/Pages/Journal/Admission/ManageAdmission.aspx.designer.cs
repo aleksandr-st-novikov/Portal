@@ -13,15 +13,6 @@ namespace Portal.Pages.Journal.Admission {
     public partial class ManageAdmission {
         
         /// <summary>
-        /// ASPxCallbackSetParameters control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxCallback ASPxCallbackSetParameters;
-        
-        /// <summary>
         /// ASPxCallbackImportEmployee control.
         /// </summary>
         /// <remarks>
@@ -85,31 +76,31 @@ namespace Portal.Pages.Journal.Admission {
         protected global::DevExpress.Web.ASPxPanel ASPxPanel2;
         
         /// <summary>
-        /// ASPxFormLayoutSave control.
+        /// ASPxPanel4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayoutSave;
+        protected global::DevExpress.Web.ASPxPanel ASPxPanel4;
         
         /// <summary>
-        /// ASPxFormLayoutSaveDateFrom control.
+        /// ASPxDateEditFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit ASPxFormLayoutSaveDateFrom;
+        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEditFrom;
         
         /// <summary>
-        /// ASPxFormLayoutSaveDateTo control.
+        /// ASPxDateEditTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit ASPxFormLayoutSaveDateTo;
+        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEditTo;
         
         /// <summary>
         /// ASPxPanel3 control.
@@ -130,13 +121,13 @@ namespace Portal.Pages.Journal.Admission {
         protected global::DevExpress.Web.ASPxButton ASPxButtonCancel;
         
         /// <summary>
-        /// ASPxButtonSave control.
+        /// ASPxButtonShowReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButtonSave;
+        protected global::DevExpress.Web.ASPxButton ASPxButtonShowReport;
         
         /// <summary>
         /// ASPxGridViewAdmission control.

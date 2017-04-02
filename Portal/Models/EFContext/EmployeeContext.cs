@@ -1,4 +1,5 @@
-﻿using Portal.Models.Entities;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Portal.Models.Entities;
 using Portal.Pages.Admin.Employee;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,26 @@ namespace Portal.Models.EFContext
             {
                 empl.IsWork = false;
             }
+        }
+
+        public async Task<Employee> GetEmployeeByUserAsync(string userName)
+        {
+            ApplicationDbContext mycontext = new ApplicationDbContext();
+            UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(mycontext);
+            ApplicationUserManager UserManager = new ApplicationUserManager(userStore);
+            ApplicationUser user = await UserManager.FindByNameAsync(userName);
+
+            return user.Employee;
+        }
+
+        public Employee GetEmployeeByUser(string userName)
+        {
+            ApplicationDbContext mycontext = new ApplicationDbContext();
+            UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(mycontext);
+            ApplicationUserManager UserManager = new ApplicationUserManager(userStore);
+            ApplicationUser user = (UserManager.FindByNameAsync(userName)).Result;
+
+            return user.Employee;
         }
     }
 }

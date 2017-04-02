@@ -20,7 +20,5 @@ img[class^="dx"] /*Bootstrap correction*/ {
 }
 
 .btnInline {
-
-display: inline-table;
-
+    display: inline-table;
 }

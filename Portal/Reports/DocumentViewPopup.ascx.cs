@@ -1,5 +1,7 @@
 ﻿using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Web;
+using Portal.Models.EFContext;
+using Portal.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,24 @@ namespace Portal.Reports
 {
     public partial class DocumentViewPopup : System.Web.UI.UserControl
     {
+        private AdmissionReport admissionReport
+        {
+            get
+            {
+                return (AdmissionReport)Session["AdmissionReport"];
+            }
+            set
+            {
+                Session["AdmissionReport"] = value;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            ShowReport();
+            if (Session["AdmissionReportLoaded"] != null)
+            {
+                PrepareReportAdmission();
+            }
         }
 
         protected void ASPxCallbackPanelReport_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
@@ -24,51 +41,43 @@ namespace Portal.Reports
             {
                 Session["param" + i.ToString()] = parameters[i];
             }
-        }
 
-        private void ShowReport()
-        {
-            if (Session["reportName"] != null)
+            string reportName = (string)Session["reportName"];
+            if (!String.IsNullOrEmpty(reportName))
             {
-                string reportName = (string)Session["reportName"];
-                if (!String.IsNullOrEmpty(reportName))
+                switch (reportName)
                 {
-                    if (ASPxDocumentViewerReport.IsCallback)
-                    {
-                        switch (reportName)
-                        {
-                            case "Admission":
-                                if (Session["Report"] == null)
-                                {
-                                    AdmissionReport rep = new AdmissionReport();
-                                    rep.sqlDataSourceAdmission.Queries[0].Parameters[0].Value = DateTime.Parse((string)Session["param1"]);
-                                    rep.sqlDataSourceAdmission.Queries[0].Parameters[1].Value = DateTime.Parse((string)Session["param2"]);
-                                    rep.sqlDataSourceAdmission.Queries[0].Parameters[2].Value = Int32.Parse(Session["DepartmentId"].ToString());
-                                    Session["Report"] = rep;
-                                }
-                                ASPxDocumentViewerReport.Report = Session["Report"] as XtraReport;
-                                break;
-                        }
-                    }
+                    case "Admission":
+                        PrepareReportAdmission();
+                        Session["AdmissionReportLoaded"] = true;
+                        break;
                 }
             }
+
         }
 
-        private XtraReport GetReportByName(string reportName)
+        private void PrepareReportAdmission()
         {
-            XtraReport report = null;
-            switch (reportName)
+            admissionReport = new AdmissionReport();
+            admissionReport.sqlDataSourceAdmission.Queries[0].Parameters[0].Value = DateTime.Parse((string)Session["param1"]);
+            admissionReport.sqlDataSourceAdmission.Queries[0].Parameters[1].Value = DateTime.Parse((string)Session["param2"]);
+            admissionReport.sqlDataSourceAdmission.Queries[0].Parameters[2].Value = Int32.Parse(Session["DepartmentId"].ToString());
+
+            admissionReport.Parameters["Period"].Value = "c " + DateTime.Parse((string)Session["param1"]).ToShortDateString() +
+                " по " + DateTime.Parse((string)Session["param2"]).ToShortDateString();
+
+            using (DepartmentContext context = new DepartmentContext())
             {
-                case "Admission":
-                    report = new AdmissionReport();
-                    break;
+                Department department = context.GetDepartmentByUser(Context.User.Identity.Name);
+                if (department != null)
+                {
+                    admissionReport.Parameters["Department"].Value = department.Name;
+                }
             }
-            return report;
-        }
 
-        protected void ASPxDocumentViewerReport_Unload(object sender, EventArgs e)
-        {
-            //((ASPxDocumentViewer)sender).Report = null;
+            admissionReport.DisplayName = "Отчет о допусках сотрудников";
+            ASPxDocumentViewerReport.Report = admissionReport;
         }
+        
     }
 }

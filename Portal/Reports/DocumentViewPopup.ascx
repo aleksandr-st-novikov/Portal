@@ -11,7 +11,7 @@
                 }" />
                 <PanelCollection>
                     <dx:PanelContent runat="server">
-                        <dx:ASPxDocumentViewer ID="ASPxDocumentViewerReport" runat="server" Height="100%" Width="100%" OnUnload="ASPxDocumentViewerReport_Unload">
+                        <dx:ASPxDocumentViewer ID="ASPxDocumentViewerReport" runat="server" Height="100%" Width="100%">
                         </dx:ASPxDocumentViewer>
                     </dx:PanelContent>
                 </PanelCollection>
