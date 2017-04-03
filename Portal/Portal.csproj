@@ -196,6 +196,7 @@
     <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
     <Content Include="Pages\Journal\Stationery\ManageStationery.aspx" />
     <Content Include="Pages\Journal\Stationery\ManageStock.aspx" />
+    <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
     <Content Include="Reports\DocumentView.aspx" />
     <Content Include="Reports\DocumentViewPopup.ascx" />
     <Content Include="Root.master" />
@@ -213,6 +214,7 @@
     <Content Include="Pages\Journal\Stationery\StationeryMain.master" />
     <Content Include="Pages\Admin\Employee\EmployeeMain.master" />
     <Content Include="Pages\Journal\Admission\AdmissionMain.master" />
+    <Content Include="Pages\Journal\Transport\TransportMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -282,17 +284,23 @@
     <Compile Include="Migrations\201704010743447_Admission.Designer.cs">
       <DependentUpon>201704010743447_Admission.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704031718581_Transport.cs" />
+    <Compile Include="Migrations\201704031718581_Transport.Designer.cs">
+      <DependentUpon>201704031718581_Transport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
     <Compile Include="Models\EFContext\ApplicationContext.cs" />
     <Compile Include="Models\EFContext\DepartmentContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
     <Compile Include="Models\EFContext\PositionContext.cs" />
+    <Compile Include="Models\EFContext\TransportContext.cs" />
     <Compile Include="Models\Entities\Admission.cs" />
     <Compile Include="Models\Entities\Department.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Position.cs" />
     <Compile Include="Models\Entities\Stationery.cs" />
+    <Compile Include="Models\Entities\Transport.cs" />
     <Compile Include="Pages\Admin\Employee\EmployeeMain.master.cs">
       <DependentUpon>EmployeeMain.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -536,6 +544,20 @@
     <Compile Include="Pages\Journal\Stationery\StationeryMain.master.designer.cs">
       <DependentUpon>StationeryMain.master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Journal\Transport\ManageTransport.aspx.cs">
+      <DependentUpon>ManageTransport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\ManageTransport.aspx.designer.cs">
+      <DependentUpon>ManageTransport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\TransportMain.master.cs">
+      <DependentUpon>TransportMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\TransportMain.master.designer.cs">
+      <DependentUpon>TransportMain.master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\AdmissionReport.cs">
       <SubType>Component</SubType>
@@ -618,6 +640,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704010743447_Admission.resx">
       <DependentUpon>201704010743447_Admission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704031718581_Transport.resx">
+      <DependentUpon>201704031718581_Transport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\AdmissionReport.resx">

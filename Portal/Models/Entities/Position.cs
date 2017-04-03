@@ -14,7 +14,7 @@ namespace Portal.Models.Entities
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Поле {0} обязательно.")]
-        [StringLength(300, ErrorMessage = "Длина должна быть от {2} до {1} символов!", MinimumLength = 2)]
+        [StringLength(300)]
         [Display(Name = "Наименование")]
         [ConcurrencyCheck]
         public string Name { get; set; }

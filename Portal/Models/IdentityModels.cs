@@ -49,6 +49,7 @@ namespace Portal.Models
         public DbSet<Department> Department { get; set; }
         public DbSet<Position> Position { get; set; }
         public DbSet<Admission> Admission { get; set; }
+        public DbSet<Transport> Transport { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -39,89 +39,112 @@ namespace Portal
                 return;
             }
 
-            DevExpress.Web.MenuItem itemJournal = new DevExpress.Web.MenuItem();
-            bool itemJournalAdd = false;
+            if (!Page.IsCallback && !Page.IsPostBack)
+            {
+                DevExpress.Web.MenuItem itemJournal = new DevExpress.Web.MenuItem();
+                bool itemJournalAdd = false;
 
-            if (!Context.User.Identity.IsAuthenticated)
-            {
-                ASPxMenuMain.Visible = false;
-                return;
-            }
-            else
-            {
-                itemJournal.Text = "Журналы";
-                itemJournal.Image.IconID = "layout_paneloff_16x16devav";
-            }
-
-            if (Context.User.IsInRole("Администраторы")
-                || Context.User.IsInRole("Заявка на канцтовары - Сотрудник") 
-                || Context.User.IsInRole("Заявка на канцтовары - Управление") 
-                || Context.User.IsInRole("Заявка на канцтовары - Утверждение"))
-            {
-                DevExpress.Web.MenuItem itemJournalCants = new DevExpress.Web.MenuItem()
+                if (!Context.User.Identity.IsAuthenticated)
                 {
-                    Text = "Заявка на канцтовары",
-                    NavigateUrl = "~/Pages/Journal/Stationery/ManageStationery.aspx"
-                };
-                itemJournalCants.Image.IconID = "print_tasklist_16x16devav";
-                itemJournal.Items.Add(itemJournalCants);
-                itemJournal.DropDownMode = true;
-
-                if (itemJournalAdd == false)
-                {
-                    ASPxMenuMain.Items.Add(itemJournal);
-                    itemJournalAdd = true;
+                    ASPxMenuMain.Visible = false;
+                    return;
                 }
-                
-            };
-
-            if (Context.User.IsInRole("Администраторы")
-                || Context.User.IsInRole("Допуски сотрудников"))
-            {
-                DevExpress.Web.MenuItem itemJournalAdmission = new DevExpress.Web.MenuItem()
+                else
                 {
-                    Text = "Допуски сотрудников",
-                    NavigateUrl = "~/Pages/Journal/Admission/ManageAdmission.aspx"
-                };
-                itemJournalAdmission.Image.IconID = "print_tasklist_16x16devav";
-                itemJournal.Items.Add(itemJournalAdmission);
-                itemJournal.DropDownMode = true;
-
-                if (itemJournalAdd == false)
-                {
-                    ASPxMenuMain.Items.Add(itemJournal);
-                    itemJournalAdd = true;
+                    itemJournal.Text = "Журналы";
+                    itemJournal.Image.IconID = "layout_paneloff_16x16devav";
                 }
 
-            };
-
-            //меню
-            if (Context.User.IsInRole("Администраторы"))
-            {
-                DevExpress.Web.MenuItem itemAdmin = new DevExpress.Web.MenuItem()
+                if (Context.User.IsInRole("Администраторы")
+                    || Context.User.IsInRole("Заявка на канцтовары - Сотрудник")
+                    || Context.User.IsInRole("Заявка на канцтовары - Управление")
+                    || Context.User.IsInRole("Заявка на канцтовары - Утверждение"))
                 {
-                    Text = "Администрирование",
-                    DropDownMode = true
-                };
-                itemAdmin.Image.IconID = "setup_properties_16x16office2013";
+                    DevExpress.Web.MenuItem itemJournalCants = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Заявка на канцтовары",
+                        NavigateUrl = "~/Pages/Journal/Stationery/ManageStationery.aspx"
+                    };
+                    itemJournalCants.Image.IconID = "print_tasklist_16x16devav";
+                    itemJournal.Items.Add(itemJournalCants);
+                    itemJournal.DropDownMode = true;
 
-                DevExpress.Web.MenuItem itemAdminUsers = new DevExpress.Web.MenuItem()
+                    if (itemJournalAdd == false)
+                    {
+                        ASPxMenuMain.Items.Add(itemJournal);
+                        itemJournalAdd = true;
+                    }
+
+                };
+
+                if (Context.User.IsInRole("Администраторы")
+                    || Context.User.IsInRole("Допуски сотрудников"))
                 {
-                    Text = "Управление пользователями",
-                    NavigateUrl = "~/Pages/Admin/Users/ManageUsers.aspx"
-                };
-                itemAdminUsers.Image.IconID = "people_usergroup_16x16office2013";
-                itemAdmin.Items.Add(itemAdminUsers);
+                    DevExpress.Web.MenuItem itemJournalAdmission = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Допуски сотрудников",
+                        NavigateUrl = "~/Pages/Journal/Admission/ManageAdmission.aspx"
+                    };
+                    itemJournalAdmission.Image.IconID = "print_tasklist_16x16devav";
+                    itemJournal.Items.Add(itemJournalAdmission);
+                    itemJournal.DropDownMode = true;
 
-                DevExpress.Web.MenuItem itemAdminEmployee = new DevExpress.Web.MenuItem()
+                    if (itemJournalAdd == false)
+                    {
+                        ASPxMenuMain.Items.Add(itemJournal);
+                        itemJournalAdd = true;
+                    }
+
+                };
+
+                if (Context.User.IsInRole("Администраторы")
+                    || Context.User.IsInRole("Транспорт - Руководители")
+                    || Context.User.IsInRole("Транспорт - Служебный вход"))
                 {
-                    Text = "Сотрудники предприятия",
-                    NavigateUrl = "~/Pages/Admin/Employee/ManageEmployee.aspx"
-                };
-                itemAdminEmployee.Image.IconID = "people_team_16x16office2013";
-                itemAdmin.Items.Add(itemAdminEmployee);
+                    DevExpress.Web.MenuItem itemJournalTransport = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Транспорт",
+                        NavigateUrl = "~/Pages/Journal/Transport/ManageTransport.aspx"
+                    };
+                    itemJournalTransport.Image.IconID = "actions_driving_16x16devav";
+                    itemJournal.Items.Add(itemJournalTransport);
+                    itemJournal.DropDownMode = true;
 
-                ASPxMenuMain.Items.Add(itemAdmin);
+                    if (itemJournalAdd == false)
+                    {
+                        ASPxMenuMain.Items.Add(itemJournal);
+                        itemJournalAdd = true;
+                    }
+
+                };
+
+                if (Context.User.IsInRole("Администраторы"))
+                {
+                    DevExpress.Web.MenuItem itemAdmin = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Администрирование",
+                        DropDownMode = true
+                    };
+                    itemAdmin.Image.IconID = "setup_properties_16x16office2013";
+
+                    DevExpress.Web.MenuItem itemAdminUsers = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Управление пользователями",
+                        NavigateUrl = "~/Pages/Admin/Users/ManageUsers.aspx"
+                    };
+                    itemAdminUsers.Image.IconID = "people_usergroup_16x16office2013";
+                    itemAdmin.Items.Add(itemAdminUsers);
+
+                    DevExpress.Web.MenuItem itemAdminEmployee = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Сотрудники предприятия",
+                        NavigateUrl = "~/Pages/Admin/Employee/ManageEmployee.aspx"
+                    };
+                    itemAdminEmployee.Image.IconID = "people_team_16x16office2013";
+                    itemAdmin.Items.Add(itemAdminEmployee);
+
+                    ASPxMenuMain.Items.Add(itemAdmin);
+                }
             }
         }
 
