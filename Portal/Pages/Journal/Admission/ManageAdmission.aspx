@@ -190,7 +190,7 @@
                 <asp:Parameter Name="IsWork" Type="Boolean" />
             </InsertParameters>
             <SelectParameters>
-                <asp:SessionParameter Name="DepartmentId" SessionField="DepartmentId" Type="Int32" />
+                <asp:SessionParameter Name="DepartmentId" SessionField="DepartmentId" Type="String" />
                 <asp:Parameter DefaultValue="True" Name="IsWork" Type="Boolean" />
             </SelectParameters>
             <UpdateParameters>

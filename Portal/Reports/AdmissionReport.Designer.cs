@@ -29,38 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.DataAccess.Sql.SelectQuery selectQuery1 = new DevExpress.DataAccess.Sql.SelectQuery();
-            DevExpress.DataAccess.Sql.Column column1 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression1 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table1 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.Column column2 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression2 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column3 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression3 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column4 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression4 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column5 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression5 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column6 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression6 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column7 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression7 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table2 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.Column column8 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression8 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table3 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.Column column9 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression9 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column10 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression10 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdmissionReport));
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.Join join1 = new DevExpress.DataAccess.Sql.Join();
-            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo1 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
-            DevExpress.DataAccess.Sql.Join join2 = new DevExpress.DataAccess.Sql.Join();
-            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo2 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -74,7 +42,6 @@
             this.xrTableCell26 = new DevExpress.XtraReports.UI.XRTableCell();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.sqlDataSourceAdmission = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.pageHeaderBand1 = new DevExpress.XtraReports.UI.PageHeaderBand();
             this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -109,8 +76,10 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DataField = new DevExpress.XtraReports.UI.XRControlStyle();
             this.calculatedField1 = new DevExpress.XtraReports.UI.CalculatedField();
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -161,7 +130,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell8.CanGrow = false;
             this.xrTableCell8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Admission.calculatedField1")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "FIO")});
             this.xrTableCell8.Dpi = 254F;
             this.xrTableCell8.Font = new System.Drawing.Font("Arial", 8F);
             this.xrTableCell8.Name = "xrTableCell8";
@@ -176,7 +145,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell10.CanGrow = false;
             this.xrTableCell10.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Admission.Name")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "PositionName")});
             this.xrTableCell10.Dpi = 254F;
             this.xrTableCell10.Font = new System.Drawing.Font("Arial", 8F);
             this.xrTableCell10.Name = "xrTableCell10";
@@ -191,7 +160,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell12.CanGrow = false;
             this.xrTableCell12.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Admission.DateFlu", "{0:dd.MM.yyyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DateFlu", "{0:dd.MM.yyyy}")});
             this.xrTableCell12.Dpi = 254F;
             this.xrTableCell12.Font = new System.Drawing.Font("Arial", 8F);
             this.xrTableCell12.Name = "xrTableCell12";
@@ -208,7 +177,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell14.CanGrow = false;
             this.xrTableCell14.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Admission.NumFlu", "{0:dd.MM.yyyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "NumFlu", "{0:dd.MM.yyyy}")});
             this.xrTableCell14.Dpi = 254F;
             this.xrTableCell14.Font = new System.Drawing.Font("Arial", 8F);
             this.xrTableCell14.Name = "xrTableCell14";
@@ -225,7 +194,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell16.CanGrow = false;
             this.xrTableCell16.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Admission.Dopusk", "{0:dd.MM.yyyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Dopusk", "{0:dd.MM.yyyy}")});
             this.xrTableCell16.Dpi = 254F;
             this.xrTableCell16.Font = new System.Drawing.Font("Arial", 8F);
             this.xrTableCell16.Name = "xrTableCell16";
@@ -242,7 +211,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell18.CanGrow = false;
             this.xrTableCell18.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Admission.SanMin", "{0:dd.MM.yyyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SanMin", "{0:dd.MM.yyyy}")});
             this.xrTableCell18.Dpi = 254F;
             this.xrTableCell18.Font = new System.Drawing.Font("Arial", 8F);
             this.xrTableCell18.Name = "xrTableCell18";
@@ -259,7 +228,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell24.CanGrow = false;
             this.xrTableCell24.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Admission.MedOsm", "{0:dd.MM.yyyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "MedOsm", "{0:dd.MM.yyyy}")});
             this.xrTableCell24.Dpi = 254F;
             this.xrTableCell24.Font = new System.Drawing.Font("Arial", 8F);
             this.xrTableCell24.Name = "xrTableCell24";
@@ -276,7 +245,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell26.CanGrow = false;
             this.xrTableCell26.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Admission.Commentary")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Commentary")});
             this.xrTableCell26.Dpi = 254F;
             this.xrTableCell26.Font = new System.Drawing.Font("Arial", 7F);
             this.xrTableCell26.Name = "xrTableCell26";
@@ -300,89 +269,6 @@
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // sqlDataSourceAdmission
-            // 
-            this.sqlDataSourceAdmission.ConnectionName = "ApplicationServices";
-            this.sqlDataSourceAdmission.Name = "sqlDataSourceAdmission";
-            columnExpression1.ColumnName = "DateFlu";
-            table1.MetaSerializable = "30|30|125|260";
-            table1.Name = "Admission";
-            columnExpression1.Table = table1;
-            column1.Expression = columnExpression1;
-            columnExpression2.ColumnName = "NumFlu";
-            columnExpression2.Table = table1;
-            column2.Expression = columnExpression2;
-            columnExpression3.ColumnName = "Dopusk";
-            columnExpression3.Table = table1;
-            column3.Expression = columnExpression3;
-            columnExpression4.ColumnName = "SanMin";
-            columnExpression4.Table = table1;
-            column4.Expression = columnExpression4;
-            columnExpression5.ColumnName = "Commentary";
-            columnExpression5.Table = table1;
-            column5.Expression = columnExpression5;
-            columnExpression6.ColumnName = "MedOsm";
-            columnExpression6.Table = table1;
-            column6.Expression = columnExpression6;
-            columnExpression7.ColumnName = "Name";
-            table2.MetaSerializable = "185|30|125|100";
-            table2.Name = "Position";
-            columnExpression7.Table = table2;
-            column7.Expression = columnExpression7;
-            columnExpression8.ColumnName = "Lastname";
-            table3.MetaSerializable = "340|30|125|280";
-            table3.Name = "Employee";
-            columnExpression8.Table = table3;
-            column8.Expression = columnExpression8;
-            columnExpression9.ColumnName = "Firstname";
-            columnExpression9.Table = table3;
-            column9.Expression = columnExpression9;
-            columnExpression10.ColumnName = "Patronymic";
-            columnExpression10.Table = table3;
-            column10.Expression = columnExpression10;
-            selectQuery1.Columns.Add(column1);
-            selectQuery1.Columns.Add(column2);
-            selectQuery1.Columns.Add(column3);
-            selectQuery1.Columns.Add(column4);
-            selectQuery1.Columns.Add(column5);
-            selectQuery1.Columns.Add(column6);
-            selectQuery1.Columns.Add(column7);
-            selectQuery1.Columns.Add(column8);
-            selectQuery1.Columns.Add(column9);
-            selectQuery1.Columns.Add(column10);
-            selectQuery1.FilterString = resources.GetString("selectQuery1.FilterString");
-            selectQuery1.Name = "Admission";
-            queryParameter1.Name = "dateFrom";
-            queryParameter1.Type = typeof(System.DateTime);
-            queryParameter1.ValueInfo = "1753-01-01";
-            queryParameter2.Name = "dateTo";
-            queryParameter2.Type = typeof(System.DateTime);
-            queryParameter2.ValueInfo = "1753-01-01";
-            queryParameter3.Name = "DepartmentId";
-            queryParameter3.Type = typeof(int);
-            queryParameter3.ValueInfo = "0";
-            selectQuery1.Parameters.Add(queryParameter1);
-            selectQuery1.Parameters.Add(queryParameter2);
-            selectQuery1.Parameters.Add(queryParameter3);
-            relationColumnInfo1.NestedKeyColumn = "Id";
-            relationColumnInfo1.ParentKeyColumn = "PositionId";
-            join1.KeyColumns.Add(relationColumnInfo1);
-            join1.Nested = table2;
-            join1.Parent = table1;
-            relationColumnInfo2.NestedKeyColumn = "Id";
-            relationColumnInfo2.ParentKeyColumn = "EmployeeId";
-            join2.KeyColumns.Add(relationColumnInfo2);
-            join2.Nested = table3;
-            join2.Parent = table1;
-            selectQuery1.Relations.Add(join1);
-            selectQuery1.Relations.Add(join2);
-            selectQuery1.Tables.Add(table1);
-            selectQuery1.Tables.Add(table2);
-            selectQuery1.Tables.Add(table3);
-            this.sqlDataSourceAdmission.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            selectQuery1});
-            this.sqlDataSourceAdmission.ResultSchemaSerializable = resources.GetString("sqlDataSourceAdmission.ResultSchemaSerializable");
             // 
             // pageHeaderBand1
             // 
@@ -761,6 +647,11 @@
             this.calculatedField1.Expression = "Concat([Lastname], \' \', [Firstname], \' \', [Patronymic])";
             this.calculatedField1.Name = "calculatedField1";
             // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.DataSource = typeof(Portal.Models.ViewModel.AdmissionReportViewModel);
+            this.objectDataSource1.Name = "objectDataSource1";
+            // 
             // AdmissionReport
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -773,9 +664,8 @@
             this.CalculatedFields.AddRange(new DevExpress.XtraReports.UI.CalculatedField[] {
             this.calculatedField1});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.sqlDataSourceAdmission});
-            this.DataMember = "Admission";
-            this.DataSource = this.sqlDataSourceAdmission;
+            this.objectDataSource1});
+            this.DataSource = this.objectDataSource1;
             this.Dpi = 254F;
             this.Landscape = true;
             this.Margins = new System.Drawing.Printing.Margins(100, 100, 100, 100);
@@ -795,6 +685,7 @@
             this.Version = "16.1";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -832,7 +723,6 @@
         private DevExpress.XtraReports.UI.XRControlStyle DataField;
         private DevExpress.XtraReports.UI.CalculatedField calculatedField1;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
-        public DevExpress.DataAccess.Sql.SqlDataSource sqlDataSourceAdmission;
         private DevExpress.XtraReports.UI.XRLabel xrLabel11;
         private DevExpress.XtraReports.UI.XRLabel xrLabel10;
         private DevExpress.XtraReports.UI.XRLabel xrLabel13;
@@ -849,5 +739,6 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell17;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell19;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell20;
+        private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
     }
 }

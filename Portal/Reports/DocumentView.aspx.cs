@@ -31,9 +31,9 @@ namespace Portal.Reports
                                 if (Session["Report"] == null)
                                 {
                                     AdmissionReport rep = new AdmissionReport();
-                                    rep.sqlDataSourceAdmission.Queries[0].Parameters[0].Value = DateTime.Parse((string)Session["param1"]);
-                                    rep.sqlDataSourceAdmission.Queries[0].Parameters[1].Value = DateTime.Parse((string)Session["param2"]);
-                                    rep.sqlDataSourceAdmission.Queries[0].Parameters[2].Value = Int32.Parse(Session["DepartmentId"].ToString());
+                                    //rep.sqlDataSourceAdmission.Queries[0].Parameters[0].Value = DateTime.Parse((string)Session["param1"]);
+                                    //rep.sqlDataSourceAdmission.Queries[0].Parameters[1].Value = DateTime.Parse((string)Session["param2"]);
+                                    //rep.sqlDataSourceAdmission.Queries[0].Parameters[2].Value = Int32.Parse(Session["DepartmentId"].ToString());
                                     Session["Report"] = rep;
                                 }
                                 ASPxDocumentViewerReport.Report = Session["Report"] as XtraReport;

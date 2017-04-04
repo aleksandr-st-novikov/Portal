@@ -38,9 +38,13 @@ namespace Portal.Pages.Journal.Admission
                     {
                         ASPxLabelDepartment.Text = "Допуски сотрудников: " + department.Name;
                         Session["DepartmentId"] = department.Id;
+                        Session["DepartmentNode"] = String.Join(",",(await context.GetNodeDepartmentAsync(department.Id)).ToArray());
                     }
                 }
             }
+
+            SqlDataSourceAdmission.SelectCommand = "SELECT * FROM[Admission] WHERE(([DepartmentId]  IN(" + 
+                (String)Session["DepartmentNode"] + ")) AND([IsWork] = @IsWork))";
         }
 
         protected async void ASPxCallbackImportEmployee_Callback(object source, DevExpress.Web.CallbackEventArgs e)

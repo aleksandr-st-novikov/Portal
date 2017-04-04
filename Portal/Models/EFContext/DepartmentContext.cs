@@ -45,11 +45,11 @@ namespace Portal.Models.EFContext
 
         public async Task SetHeadDepartmentAsync(List<MidData> data)
         {
-            foreach(var dat in data)
+            foreach (var dat in data)
             {
                 Department dep = await context.Department.FirstOrDefaultAsync(d => d.Name == dat.Department);
                 Employee empl = await context.Employee.FirstOrDefaultAsync(e => e.TabN == dat.TabNo);
-                if(dep != null)
+                if (dep != null)
                 {
                     dep.HeadId = empl.Id;
                 }
@@ -75,5 +75,104 @@ namespace Portal.Models.EFContext
 
             return user.Employee.Department;
         }
+
+        public async Task<List<int>> GetNodeDepartmentAsync(int departmentId = 0)
+        {
+            List<int> departments = new List<int>();
+            //если 0 - все подразделения
+            if (departmentId == 0)
+            {
+                List<Department> tmpDep = await context.Department.Where(d => d.ParentId == null).ToListAsync();
+                if (tmpDep.Count() != 0)
+                {
+                    departments.AddRange(tmpDep.Select(d => d.Id).ToList());
+                    foreach (Department dep in tmpDep)
+                    {
+                        List<Department> tmpDep1 = await context.Department.Where(d => d.ParentId == dep.Id).ToListAsync();
+                        if (tmpDep1.Count() != 0)
+                        {
+                            departments.AddRange(tmpDep1.Select(d => d.Id).ToList());
+                            foreach (Department dep1 in tmpDep1)
+                            {
+                                List<Department> tmpDep2 = await context.Department.Where(d => d.ParentId == dep1.Id).ToListAsync();
+                                if (tmpDep2.Count() != 0)
+                                {
+                                    departments.AddRange(tmpDep2.Select(d => d.Id).ToList());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                departments.Add(departmentId);
+
+                List<Department> tmpDep = await context.Department.Where(d => d.ParentId == departmentId).ToListAsync();
+                if (tmpDep.Count() != 0)
+                {
+                    departments.AddRange(tmpDep.Select(d => d.Id).ToList());
+                    foreach (Department dep in tmpDep)
+                    {
+                        List<Department> tmpDep1 = await context.Department.Where(d => d.ParentId == dep.Id).ToListAsync();
+                        if (tmpDep1.Count() != 0)
+                        {
+                            departments.AddRange(tmpDep1.Select(d => d.Id).ToList());
+                        }
+                    }
+                }
+            }
+            return departments;
+        }
+
+        public List<int> GetNodeDepartment(int departmentId = 0)
+        {
+            List<int> departments = new List<int>();
+            //если 0 - все подразделения
+            if (departmentId == 0)
+            {
+                List<Department> tmpDep = context.Department.Where(d => d.ParentId == null).ToList();
+                if (tmpDep.Count() != 0)
+                {
+                    departments.AddRange(tmpDep.Select(d => d.Id).ToList());
+                    foreach (Department dep in tmpDep)
+                    {
+                        List<Department> tmpDep1 = context.Department.Where(d => d.ParentId == dep.Id).ToList();
+                        if (tmpDep1.Count() != 0)
+                        {
+                            departments.AddRange(tmpDep1.Select(d => d.Id).ToList());
+                            foreach (Department dep1 in tmpDep1)
+                            {
+                                List<Department> tmpDep2 = context.Department.Where(d => d.ParentId == dep1.Id).ToList();
+                                if (tmpDep2.Count() != 0)
+                                {
+                                    departments.AddRange(tmpDep2.Select(d => d.Id).ToList());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                departments.Add(departmentId);
+
+                List<Department> tmpDep = context.Department.Where(d => d.ParentId == departmentId).ToList();
+                if (tmpDep.Count() != 0)
+                {
+                    departments.AddRange(tmpDep.Select(d => d.Id).ToList());
+                    foreach (Department dep in tmpDep)
+                    {
+                        List<Department> tmpDep1 = context.Department.Where(d => d.ParentId == dep.Id).ToList();
+                        if (tmpDep1.Count() != 0)
+                        {
+                            departments.AddRange(tmpDep1.Select(d => d.Id).ToList());
+                        }
+                    }
+                }
+            }
+            return departments;
+        }
+
     }
 }

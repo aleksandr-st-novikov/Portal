@@ -79,7 +79,7 @@
             </SettingsCommandButton>
             <SettingsDataSecurity AllowInsert="False" />
             <SettingsPopup>
-                <EditForm HorizontalAlign="NotSet" HorizontalOffset="200" Modal="True" VerticalAlign="WindowCenter" Width="800px" />
+                <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
             </SettingsPopup>
             <SettingsSearchPanel Visible="True" />
             <Columns>
@@ -90,12 +90,24 @@
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="Address" VisibleIndex="6" Caption="Адрес" Width="300">
                     <PropertiesTextEdit MaxLength="300">
+                        <ValidationSettings>
+                            <RequiredField ErrorText="Обязательное поле." IsRequired="True" />
+                        </ValidationSettings>
                     </PropertiesTextEdit>
+                    <EditFormSettings ColumnSpan="2" />
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataDateColumn FieldName="DateTransport" VisibleIndex="2" Caption="Дата" Width="80">
+                    <PropertiesDateEdit>
+                        <ValidationSettings>
+                            <RequiredField ErrorText="Обязательное поле." IsRequired="True" />
+                        </ValidationSettings>
+                    </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
                 <dx:GridViewDataComboBoxColumn Caption="Сотрудник" FieldName="EmployeeId" VisibleIndex="5" Width="370">
                     <PropertiesComboBox DataSourceID="SqlDataSourceEmployeeHeadDepartment" TextField="FIO" ValueField="Id">
+                        <ValidationSettings>
+                            <RequiredField ErrorText="Обязательное поле." IsRequired="True" />
+                        </ValidationSettings>
                     </PropertiesComboBox>
                 </dx:GridViewDataComboBoxColumn>
                 <dx:GridViewDataComboBoxColumn Caption="Подразделение" FieldName="DepartmentId" VisibleIndex="4" Width="200" Name="DepartmentId">
@@ -180,7 +192,7 @@
             </UpdateParameters>
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSourceEmployeeHeadDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"
-            SelectCommand="SELECT [Id], CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] WHERE ([IsWork] = @IsWork) AND ([DepartmentId] = @DepartmentId) ORDER BY [FIO]">
+            SelectCommand="SELECT [Id], CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] WHERE ([IsWork] = @IsWork) AND ([DepartmentId] = @DepartmentId) ORDER BY [FIO]" OnInit="SqlDataSourceEmployeeHeadDepartment_Init">
             <SelectParameters>
                 <asp:SessionParameter Name="DepartmentId" SessionField="DepartmentId" Type="Int32" />
                 <asp:Parameter DefaultValue="True" Name="IsWork" Type="Boolean" />

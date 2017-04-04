@@ -27,8 +27,6 @@ namespace Portal.Pages.Journal.Transport
                 Page.Title = "Транспорт";
                 Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd 00:00:00"));
                 Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd 00:00:00"));
-                //Session["DateFrom"] = DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd");
-                //Session["DateTo"] = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
 
                 using (DepartmentContext context = new DepartmentContext())
                 {
@@ -37,15 +35,22 @@ namespace Portal.Pages.Journal.Transport
                     {
                         ASPxLabelDepartment.Text = "Транспорт: " + department.Name;
                         Session["DepartmentId"] = department.Id;
+                        Session["DepartmentNode"] = String.Join(",", (await context.GetNodeDepartmentAsync(department.Id)).ToArray());
                     }
                 }
+                InitData();
             }
+        }
 
+        private void InitData()
+        {
             if (User.IsInRole("Транспорт - Руководители"))
             {
                 ASPxComboBoxEmployee.DataSourceID = "SqlDataSourceEmployeeHeadDepartment";
                 ASPxGridViewHeadDepartment.DataSourceID = "SqlDataSourceTransportHeadDepartment";
                 ((GridViewDataComboBoxColumn)ASPxGridViewHeadDepartment.Columns["EmployeeId"]).PropertiesComboBox.DataSourceID = "SqlDataSourceEmployeeHeadDepartment";
+                SqlDataSourceTransportHeadDepartment.SelectCommand = "SELECT * FROM [Transport] WHERE (([DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")) AND ([DateTransport] BETWEEN @DateTransport AND @DateTransport2)) ORDER BY [DateTransport] DESC, [Id] DESC";
+                SqlDataSourceEmployeeHeadDepartment.SelectCommand = "SELECT [Id], CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] WHERE ([IsWork] = @IsWork) AND ([DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")) ORDER BY [FIO]";
             }
 
             if (User.IsInRole("Администраторы")
@@ -84,6 +89,11 @@ namespace Portal.Pages.Journal.Transport
         protected void ASPxPopupControlAddRecord_Load(object sender, EventArgs e)
         {
             ASPxDateEditTransport.Value = Convert.ToDateTime((DateTime.Now).ToString("yyyy-MM-dd 00:00:00"));
+        }
+
+        protected void SqlDataSourceEmployeeHeadDepartment_Init(object sender, EventArgs e)
+        {
+            InitData();
         }
     }
 }

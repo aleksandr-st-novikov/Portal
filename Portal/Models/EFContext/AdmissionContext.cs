@@ -1,4 +1,5 @@
 ﻿using Portal.Models.Entities;
+using Portal.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,29 +13,17 @@ namespace Portal.Models.EFContext
     {
         public async Task PopulateByDepartmentAsync(int departmentId)
         {
-            //отбираем все подчиненные подразделения / 3 уровня вложения / без рекурсии
-            List<int> departments = new List<int>();
-            departments.Add(departmentId);
-
-            List<Department> tmpDep = await context.Department.Where(d => d.ParentId == departmentId).ToListAsync();
-            if(tmpDep.Count() != 0)
+            List<int> departments = null;
+            using (DepartmentContext dc = new DepartmentContext())
             {
-                departments.AddRange(tmpDep.Select(d => d.Id).ToList());
-                foreach(Department dep in tmpDep)
-                {
-                    List<Department> tmpDep1 = await context.Department.Where(d => d.ParentId == dep.Id).ToListAsync();
-                    if(tmpDep1.Count() != 0)
-                    {
-                        departments.AddRange(tmpDep1.Select(d => d.Id).ToList());
-                    }
-                }
+                departments = await dc.GetNodeDepartmentAsync(departmentId);
             }
 
             List<Employee> employees = await context.Employee.Where(d => departments.Contains((int)d.DepartmentId)).ToListAsync();
-            foreach(Employee empl in employees)
+            foreach (Employee empl in employees)
             {
                 Admission entry = await context.Admission.Where(a => a.DepartmentId == empl.DepartmentId && a.EmployeeId == empl.Id).FirstOrDefaultAsync();
-                if(entry == null)
+                if (entry == null)
                 {
                     context.Admission.Add(new Admission()
                     {
@@ -52,6 +41,34 @@ namespace Portal.Models.EFContext
                 }
             }
         }
-       
+
+        public List<AdmissionReportViewModel> GetDataForReport(DateTime dateFrom, DateTime dateTo, int departmentId = 0)
+        {
+            List<int> departments = null;
+            using (DepartmentContext dc = new DepartmentContext())
+            {
+                departments = dc.GetNodeDepartment(departmentId);
+            }
+            return (from a in context.Admission
+                    join e in context.Employee on a.EmployeeId equals e.Id
+                    join p in context.Position on a.PositionId equals p.Id
+                    where ((a.DateFlu >= dateFrom && a.DateFlu <= dateTo)
+                    || (a.Dopusk >= dateFrom && a.Dopusk <= dateTo)
+                    || (a.MedOsm >= dateFrom && a.MedOsm <= dateTo)
+                    || (a.SanMin >= dateFrom && a.SanMin <= dateTo))
+                    && departments.Contains((int)a.DepartmentId)
+                    select new AdmissionReportViewModel
+                    {
+                        Commentary = a.Commentary,
+                        DateFlu = a.DateFlu,
+                        Dopusk = a.Dopusk,
+                        FIO = e.Lastname + " " + e.Firstname + " " + e.Patronymic,
+                        MedOsm = a.MedOsm,
+                        NumFlu = a.NumFlu,
+                        PositionName = p.Name,
+                        SanMin = a.SanMin
+                    }).ToList();
+        }
+
     }
 }

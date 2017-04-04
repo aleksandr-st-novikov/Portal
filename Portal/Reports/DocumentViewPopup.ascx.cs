@@ -2,6 +2,7 @@
 using DevExpress.XtraReports.Web;
 using Portal.Models.EFContext;
 using Portal.Models.Entities;
+using Portal.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +64,7 @@ namespace Portal.Reports
             string reportName = (string)Session["reportName"];
             if (!String.IsNullOrEmpty(reportName))
             {
+                ASPxDocumentViewerReport.Report = null;
                 switch (reportName)
                 {
                     case "Admission":
@@ -81,9 +83,14 @@ namespace Portal.Reports
         private void PrepareReportAdmission()
         {
             admissionReport = new AdmissionReport();
-            admissionReport.sqlDataSourceAdmission.Queries[0].Parameters[0].Value = DateTime.Parse((string)Session["param1"]);
-            admissionReport.sqlDataSourceAdmission.Queries[0].Parameters[1].Value = DateTime.Parse((string)Session["param2"]);
-            admissionReport.sqlDataSourceAdmission.Queries[0].Parameters[2].Value = Int32.Parse(Session["DepartmentId"].ToString());
+
+            List<AdmissionReportViewModel> data = null;
+            using (AdmissionContext context = new AdmissionContext())
+            {
+                data = context.GetDataForReport(DateTime.Parse((string)Session["param1"]), 
+                    DateTime.Parse((string)Session["param2"]),
+                    Int32.Parse(Session["DepartmentId"].ToString()));
+            }
 
             admissionReport.Parameters["Period"].Value = "c " + DateTime.Parse((string)Session["param1"]).ToShortDateString() +
                 " по " + DateTime.Parse((string)Session["param2"]).ToShortDateString();
@@ -98,6 +105,7 @@ namespace Portal.Reports
             }
 
             admissionReport.DisplayName = "Отчет о допусках сотрудников";
+            admissionReport.DataSource = data;
             ASPxDocumentViewerReport.Report = admissionReport;
         }
 
@@ -105,17 +113,21 @@ namespace Portal.Reports
         {
             transportReport = new TransportReport();
 
-            List<Transport> data = null;
-
+            List<TransportReportViewModel> data = null;
             using (TransportContext context = new TransportContext())
             {
-                data = context.GetDataForReport();
+                if (Context.User.IsInRole("Транспорт - Руководители"))
+                {
+                    data = context.GetDataForReport(DateTime.Parse((string)Session["param1"]),
+                        DateTime.Parse((string)Session["param2"]),
+                        Int32.Parse(Session["DepartmentId"].ToString()));
+                }
+                else if(Context.User.IsInRole("Администраторы") || Context.User.IsInRole("Транспорт - Служебный вход"))
+                {
+                    data = context.GetDataForReport(DateTime.Parse((string)Session["param1"]),
+                        DateTime.Parse((string)Session["param2"]));
+                }
             }
-
-            //transportReport.sqlDataSource1.Queries[0].Parameters[0].Value = DateTime.Parse((string)Session["param1"]);
-            //transportReport.sqlDataSource1.Queries[0].Parameters[1].Value = DateTime.Parse((string)Session["param2"]);
-            //transportReport.sqlDataSource1.Queries[0].Parameters[0].Value = Int32.Parse(Session["DepartmentId"].ToString());
-
             transportReport.DataSource = data;
 
             transportReport.DisplayName = "Отчет по транспорту";

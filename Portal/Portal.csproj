@@ -301,6 +301,7 @@
     <Compile Include="Models\Entities\Position.cs" />
     <Compile Include="Models\Entities\Stationery.cs" />
     <Compile Include="Models\Entities\Transport.cs" />
+    <Compile Include="Models\ViewModel\AdmissionReportViewModel.cs" />
     <Compile Include="Models\ViewModel\TransportReportViewModel.cs" />
     <Compile Include="Pages\Admin\Employee\EmployeeMain.master.cs">
       <DependentUpon>EmployeeMain.master</DependentUpon>

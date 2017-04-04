@@ -1,4 +1,5 @@
 ﻿using Portal.Models.Entities;
+using Portal.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -22,12 +23,24 @@ namespace Portal.Models.EFContext
             return await context.Transport.ToListAsync();
         }
 
-        public List<Transport> GetDataForReport()
+        public List<TransportReportViewModel> GetDataForReport(DateTime dateFrom, DateTime dateTo, int departmentId = 0)
         {
+            List<int> departments = null;
+            using (DepartmentContext dc = new DepartmentContext())
+            {
+                departments = dc.GetNodeDepartment(departmentId);
+            }
             return (from t in context.Transport
                     join e in context.Employee on t.EmployeeId equals e.Id
                     join d in context.Department on t.DepartmentId equals d.Id
-                    select t).ToList();
+                    where t.DateTransport >= dateFrom && t.DateTransport <= dateTo
+                    && departments.Contains((int)t.DepartmentId)
+                    select new TransportReportViewModel {
+                        Address = t.Address,
+                        DateTransport = t.DateTransport,
+                        DepartmentShortName = d.ShortName,
+                        FIO = e.Lastname + " " + e.Firstname + " " + e.Patronymic
+                    }).ToList();
         }
     }
 }
