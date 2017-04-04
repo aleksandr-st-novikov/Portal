@@ -301,6 +301,7 @@
     <Compile Include="Models\Entities\Position.cs" />
     <Compile Include="Models\Entities\Stationery.cs" />
     <Compile Include="Models\Entities\Transport.cs" />
+    <Compile Include="Models\ViewModel\TransportReportViewModel.cs" />
     <Compile Include="Pages\Admin\Employee\EmployeeMain.master.cs">
       <DependentUpon>EmployeeMain.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -585,6 +586,12 @@
     <Compile Include="Reports\TestReport.Designer.cs">
       <DependentUpon>TestReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\TransportReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TransportReport.Designer.cs">
+      <DependentUpon>TransportReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Root.master.cs">
       <DependentUpon>Root.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -650,6 +657,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\TestReport.resx">
       <DependentUpon>TestReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransportReport.resx">
+      <DependentUpon>TransportReport.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

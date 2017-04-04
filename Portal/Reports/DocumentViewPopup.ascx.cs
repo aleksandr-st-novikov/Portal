@@ -13,6 +13,7 @@ namespace Portal.Reports
 {
     public partial class DocumentViewPopup : System.Web.UI.UserControl
     {
+        #region Reports
         private AdmissionReport admissionReport
         {
             get
@@ -25,11 +26,28 @@ namespace Portal.Reports
             }
         }
 
+        private TransportReport transportReport
+        {
+            get
+            {
+                return (TransportReport)Session["TransportReport"];
+            }
+            set
+            {
+                Session["TransportReport"] = value;
+            }
+        }
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["AdmissionReportLoaded"] != null)
             {
                 PrepareReportAdmission();
+            }
+            if (Session["TransportReportLoaded"] != null)
+            {
+                PrepareReportTransport();
             }
         }
 
@@ -50,6 +68,10 @@ namespace Portal.Reports
                     case "Admission":
                         PrepareReportAdmission();
                         Session["AdmissionReportLoaded"] = true;
+                        break;
+                    case "Transport":
+                        PrepareReportTransport();
+                        Session["TransportReportLoaded"] = true;
                         break;
                 }
             }
@@ -78,6 +100,26 @@ namespace Portal.Reports
             admissionReport.DisplayName = "Отчет о допусках сотрудников";
             ASPxDocumentViewerReport.Report = admissionReport;
         }
-        
+
+        private void PrepareReportTransport()
+        {
+            transportReport = new TransportReport();
+
+            List<Transport> data = null;
+
+            using (TransportContext context = new TransportContext())
+            {
+                data = context.GetDataForReport();
+            }
+
+            //transportReport.sqlDataSource1.Queries[0].Parameters[0].Value = DateTime.Parse((string)Session["param1"]);
+            //transportReport.sqlDataSource1.Queries[0].Parameters[1].Value = DateTime.Parse((string)Session["param2"]);
+            //transportReport.sqlDataSource1.Queries[0].Parameters[0].Value = Int32.Parse(Session["DepartmentId"].ToString());
+
+            transportReport.DataSource = data;
+
+            transportReport.DisplayName = "Отчет по транспорту";
+            ASPxDocumentViewerReport.Report = transportReport;
+        }
     }
 }

@@ -22,6 +22,15 @@ namespace Portal.Pages.Journal.Transport {
         protected global::DevExpress.Web.ASPxLabel ASPxLabelDepartment;
         
         /// <summary>
+        /// ASPxCallbackRefreshData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback ASPxCallbackRefreshData;
+        
+        /// <summary>
         /// ASPxButton1 control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,42 @@ namespace Portal.Pages.Journal.Transport {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton ASPxButton1;
+        
+        /// <summary>
+        /// ASPxButton5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButton5;
+        
+        /// <summary>
+        /// ASPxDateEditGridFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEditGridFrom;
+        
+        /// <summary>
+        /// ASPxDateEditGridTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEditGridTo;
+        
+        /// <summary>
+        /// ASPxButton4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButton4;
         
         /// <summary>
         /// ASPxGridViewHeadDepartment control.
@@ -47,6 +92,15 @@ namespace Portal.Pages.Journal.Transport {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceTransportHeadDepartment;
+        
+        /// <summary>
+        /// SqlDataSourceTransportEntrance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceTransportEntrance;
         
         /// <summary>
         /// SqlDataSourceEmployeeHeadDepartment control.
@@ -146,5 +200,14 @@ namespace Portal.Pages.Journal.Transport {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton ASPxButton3;
+        
+        /// <summary>
+        /// DocumentViewPopupAdmission control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Reports.DocumentViewPopup DocumentViewPopupAdmission;
     }
 }

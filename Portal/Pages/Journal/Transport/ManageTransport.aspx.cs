@@ -1,4 +1,5 @@
-﻿using Portal.Models.EFContext;
+﻿using DevExpress.Web;
+using Portal.Models.EFContext;
 using Portal.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,10 @@ namespace Portal.Pages.Journal.Transport
             if (!Page.IsPostBack && !Page.IsCallback)
             {
                 Page.Title = "Транспорт";
+                Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd 00:00:00"));
+                Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd 00:00:00"));
+                //Session["DateFrom"] = DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd");
+                //Session["DateTo"] = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
 
                 using (DepartmentContext context = new DepartmentContext())
                 {
@@ -39,18 +44,46 @@ namespace Portal.Pages.Journal.Transport
             if (User.IsInRole("Транспорт - Руководители"))
             {
                 ASPxComboBoxEmployee.DataSourceID = "SqlDataSourceEmployeeHeadDepartment";
+                ASPxGridViewHeadDepartment.DataSourceID = "SqlDataSourceTransportHeadDepartment";
+                ((GridViewDataComboBoxColumn)ASPxGridViewHeadDepartment.Columns["EmployeeId"]).PropertiesComboBox.DataSourceID = "SqlDataSourceEmployeeHeadDepartment";
             }
 
-            if(User.IsInRole("Администраторы")
+            if (User.IsInRole("Администраторы")
                 || User.IsInRole("Транспорт - Служебный вход"))
             {
                 ASPxComboBoxEmployee.DataSourceID = "SqlDataSourceEmployeeEntrance";
+                ASPxGridViewHeadDepartment.DataSourceID = "SqlDataSourceTransportEntrance";
+                ((GridViewDataComboBoxColumn)ASPxGridViewHeadDepartment.Columns["EmployeeId"]).PropertiesComboBox.DataSourceID = "SqlDataSourceEmployeeEntrance";
             }
         }
 
-        protected void ASPxCallbackAdd_Callback(object source, DevExpress.Web.CallbackEventArgs e)
+        protected async void ASPxCallbackAdd_Callback(object source, DevExpress.Web.CallbackEventArgs e)
         {
+            if (Page.IsValid)
+            {
+                using (TransportContext context = new TransportContext())
+                {
+                    Portal.Models.Entities.Transport transport = new Portal.Models.Entities.Transport()
+                    {
+                        EmployeeId = Convert.ToInt32(ASPxComboBoxEmployee.Value),
+                        DateTransport = Convert.ToDateTime(ASPxDateEditTransport.Value),
+                        Address = Convert.ToString(ASPxTextBoxAddress.Value)
+                    };
+                    await context.AddTransportAsync(transport);
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
 
+        protected void ASPxCallbackRefreshData_Callback(object source, DevExpress.Web.CallbackEventArgs e)
+        {
+            Session["DateFrom"] = Convert.ToDateTime(((DateTime)ASPxDateEditGridFrom.Value).ToString("yyyy-MM-dd 00:00:00"));
+            Session["DateTo"] = Convert.ToDateTime(((DateTime)ASPxDateEditGridTo.Value).ToString("yyyy-MM-dd 00:00:00"));
+        }
+
+        protected void ASPxPopupControlAddRecord_Load(object sender, EventArgs e)
+        {
+            ASPxDateEditTransport.Value = Convert.ToDateTime((DateTime.Now).ToString("yyyy-MM-dd 00:00:00"));
         }
     }
 }
