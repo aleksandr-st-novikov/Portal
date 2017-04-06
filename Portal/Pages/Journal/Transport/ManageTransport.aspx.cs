@@ -25,8 +25,7 @@ namespace Portal.Pages.Journal.Transport
             if (!Page.IsPostBack && !Page.IsCallback)
             {
                 Page.Title = "Транспорт";
-                Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd 00:00:00"));
-                Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd 00:00:00"));
+
 
                 using (DepartmentContext context = new DepartmentContext())
                 {
@@ -39,6 +38,25 @@ namespace Portal.Pages.Journal.Transport
                     }
                 }
                 InitData();
+                Page.Form.DefaultButton = null;
+
+                if (!User.IsInRole("Администраторы"))
+                {
+                    TimeSpan start = new TimeSpan(0, 0, 0);
+                    TimeSpan end = new TimeSpan(5, 0, 0);
+                    TimeSpan now = DateTime.Now.TimeOfDay;
+
+                    if ((now > start) && (now < end))
+                    {
+                        ASPxDateEditTransport.MinDate = new DateTime(DateTime.Now.AddDays(-1).Year, DateTime.Now.AddDays(-1).Month, DateTime.Now.AddDays(-1).Day, 0, 0, 0);
+                    }
+                    else
+                    {
+                        ASPxDateEditTransport.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                    }
+                }
+
+                ASPxDateEditTransport.Value = Convert.ToDateTime((DateTime.Now).ToString("yyyy-MM-dd 00:00:00"));
             }
         }
 
@@ -52,6 +70,9 @@ namespace Portal.Pages.Journal.Transport
                 SqlDataSourceTransportHeadDepartment.SelectCommand = "SELECT * FROM [Transport] WHERE (([DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")) AND ([DateTransport] BETWEEN @DateTransport AND @DateTransport2)) ORDER BY [DateTransport] DESC, [Id] DESC";
                 SqlDataSourceEmployeeHeadDepartment.SelectCommand = "SELECT [Id], CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] WHERE ([IsWork] = @IsWork) AND ([DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")) ORDER BY [FIO]";
                 ASPxButtonPrint.Visible = false;
+
+                Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd 00:00:00"));
+                Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd 00:00:00"));
             }
 
             if (User.IsInRole("Администраторы")
@@ -61,6 +82,21 @@ namespace Portal.Pages.Journal.Transport
                 ASPxGridViewHeadDepartment.DataSourceID = "SqlDataSourceTransportEntrance";
                 ((GridViewDataComboBoxColumn)ASPxGridViewHeadDepartment.Columns["EmployeeId"]).PropertiesComboBox.DataSourceID = "SqlDataSourceEmployeeEntrance";
                 ASPxButtonPrint.Visible = true;
+
+                TimeSpan start = new TimeSpan(0, 0, 0);
+                TimeSpan end = new TimeSpan(5, 0, 0);
+                TimeSpan now = DateTime.Now.TimeOfDay;
+
+                if ((now > start) && (now < end))
+                {
+                    Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 00:00:00"));
+                    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 00:00:00"));
+                }
+                else
+                {
+                    Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+                    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+                }
             }
         }
 
@@ -88,14 +124,35 @@ namespace Portal.Pages.Journal.Transport
             Session["DateTo"] = Convert.ToDateTime(((DateTime)ASPxDateEditGridTo.Value).ToString("yyyy-MM-dd 00:00:00"));
         }
 
-        protected void ASPxPopupControlAddRecord_Load(object sender, EventArgs e)
-        {
-            ASPxDateEditTransport.Value = Convert.ToDateTime((DateTime.Now).ToString("yyyy-MM-dd 00:00:00"));
-        }
-
         protected void SqlDataSourceEmployeeHeadDepartment_Init(object sender, EventArgs e)
         {
-            InitData();
+            if (User.IsInRole("Транспорт - Руководители"))
+            {
+                ((GridViewDataComboBoxColumn)ASPxGridViewHeadDepartment.Columns["EmployeeId"]).PropertiesComboBox.DataSourceID = "SqlDataSourceEmployeeHeadDepartment";
+                SqlDataSourceTransportHeadDepartment.SelectCommand = "SELECT * FROM [Transport] WHERE (([DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")) AND ([DateTransport] BETWEEN @DateTransport AND @DateTransport2)) ORDER BY [DateTransport] DESC, [Id] DESC";
+                SqlDataSourceEmployeeHeadDepartment.SelectCommand = "SELECT [Id], CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] WHERE ([IsWork] = @IsWork) AND ([DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")) ORDER BY [FIO]";
+            }
+        }
+
+        protected void ASPxGridViewHeadDepartment_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
+        {
+            if (!User.IsInRole("Администраторы"))
+            {
+                TimeSpan start = new TimeSpan(0, 0, 0);
+                TimeSpan end = new TimeSpan(5, 0, 0);
+                TimeSpan now = DateTime.Now.TimeOfDay;
+
+                if ((now > start) && (now < end))
+                {
+                    if (e.Column.FieldName == "DateTransport")
+                        (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.AddDays(-1).Year, DateTime.Now.AddDays(-1).Month, DateTime.Now.AddDays(-1).Day, 0, 0, 0);
+                }
+                else
+                {
+                    if (e.Column.FieldName == "DateTransport")
+                        (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                }
+            }
         }
     }
 }
