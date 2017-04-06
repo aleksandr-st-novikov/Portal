@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Journal/Admission/AdmissionMain.master" AutoEventWireup="true" CodeBehind="ManageAdmission.aspx.cs" Inherits="Portal.Pages.Journal.Admission.ManageAdmission" Async="true" %>
 
-<%@ Register TagPrefix="uc" TagName="DocumentViewPopup" Src="~/Reports/DocumentViewPopup.ascx" %>
+<%@ Register TagPrefix="uc" TagName="AdmissionReportViewPopup" Src="~/Reports/AdmissionReportViewPopup.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <dx:ASPxCallback ID="ASPxCallbackImportEmployee" runat="server" ClientInstanceName="ASPxClientCallbackImportEmployee" OnCallback="ASPxCallbackImportEmployee_Callback">
@@ -74,7 +74,7 @@
                                                             <ClientSideEvents Click="function(s, e) {
                                                                 var dateFrom = ASPxClientDateEditFrom.GetValue();
                                                                 var dateTo = ASPxClientDateEditTo.GetValue();
-                                                                    ASPxClientCallbackPanelReport.PerformCallback('Admission' + '|' + 
+                                                                    ASPxClientCallbackPanelAdmissionReport.PerformCallback('Admission' + '|' + 
                                                                         dateFrom.getDate() + '.' + (dateFrom.getMonth() + 1) + '.' + dateFrom.getFullYear() + '|' + 
                                                                         dateTo.getDate() + '.' + (dateTo.getMonth() + 1) + '.' + dateTo.getFullYear());
                                                                     ASPxClientPopupControlReportParams.Hide();
@@ -222,6 +222,6 @@
     <dx:ASPxLoadingPanel ID="ASPxLoadingPanelLoad" runat="server" ClientInstanceName="ASPxClientLoadingPanelLoad" Modal="True">
     </dx:ASPxLoadingPanel>
 
-    <uc:DocumentViewPopup ID="DocumentViewPopupAdmission" runat="server" />
+    <uc:AdmissionReportViewPopup ID="AdmissionReportViewPopup" runat="server" />
 
 </asp:Content>

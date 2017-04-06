@@ -198,6 +198,8 @@
     <Content Include="Pages\Journal\Stationery\ManageStock.aspx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
     <Content Include="Reports\DocumentView.aspx" />
+    <Content Include="Reports\AdmissionReportViewPopup.ascx" />
+    <Content Include="Reports\TransportReportViewPopup.ascx" />
     <Content Include="Reports\DocumentViewPopup.ascx" />
     <Content Include="Root.master" />
   </ItemGroup>
@@ -573,6 +575,20 @@
     </Compile>
     <Compile Include="Reports\DocumentView.aspx.designer.cs">
       <DependentUpon>DocumentView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\AdmissionReportViewPopup.ascx.cs">
+      <DependentUpon>AdmissionReportViewPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\AdmissionReportViewPopup.ascx.designer.cs">
+      <DependentUpon>AdmissionReportViewPopup.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TransportReportViewPopup.ascx.cs">
+      <DependentUpon>TransportReportViewPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\TransportReportViewPopup.ascx.designer.cs">
+      <DependentUpon>TransportReportViewPopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Reports\DocumentViewPopup.ascx.cs">
       <DependentUpon>DocumentViewPopup.ascx</DependentUpon>

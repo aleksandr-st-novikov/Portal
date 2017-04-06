@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Journal/Transport/TransportMain.master" Async="true" AutoEventWireup="true" CodeBehind="ManageTransport.aspx.cs" Inherits="Portal.Pages.Journal.Transport.ManageTransport" %>
 
-<%@ Register TagPrefix="uc" TagName="DocumentViewPopup" Src="~/Reports/DocumentViewPopup.ascx" %>
+<%@ Register TagPrefix="uc" TagName="TransportReportViewPopup" Src="~/Reports/TransportReportViewPopup.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="content">
@@ -20,11 +20,11 @@
             <Image IconID="actions_driving_16x16devav">
             </Image>
         </dx:ASPxButton>
-        <dx:ASPxButton ID="ASPxButton5" runat="server" AutoPostBack="False" Text="Печать">
+        <dx:ASPxButton ID="ASPxButtonPrint" runat="server" AutoPostBack="False" Text="Печать">
             <ClientSideEvents Click="function(s, e) {
                 var dateFrom = ASPxClientDateEditGridFrom.GetValue();
                 var dateTo = ASPxClientDateEditGridTo.GetValue();
-                    ASPxClientCallbackPanelReport.PerformCallback('Transport' + '|' + 
+                    ASPxClientCallbackPanelTransportReport.PerformCallback('Transport' + '|' + 
                         dateFrom.getDate() + '.' + (dateFrom.getMonth() + 1) + '.' + dateFrom.getFullYear() + '|' + 
                         dateTo.getDate() + '.' + (dateTo.getMonth() + 1) + '.' + dateTo.getFullYear());
             }" />
@@ -211,7 +211,8 @@
                 ASPxClientGridViewHeadDepartment.Refresh();
             }" />
         </dx:ASPxCallback>
-        <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], [Name], [ShortName] FROM [Department] ORDER BY [Name], [ShortName]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+            SelectCommand="SELECT [Id], [Name], ISNULL([ShortName],[Name]) AS [ShortName] FROM [Department] ORDER BY [Name], [ShortName]"></asp:SqlDataSource>
         <dx:ASPxPopupControl ID="ASPxPopupControlAddRecord" runat="server" AllowDragging="True" ClientInstanceName="ASPxClientPopupControlAddRecord" CloseOnEscape="True" HeaderText="Добавить запись" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="200" Width="700px" OnLoad="ASPxPopupControlAddRecord_Load">
             <ContentCollection>
                 <dx:PopupControlContentControl runat="server">
@@ -272,6 +273,6 @@
         </dx:ASPxPopupControl>
     </div>
 
-    <uc:DocumentViewPopup ID="DocumentViewPopupAdmission" runat="server" />
+    <uc:TransportReportViewPopup ID="TransportReportViewPopup" runat="server" />
 
 </asp:Content>

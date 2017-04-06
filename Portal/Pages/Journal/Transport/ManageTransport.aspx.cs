@@ -51,6 +51,7 @@ namespace Portal.Pages.Journal.Transport
                 ((GridViewDataComboBoxColumn)ASPxGridViewHeadDepartment.Columns["EmployeeId"]).PropertiesComboBox.DataSourceID = "SqlDataSourceEmployeeHeadDepartment";
                 SqlDataSourceTransportHeadDepartment.SelectCommand = "SELECT * FROM [Transport] WHERE (([DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")) AND ([DateTransport] BETWEEN @DateTransport AND @DateTransport2)) ORDER BY [DateTransport] DESC, [Id] DESC";
                 SqlDataSourceEmployeeHeadDepartment.SelectCommand = "SELECT [Id], CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] WHERE ([IsWork] = @IsWork) AND ([DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")) ORDER BY [FIO]";
+                ASPxButtonPrint.Visible = false;
             }
 
             if (User.IsInRole("Администраторы")
@@ -59,6 +60,7 @@ namespace Portal.Pages.Journal.Transport
                 ASPxComboBoxEmployee.DataSourceID = "SqlDataSourceEmployeeEntrance";
                 ASPxGridViewHeadDepartment.DataSourceID = "SqlDataSourceTransportEntrance";
                 ((GridViewDataComboBoxColumn)ASPxGridViewHeadDepartment.Columns["EmployeeId"]).PropertiesComboBox.DataSourceID = "SqlDataSourceEmployeeEntrance";
+                ASPxButtonPrint.Visible = true;
             }
         }
 
