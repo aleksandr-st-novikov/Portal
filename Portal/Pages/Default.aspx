@@ -1,32 +1,10 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="Default.aspx.cs" Inherits="Portal._Default" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MainDefault.master" CodeBehind="Default.aspx.cs" Inherits="Portal._Default" %>
 
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
-    <%-- DXCOMMENT: Configure ASPxGridView control --%>
-<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="True" DataSourceID="SqlDataSource1" ClientInstanceName="ASPxGridView1" KeyFieldName="CustomerID" Width="100%">
-    <SettingsPager PageSize="32" />
-    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="350" />
-    <Paddings Padding="0px" />
-    <Border BorderWidth="0px" />
-    <BorderBottom BorderWidth="1px" />
-    <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
-    <Columns>
-        <dx:GridViewDataColumn>
-        </dx:GridViewDataColumn>
-        <dx:GridViewDataColumn>
-        </dx:GridViewDataColumn>
-        <dx:GridViewDataColumn>
-        </dx:GridViewDataColumn>
-        <dx:GridViewDataColumn>
-        </dx:GridViewDataColumn>
-        <dx:GridViewDataColumn>
-        </dx:GridViewDataColumn>
-    </Columns>
-</dx:ASPxGridView>
-
-
-<%-- DXCOMMENT: Configure your datasource for ASPxGridView --%>
-<asp:SqlDataSource ID="SqlDataSource1" runat="server">
-</asp:SqlDataSource>
-
+    <div style="width: 100%">
+        <div style="text-align:center;margin-top:100px;">
+            <img src="/portal/Content/Images/logo-x2.png" style="width:100px;"/>
+        </div>
+    </div>
 </asp:Content>

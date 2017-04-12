@@ -35,7 +35,8 @@ namespace Portal.Pages.Admin.Employee
                 return;
             }
 
-            ASPxTextBoxPathDBF.Text = @"e:\VS\Portal\IW\exp_ej.DBF";
+            //ASPxTextBoxPathDBF.Text = @"e:\VS\Portal\IW\exp_ej.DBF";
+            ASPxTextBoxPathDBF.Text = @"\\gs01kb\export$\1c\Export\exp_ej.DBF";
             ASPxLoadingPanelLoad.ContainerElementID = "ASPxPanel2";
         }
 

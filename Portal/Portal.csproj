@@ -153,6 +153,7 @@
     </Content>
     <Content Include="Content\Append.css" />
     <Content Include="Content\Images\login-back.jpg" />
+    <Content Include="Content\Images\logo-x2.png" />
     <Content Include="Pages\Account\AddPhoneNumber.aspx" />
     <Content Include="Pages\Account\ChangePassword.aspx" />
     <Content Include="Pages\Account\ChangePasswordSuccess.aspx" />
@@ -217,15 +218,24 @@
     <Content Include="Pages\Admin\Employee\EmployeeMain.master" />
     <Content Include="Pages\Journal\Admission\AdmissionMain.master" />
     <Content Include="Pages\Journal\Transport\TransportMain.master" />
+    <Content Include="MainDefault.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainDefault.master.cs">
+      <DependentUpon>MainDefault.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainDefault.master.designer.cs">
+      <DependentUpon>MainDefault.master</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201703221121515_InitialCreate.cs" />
     <Compile Include="Migrations\201703221121515_InitialCreate.Designer.cs">
       <DependentUpon>201703221121515_InitialCreate.cs</DependentUpon>

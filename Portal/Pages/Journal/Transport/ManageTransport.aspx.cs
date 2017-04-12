@@ -56,6 +56,13 @@ namespace Portal.Pages.Journal.Transport
                     }
                 }
 
+                if ((User.IsInRole("Администраторы")
+                    || User.IsInRole("Транспорт - Служебный вход")))
+                {
+                    string script = @"setInterval(function () {ASPxClientCallbackRefreshData.PerformCallback()}, 30000)";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ManageTransport", script, true);
+                }
+
                 ASPxDateEditTransport.Value = Convert.ToDateTime((DateTime.Now).ToString("yyyy-MM-dd 00:00:00"));
             }
         }
