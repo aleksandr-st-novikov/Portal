@@ -53,8 +53,10 @@ namespace Portal.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            Database.SetInitializer<ApplicationDbContext>(null);
+            base.OnModelCreating(modelBuilder);
 
             //modelBuilder.Entity<Position>().Property(c => c.IsActive).HasColumnAnnotation("DefaultValue", 1);
             //modelBuilder.Entity<Department>().Property(c => c.IsActive).HasColumnAnnotation("DefaultValue", 1);

@@ -37,6 +37,7 @@ namespace Portal.Pages.Admin.Employee
 
             //ASPxTextBoxPathDBF.Text = @"e:\VS\Portal\IW\exp_ej.DBF";
             ASPxTextBoxPathDBF.Text = @"\\gs01kb\export$\1c\Export\exp_ej.DBF";
+            //ASPxTextBoxPathDBF.Text = @"/Import/exp_ej.DBF";
             ASPxLoadingPanelLoad.ContainerElementID = "ASPxPanel2";
         }
 
@@ -50,8 +51,9 @@ namespace Portal.Pages.Admin.Employee
 
         protected async void ASPxCallbackImportEmployee_Callback(object source, DevExpress.Web.CallbackEventArgs e)
         {
+            //string filePath = Server.MapPath(ASPxTextBoxPathDBF.Text);
             string filePath = ASPxTextBoxPathDBF.Text;
-            List<MidData> md = new List<MidData>();
+            List <MidData> md = new List<MidData>();
             string constr = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Path.GetDirectoryName(filePath) + ";Extended Properties=dBASE IV;User ID=Admin;Password=;";
             using (OleDbConnection con = new OleDbConnection(constr))
             {
@@ -148,5 +150,6 @@ namespace Portal.Pages.Admin.Employee
                 await context.SaveChangesAsync();
             }
         }
+
     }
 }
