@@ -197,8 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
-    <Content Include="Pages\Journal\Stationery\ManageStationery.aspx" />
-    <Content Include="Pages\Journal\Stationery\ManageStock.aspx" />
+    <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
+    <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
+    <Content Include="Pages\Journal\Accessories\ManageStock.aspx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
     <Content Include="Reports\DocumentView.aspx" />
     <Content Include="Reports\AdmissionReportViewPopup.ascx" />
@@ -216,7 +217,7 @@
     </Content>
     <Content Include="packages.config" />
     <Content Include="Pages\Admin\Users\UsersMain.master" />
-    <Content Include="Pages\Journal\Stationery\StationeryMain.master" />
+    <Content Include="Pages\Journal\Accessories\AccessoriesMain.master" />
     <Content Include="Pages\Admin\Employee\EmployeeMain.master" />
     <Content Include="Pages\Journal\Admission\AdmissionMain.master" />
     <Content Include="Pages\Journal\Transport\TransportMain.master" />
@@ -241,10 +242,6 @@
     <Compile Include="Migrations\201703221121515_InitialCreate.cs" />
     <Compile Include="Migrations\201703221121515_InitialCreate.Designer.cs">
       <DependentUpon>201703221121515_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703280901284_Stationery.cs" />
-    <Compile Include="Migrations\201703280901284_Stationery.Designer.cs">
-      <DependentUpon>201703280901284_Stationery.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201703291001209_Employee.cs" />
     <Compile Include="Migrations\201703291001209_Employee.Designer.cs">
@@ -302,6 +299,14 @@
     <Compile Include="Migrations\201704031718581_Transport.Designer.cs">
       <DependentUpon>201704031718581_Transport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704150908580_Accessories.cs" />
+    <Compile Include="Migrations\201704150908580_Accessories.Designer.cs">
+      <DependentUpon>201704150908580_Accessories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704150919454_Accessories1.cs" />
+    <Compile Include="Migrations\201704150919454_Accessories1.Designer.cs">
+      <DependentUpon>201704150919454_Accessories1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
     <Compile Include="Models\EFContext\ApplicationContext.cs" />
@@ -310,10 +315,8 @@
     <Compile Include="Models\EFContext\PositionContext.cs" />
     <Compile Include="Models\EFContext\TransportContext.cs" />
     <Compile Include="Models\Entities\Admission.cs" />
-    <Compile Include="Models\Entities\Department.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
-    <Compile Include="Models\Entities\Position.cs" />
-    <Compile Include="Models\Entities\Stationery.cs" />
+    <Compile Include="Models\Entities\Accessories.cs" />
     <Compile Include="Models\Entities\Transport.cs" />
     <Compile Include="Models\ViewModel\AdmissionReportViewModel.cs" />
     <Compile Include="Models\ViewModel\TransportReportViewModel.cs" />
@@ -539,26 +542,33 @@
     <Compile Include="Pages\Journal\Admission\ManageAdmission.aspx.designer.cs">
       <DependentUpon>ManageAdmission.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Journal\Stationery\ManageStationery.aspx.cs">
-      <DependentUpon>ManageStationery.aspx</DependentUpon>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessories.aspx.cs">
+      <DependentUpon>ManageAccessories.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Journal\Stationery\ManageStationery.aspx.designer.cs">
-      <DependentUpon>ManageStationery.aspx</DependentUpon>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessories.aspx.designer.cs">
+      <DependentUpon>ManageAccessories.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Journal\Stationery\ManageStock.aspx.cs">
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx.cs">
+      <DependentUpon>ManageAccessoriesType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx.designer.cs">
+      <DependentUpon>ManageAccessoriesType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageStock.aspx.cs">
       <DependentUpon>ManageStock.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Journal\Stationery\ManageStock.aspx.designer.cs">
+    <Compile Include="Pages\Journal\Accessories\ManageStock.aspx.designer.cs">
       <DependentUpon>ManageStock.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Journal\Stationery\StationeryMain.master.cs">
-      <DependentUpon>StationeryMain.master</DependentUpon>
+    <Compile Include="Pages\Journal\Accessories\AccessoriesMain.master.cs">
+      <DependentUpon>AccessoriesMain.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Journal\Stationery\StationeryMain.master.designer.cs">
-      <DependentUpon>StationeryMain.master</DependentUpon>
+    <Compile Include="Pages\Journal\Accessories\AccessoriesMain.master.designer.cs">
+      <DependentUpon>AccessoriesMain.master</DependentUpon>
     </Compile>
     <Compile Include="Pages\Journal\Transport\ManageTransport.aspx.cs">
       <DependentUpon>ManageTransport.aspx</DependentUpon>
@@ -635,9 +645,6 @@
     <EmbeddedResource Include="Migrations\201703221121515_InitialCreate.resx">
       <DependentUpon>201703221121515_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703280901284_Stationery.resx">
-      <DependentUpon>201703280901284_Stationery.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703291001209_Employee.resx">
       <DependentUpon>201703291001209_Employee.cs</DependentUpon>
     </EmbeddedResource>
@@ -679,6 +686,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704031718581_Transport.resx">
       <DependentUpon>201704031718581_Transport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150908580_Accessories.resx">
+      <DependentUpon>201704150908580_Accessories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150919454_Accessories1.resx">
+      <DependentUpon>201704150919454_Accessories1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\AdmissionReport.resx">

@@ -44,7 +44,11 @@ namespace Portal.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Stationery> Stationery { get; set; }
+        public DbSet<Accessories> Accessories { get; set; }
+        public DbSet<AccessoriesTable> AccessoriesTable { get; set; }
+        public DbSet<AccessoriesType> AccessoriesType { get; set; }
+        public DbSet<AccessoriesDepartment> AccessoriesDepartment { get; set; }
+        public DbSet<AccessoriesProduct> AccessoriesProduct { get; set; }
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Department> Department { get; set; }
         public DbSet<Position> Position { get; set; }
@@ -60,8 +64,8 @@ namespace Portal.Models
 
             //modelBuilder.Entity<Position>().Property(c => c.IsActive).HasColumnAnnotation("DefaultValue", 1);
             //modelBuilder.Entity<Department>().Property(c => c.IsActive).HasColumnAnnotation("DefaultValue", 1);
-            //modelBuilder.Entity<Stationery>().Property(c => c.Unit).HasColumnAnnotation("DefaultValue", "רע.");
-            //modelBuilder.Entity<Stationery>().Property(c => c.IsActive).HasColumnAnnotation("DefaultValue", 1);
+            //modelBuilder.Entity<Accessories>().Property(c => c.Unit).HasColumnAnnotation("DefaultValue", "רע.");
+            //modelBuilder.Entity<Accessories>().Property(c => c.IsActive).HasColumnAnnotation("DefaultValue", 1);
         }
     }
 }
