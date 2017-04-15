@@ -26,6 +26,12 @@ namespace Portal.Models.EFContext
             return res;
         }
 
+        internal async Task<AccessoriesType> getFirstAccessoriesTypeAsync()
+        {
+            AccessoriesType at = await context.AccessoriesType.OrderBy(a => a.Id).FirstOrDefaultAsync();
+            return at;
+        }
+
         public bool CheckDeleteAccessoriesType(int accessoriesTypeId)
         {
             bool res = false;

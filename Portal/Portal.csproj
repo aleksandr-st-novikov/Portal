@@ -196,6 +196,7 @@
     <Content Include="Main.master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\Journal\Accessories\ManageAccessoriesDepartment.aspx" />
     <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
@@ -529,6 +530,13 @@
       <DependentUpon>Main.master</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesDepartment.aspx.cs">
+      <DependentUpon>ManageAccessoriesDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesDepartment.aspx.designer.cs">
+      <DependentUpon>ManageAccessoriesDepartment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Journal\Admission\AdmissionMain.master.cs">
       <DependentUpon>AdmissionMain.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

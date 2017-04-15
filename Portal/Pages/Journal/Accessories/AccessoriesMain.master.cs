@@ -43,6 +43,15 @@ namespace Portal {
                 };
                 itemAccessoriesType.Image.IconID = "miscellaneous_design_16x16office2013";
                 groupAccessories.Items.Add(itemAccessoriesType);
+
+                DevExpress.Web.NavBarItem itemAccessoriesDepartment = new DevExpress.Web.NavBarItem()
+                {
+                    Index = 2,
+                    Text = "Подразделения",
+                    NavigateUrl = "~/Pages/Journal/Accessories/ManageAccessoriesDepartment.aspx"
+                };
+                itemAccessoriesDepartment.Image.IconID = "miscellaneous_design_16x16office2013";
+                groupAccessories.Items.Add(itemAccessoriesDepartment);
             }
 
             ASPxNavBarMain.Groups.Add(groupAccessories);
