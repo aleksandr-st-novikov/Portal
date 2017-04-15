@@ -79,7 +79,6 @@ namespace Portal.Models.Entities
 
         [Display(Name = "Ед.изм.")]
         [StringLength(20)]
-        //[DefaultValue("шт.")]
         public string Unit { get; set; }
 
         [Display(Name = "Количество для выписки на складе")]

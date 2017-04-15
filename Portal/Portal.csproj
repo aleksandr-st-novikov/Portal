@@ -308,6 +308,7 @@
       <DependentUpon>201704150919454_Accessories1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
     <Compile Include="Models\EFContext\ApplicationContext.cs" />
     <Compile Include="Models\EFContext\DepartmentContext.cs" />

@@ -14,7 +14,7 @@
             </Pane>
         </Styles>
         <Panes>
-            <dx:SplitterPane Name="ContentLeft" ShowCollapseBackwardButton="True" Size="250px" MinSize="150px">
+            <dx:SplitterPane Name="ContentLeft" ShowCollapseBackwardButton="True" Size="280px" MinSize="150px">
                 <PaneStyle CssClass="leftPane">
                     <Paddings Padding="1px"></Paddings>
                 </PaneStyle>

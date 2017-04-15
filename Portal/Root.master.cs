@@ -56,17 +56,18 @@ namespace Portal
                 }
 
                 if (Context.User.IsInRole("Администраторы")
-                    || Context.User.IsInRole("Заявка на канцтовары - Сотрудник")
-                    || Context.User.IsInRole("Заявка на канцтовары - Управление")
-                    || Context.User.IsInRole("Заявка на канцтовары - Утверждение"))
+                    || Context.User.IsInRole("Заявка на принадлежности - Сотрудник")
+                    || Context.User.IsInRole("Заявка на принадлежности - Управление")
+                    || Context.User.IsInRole("Заявка на принадлежности - Утверждение")
+                    || Context.User.IsInRole("Заявка на принадлежности - Склад"))
                 {
-                    DevExpress.Web.MenuItem itemJournalCants = new DevExpress.Web.MenuItem()
+                    DevExpress.Web.MenuItem itemJournalAccesories = new DevExpress.Web.MenuItem()
                     {
-                        Text = "Заявка на канцтовары",
+                        Text = "Заявка на принадлежности",
                         NavigateUrl = "~/Pages/Journal/Accessories/ManageAccessories.aspx"
                     };
-                    itemJournalCants.Image.IconID = "print_tasklist_16x16devav";
-                    itemJournal.Items.Add(itemJournalCants);
+                    itemJournalAccesories.Image.IconID = "print_tasklist_16x16devav";
+                    itemJournal.Items.Add(itemJournalAccesories);
                     itemJournal.DropDownMode = true;
 
                     if (itemJournalAdd == false)

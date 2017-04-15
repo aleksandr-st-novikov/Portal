@@ -17,14 +17,14 @@ namespace Portal {
             DevExpress.Web.NavBarItem itemManageAccessories = new DevExpress.Web.NavBarItem()
             {
                 Index = 0,
-                Text = "Оформление заявки",
+                Text = "Заявки",
                 NavigateUrl = "~/Pages/Journal/Accessories/ManageAccessories.aspx"
             };
             itemManageAccessories.Image.IconID = "print_profilereport_16x16devav";
             groupAccessories.Items.Add(itemManageAccessories);
 
             if (Context.User.IsInRole("Администраторы")
-                || Context.User.IsInRole("Заявка на канцтовары - Управление"))
+                || Context.User.IsInRole("Заявка на принадлежности - Управление"))
             {
                 DevExpress.Web.NavBarItem itemManageStock = new DevExpress.Web.NavBarItem()
                 {
@@ -34,6 +34,15 @@ namespace Portal {
                 };
                 itemManageStock.Image.IconID = "miscellaneous_design_16x16office2013";
                 groupAccessories.Items.Add(itemManageStock);
+
+                DevExpress.Web.NavBarItem itemAccessoriesType = new DevExpress.Web.NavBarItem()
+                {
+                    Index = 2,
+                    Text = "Категории принадлежностей",
+                    NavigateUrl = "~/Pages/Journal/Accessories/ManageAccessoriesType.aspx"
+                };
+                itemAccessoriesType.Image.IconID = "miscellaneous_design_16x16office2013";
+                groupAccessories.Items.Add(itemAccessoriesType);
             }
 
             ASPxNavBarMain.Groups.Add(groupAccessories);
