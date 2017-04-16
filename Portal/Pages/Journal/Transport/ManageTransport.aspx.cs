@@ -59,11 +59,26 @@ namespace Portal.Pages.Journal.Transport
                 if ((User.IsInRole("Администраторы")
                     || User.IsInRole("Транспорт - Служебный вход")))
                 {
-                    string script = @"setInterval(function () {ASPxClientCallbackRefreshData.PerformCallback()}, 30000)";
+                    string script = @"setInterval(function () {ASPxClientCallbackRefreshData.PerformCallback()}, 60000)";
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "ManageTransport", script, true);
                 }
 
                 ASPxDateEditTransport.Value = Convert.ToDateTime((DateTime.Now).ToString("yyyy-MM-dd 00:00:00"));
+
+                if (!ClientScript.IsStartupScriptRegistered("onKeyDownTransport"))
+                {
+                    string script = @"
+                        document.onkeydown = onKeyDownTransport;
+                        function onKeyDownTransport() {
+                            if (event.keyCode == 13) {
+                                if (ASPxClientGridViewHeadDepartment.IsEditing())
+                                    ASPxClientGridViewHeadDepartment.UpdateEdit();
+                            }
+                        }";
+
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "onKeyDownTransport", script, true);
+                }
+
             }
         }
 
@@ -160,6 +175,9 @@ namespace Portal.Pages.Journal.Transport
                         (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
                 }
             }
+
+            if (e.Column.FieldName == "DateTransport")
+                e.Editor.SetClientSideEventHandler("Init", "function(s, e) { setTimeout(function() {s.Focus();}, 0); }");
         }
     }
 }

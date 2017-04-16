@@ -214,13 +214,16 @@
         <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
             SelectCommand="SELECT [Id], [Name], ISNULL([ShortName],[Name]) AS [ShortName] FROM [Department] ORDER BY [Name], [ShortName]"></asp:SqlDataSource>
         <dx:ASPxPopupControl ID="ASPxPopupControlAddRecord" runat="server" AllowDragging="True" ClientInstanceName="ASPxClientPopupControlAddRecord" CloseOnEscape="True" HeaderText="Добавить запись" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="200" Width="700px">
+            <ClientSideEvents Shown="function(s, e) {
+	ASPxClientDateEditTransport.Focus();
+}" />
             <ContentCollection>
                 <dx:PopupControlContentControl runat="server">
                     <div id="clientContainer">
                         <table style="width: 100%; margin: 15px 0 20px 0;">
                             <tr style="vertical-align: top;">
                                 <td style="width: 40%;">
-                                    <dx:ASPxDateEdit ID="ASPxDateEditTransport" runat="server" Caption="Дата">
+                                    <dx:ASPxDateEdit ID="ASPxDateEditTransport" runat="server" Caption="Дата" ClientInstanceName="ASPxClientDateEditTransport">
                                         <CaptionCellStyle Width="60px">
                                         </CaptionCellStyle>
                                         <ValidationSettings ValidationGroup="FormAddValidationGroup" Display="Dynamic" ErrorTextPosition="Bottom" ErrorDisplayMode="Text" SetFocusOnError="True">
@@ -260,7 +263,7 @@
 	                                    ASPxClientPopupControlAddRecord.Hide();
                                     }" />
                                 </dx:ASPxButton>
-                                <dx:ASPxButton ID="ASPxButton3" runat="server" AutoPostBack="False" Text="Сохранить" ValidationGroup="FormAddValidationGroup">
+                                <dx:ASPxButton ID="ASPxButtonAdd" runat="server" AutoPostBack="False" Text="Сохранить" ValidationGroup="FormAddValidationGroup" ClientInstanceName="ASPxClientButtonAdd">
                                     <ClientSideEvents Click="function(s, e) {
                                         if(ASPxClientEdit.AreEditorsValid())
                                         {

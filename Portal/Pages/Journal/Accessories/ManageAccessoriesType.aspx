@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="content">
-        <dx:ASPxGridView ID="ASPxGridViewAccessoriesType" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceAccessoriesType" KeyFieldName="Id" Width="900px" OnRowDeleting="ASPxGridViewAccessoriesType_RowDeleting">
+        <dx:ASPxGridView ID="ASPxGridViewAccessoriesType" ClientInstanceName="ASPxClientGridViewAccessoriesType" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceAccessoriesType" KeyFieldName="Id" Width="900px" OnRowDeleting="ASPxGridViewAccessoriesType_RowDeleting" OnCellEditorInitialize="ASPxGridViewAccessoriesType_CellEditorInitialize">
             <SettingsEditing Mode="PopupEditForm">
             </SettingsEditing>
             <SettingsBehavior ConfirmDelete="True" />
@@ -27,7 +27,7 @@
                 </CancelButton>
             </SettingsCommandButton>
             <SettingsPopup>
-                <EditForm HorizontalAlign="WindowCenter" MinWidth="800px" VerticalAlign="WindowCenter" Modal="True" Width="800px" />
+                <EditForm HorizontalAlign="WindowCenter" MinWidth="800px" VerticalAlign="WindowCenter" Modal="True" Width="800px" CloseOnEscape="True" />
             </SettingsPopup>
             <SettingsSearchPanel Visible="True" />
             <Columns>

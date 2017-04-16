@@ -20,11 +20,23 @@ namespace Portal.Pages.Journal.Accessories
                     AccessoriesType at = await accessoriesContext.getFirstAccessoriesTypeAsync();
                     if (at != null)
                     {
-                        //ASPxComboBoxAccessoriesType.Value = Session["AccessoriesTypeId"] = at.Id;
                         Session["AccessoriesTypeId"] = at.Id;
                         ASPxComboBoxAccessoriesType.Text = at.Name;
                     }
+                }
 
+                if (!ClientScript.IsStartupScriptRegistered("onKeyDownAccessoriesDepartment"))
+                {
+                    string script = @"
+                        document.onkeydown = onKeyDownAccessoriesDepartment;
+                        function onKeyDownAccessoriesDepartment() {
+                            if (event.keyCode == 13) {
+                                if (ASPxClientGridViewAccessoriesDepartment.IsEditing())
+                                ASPxClientGridViewAccessoriesDepartment.UpdateEdit();
+                            }
+                        }";
+
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "onKeyDownAccessoriesDepartment", script, true);
                 }
             }
         }
@@ -50,6 +62,17 @@ namespace Portal.Pages.Journal.Accessories
                     e.Cancel = false;
                 }
             }
+        }
+
+        protected void ASPxGridViewAccessoriesDepartment_CellEditorInitialize(object sender, DevExpress.Web.ASPxGridViewEditorEventArgs e)
+        {
+            if (e.Column.FieldName == "DepartmentId")
+                e.Editor.SetClientSideEventHandler("Init", "function(s, e) { setTimeout(function() {s.Focus();}, 0); }");
+        }
+
+        protected void ASPxGridViewAccessoriesDepartment_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            e.NewValues["AccessoriesTypeId"] = Session["AccessoriesTypeId"];
         }
     }
 }

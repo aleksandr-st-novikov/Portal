@@ -19,7 +19,7 @@
             </PanelCollection>
         </dx:ASPxPanel>
 
-        <dx:ASPxGridView ID="ASPxGridViewAccessoriesProduct" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceAccessoriesProduct" KeyFieldName="Id" Width="900px" ClientInstanceName="ASPxClientGridViewAccessoriesProduct" OnInitNewRow="ASPxGridViewAccessoriesProduct_InitNewRow" OnRowDeleting="ASPxGridViewAccessoriesProduct_RowDeleting" OnRowInserting="ASPxGridViewAccessoriesProduct_RowInserting">
+        <dx:ASPxGridView ID="ASPxGridViewAccessoriesProduct" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceAccessoriesProduct" KeyFieldName="Id" Width="900px" ClientInstanceName="ASPxClientGridViewAccessoriesProduct" OnInitNewRow="ASPxGridViewAccessoriesProduct_InitNewRow" OnRowDeleting="ASPxGridViewAccessoriesProduct_RowDeleting" OnRowInserting="ASPxGridViewAccessoriesProduct_RowInserting" OnCellEditorInitialize="ASPxGridViewAccessoriesProduct_CellEditorInitialize" OnRowUpdating="ASPxGridViewAccessoriesProduct_RowUpdating">
             <SettingsPager PageSize="50">
             </SettingsPager>
             <SettingsEditing Mode="PopupEditForm">

@@ -24,6 +24,20 @@ namespace Portal.Pages.Journal.Accessories
                         ASPxComboBoxAccessoriesType.Text = at.Name;
                     }
                 }
+
+                if (!ClientScript.IsStartupScriptRegistered("onKeyDownAccessoriesProduct"))
+                {
+                    string script = @"
+                        document.onkeydown = onKeyDownAccessoriesProduct;
+                        function onKeyDownAccessoriesProduct() {
+                            if (event.keyCode == 13) {
+                                if (ASPxClientGridViewAccessoriesProduct.IsEditing())
+                                ASPxClientGridViewAccessoriesProduct.UpdateEdit();
+                            }
+                        }";
+
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "onKeyDownAccessoriesProduct", script, true);
+                }
             }
         }
 
@@ -56,6 +70,17 @@ namespace Portal.Pages.Journal.Accessories
             e.NewValues["IsActive"] = true;
             e.NewValues["Unit"] = "шт.";
             e.NewValues["QuantityPerOne"] = 1;
+        }
+
+        protected void ASPxGridViewAccessoriesProduct_CellEditorInitialize(object sender, DevExpress.Web.ASPxGridViewEditorEventArgs e)
+        {
+            if (e.Column.FieldName == "Name")
+                e.Editor.SetClientSideEventHandler("Init", "function(s, e) { setTimeout(function() {s.Focus();}, 0); }");
+        }
+
+        protected void ASPxGridViewAccessoriesProduct_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            e.NewValues["AccessoriesTypeId"] = Session["AccessoriesTypeId"];
         }
     }
 }

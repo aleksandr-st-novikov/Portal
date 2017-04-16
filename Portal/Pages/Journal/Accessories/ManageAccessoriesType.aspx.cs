@@ -12,7 +12,22 @@ namespace Portal.Pages.Journal.Accessories
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack && !Page.IsCallback)
+            {
+                if (!ClientScript.IsStartupScriptRegistered("onKeyDownAccessoriesType"))
+                {
+                    string script = @"
+                        document.onkeydown = onKeyDownAccessoriesType;
+                        function onKeyDownAccessoriesType() {
+                            if (event.keyCode == 13) {
+                                if (ASPxClientGridViewAccessoriesType.IsEditing())
+                                ASPxClientGridViewAccessoriesType.UpdateEdit();
+                            }
+                        }";
 
+                    Page.ClientScript.RegisterStartupScript(this.GetType(),"onKeyDownAccessoriesType", script, true);
+                }
+            }
         }
 
         protected void ASPxGridViewAccessoriesType_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -26,6 +41,12 @@ namespace Portal.Pages.Journal.Accessories
                     e.Cancel = false;
                 }
             }
+        }
+
+        protected void ASPxGridViewAccessoriesType_CellEditorInitialize(object sender, DevExpress.Web.ASPxGridViewEditorEventArgs e)
+        {
+            if (e.Column.FieldName == "Name")
+                e.Editor.SetClientSideEventHandler("Init", "function(s, e) { setTimeout(function() {s.Focus();}, 0); }");
         }
     }
 }

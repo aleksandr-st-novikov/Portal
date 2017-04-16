@@ -202,13 +202,13 @@ namespace Portal.Pages.Journal.Transport {
         protected global::DevExpress.Web.ASPxButton ASPxButton2;
         
         /// <summary>
-        /// ASPxButton3 control.
+        /// ASPxButtonAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton3;
+        protected global::DevExpress.Web.ASPxButton ASPxButtonAdd;
         
         /// <summary>
         /// TransportReportViewPopup control.
