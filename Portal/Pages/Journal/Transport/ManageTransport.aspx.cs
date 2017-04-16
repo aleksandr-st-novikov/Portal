@@ -117,7 +117,7 @@ namespace Portal.Pages.Journal.Transport
                     {
                         EmployeeId = Convert.ToInt32(ASPxComboBoxEmployee.Value),
                         DateTransport = Convert.ToDateTime(ASPxDateEditTransport.Value),
-                        Address = Convert.ToString(ASPxTextBoxAddress.Value)
+                        Address = Convert.ToString(ASPxComboBoxAddress.Value)
                     };
                     await context.AddTransportAsync(transport);
                     await context.SaveChangesAsync();

@@ -238,13 +238,16 @@
                             </tr>
                             <tr>
                                 <td colspan="2" style="padding-top: 10px;">
-                                    <dx:ASPxTextBox ID="ASPxTextBoxAddress" runat="server" Width="100%" Caption="Адрес" EnableClientSideAPI="True">
+                                    <dx:ASPxComboBox ID="ASPxComboBoxAddress" runat="server" Caption="Адрес" DataSourceID="SqlDataSourceAddress" DropDownStyle="DropDown" TextField="Address" ValueField="Address" Width="100%">
+                                        <DropDownButton ClientVisible="False" Enabled="False" Visible="False">
+                                        </DropDownButton>
                                         <CaptionCellStyle Width="60px">
                                         </CaptionCellStyle>
                                         <ValidationSettings ValidationGroup="FormAddValidationGroup" Display="Dynamic" ErrorTextPosition="Bottom" ErrorDisplayMode="Text">
                                             <RequiredField ErrorText="Вы не указали адрес." IsRequired="true" />
                                         </ValidationSettings>
-                                    </dx:ASPxTextBox>
+                                    </dx:ASPxComboBox>
+                                    <asp:SqlDataSource ID="SqlDataSourceAddress" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT DISTINCT [Address] FROM [Transport] ORDER BY [Address]"></asp:SqlDataSource>
                                 </td>
                             </tr>
                         </table>

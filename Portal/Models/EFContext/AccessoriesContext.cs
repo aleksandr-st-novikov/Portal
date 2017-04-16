@@ -26,6 +26,15 @@ namespace Portal.Models.EFContext
             return res;
         }
 
+        internal async Task<int> GetDepartmentAsync(int employeeId)
+        {
+            var res = await (from a in context.Accessories
+                      join ad in context.AccessoriesDepartment on a.AccessoriesDepartmentId equals ad.Id
+                      where ad.EmployeeId == employeeId
+                      select ad.Id).FirstOrDefaultAsync();
+            return res;
+        }
+
         internal async Task<AccessoriesType> getFirstAccessoriesTypeAsync()
         {
             return await context.AccessoriesType.OrderBy(a => a.Id).FirstOrDefaultAsync();

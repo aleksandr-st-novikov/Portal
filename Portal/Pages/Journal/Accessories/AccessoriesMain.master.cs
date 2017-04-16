@@ -53,7 +53,7 @@ namespace Portal {
                     Text = "Категории принадлежностей",
                     NavigateUrl = "~/Pages/Journal/Accessories/ManageAccessoriesType.aspx"
                 };
-                itemAccessoriesType.Image.IconID = "miscellaneous_design_16x16office2013";
+                itemAccessoriesType.Image.IconID = "reports_groupfieldcollection_16x16office2013";
                 groupAccessories.Items.Add(itemAccessoriesType);
 
                 DevExpress.Web.NavBarItem itemAccessoriesDepartment = new DevExpress.Web.NavBarItem()
@@ -62,7 +62,7 @@ namespace Portal {
                     Text = "Подразделения",
                     NavigateUrl = "~/Pages/Journal/Accessories/ManageAccessoriesDepartment.aspx"
                 };
-                itemAccessoriesDepartment.Image.IconID = "miscellaneous_design_16x16office2013";
+                itemAccessoriesDepartment.Image.IconID = "actions_newitem_16x16devav";
                 groupAccessories.Items.Add(itemAccessoriesDepartment);
             }
 
