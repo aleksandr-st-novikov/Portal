@@ -39,5 +39,17 @@ namespace Portal.Pages.Journal.Accessories
             Session["AccessoriesTypeId"] = ASPxComboBoxAccessoriesType.Value;
         }
 
+        protected void ASPxGridViewAccessoriesDepartment_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            e.Cancel = true;
+            int id = (int)e.Values[0];
+            using (AccessoriesContext accessoriesContext = new AccessoriesContext())
+            {
+                if (!accessoriesContext.CheckDeleteAccessoriesDepartment(id))
+                {
+                    e.Cancel = false;
+                }
+            }
+        }
     }
 }

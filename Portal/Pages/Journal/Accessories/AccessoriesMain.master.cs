@@ -26,15 +26,27 @@ namespace Portal {
             if (Context.User.IsInRole("Администраторы")
                 || Context.User.IsInRole("Заявка на принадлежности - Управление"))
             {
-                DevExpress.Web.NavBarItem itemManageStock = new DevExpress.Web.NavBarItem()
+                DevExpress.Web.NavBarItem itemAccessoriesProduct = new DevExpress.Web.NavBarItem()
                 {
                     Index = 1,
-                    Text = "Ассортимент товара",
-                    NavigateUrl = "~/Pages/Journal/Accessories/ManageStock.aspx"
+                    Text = "Ассортимент продукции",
+                    NavigateUrl = "~/Pages/Journal/Accessories/ManageAccessoriesProduct.aspx"
                 };
-                itemManageStock.Image.IconID = "miscellaneous_design_16x16office2013";
-                groupAccessories.Items.Add(itemManageStock);
+                itemAccessoriesProduct.Image.IconID = "miscellaneous_design_16x16office2013";
+                groupAccessories.Items.Add(itemAccessoriesProduct);
 
+                //DevExpress.Web.NavBarItem itemManageStock = new DevExpress.Web.NavBarItem()
+                //{
+                //    Index = 1,
+                //    Text = "Ассортимент товара",
+                //    NavigateUrl = "~/Pages/Journal/Accessories/ManageStock.aspx"
+                //};
+                //itemManageStock.Image.IconID = "miscellaneous_design_16x16office2013";
+                //groupAccessories.Items.Add(itemManageStock);
+            }
+
+            if (Context.User.IsInRole("Администраторы"))
+            {
                 DevExpress.Web.NavBarItem itemAccessoriesType = new DevExpress.Web.NavBarItem()
                 {
                     Index = 2,

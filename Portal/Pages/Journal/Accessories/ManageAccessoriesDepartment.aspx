@@ -28,7 +28,7 @@
                 </dx:PanelContent>
             </PanelCollection>
         </dx:ASPxPanel>
-        <dx:ASPxGridView ID="ASPxGridViewAccessoriesDepartment" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceAccessoriesDepartment" KeyFieldName="Id" Width="900px" OnRowInserting="ASPxGridViewAccessoriesDepartment_RowInserting" ClientInstanceName="ASPxClientGridViewAccessoriesDepartment">
+        <dx:ASPxGridView ID="ASPxGridViewAccessoriesDepartment" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceAccessoriesDepartment" KeyFieldName="Id" Width="900px" OnRowInserting="ASPxGridViewAccessoriesDepartment_RowInserting" ClientInstanceName="ASPxClientGridViewAccessoriesDepartment" OnRowDeleting="ASPxGridViewAccessoriesDepartment_RowDeleting">
             <SettingsEditing Mode="PopupEditForm">
             </SettingsEditing>
             <SettingsBehavior ConfirmDelete="True" />

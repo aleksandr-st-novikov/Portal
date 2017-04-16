@@ -15,7 +15,7 @@ namespace Portal.Models.EFContext
         /// </summary>
         /// <param name="accessoriesTypeId"></param>
         /// <returns>true, если можно удялять</returns>
-        public async Task<bool> CheckDeleteAccessoriesTypeAsync(int accessoriesTypeId)
+        internal async Task<bool> CheckDeleteAccessoriesTypeAsync(int accessoriesTypeId)
         {
             bool res = false;
 
@@ -28,20 +28,30 @@ namespace Portal.Models.EFContext
 
         internal async Task<AccessoriesType> getFirstAccessoriesTypeAsync()
         {
-            AccessoriesType at = await context.AccessoriesType.OrderBy(a => a.Id).FirstOrDefaultAsync();
-            return at;
+            return await context.AccessoriesType.OrderBy(a => a.Id).FirstOrDefaultAsync();
         }
 
-        public bool CheckDeleteAccessoriesType(int accessoriesTypeId)
+        internal bool CheckDeleteAccessoriesType(int accessoriesTypeId)
         {
             bool res = false;
-
             if (context.Accessories.FirstOrDefault(a => a.AccessoriesTypeId == accessoriesTypeId) != null) res = true;
             if (context.AccessoriesProduct.FirstOrDefault(a => a.AccessoriesTypeId == accessoriesTypeId) != null) res = true;
             if (context.AccessoriesDepartment.FirstOrDefault(a => a.AccessoriesTypeId == accessoriesTypeId) != null) res = true;
-
             return res;
         }
 
+        internal bool CheckDeleteAccessoriesProduct(int accessoriesProductId)
+        {
+            bool res = false;
+            if (context.AccessoriesTable.FirstOrDefault(a => a.AccessoriesProductId == accessoriesProductId) != null) res = true;
+            return res;
+        }
+
+        internal bool CheckDeleteAccessoriesDepartment(int accessoriesDepartmentId)
+        {
+            bool res = false;
+            if (context.Accessories.FirstOrDefault(a => a.AccessoriesDepartmentId == accessoriesDepartmentId) != null) res = true;
+            return res;
+        }
     }
 }

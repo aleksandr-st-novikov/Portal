@@ -196,11 +196,11 @@
     <Content Include="Main.master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\Journal\Accessories\ManageAccessoriesProduct.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesDepartment.aspx" />
     <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
-    <Content Include="Pages\Journal\Accessories\ManageStock.aspx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
     <Content Include="Reports\DocumentView.aspx" />
     <Content Include="Reports\AdmissionReportViewPopup.ascx" />
@@ -530,6 +530,13 @@
       <DependentUpon>Main.master</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesProduct.aspx.cs">
+      <DependentUpon>ManageAccessoriesProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesProduct.aspx.designer.cs">
+      <DependentUpon>ManageAccessoriesProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Journal\Accessories\ManageAccessoriesDepartment.aspx.cs">
       <DependentUpon>ManageAccessoriesDepartment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -564,13 +571,6 @@
     </Compile>
     <Compile Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx.designer.cs">
       <DependentUpon>ManageAccessoriesType.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Journal\Accessories\ManageStock.aspx.cs">
-      <DependentUpon>ManageStock.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Journal\Accessories\ManageStock.aspx.designer.cs">
-      <DependentUpon>ManageStock.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Journal\Accessories\AccessoriesMain.master.cs">
       <DependentUpon>AccessoriesMain.master</DependentUpon>
