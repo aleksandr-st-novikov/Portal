@@ -1,4 +1,5 @@
 ﻿using Portal.Models.Entities;
+using Portal.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -26,12 +27,13 @@ namespace Portal.Models.EFContext
             return res;
         }
 
-        internal async Task<int> GetDepartmentAsync(int employeeId)
+        internal async Task<AccessoriesDepartmentViewModel> GetDepartmentAsync(int employeeId)
         {
-            var res = await (from a in context.Accessories
-                      join ad in context.AccessoriesDepartment on a.AccessoriesDepartmentId equals ad.Id
-                      where ad.EmployeeId == employeeId
-                      select ad.Id).FirstOrDefaultAsync();
+            AccessoriesDepartmentViewModel res = await (from ad in context.AccessoriesDepartment
+                                                        join d in context.Department on ad.DepartmentId equals d.Id
+                                                        where ad.EmployeeId == employeeId
+                                                        select new AccessoriesDepartmentViewModel { Id = ad.Id, Name = d.Name, ShortName = d.ShortName })
+                                                        .FirstOrDefaultAsync();
             return res;
         }
 

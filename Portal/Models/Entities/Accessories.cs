@@ -30,7 +30,8 @@ namespace Portal.Models.Entities
         public virtual Accessories Accessories { get; set; }
         public int AccessoriesProductId { get; set; }
         public virtual AccessoriesProduct AccessoriesProduct { get; set; }
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
+        public int? QuantityAgreed { get; set; }
     }
 
     public class AccessoriesType

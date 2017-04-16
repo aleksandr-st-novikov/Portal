@@ -88,14 +88,6 @@
                 <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" VisibleIndex="1" Visible="False">
                     <EditFormSettings Visible="False" />
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="Address" VisibleIndex="6" Caption="Адрес" Width="300">
-                    <PropertiesTextEdit MaxLength="300">
-                        <ValidationSettings>
-                            <RequiredField ErrorText="Обязательное поле." IsRequired="True" />
-                        </ValidationSettings>
-                    </PropertiesTextEdit>
-                    <EditFormSettings ColumnSpan="2" />
-                </dx:GridViewDataTextColumn>
                 <dx:GridViewDataDateColumn FieldName="DateTransport" VisibleIndex="2" Caption="Дата" Width="80">
                     <PropertiesDateEdit>
                         <ValidationSettings>
@@ -103,17 +95,27 @@
                         </ValidationSettings>
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
-                <dx:GridViewDataComboBoxColumn Caption="Сотрудник" FieldName="EmployeeId" VisibleIndex="5" Width="370">
+                <dx:GridViewDataComboBoxColumn Caption="Сотрудник" FieldName="EmployeeId" VisibleIndex="4" Width="370">
                     <PropertiesComboBox DataSourceID="SqlDataSourceEmployeeHeadDepartment" TextField="FIO" ValueField="Id">
                         <ValidationSettings>
                             <RequiredField ErrorText="Обязательное поле." IsRequired="True" />
                         </ValidationSettings>
                     </PropertiesComboBox>
                 </dx:GridViewDataComboBoxColumn>
-                <dx:GridViewDataComboBoxColumn Caption="Подразделение" FieldName="DepartmentId" VisibleIndex="4" Width="200" Name="DepartmentId">
+                <dx:GridViewDataComboBoxColumn Caption="Подразделение" FieldName="DepartmentId" VisibleIndex="3" Width="200" Name="DepartmentId">
                     <PropertiesComboBox DataSourceID="SqlDataSourceDepartment" TextField="ShortName" ValueField="Id">
                     </PropertiesComboBox>
                     <EditFormSettings Visible="False" />
+                </dx:GridViewDataComboBoxColumn>
+                <dx:GridViewDataComboBoxColumn Caption="Адрес" FieldName="Address" VisibleIndex="5" Width="300px">
+                    <PropertiesComboBox DataSourceID="SqlDataSourceAddress" DropDownStyle="DropDown" MaxLength="300" TextField="Address" ValueField="Address">
+                        <DropDownButton ClientVisible="False" Enabled="False" Visible="False">
+                        </DropDownButton>
+                        <ValidationSettings>
+                            <RequiredField ErrorText="Обязательное поле." IsRequired="True" />
+                        </ValidationSettings>
+                    </PropertiesComboBox>
+                    <EditFormSettings ColumnSpan="2" />
                 </dx:GridViewDataComboBoxColumn>
             </Columns>
             <FormatConditions>
@@ -250,7 +252,6 @@
                                             <RequiredField ErrorText="Вы не указали адрес." IsRequired="true" />
                                         </ValidationSettings>
                                     </dx:ASPxComboBox>
-                                    <asp:SqlDataSource ID="SqlDataSourceAddress" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT DISTINCT [Address] FROM [Transport] ORDER BY [Address]"></asp:SqlDataSource>
                                 </td>
                             </tr>
                         </table>
@@ -271,12 +272,14 @@
                                         }
                                     }" />
                                 </dx:ASPxButton>
+                                
                             </dx:PanelContent>
                         </PanelCollection>
                     </dx:ASPxPanel>
                 </dx:PopupControlContentControl>
             </ContentCollection>
         </dx:ASPxPopupControl>
+        <asp:SqlDataSource ID="SqlDataSourceAddress" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT DISTINCT [Address] FROM [Transport] ORDER BY [Address]"></asp:SqlDataSource>
     </div>
 
     <uc:TransportReportViewPopup ID="TransportReportViewPopup" runat="server" />

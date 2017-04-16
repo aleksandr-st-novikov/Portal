@@ -31,6 +31,15 @@ namespace Portal.Pages.Journal.Accessories {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAccessoriesType;
         
         /// <summary>
+        /// SqlDataSourceAccessoriesProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAccessoriesProduct;
+        
+        /// <summary>
         /// ASPxPanel1 control.
         /// </summary>
         /// <remarks>
@@ -74,5 +83,23 @@ namespace Portal.Pages.Journal.Accessories {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
+        
+        /// <summary>
+        /// SqlDataSourceAccessories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAccessories;
+        
+        /// <summary>
+        /// AccessoriesTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Pages.Journal.Accessories.AccessoriesTable AccessoriesTable;
     }
 }
