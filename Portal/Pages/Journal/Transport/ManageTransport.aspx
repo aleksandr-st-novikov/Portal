@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Journal/Transport/TransportMain.master" Async="true" AutoEventWireup="true" CodeBehind="ManageTransport.aspx.cs" Inherits="Portal.Pages.Journal.Transport.ManageTransport" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Journal/Transport/TransportMain.master" Async="true" AutoEventWireup="false" CodeBehind="ManageTransport.aspx.cs" Inherits="Portal.Pages.Journal.Transport.ManageTransport" %>
 
 <%@ Register TagPrefix="uc" TagName="TransportReportViewPopup" Src="~/Reports/TransportReportViewPopup.ascx" %>
 
