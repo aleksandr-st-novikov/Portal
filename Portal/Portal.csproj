@@ -156,6 +156,7 @@
     <Content Include="Content\Append.css" />
     <Content Include="Content\Images\login-back.jpg" />
     <Content Include="Content\Images\logo-x2.png" />
+    <Content Include="favicon.ico" />
     <Content Include="Pages\Account\AddPhoneNumber.aspx" />
     <Content Include="Pages\Account\ChangePassword.aspx" />
     <Content Include="Pages\Account\ChangePasswordSuccess.aspx" />
@@ -751,6 +752,10 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -758,7 +763,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>34287</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

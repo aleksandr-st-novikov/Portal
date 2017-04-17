@@ -8,6 +8,8 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="Content/Site.css" />
     <link rel="stylesheet" type="text/css" href="Content/Append.css" />
+    <link rel="shortcut icon" href="/portal/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/portal/favicon.ico" type="image/x-icon"/>
 </head>
 <body runat="server" id="Body">
     <form id="form1" runat="server">

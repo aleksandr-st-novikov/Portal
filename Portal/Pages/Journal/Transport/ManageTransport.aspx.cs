@@ -120,6 +120,7 @@ namespace Portal.Pages.Journal.Transport
                     Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
                 }
             }
+            ASPxComboBoxAddress.DataBind();
         }
 
         protected async void ASPxCallbackAdd_Callback(object source, DevExpress.Web.CallbackEventArgs e)
