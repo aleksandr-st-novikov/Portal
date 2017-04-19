@@ -13,6 +13,15 @@ namespace Portal.Pages.Journal.Transport {
     public partial class ManageTransport {
         
         /// <summary>
+        /// ScriptManagerTransport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManagerTransport;
+        
+        /// <summary>
         /// ASPxLabelDepartment control.
         /// </summary>
         /// <remarks>

@@ -1,8 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Journal/Transport/TransportMain.master" Async="true" AutoEventWireup="false" CodeBehind="ManageTransport.aspx.cs" Inherits="Portal.Pages.Journal.Transport.ManageTransport" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Journal/Transport/TransportMain.master" Async="true" AutoEventWireup="true" CodeBehind="ManageTransport.aspx.cs" Inherits="Portal.Pages.Journal.Transport.ManageTransport" %>
 
 <%@ Register TagPrefix="uc" TagName="TransportReportViewPopup" Src="~/Reports/TransportReportViewPopup.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ScriptManager ID="ScriptManagerTransport" runat="server">
+    </asp:ScriptManager>
     <div class="content">
         <div style="margin-bottom: 10px;">
             <dx:ASPxLabel ID="ASPxLabelDepartment" runat="server" Font-Size="Large">
@@ -213,7 +215,7 @@
                 ASPxClientGridViewHeadDepartment.Refresh();
             }" />
         </dx:ASPxCallback>
-        <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+        <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"
             SelectCommand="SELECT [Id], [Name], ISNULL([ShortName],[Name]) AS [ShortName] FROM [Department] ORDER BY [Name], [ShortName]"></asp:SqlDataSource>
         <dx:ASPxPopupControl ID="ASPxPopupControlAddRecord" runat="server" AllowDragging="True" ClientInstanceName="ASPxClientPopupControlAddRecord" CloseOnEscape="True" HeaderText="Добавить запись" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="200" Width="700px">
             <ClientSideEvents Shown="function(s, e) {
@@ -272,7 +274,7 @@
                                         }
                                     }" />
                                 </dx:ASPxButton>
-                                
+
                             </dx:PanelContent>
                         </PanelCollection>
                     </dx:ASPxPanel>

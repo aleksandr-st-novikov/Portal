@@ -12,10 +12,10 @@ namespace Portal.Pages.Journal.Transport
 {
     public partial class ManageTransport : System.Web.UI.Page
     {
-        protected override void OnInit(EventArgs e)
-        {
-            this.Load += Page_Load;
-        }
+        //protected override void OnInit(EventArgs e)
+        //{
+        //    this.Load += Page_Load;
+        //}
 
         protected async void Page_Load(object sender, EventArgs e)
         {

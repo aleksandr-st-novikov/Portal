@@ -154,6 +154,7 @@
       <DependentUpon>aspnetdb.mdf</DependentUpon>
     </Content>
     <Content Include="Content\Append.css" />
+    <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\login-back.jpg" />
     <Content Include="Content\Images\logo-x2.png" />
     <Content Include="favicon.ico" />
