@@ -18,7 +18,8 @@
                 <dx:PanelContent runat="server">
                     <dx:ASPxComboBox ID="ASPxComboBoxAccessoriesType" runat="server" DataSourceID="SqlDataSourceAccessoriesType" TextField="Name" ValueField="Id" Width="400px" Caption="Выберите категорию">
                         <ClientSideEvents SelectedIndexChanged="function(s, e) {
-                            ASPxClientCallbackRefreshGrid.PerformCallback();
+                            if(!ASPxClientCallbackRefreshGrid.InCallback())
+                                ASPxClientCallbackRefreshGrid.PerformCallback();
 	                        ASPxClientGridViewAccessoriesProduct.Refresh();
                         }" />
                     </dx:ASPxComboBox>
@@ -34,8 +35,9 @@
                 <dx:PanelContent runat="server">
                     <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" Text="Создать заявку">
                         <ClientSideEvents Click="function(s, e) {
-                ASPxClientCallbackPanelShowPopup.PerformCallback();
-}" />
+                            if(!ASPxClientCallbackPanelShowPopup.InCallback())
+                                ASPxClientCallbackPanelShowPopup.PerformCallback();
+                        }" />
                     </dx:ASPxButton>
                 </dx:PanelContent>
             </PanelCollection>

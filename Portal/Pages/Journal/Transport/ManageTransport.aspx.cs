@@ -12,11 +12,6 @@ namespace Portal.Pages.Journal.Transport
 {
     public partial class ManageTransport : System.Web.UI.Page
     {
-        //protected override void OnInit(EventArgs e)
-        //{
-        //    this.Load += Page_Load;
-        //}
-
         protected async void Page_Load(object sender, EventArgs e)
         {
             if (!(User.IsInRole("Администраторы")
@@ -60,6 +55,11 @@ namespace Portal.Pages.Journal.Transport
                         ASPxDateEditTransport.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
                     }
                 }
+                else
+                {
+                    ASPxDateEditTransport.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                }
+
 
                 if ((User.IsInRole("Администраторы")
                     || User.IsInRole("Транспорт - Служебный вход")))
@@ -130,7 +130,7 @@ namespace Portal.Pages.Journal.Transport
 
         protected async void ASPxCallbackAdd_Callback(object source, DevExpress.Web.CallbackEventArgs e)
         {
-            if (Page.IsValid)
+            if (Page.IsValid && ASPxCallbackAdd.IsCallback)
             {
                 using (TransportContext context = new TransportContext())
                 {
@@ -148,8 +148,11 @@ namespace Portal.Pages.Journal.Transport
 
         protected void ASPxCallbackRefreshData_Callback(object source, DevExpress.Web.CallbackEventArgs e)
         {
-            Session["DateFrom"] = Convert.ToDateTime(((DateTime)ASPxDateEditGridFrom.Value).ToString("yyyy-MM-dd 00:00:00"));
-            Session["DateTo"] = Convert.ToDateTime(((DateTime)ASPxDateEditGridTo.Value).ToString("yyyy-MM-dd 00:00:00"));
+            if (ASPxCallbackRefreshData.IsCallback)
+            {
+                Session["DateFrom"] = Convert.ToDateTime(((DateTime)ASPxDateEditGridFrom.Value).ToString("yyyy-MM-dd 00:00:00"));
+                Session["DateTo"] = Convert.ToDateTime(((DateTime)ASPxDateEditGridTo.Value).ToString("yyyy-MM-dd 00:00:00"));
+            }
         }
 
         protected void SqlDataSourceEmployeeHeadDepartment_Init(object sender, EventArgs e)
@@ -164,26 +167,54 @@ namespace Portal.Pages.Journal.Transport
 
         protected void ASPxGridViewHeadDepartment_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
-            if (!User.IsInRole("Администраторы"))
-            {
-                TimeSpan start = new TimeSpan(0, 0, 0);
-                TimeSpan end = new TimeSpan(5, 0, 0);
-                TimeSpan now = DateTime.Now.TimeOfDay;
+            //if (!User.IsInRole("Администраторы"))
+            //{
+            //    TimeSpan start = new TimeSpan(0, 0, 0);
+            //    TimeSpan end = new TimeSpan(5, 0, 0);
+            //    TimeSpan now = DateTime.Now.TimeOfDay;
 
-                if ((now > start) && (now < end))
+            //    if ((now > start) && (now < end))
+            //    {
+            //        if (e.Column.FieldName == "DateTransport")
+            //            (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.AddDays(-1).Year, DateTime.Now.AddDays(-1).Month, DateTime.Now.AddDays(-1).Day, 0, 0, 0);
+            //    }
+            //    else
+            //    {
+            //        if (e.Column.FieldName == "DateTransport")
+            //            (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+            //    }
+            //}
+
+            //if (e.Column.FieldName == "DateTransport")
+            //    e.Editor.SetClientSideEventHandler("Init", "function(s, e) { setTimeout(function() {s.Focus();}, 0); }");
+        }
+
+        protected void ASPxCallbackPanelPopup_Callback(object sender, CallbackEventArgsBase e)
+        {
+            if (ASPxCallbackPanelPopup.IsCallback)
+            {
+                if (!User.IsInRole("Администраторы"))
                 {
-                    if (e.Column.FieldName == "DateTransport")
-                        (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.AddDays(-1).Year, DateTime.Now.AddDays(-1).Month, DateTime.Now.AddDays(-1).Day, 0, 0, 0);
+                    TimeSpan start = new TimeSpan(0, 0, 0);
+                    TimeSpan end = new TimeSpan(5, 0, 0);
+                    TimeSpan now = DateTime.Now.TimeOfDay;
+
+                    if ((now > start) && (now < end))
+                    {
+                        ASPxDateEditTransport.MinDate = new DateTime(DateTime.Now.AddDays(-1).Year, DateTime.Now.AddDays(-1).Month, DateTime.Now.AddDays(-1).Day, 0, 0, 0);
+                    }
+                    else
+                    {
+                        ASPxDateEditTransport.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                    }
                 }
                 else
                 {
-                    if (e.Column.FieldName == "DateTransport")
-                        (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                    ASPxDateEditTransport.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
                 }
+                //ASPxDateEditTransport.SetClientSideEventHandler("Init", "function(s, e) { setTimeout(function() {s.Focus();}, 0); }");
             }
-
-            if (e.Column.FieldName == "DateTransport")
-                e.Editor.SetClientSideEventHandler("Init", "function(s, e) { setTimeout(function() {s.Focus();}, 0); }");
         }
+
     }
 }

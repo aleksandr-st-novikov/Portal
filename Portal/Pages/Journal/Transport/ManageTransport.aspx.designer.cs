@@ -148,6 +148,15 @@ namespace Portal.Pages.Journal.Transport {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDepartment;
         
         /// <summary>
+        /// ASPxCallbackPanelPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallbackPanel ASPxCallbackPanelPopup;
+        
+        /// <summary>
         /// ASPxPopupControlAddRecord control.
         /// </summary>
         /// <remarks>

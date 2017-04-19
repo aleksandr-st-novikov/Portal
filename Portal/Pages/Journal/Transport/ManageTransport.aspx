@@ -17,7 +17,7 @@
         </div>
         <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Добавить запись" AutoPostBack="False">
             <ClientSideEvents Click="function(s, e) {
-	            ASPxClientPopupControlAddRecord.Show();
+                ASPxClientCallbackPanelPopup.PerformCallback();
             }" />
             <Image IconID="actions_driving_16x16devav">
             </Image>
@@ -217,70 +217,83 @@
         </dx:ASPxCallback>
         <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"
             SelectCommand="SELECT [Id], [Name], ISNULL([ShortName],[Name]) AS [ShortName] FROM [Department] ORDER BY [Name], [ShortName]"></asp:SqlDataSource>
-        <dx:ASPxPopupControl ID="ASPxPopupControlAddRecord" runat="server" AllowDragging="True" ClientInstanceName="ASPxClientPopupControlAddRecord" CloseOnEscape="True" HeaderText="Добавить запись" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="200" Width="700px">
-            <ClientSideEvents Shown="function(s, e) {
-	ASPxClientDateEditTransport.Focus();
-}" />
-            <ContentCollection>
-                <dx:PopupControlContentControl runat="server">
-                    <div id="clientContainer">
-                        <table style="width: 100%; margin: 15px 0 20px 0;">
-                            <tr style="vertical-align: top;">
-                                <td style="width: 40%;">
-                                    <dx:ASPxDateEdit ID="ASPxDateEditTransport" runat="server" Caption="Дата" ClientInstanceName="ASPxClientDateEditTransport">
-                                        <CaptionCellStyle Width="60px">
-                                        </CaptionCellStyle>
-                                        <ValidationSettings ValidationGroup="FormAddValidationGroup" Display="Dynamic" ErrorTextPosition="Bottom" ErrorDisplayMode="Text" SetFocusOnError="True">
-                                            <RequiredField ErrorText="Дата не указана." IsRequired="true" />
-                                        </ValidationSettings>
-                                    </dx:ASPxDateEdit>
-                                </td>
-                                <td style="width: 60%;">
-                                    <dx:ASPxComboBox ID="ASPxComboBoxEmployee" runat="server" ValueType="System.String" Caption="Сотрудник" Width="100%" DataSourceID="SqlDataSourceEmployeeHeadDepartment" TextField="FIO" ValueField="Id" EnableClientSideAPI="True">
-                                        <ValidationSettings ValidationGroup="FormAddValidationGroup" Display="Dynamic" ErrorTextPosition="Bottom" ErrorDisplayMode="Text">
-                                            <RequiredField ErrorText="Сотрудник не указан." IsRequired="true" />
-                                        </ValidationSettings>
-                                    </dx:ASPxComboBox>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="padding-top: 10px;">
-                                    <dx:ASPxComboBox ID="ASPxComboBoxAddress" runat="server" Caption="Адрес" DataSourceID="SqlDataSourceAddress" DropDownStyle="DropDown" TextField="Address" ValueField="Address" Width="100%">
-                                        <DropDownButton ClientVisible="False" Enabled="False" Visible="False">
-                                        </DropDownButton>
-                                        <CaptionCellStyle Width="60px">
-                                        </CaptionCellStyle>
-                                        <ValidationSettings ValidationGroup="FormAddValidationGroup" Display="Dynamic" ErrorTextPosition="Bottom" ErrorDisplayMode="Text">
-                                            <RequiredField ErrorText="Вы не указали адрес." IsRequired="true" />
-                                        </ValidationSettings>
-                                    </dx:ASPxComboBox>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <dx:ASPxPanel ID="ASPxPanel1" runat="server" RightToLeft="True" Width="100%">
-                        <PanelCollection>
-                            <dx:PanelContent runat="server">
-                                <dx:ASPxButton ID="ASPxButton2" runat="server" AutoPostBack="False" Text="Отмена">
-                                    <ClientSideEvents Click="function(s, e) {
-	                                    ASPxClientPopupControlAddRecord.Hide();
-                                    }" />
-                                </dx:ASPxButton>
-                                <dx:ASPxButton ID="ASPxButtonAdd" runat="server" AutoPostBack="False" Text="Сохранить" ValidationGroup="FormAddValidationGroup" ClientInstanceName="ASPxClientButtonAdd">
-                                    <ClientSideEvents Click="function(s, e) {
-                                        if(ASPxClientEdit.AreEditorsValid())
-                                        {
-                                            ASPxClientCallbackAdd.PerformCallback(); 
-                                        }
-                                    }" />
-                                </dx:ASPxButton>
 
-                            </dx:PanelContent>
-                        </PanelCollection>
-                    </dx:ASPxPanel>
-                </dx:PopupControlContentControl>
-            </ContentCollection>
-        </dx:ASPxPopupControl>
+        <dx:ASPxCallbackPanel ID="ASPxCallbackPanelPopup" runat="server" Width="100%" ClientInstanceName="ASPxClientCallbackPanelPopup" OnCallback="ASPxCallbackPanelPopup_Callback">
+            <SettingsLoadingPanel Enabled="False" />
+            <ClientSideEvents EndCallback="function(s, e) {
+	            ASPxClientPopupControlAddRecord.Show();
+            }" />
+            <PanelCollection>
+                <dx:PanelContent runat="server">
+                    <dx:ASPxPopupControl ID="ASPxPopupControlAddRecord" runat="server" AllowDragging="True" ClientInstanceName="ASPxClientPopupControlAddRecord" CloseOnEscape="True" HeaderText="Добавить запись" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="200" Width="700px">
+                        <ClientSideEvents Shown="function(s, e) {
+	                        //ASPxClientDateEditTransport.Focus();
+                        }" PopUp="function(s, e) {
+	//ASPxClientDateEditTransport.Focus();
+}" />
+                        <ContentCollection>
+                            <dx:PopupControlContentControl runat="server">
+                                <div id="clientContainer">
+                                    <table style="width: 100%; margin: 15px 0 20px 0;">
+                                        <tr style="vertical-align: top;">
+                                            <td style="width: 40%;">
+                                                <dx:ASPxDateEdit ID="ASPxDateEditTransport" runat="server" Caption="Дата" ClientInstanceName="ASPxClientDateEditTransport">
+                                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="Text" ErrorTextPosition="Bottom" SetFocusOnError="True" ValidationGroup="FormAddValidationGroup">
+                                                        <RequiredField ErrorText="Дата не указана." IsRequired="True" />
+                                                    </ValidationSettings>
+                                                    <CaptionCellStyle Width="60px">
+                                                    </CaptionCellStyle>
+                                                </dx:ASPxDateEdit>
+                                            </td>
+                                            <td style="width: 60%;">
+                                                <dx:ASPxComboBox ID="ASPxComboBoxEmployee" runat="server" Caption="Сотрудник" DataSourceID="SqlDataSourceEmployeeHeadDepartment" EnableClientSideAPI="True" TextField="FIO" ValueField="Id" Width="100%">
+                                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="Text" ErrorTextPosition="Bottom" ValidationGroup="FormAddValidationGroup">
+                                                        <RequiredField ErrorText="Сотрудник не указан." IsRequired="True" />
+                                                    </ValidationSettings>
+                                                </dx:ASPxComboBox>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="padding-top: 10px;">
+                                                <dx:ASPxComboBox ID="ASPxComboBoxAddress" runat="server" Caption="Адрес" DataSourceID="SqlDataSourceAddress" DropDownStyle="DropDown" TextField="Address" ValueField="Address" Width="100%">
+                                                    <DropDownButton ClientVisible="False" Enabled="False" Visible="False">
+                                                    </DropDownButton>
+                                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="Text" ErrorTextPosition="Bottom" ValidationGroup="FormAddValidationGroup">
+                                                        <RequiredField ErrorText="Вы не указали адрес." IsRequired="True" />
+                                                    </ValidationSettings>
+                                                    <CaptionCellStyle Width="60px">
+                                                    </CaptionCellStyle>
+                                                </dx:ASPxComboBox>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <dx:ASPxPanel ID="ASPxPanel1" runat="server" RightToLeft="True" Width="100%">
+                                    <PanelCollection>
+                                        <dx:PanelContent runat="server">
+                                            <dx:ASPxButton ID="ASPxButton2" runat="server" AutoPostBack="False" Text="Отмена">
+                                                <ClientSideEvents Click="function(s, e) {
+	                                                ASPxClientPopupControlAddRecord.Hide();
+                                                }" />
+                                            </dx:ASPxButton>
+                                            <dx:ASPxButton ID="ASPxButtonAdd" runat="server" AutoPostBack="False" ClientInstanceName="ASPxClientButtonAdd" Text="Сохранить" ValidationGroup="FormAddValidationGroup">
+                                                <ClientSideEvents Click="function(s, e) {
+                                                    if(ASPxClientEdit.AreEditorsValid())
+                                                    {
+                                                        ASPxClientCallbackAdd.PerformCallback(); 
+                                                    }
+                                                }" />
+                                            </dx:ASPxButton>
+                                        </dx:PanelContent>
+                                    </PanelCollection>
+                                </dx:ASPxPanel>
+                            </dx:PopupControlContentControl>
+                        </ContentCollection>
+                    </dx:ASPxPopupControl>
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxCallbackPanel>
+
         <asp:SqlDataSource ID="SqlDataSourceAddress" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT DISTINCT [Address] FROM [Transport] ORDER BY [Address]"></asp:SqlDataSource>
     </div>
 
