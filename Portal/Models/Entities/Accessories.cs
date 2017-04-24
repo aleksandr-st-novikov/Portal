@@ -93,4 +93,10 @@ namespace Portal.Models.Entities
         public virtual AccessoriesType AccessoriesType { get; set; }
         public virtual ICollection<AccessoriesTable> AccessoriesTable { get; set; }
     }
+
+    public enum StatusAccessories
+    {
+        Created,
+        Agreed
+    }
 }

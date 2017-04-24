@@ -64,5 +64,74 @@ namespace Portal.Models.EFContext
             if (context.Accessories.FirstOrDefault(a => a.AccessoriesDepartmentId == accessoriesDepartmentId) != null) res = true;
             return res;
         }
+
+        internal int PopulateAccessoriesProduct(int departmentId, int typeId, DateTime dateAccessories)
+        {
+            //создаем заявку
+            Accessories accessories = new Accessories()
+            {
+                AccessoriesDepartmentId = departmentId,
+                AccessoriesTypeId = typeId,
+                DateDocument = dateAccessories,
+                Status = (int)StatusAccessories.Created
+            };
+            Accessories entry = context.Accessories.FirstOrDefault(a => a.AccessoriesDepartmentId == accessories.AccessoriesDepartmentId &&
+                a.AccessoriesTypeId == accessories.AccessoriesTypeId && a.DateDocument == accessories.DateDocument);
+            if (entry != null)
+            {
+                accessories = entry;
+            }
+            else
+            {
+                context.Accessories.Add(accessories);
+                context.SaveChanges();
+            }
+
+            if (accessories.Status == (int)StatusAccessories.Agreed)
+            {
+                return accessories.Id;
+            }
+
+            //отбираем товары для категории
+            List<AccessoriesProduct> accessoriesProductList = context.AccessoriesProduct
+                .Where(a => a.AccessoriesTypeId == typeId && a.IsActive == true)
+                .ToList();
+
+            //заполняем спецификацию заявки
+            List<AccessoriesTable> accessoriesTableList = new List<AccessoriesTable>();
+            if (entry == null)
+            {
+                foreach (AccessoriesProduct item in accessoriesProductList)
+                {
+                    accessoriesTableList.Add(new AccessoriesTable()
+                    {
+                        AccessoriesId = accessories.Id,
+                        AccessoriesProductId = item.Id
+                    });
+                }
+            }
+            else
+            {
+                List<int> accessoriesTableListEntry = context.AccessoriesTable
+                    .Where(a => a.AccessoriesId == accessories.Id)
+                    .Select(a => a.AccessoriesProductId)
+                    .ToList();
+                foreach (AccessoriesProduct item in accessoriesProductList)
+                {
+                    if (!accessoriesTableListEntry.Contains(item.Id))
+                    {
+                        accessoriesTableList.Add(new AccessoriesTable()
+                        {
+                            AccessoriesId = accessories.Id,
+                            AccessoriesProductId = item.Id
+                        });
+                    }
+                }
+            }
+            context.AccessoriesTable.AddRange(accessoriesTableList);
+            context.SaveChanges();
+
+            return accessories.Id;
+        }
     }
 }

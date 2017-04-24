@@ -47,15 +47,6 @@ namespace Portal {
 
             if (Context.User.IsInRole("Администраторы"))
             {
-                DevExpress.Web.NavBarItem itemAccessoriesType = new DevExpress.Web.NavBarItem()
-                {
-                    Index = 2,
-                    Text = "Категории принадлежностей",
-                    NavigateUrl = "~/Pages/Journal/Accessories/ManageAccessoriesType.aspx"
-                };
-                itemAccessoriesType.Image.IconID = "reports_groupfieldcollection_16x16office2013";
-                groupAccessories.Items.Add(itemAccessoriesType);
-
                 DevExpress.Web.NavBarItem itemAccessoriesDepartment = new DevExpress.Web.NavBarItem()
                 {
                     Index = 2,
@@ -64,6 +55,15 @@ namespace Portal {
                 };
                 itemAccessoriesDepartment.Image.IconID = "actions_newitem_16x16devav";
                 groupAccessories.Items.Add(itemAccessoriesDepartment);
+
+                DevExpress.Web.NavBarItem itemAccessoriesType = new DevExpress.Web.NavBarItem()
+                {
+                    Index = 3,
+                    Text = "Категории принадлежностей",
+                    NavigateUrl = "~/Pages/Journal/Accessories/ManageAccessoriesType.aspx"
+                };
+                itemAccessoriesType.Image.IconID = "reports_groupfieldcollection_16x16office2013";
+                groupAccessories.Items.Add(itemAccessoriesType);
             }
 
             ASPxNavBarMain.Groups.Add(groupAccessories);

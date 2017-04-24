@@ -131,6 +131,13 @@ namespace Portal.Pages.Journal.Transport
         {
             if (Page.IsValid && ASPxCallbackAdd.IsCallback)
             {
+                if (!User.IsInRole("Администраторы"))
+                {
+                    if (Convert.ToDateTime(ASPxDateEditTransport.Value) < new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0))
+                    {
+                        return;
+                    }
+                }
                 using (TransportContext context = new TransportContext())
                 {
                     Portal.Models.Entities.Transport transport = new Portal.Models.Entities.Transport()
