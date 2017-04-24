@@ -15,7 +15,7 @@ namespace Portal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //ASPxLabel2.Text = DateTime.Now.Year + Server.HtmlDecode(" &copy; Copyright by [company name]");
+            ASPxLabel2.Text = "Portal [версия " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "]";  //DateTime.Now.Year + Server.HtmlDecode(" &copy; Copyright by [company name]");
 
             if(!Page.IsCallback && !Page.IsPostBack)
             {

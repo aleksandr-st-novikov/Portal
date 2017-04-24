@@ -202,15 +202,6 @@ namespace Portal.Pages.Journal.Transport {
         protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
         
         /// <summary>
-        /// ASPxButton2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton2;
-        
-        /// <summary>
         /// ASPxButtonAdd control.
         /// </summary>
         /// <remarks>
@@ -218,6 +209,15 @@ namespace Portal.Pages.Journal.Transport {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton ASPxButtonAdd;
+        
+        /// <summary>
+        /// ASPxButton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButton2;
         
         /// <summary>
         /// SqlDataSourceAddress control.

@@ -25,7 +25,7 @@
                         <Image IconID="actions_reset_16x16office2013">
                         </Image>
                     </dx:ASPxButton>
-                    <dx:ASPxButton ID="ASPxButtonShowReportParams" runat="server" AutoPostBack="False" ClientInstanceName="ASPxClientButtonShowReportParams" Text="Отчет">
+                    <dx:ASPxButton ID="ASPxButtonShowReportParams" runat="server" AutoPostBack="False" ClientInstanceName="ASPxClientButtonShowReportParams" Text="Отчет" UseSubmitBehavior="False">
                         <ClientSideEvents Click="function(s, e) {
 	                            ASPxClientPopupControlReportParams.Show();
                             }" />

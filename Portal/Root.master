@@ -75,19 +75,19 @@
                     </PaneStyle>
                 </dx:SplitterPane>
 
-                <%--<dx:SplitterPane Name="Footer" Size="125px" PaneStyle-CssClass="footerPane">
+                <dx:SplitterPane Name="Footer" Size="15px" PaneStyle-CssClass="footerPane">
                     <PaneStyle CssClass="footerPane"></PaneStyle>
                     <ContentCollection>
                         <dx:SplitterContentControl ID="SplitterContentControl4" runat="server">
-                            <div class="footerMenu">
-                            </div>
+                            <%--<div class="footerMenu">
+                            </div>--%>
                             <div class="copyright">
                                 <dx:ASPxLabel ID="ASPxLabel2" runat="server">
                                 </dx:ASPxLabel>
                             </div>
                         </dx:SplitterContentControl>
                     </ContentCollection>
-                </dx:SplitterPane>--%>
+                </dx:SplitterPane>
             </Panes>
         </dx:ASPxSplitter>
     </form>

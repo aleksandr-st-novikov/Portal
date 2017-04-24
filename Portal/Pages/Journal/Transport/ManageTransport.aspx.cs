@@ -38,7 +38,6 @@ namespace Portal.Pages.Journal.Transport
                     }
                 }
                 InitData();
-                Page.Form.DefaultButton = null;
 
                 if (!User.IsInRole("Администраторы"))
                 {
@@ -83,7 +82,7 @@ namespace Portal.Pages.Journal.Transport
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "onKeyDownTransport", script, true);
                 }
-
+                Page.Form.DefaultButton = null;
             }
         }
 
@@ -167,31 +166,31 @@ namespace Portal.Pages.Journal.Transport
 
         protected void ASPxGridViewHeadDepartment_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
-            //if (!User.IsInRole("Администраторы"))
-            //{
-            //    TimeSpan start = new TimeSpan(0, 0, 0);
-            //    TimeSpan end = new TimeSpan(5, 0, 0);
-            //    TimeSpan now = DateTime.Now.TimeOfDay;
+            if (!User.IsInRole("Администраторы"))
+            {
+                TimeSpan start = new TimeSpan(0, 0, 0);
+                TimeSpan end = new TimeSpan(5, 0, 0);
+                TimeSpan now = DateTime.Now.TimeOfDay;
 
-            //    if ((now > start) && (now < end))
-            //    {
-            //        if (e.Column.FieldName == "DateTransport")
-            //            (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.AddDays(-1).Year, DateTime.Now.AddDays(-1).Month, DateTime.Now.AddDays(-1).Day, 0, 0, 0);
-            //    }
-            //    else
-            //    {
-            //        if (e.Column.FieldName == "DateTransport")
-            //            (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-            //    }
-            //}
+                if ((now > start) && (now < end))
+                {
+                    if (e.Column.FieldName == "DateTransport")
+                        (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.AddDays(-1).Year, DateTime.Now.AddDays(-1).Month, DateTime.Now.AddDays(-1).Day, 0, 0, 0);
+                }
+                else
+                {
+                    if (e.Column.FieldName == "DateTransport")
+                        (e.Editor as ASPxDateEdit).MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                }
+            }
 
-            //if (e.Column.FieldName == "DateTransport")
-            //    e.Editor.SetClientSideEventHandler("Init", "function(s, e) { setTimeout(function() {s.Focus();}, 0); }");
+            if (e.Column.FieldName == "DateTransport")
+                e.Editor.SetClientSideEventHandler("Init", "function(s, e) { setTimeout(function() {s.Focus();}, 0); }");
         }
 
         protected void ASPxCallbackPanelPopup_Callback(object sender, CallbackEventArgsBase e)
         {
-            if (ASPxCallbackPanelPopup.IsCallback)
+            if (!Ok2Run("TransportAdd", 2) && !Ok2Run("TransportAdd", 3) && ASPxCallbackPanelPopup.IsCallback)
             {
                 if (!User.IsInRole("Администраторы"))
                 {
@@ -208,13 +207,15 @@ namespace Portal.Pages.Journal.Transport
                         ASPxDateEditTransport.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
                     }
                 }
-                else
-                {
-                    ASPxDateEditTransport.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-                }
+                ASPxDateEditTransport.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
                 //ASPxDateEditTransport.SetClientSideEventHandler("Init", "function(s, e) { setTimeout(function() {s.Focus();}, 0); }");
             }
         }
 
+        private bool Ok2Run(string sessionName, int bypassCount)
+        {
+            Session[sessionName] = Session[sessionName] == null ? 0 : Session[sessionName];
+            return !((int)(Session[sessionName] = (((int)Session[sessionName]) + 1) % bypassCount) == 0);
+        }
     }
 }
