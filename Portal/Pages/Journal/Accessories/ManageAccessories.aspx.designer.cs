@@ -67,22 +67,31 @@ namespace Portal.Pages.Journal.Accessories {
         protected global::DevExpress.Web.ASPxPanel ASPxPanel2;
         
         /// <summary>
-        /// ASPxButton1 control.
+        /// ASPxButtonCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton1;
+        protected global::DevExpress.Web.ASPxButton ASPxButtonCreate;
         
         /// <summary>
-        /// ASPxGridView1 control.
+        /// ASPxButtonOpen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
+        protected global::DevExpress.Web.ASPxButton ASPxButtonOpen;
+        
+        /// <summary>
+        /// ASPxGridViewAccessories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView ASPxGridViewAccessories;
         
         /// <summary>
         /// SqlDataSourceAccessories control.

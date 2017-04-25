@@ -17,6 +17,7 @@
         </div>
         <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Добавить запись" AutoPostBack="False" CausesValidation="False" UseSubmitBehavior="False">
             <ClientSideEvents Click="function(s, e) {
+if(!ASPxClientCallbackPanelPopup.InCallback())
                 ASPxClientCallbackPanelPopup.PerformCallback();
             }" />
             <Image IconID="actions_driving_16x16devav">

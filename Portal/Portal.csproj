@@ -317,6 +317,7 @@
       <DependentUpon>201704161656107_Accessories2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Data.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
     <Compile Include="Models\EFContext\ApplicationContext.cs" />

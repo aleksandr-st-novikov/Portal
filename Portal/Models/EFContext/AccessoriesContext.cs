@@ -73,7 +73,7 @@ namespace Portal.Models.EFContext
                 AccessoriesDepartmentId = departmentId,
                 AccessoriesTypeId = typeId,
                 DateDocument = dateAccessories,
-                Status = (int)StatusAccessories.Created
+                Status = (int)AccessoriesStatus.Created
             };
             Accessories entry = context.Accessories.FirstOrDefault(a => a.AccessoriesDepartmentId == accessories.AccessoriesDepartmentId &&
                 a.AccessoriesTypeId == accessories.AccessoriesTypeId && a.DateDocument == accessories.DateDocument);
@@ -87,7 +87,7 @@ namespace Portal.Models.EFContext
                 context.SaveChanges();
             }
 
-            if (accessories.Status == (int)StatusAccessories.Agreed)
+            if (accessories.Status == (int)AccessoriesStatus.Agreed)
             {
                 return accessories.Id;
             }
@@ -133,5 +133,6 @@ namespace Portal.Models.EFContext
 
             return accessories.Id;
         }
+
     }
 }

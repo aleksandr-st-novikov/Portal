@@ -12,7 +12,22 @@ namespace Portal.Pages.Journal.Accessories
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (ASPxCallbackPanelShowPopup.IsCallback)
+            {
+                string ss = (string)Session["AccessoriesCanEdit"];
+                string ss1 = (string)Session["AccessoriesIsOpen"];
 
+                if ((string)Session["AccessoriesIsOpen"] == "1" && (string)Session["AccessoriesCanEdit"] == "0")
+                {
+                    DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Models.Data.AccessoriesFirstDay, 0, 0, 0);
+                    DateTime toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Models.Data.AccessoriesLastDay, 0, 0, 0);
+                    if (DateTime.Now > toDate)
+                    {
+                        ASPxGridViewAccessoriesTable.SettingsEditing.Mode = DevExpress.Web.GridViewEditingMode.Inline; // .SettingsDataSecurity.AllowEdit = false;
+                        ASPxPanel2.Paddings.PaddingTop = 20;
+                    }
+                }
+            }
         }
 
         protected void ASPxCallbackPanelShowPopup_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
@@ -25,15 +40,39 @@ namespace Portal.Pages.Journal.Accessories
                 Session["DateAccessories"] = new DateTime(DateTime.Now.AddMonths(1).Year, DateTime.Now.AddMonths(1).Month, 1);
                 ASPxLabelDate.Text = ((DateTime)Session["DateAccessories"]).ToString("MMMM yyyy");
 
-                //заполняем товаром таблицу для подразделения
-                using (AccessoriesContext accessoriesContext = new AccessoriesContext())
+                if (!String.IsNullOrEmpty(e.Parameter))
                 {
-                    Session["AccessoriesId"] = accessoriesContext.PopulateAccessoriesProduct(
-                        (int)Session["AccessoriesDepartmentId"], 
-                        (int)Session["AccessoriesTypeId"], 
-                        (DateTime)Session["DateAccessories"]);
+                    Session["AccessoriesIsOpen"] = "1";
+                }
+                else
+                {
+                    //заполняем товаром таблицу для подразделения
+                    using (AccessoriesContext accessoriesContext = new AccessoriesContext())
+                    {
+                        Session["AccessoriesId"] = accessoriesContext.PopulateAccessoriesProduct(
+                            (int)Session["AccessoriesDepartmentId"],
+                            (int)Session["AccessoriesTypeId"],
+                            (DateTime)Session["DateAccessories"]);
+                    }
                 }
             }
+        }
+
+        protected void ASPxGridViewAccessoriesTable_Init(object sender, EventArgs e)
+        {
+            //string ss = (string)Session["AccessoriesCanEdit"];
+            //string ss1 = (string)Session["AccessoriesIsOpen"];
+
+            //if ((string)Session["AccessoriesIsOpen"] == "1" && (string)Session["AccessoriesCanEdit"] == "0")
+            //{
+            //    DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Models.Data.AccessoriesFirstDay, 0, 0, 0);
+            //    DateTime toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Models.Data.AccessoriesLastDay, 0, 0, 0);
+            //    if (DateTime.Now > toDate)
+            //    {
+            //        ASPxGridViewAccessoriesTable.SettingsEditing.Mode = DevExpress.Web.GridViewEditingMode.Inline; // .SettingsDataSecurity.AllowEdit = false;
+            //        ASPxPanel2.Paddings.PaddingTop = 20;
+            //    }
+            //}
         }
     }
 }

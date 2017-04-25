@@ -28,7 +28,7 @@
                                 </dx:PanelContent>
                             </PanelCollection>
                         </dx:ASPxPanel>
-                        <dx:ASPxGridView ID="ASPxGridViewAccessoriesTable" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceAccessoriesTable" KeyFieldName="Id" Width="100%" ClientInstanceName="ASPxClientGridViewAccessoriesTable">
+                        <dx:ASPxGridView ID="ASPxGridViewAccessoriesTable" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceAccessoriesTable" KeyFieldName="Id" Width="100%" ClientInstanceName="ASPxClientGridViewAccessoriesTable" OnInit="ASPxGridViewAccessoriesTable_Init">
                             <SettingsPager Mode="EndlessPaging" PageSize="15000">
                             </SettingsPager>
                             <SettingsEditing Mode="Batch">

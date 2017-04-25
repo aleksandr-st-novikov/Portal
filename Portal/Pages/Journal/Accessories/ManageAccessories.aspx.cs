@@ -36,6 +36,15 @@ namespace Portal.Pages.Journal.Accessories
                         Session["AccessoriesTypeName"] = ASPxComboBoxAccessoriesType.Text = at.Name;
                     }
                 }
+
+                DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Models.Data.AccessoriesFirstDay, 0, 0, 0);
+                DateTime toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Models.Data.AccessoriesLastDay, 0, 0, 0);
+                if (DateTime.Now >= fromDate && DateTime.Now <= toDate)
+                {
+                    ASPxButtonCreate.Visible = true;
+                }
+
+                ASPxGridViewAccessories.FocusedRowIndex = 0;
             }
         }
 
@@ -44,5 +53,15 @@ namespace Portal.Pages.Journal.Accessories
             Session["AccessoriesTypeId"] = ASPxComboBoxAccessoriesType.Value;
             Session["AccessoriesTypeName"] = ASPxComboBoxAccessoriesType.Text;
         }
+
+        protected void ASPxGridViewAccessories_FocusedRowChanged(object sender, EventArgs e)
+        {
+            Session["AccessoriesId"] = ASPxGridViewAccessories.GetRowValues(ASPxGridViewAccessories.FocusedRowIndex, "Id");
+            Session["AccessoriesCanEdit"] =
+                int.Parse(ASPxGridViewAccessories.GetRowValues(ASPxGridViewAccessories.FocusedRowIndex, "Status").ToString()) == (int)AccessoriesStatus.Agreed ? "0" : "1";
+            Session["AccessoriesCanEdit"] =
+                DateTime.Now.Month >= ((DateTime)ASPxGridViewAccessories.GetRowValues(ASPxGridViewAccessories.FocusedRowIndex, "DateDocument")).Month ? "0" : Session["AccessoriesCanEdit"];
+        }
+
     }
 }
