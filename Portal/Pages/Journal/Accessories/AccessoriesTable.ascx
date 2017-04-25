@@ -4,12 +4,12 @@
 <dx:ASPxCallbackPanel ID="ASPxCallbackPanelShowPopup" runat="server" ClientInstanceName="ASPxClientCallbackPanelShowPopup" OnCallback="ASPxCallbackPanelShowPopup_Callback">
     <SettingsLoadingPanel Enabled="False" />
     <ClientSideEvents EndCallback="function(s, e) {
-	ASPxClientPopupControlAccessoriesTable.Show();
-                ASPxClientGridViewAccessoriesTable.Refresh();
-}" />
+	    ASPxClientPopupControlAccessoriesTable.Show();
+        ASPxClientGridViewAccessoriesTable.Refresh();
+    }" />
     <PanelCollection>
         <dx:PanelContent runat="server">
-            <dx:ASPxPopupControl ID="ASPxPopupControlAccessoriesTable" runat="server" AllowDragging="True" ClientInstanceName="ASPxClientPopupControlAccessoriesTable" HeaderText="Заявка" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="50" Width="900px" Height="850px" CloseAction="None">
+            <dx:ASPxPopupControl ID="ASPxPopupControlAccessoriesTable" runat="server" AllowDragging="True" ClientInstanceName="ASPxClientPopupControlAccessoriesTable" HeaderText="Заявка" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="50" Width="900px" Height="850px" CloseAction="CloseButton">
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">
                         <dx:ASPxPanel ID="ASPxPanel1" runat="server" Width="100%">
@@ -29,11 +29,13 @@
                             </PanelCollection>
                         </dx:ASPxPanel>
                         <dx:ASPxGridView ID="ASPxGridViewAccessoriesTable" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceAccessoriesTable" KeyFieldName="Id" Width="100%" ClientInstanceName="ASPxClientGridViewAccessoriesTable">
-                            <SettingsPager Mode="EndlessPaging">
+                            <SettingsPager Mode="EndlessPaging" PageSize="15000">
                             </SettingsPager>
                             <SettingsEditing Mode="Batch">
+                                <BatchEditSettings EditMode="Row" />
                             </SettingsEditing>
-                            <Settings VerticalScrollableHeight="470" />
+                            <Settings VerticalScrollableHeight="550" VerticalScrollBarMode="Visible" />
+                            <SettingsBehavior AllowEllipsisInText="True" />
                             <SettingsCommandButton>
                                 <ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
                                 <HideAdaptiveDetailButton ButtonType="Image"></HideAdaptiveDetailButton>
@@ -45,29 +47,31 @@
                                 </CancelButton>
                             </SettingsCommandButton>
                             <SettingsDataSecurity AllowDelete="False" AllowInsert="False" />
-                            <SettingsSearchPanel Visible="True" />
                             <Columns>
-                                <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="0">
+                                <dx:GridViewCommandColumn ShowInCustomizationForm="True" Visible="False" VisibleIndex="0">
+                                </dx:GridViewCommandColumn>
+                                <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
                                     <EditFormSettings Visible="False" />
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn FieldName="AccessoriesId" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
+                                <dx:GridViewDataTextColumn FieldName="AccessoriesId" ShowInCustomizationForm="True" Visible="False" VisibleIndex="2">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn FieldName="QuantityAgreed" ShowInCustomizationForm="True" Visible="False" VisibleIndex="5">
+                                <dx:GridViewDataTextColumn FieldName="QuantityAgreed" ShowInCustomizationForm="True" Visible="False" VisibleIndex="6">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataComboBoxColumn Caption="Наименование" FieldName="AccessoriesProductId" ShowInCustomizationForm="True" VisibleIndex="2" Width="500px" ReadOnly="True">
+                                <dx:GridViewDataComboBoxColumn Caption="Наименование" FieldName="AccessoriesProductId" ShowInCustomizationForm="True" VisibleIndex="3" Width="500px" SortIndex="0" SortOrder="Ascending">
                                     <PropertiesComboBox DataSourceID="SqlDataSourceAccessoriesProduct" TextField="Name" ValueField="Id">
                                     </PropertiesComboBox>
+                                    <Settings FilterMode="DisplayText" SortMode="DisplayText" />
                                     <EditFormSettings Visible="False" />
                                 </dx:GridViewDataComboBoxColumn>
-                                <dx:GridViewDataComboBoxColumn Caption="Ед.изм." FieldName="AccessoriesProductId" ShowInCustomizationForm="True" VisibleIndex="3" Width="60px" ReadOnly="True">
+                                <dx:GridViewDataSpinEditColumn Caption="Кол-во" FieldName="Quantity" ShowInCustomizationForm="True" VisibleIndex="5" Width="120px">
+                                    <PropertiesSpinEdit DisplayFormatString="g" MaxValue="100" NumberType="Integer">
+                                    </PropertiesSpinEdit>
+                                </dx:GridViewDataSpinEditColumn>
+                                <dx:GridViewDataComboBoxColumn Caption="Ед.изм." FieldName="AccessoriesProductId" ShowInCustomizationForm="True" VisibleIndex="4" Width="60px">
                                     <PropertiesComboBox DataSourceID="SqlDataSourceAccessoriesProduct" TextField="Unit" ValueField="Id">
                                     </PropertiesComboBox>
                                     <EditFormSettings Visible="False" />
                                 </dx:GridViewDataComboBoxColumn>
-                                <dx:GridViewDataSpinEditColumn Caption="Кол-во" FieldName="Quantity" ShowInCustomizationForm="True" VisibleIndex="4" Width="120px">
-                                    <PropertiesSpinEdit DisplayFormatString="g" MaxValue="100" NumberType="Integer">
-                                    </PropertiesSpinEdit>
-                                </dx:GridViewDataSpinEditColumn>
                             </Columns>
                         </dx:ASPxGridView>
                         <asp:SqlDataSource ID="SqlDataSourceAccessoriesTable" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"

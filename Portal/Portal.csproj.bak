@@ -1,0 +1,787 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{869F5925-76C4-4AAC-A022-AA159D6954E7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Portal</RootNamespace>
+    <AssemblyName>Portal</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Resources.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1.Web, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\aspnetdb.mdf" />
+    <Content Include="App_Data\aspnetdb_log.ldf">
+      <DependentUpon>aspnetdb.mdf</DependentUpon>
+    </Content>
+    <Content Include="Content\Append.css" />
+    <Content Include="Content\Images\favicon.ico" />
+    <Content Include="Content\Images\login-back.jpg" />
+    <Content Include="Content\Images\logo-x2.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="Pages\Account\AddPhoneNumber.aspx" />
+    <Content Include="Pages\Account\ChangePassword.aspx" />
+    <Content Include="Pages\Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Pages\Account\Confirm.aspx" />
+    <Content Include="Pages\Account\ForgotPassword.aspx" />
+    <Content Include="Pages\Account\Lockout.aspx" />
+    <Content Include="Pages\Account\Login.aspx" />
+    <Content Include="Pages\Account\Manage.aspx" />
+    <Content Include="Pages\Account\ManageLogins.aspx" />
+    <Content Include="Pages\Account\OpenAuthProviders.ascx" />
+    <Content Include="Pages\Account\Register.aspx" />
+    <Content Include="Pages\Account\RegisterExternalLogin.aspx" />
+    <Content Include="Pages\Account\RegisterSuccess.aspx" />
+    <Content Include="Pages\Account\ResetPassword.aspx" />
+    <Content Include="Pages\Account\ResetPasswordConfirmation.aspx" />
+    <Content Include="Pages\Account\TwoFactorAuthenticationSignIn.aspx" />
+    <Content Include="Pages\Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Content\Images\AquaHeader.jpg" />
+    <Content Include="Content\Images\BlackGlassHeader.jpg" />
+    <Content Include="Content\Images\GlassHeader.jpg" />
+    <Content Include="Content\Images\PlasticBlueHeader.jpg" />
+    <Content Include="Content\Images\RedWineHeader.jpg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Pages\Admin\Employee\ImportEmployee.aspx" />
+    <Content Include="Pages\Admin\Employee\ManageDepartment.aspx" />
+    <Content Include="Pages\Admin\Employee\ManageEmployee.aspx" />
+    <Content Include="Pages\Admin\Employee\ManagePosition.aspx" />
+    <Content Include="Pages\Admin\Users\AddUser.aspx" />
+    <Content Include="Pages\Admin\Users\ManageRoles.aspx" />
+    <Content Include="Pages\Admin\Users\ManageUsers.aspx" />
+    <Content Include="Pages\Default.aspx" />
+    <Content Include="Global.asax" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Light.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Main.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Journal\Accessories\AccessoriesTable.ascx" />
+    <Content Include="Pages\Journal\Accessories\ManageAccessoriesProduct.aspx" />
+    <Content Include="Pages\Journal\Accessories\ManageAccessoriesDepartment.aspx" />
+    <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
+    <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
+    <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
+    <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
+    <Content Include="Reports\DocumentView.aspx" />
+    <Content Include="Reports\AdmissionReportViewPopup.ascx" />
+    <Content Include="Reports\TransportReportViewPopup.ascx" />
+    <Content Include="Reports\DocumentViewPopup.ascx" />
+    <Content Include="Root.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Account\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Site.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages.config" />
+    <Content Include="Pages\Admin\Users\UsersMain.master" />
+    <Content Include="Pages\Journal\Accessories\AccessoriesMain.master" />
+    <Content Include="Pages\Admin\Employee\EmployeeMain.master" />
+    <Content Include="Pages\Journal\Admission\AdmissionMain.master" />
+    <Content Include="Pages\Journal\Transport\TransportMain.master" />
+    <Content Include="MainDefault.master" />
+    <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainDefault.master.cs">
+      <DependentUpon>MainDefault.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainDefault.master.designer.cs">
+      <DependentUpon>MainDefault.master</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221121515_InitialCreate.cs" />
+    <Compile Include="Migrations\201703221121515_InitialCreate.Designer.cs">
+      <DependentUpon>201703221121515_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703291001209_Employee.cs" />
+    <Compile Include="Migrations\201703291001209_Employee.Designer.cs">
+      <DependentUpon>201703291001209_Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703300659089_department_nodenum.cs" />
+    <Compile Include="Migrations\201703300659089_department_nodenum.Designer.cs">
+      <DependentUpon>201703300659089_department_nodenum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703300959019_Department_1.cs" />
+    <Compile Include="Migrations\201703300959019_Department_1.Designer.cs">
+      <DependentUpon>201703300959019_Department_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703301540326_Position.cs" />
+    <Compile Include="Migrations\201703301540326_Position.Designer.cs">
+      <DependentUpon>201703301540326_Position.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703301720352_Employee1.cs" />
+    <Compile Include="Migrations\201703301720352_Employee1.Designer.cs">
+      <DependentUpon>201703301720352_Employee1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703301730446_Employee2.cs" />
+    <Compile Include="Migrations\201703301730446_Employee2.Designer.cs">
+      <DependentUpon>201703301730446_Employee2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703310540435_Department.cs" />
+    <Compile Include="Migrations\201703310540435_Department.Designer.cs">
+      <DependentUpon>201703310540435_Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311026513_User.cs" />
+    <Compile Include="Migrations\201703311026513_User.Designer.cs">
+      <DependentUpon>201703311026513_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311238158_AdmissionSRT.cs" />
+    <Compile Include="Migrations\201703311238158_AdmissionSRT.Designer.cs">
+      <DependentUpon>201703311238158_AdmissionSRT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311701422_AdmissionSRT1.cs" />
+    <Compile Include="Migrations\201703311701422_AdmissionSRT1.Designer.cs">
+      <DependentUpon>201703311701422_AdmissionSRT1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311823205_AdmissionSRT2.cs" />
+    <Compile Include="Migrations\201703311823205_AdmissionSRT2.Designer.cs">
+      <DependentUpon>201703311823205_AdmissionSRT2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311828165_AdmissionSRT3.cs" />
+    <Compile Include="Migrations\201703311828165_AdmissionSRT3.Designer.cs">
+      <DependentUpon>201703311828165_AdmissionSRT3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704010743447_Admission.cs" />
+    <Compile Include="Migrations\201704010743447_Admission.Designer.cs">
+      <DependentUpon>201704010743447_Admission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704031718581_Transport.cs" />
+    <Compile Include="Migrations\201704031718581_Transport.Designer.cs">
+      <DependentUpon>201704031718581_Transport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704150908580_Accessories.cs" />
+    <Compile Include="Migrations\201704150908580_Accessories.Designer.cs">
+      <DependentUpon>201704150908580_Accessories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704150919454_Accessories1.cs" />
+    <Compile Include="Migrations\201704150919454_Accessories1.Designer.cs">
+      <DependentUpon>201704150919454_Accessories1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704161656107_Accessories2.cs" />
+    <Compile Include="Migrations\201704161656107_Accessories2.Designer.cs">
+      <DependentUpon>201704161656107_Accessories2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EFContext\AccessoriesContext.cs" />
+    <Compile Include="Models\EFContext\AdmissionContext.cs" />
+    <Compile Include="Models\EFContext\ApplicationContext.cs" />
+    <Compile Include="Models\EFContext\DepartmentContext.cs" />
+    <Compile Include="Models\EFContext\EmployeeContext.cs" />
+    <Compile Include="Models\EFContext\PositionContext.cs" />
+    <Compile Include="Models\EFContext\TransportContext.cs" />
+    <Compile Include="Models\Entities\Admission.cs" />
+    <Compile Include="Models\Entities\Employee.cs" />
+    <Compile Include="Models\Entities\Accessories.cs" />
+    <Compile Include="Models\Entities\Transport.cs" />
+    <Compile Include="Models\ViewModel\AccessoriesViewModel.cs" />
+    <Compile Include="Models\ViewModel\AdmissionReportViewModel.cs" />
+    <Compile Include="Models\ViewModel\TransportReportViewModel.cs" />
+    <Compile Include="Pages\Admin\Employee\EmployeeMain.master.cs">
+      <DependentUpon>EmployeeMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\EmployeeMain.master.designer.cs">
+      <DependentUpon>EmployeeMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ImportEmployee.aspx.cs">
+      <DependentUpon>ImportEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ImportEmployee.aspx.designer.cs">
+      <DependentUpon>ImportEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ManageDepartment.aspx.cs">
+      <DependentUpon>ManageDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ManageDepartment.aspx.designer.cs">
+      <DependentUpon>ManageDepartment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ManageEmployee.aspx.cs">
+      <DependentUpon>ManageEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ManageEmployee.aspx.designer.cs">
+      <DependentUpon>ManageEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ManagePosition.aspx.cs">
+      <DependentUpon>ManagePosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Employee\ManagePosition.aspx.designer.cs">
+      <DependentUpon>ManagePosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\UsersMain.master.cs">
+      <DependentUpon>UsersMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\UsersMain.master.designer.cs">
+      <DependentUpon>UsersMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\AddUser.aspx.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\AddUser.aspx.designer.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\AddPhoneNumber.aspx.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\AddPhoneNumber.aspx.designer.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\Confirm.aspx.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\Confirm.aspx.designer.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\Lockout.aspx.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\Lockout.aspx.designer.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\ManageLogins.aspx.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\ManageLogins.aspx.designer.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\OpenAuthProviders.ascx.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\OpenAuthProviders.ascx.designer.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\RegisterExternalLogin.aspx.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\RegisterExternalLogin.aspx.designer.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\RegisterSuccess.aspx.cs">
+      <DependentUpon>RegisterSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\RegisterSuccess.aspx.designer.cs">
+      <DependentUpon>RegisterSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\ResetPasswordConfirmation.aspx.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\ResetPasswordConfirmation.aspx.designer.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\TwoFactorAuthenticationSignIn.aspx.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\TwoFactorAuthenticationSignIn.aspx.designer.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\VerifyPhoneNumber.aspx.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Account\VerifyPhoneNumber.aspx.designer.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Pages\Admin\Users\ManageRoles.aspx.cs">
+      <DependentUpon>ManageRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\ManageRoles.aspx.designer.cs">
+      <DependentUpon>ManageRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Light.master.cs">
+      <DependentUpon>Light.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Light.master.designer.cs">
+      <DependentUpon>Light.master</DependentUpon>
+    </Compile>
+    <Compile Include="Main.master.cs">
+      <DependentUpon>Main.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.master.designer.cs">
+      <DependentUpon>Main.master</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Pages\Journal\Accessories\AccessoriesTable.ascx.cs">
+      <DependentUpon>AccessoriesTable.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\AccessoriesTable.ascx.designer.cs">
+      <DependentUpon>AccessoriesTable.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesProduct.aspx.cs">
+      <DependentUpon>ManageAccessoriesProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesProduct.aspx.designer.cs">
+      <DependentUpon>ManageAccessoriesProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesDepartment.aspx.cs">
+      <DependentUpon>ManageAccessoriesDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesDepartment.aspx.designer.cs">
+      <DependentUpon>ManageAccessoriesDepartment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Admission\AdmissionMain.master.cs">
+      <DependentUpon>AdmissionMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Admission\AdmissionMain.master.designer.cs">
+      <DependentUpon>AdmissionMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Admission\ManageAdmission.aspx.cs">
+      <DependentUpon>ManageAdmission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Admission\ManageAdmission.aspx.designer.cs">
+      <DependentUpon>ManageAdmission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessories.aspx.cs">
+      <DependentUpon>ManageAccessories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessories.aspx.designer.cs">
+      <DependentUpon>ManageAccessories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx.cs">
+      <DependentUpon>ManageAccessoriesType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx.designer.cs">
+      <DependentUpon>ManageAccessoriesType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\AccessoriesMain.master.cs">
+      <DependentUpon>AccessoriesMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Accessories\AccessoriesMain.master.designer.cs">
+      <DependentUpon>AccessoriesMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\ManageTransport.aspx.cs">
+      <DependentUpon>ManageTransport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\ManageTransport.aspx.designer.cs">
+      <DependentUpon>ManageTransport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\TransportMain.master.cs">
+      <DependentUpon>TransportMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\TransportMain.master.designer.cs">
+      <DependentUpon>TransportMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\AdmissionReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\AdmissionReport.Designer.cs">
+      <DependentUpon>AdmissionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DocumentView.aspx.cs">
+      <DependentUpon>DocumentView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DocumentView.aspx.designer.cs">
+      <DependentUpon>DocumentView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\AdmissionReportViewPopup.ascx.cs">
+      <DependentUpon>AdmissionReportViewPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\AdmissionReportViewPopup.ascx.designer.cs">
+      <DependentUpon>AdmissionReportViewPopup.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TransportReportViewPopup.ascx.cs">
+      <DependentUpon>TransportReportViewPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\TransportReportViewPopup.ascx.designer.cs">
+      <DependentUpon>TransportReportViewPopup.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DocumentViewPopup.ascx.cs">
+      <DependentUpon>DocumentViewPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DocumentViewPopup.ascx.designer.cs">
+      <DependentUpon>DocumentViewPopup.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TestReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TestReport.Designer.cs">
+      <DependentUpon>TestReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TransportReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TransportReport.Designer.cs">
+      <DependentUpon>TransportReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Root.master.cs">
+      <DependentUpon>Root.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root.master.designer.cs">
+      <DependentUpon>Root.master</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703221121515_InitialCreate.resx">
+      <DependentUpon>201703221121515_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703291001209_Employee.resx">
+      <DependentUpon>201703291001209_Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703300659089_department_nodenum.resx">
+      <DependentUpon>201703300659089_department_nodenum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703300959019_Department_1.resx">
+      <DependentUpon>201703300959019_Department_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703301540326_Position.resx">
+      <DependentUpon>201703301540326_Position.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703301720352_Employee1.resx">
+      <DependentUpon>201703301720352_Employee1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703301730446_Employee2.resx">
+      <DependentUpon>201703301730446_Employee2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703310540435_Department.resx">
+      <DependentUpon>201703310540435_Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311026513_User.resx">
+      <DependentUpon>201703311026513_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311238158_AdmissionSRT.resx">
+      <DependentUpon>201703311238158_AdmissionSRT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311701422_AdmissionSRT1.resx">
+      <DependentUpon>201703311701422_AdmissionSRT1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311823205_AdmissionSRT2.resx">
+      <DependentUpon>201703311823205_AdmissionSRT2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311828165_AdmissionSRT3.resx">
+      <DependentUpon>201703311828165_AdmissionSRT3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704010743447_Admission.resx">
+      <DependentUpon>201704010743447_Admission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704031718581_Transport.resx">
+      <DependentUpon>201704031718581_Transport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150908580_Accessories.resx">
+      <DependentUpon>201704150908580_Accessories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150919454_Accessories1.resx">
+      <DependentUpon>201704150919454_Accessories1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704161656107_Accessories2.resx">
+      <DependentUpon>201704161656107_Accessories2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\AdmissionReport.resx">
+      <DependentUpon>AdmissionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TestReport.resx">
+      <DependentUpon>TestReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransportReport.resx">
+      <DependentUpon>TransportReport.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>34287</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:34287/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>http://192.168.25.216/portal</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
