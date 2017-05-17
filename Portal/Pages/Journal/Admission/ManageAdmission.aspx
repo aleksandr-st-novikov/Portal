@@ -92,13 +92,13 @@
                 </dx:PanelContent>
             </PanelCollection>
         </dx:ASPxPanel>
-        <dx:ASPxGridView ID="ASPxGridViewAdmission" ClientInstanceName="ASPxClientGridViewAdmission" runat="server" DataSourceID="SqlDataSourceAdmission" AutoGenerateColumns="False" KeyFieldName="Id" Width="1230px" Font-Size="Small">
+        <dx:ASPxGridView ID="ASPxGridViewAdmission" ClientInstanceName="ASPxClientGridViewAdmission" runat="server" DataSourceID="SqlDataSourceAdmission" AutoGenerateColumns="False" KeyFieldName="Id" Width="100%" Font-Size="Small">
             <SettingsPager PageSize="10000" Mode="EndlessPaging">
             </SettingsPager>
             <SettingsEditing Mode="Batch">
                 <BatchEditSettings EditMode="Row" />
             </SettingsEditing>
-            <Settings VerticalScrollableHeight="520" VerticalScrollBarMode="Visible" />
+            <Settings VerticalScrollableHeight="500" VerticalScrollBarMode="Visible" />
             <SettingsBehavior AllowGroup="False" />
             <SettingsCommandButton>
                 <ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
@@ -142,14 +142,14 @@
                 </dx:GridViewDataDateColumn>
                 <dx:GridViewDataTextColumn FieldName="Commentary" VisibleIndex="9" Caption="Комментарий" Width="120px">
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataComboBoxColumn Caption="ФИО" FieldName="EmployeeId" VisibleIndex="2" Width="350px" ReadOnly="True" ShowInCustomizationForm="False">
+                <dx:GridViewDataComboBoxColumn Caption="ФИО" FieldName="EmployeeId" VisibleIndex="2" Width="280px" ReadOnly="True" ShowInCustomizationForm="False">
                     <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" TextField="FIO" ValueField="Id">
                         <DropDownButton ClientVisible="False" Enabled="False" Visible="False">
                         </DropDownButton>
                     </PropertiesComboBox>
                     <EditFormSettings Visible="False" />
                 </dx:GridViewDataComboBoxColumn>
-                <dx:GridViewDataComboBoxColumn Caption="Должность" FieldName="PositionId" VisibleIndex="3" Width="250px" ReadOnly="True">
+                <dx:GridViewDataComboBoxColumn Caption="Должность" FieldName="PositionId" VisibleIndex="3" Width="200px" ReadOnly="True">
                     <PropertiesComboBox DataSourceID="SqlDataSourcePosition" TextField="Name" ValueField="Id">
                         <DropDownButton Visible="False">
                         </DropDownButton>

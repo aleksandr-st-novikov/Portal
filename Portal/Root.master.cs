@@ -55,11 +55,11 @@ namespace Portal
                     itemJournal.Image.IconID = "layout_paneloff_16x16devav";
                 }
 
-                if (Context.User.IsInRole("Администраторы")
+                if ((Context.User.IsInRole("Администраторы")
                     || Context.User.IsInRole("Заявка на принадлежности - Сотрудник")
                     || Context.User.IsInRole("Заявка на принадлежности - Управление")
                     || Context.User.IsInRole("Заявка на принадлежности - Утверждение")
-                    || Context.User.IsInRole("Заявка на принадлежности - Склад"))
+                    || Context.User.IsInRole("Заявка на принадлежности - Склад")) && false)
                 {
                     DevExpress.Web.MenuItem itemJournalAccesories = new DevExpress.Web.MenuItem()
                     {
@@ -121,6 +121,29 @@ namespace Portal
 
                 if (Context.User.IsInRole("Администраторы"))
                 {
+                    DevExpress.Web.MenuItem itemMaintenance = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Поддержка",
+                        DropDownMode = true
+                    };
+                    itemMaintenance.Image.IconID = "actions_viewsetting_16x16devav";
+
+                    DevExpress.Web.MenuItem itemMaintenanceUKM = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "УКМ, кассы",
+                        DropDownMode = true
+                    };
+                    itemMaintenanceUKM.Image.IconID = "actions_buy_16x16devav";
+                    itemMaintenance.Items.Add(itemMaintenanceUKM);
+
+                    DevExpress.Web.MenuItem itemMaintenanceUKMReboot = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Настройка кассы",
+                        NavigateUrl = "~/Pages/Admin/Users/ManageUsers.aspx"
+                    };
+                    //itemMaintenanceUKMReboot.Image.IconID = "people_usergroup_16x16office2013";
+                    itemMaintenanceUKM.Items.Add(itemMaintenanceUKMReboot);
+
                     DevExpress.Web.MenuItem itemAdmin = new DevExpress.Web.MenuItem()
                     {
                         Text = "Администрирование",
@@ -144,6 +167,7 @@ namespace Portal
                     itemAdminEmployee.Image.IconID = "people_team_16x16office2013";
                     itemAdmin.Items.Add(itemAdminEmployee);
 
+                    ASPxMenuMain.Items.Add(itemMaintenance);
                     ASPxMenuMain.Items.Add(itemAdmin);
                 }
             }
