@@ -9,7 +9,7 @@ using System.Web;
 
 namespace Portal.Models.EFContext
 {
-    public class TransportContext : ApplicationContext
+    public class TransportContext : ApplicationContext<Transport>
     {
         public async Task AddTransportAsync(Transport transport)
         {

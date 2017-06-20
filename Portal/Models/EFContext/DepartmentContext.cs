@@ -10,7 +10,7 @@ using System.Web;
 
 namespace Portal.Models.EFContext
 {
-    public class DepartmentContext : ApplicationContext
+    public class DepartmentContext : ApplicationContext<Department>
     {
         public async Task AddDepartmentAsync(Department department)
         {

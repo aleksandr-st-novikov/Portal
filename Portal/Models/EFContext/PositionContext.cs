@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Portal.Models.EFContext
 {
-    public class PositionContext : ApplicationContext
+    public class PositionContext : ApplicationContext<Position>
     {
         public async Task AddRangePositionAsync(List<string> positions)
         {

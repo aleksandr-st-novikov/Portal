@@ -10,7 +10,7 @@ using System.Web;
 
 namespace Portal.Models.EFContext
 {
-    public class EmployeeContext : ApplicationContext
+    public class EmployeeContext : ApplicationContext<Employee>
     {
         public async Task AddEmployeeAsync(MidData employee)
         {

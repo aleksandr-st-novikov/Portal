@@ -9,7 +9,7 @@ using System.Web;
 
 namespace Portal.Models.EFContext
 {
-    public class AccessoriesContext : ApplicationContext
+    public class AccessoriesContext : ApplicationContext<Accessories>
     {
         /// <summary>
         /// Проверка возможности удаления AccessoriesType

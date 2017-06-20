@@ -1,16 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
 namespace Portal.Models.EFContext
 {
-    public abstract class ApplicationContext : IDisposable
+    public abstract class ApplicationContext<T> : IDisposable where T : class
     {
         public ApplicationDbContext context = new ApplicationDbContext();
 
         bool disposed = false;
+
+        public ICollection<T> GetAll()
+        {
+            return context.Set<T>().ToList();
+        }
+
+        public async Task<ICollection<T>> GetAllAsync()
+        {
+            return await context.Set<T>().ToListAsync();
+        }
 
         public void Dispose()
         {

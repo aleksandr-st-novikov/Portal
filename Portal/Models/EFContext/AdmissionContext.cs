@@ -9,7 +9,7 @@ using System.Web;
 
 namespace Portal.Models.EFContext
 {
-    public class AdmissionContext : ApplicationContext
+    public class AdmissionContext : ApplicationContext<Admission>
     {
         public async Task PopulateByDepartmentAsync(int departmentId)
         {
