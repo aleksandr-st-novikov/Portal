@@ -13,6 +13,15 @@ namespace Portal.Pages.Maintenance.UKM {
     public partial class Setting {
         
         /// <summary>
+        /// ASPxLabelStores control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel ASPxLabelStores;
+        
+        /// <summary>
         /// ASPxGridViewStore control.
         /// </summary>
         /// <remarks>
@@ -20,5 +29,14 @@ namespace Portal.Pages.Maintenance.UKM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView ASPxGridViewStore;
+        
+        /// <summary>
+        /// SqlDataSourceStore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceStore;
     }
 }

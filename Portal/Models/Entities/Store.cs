@@ -13,8 +13,14 @@ namespace Portal.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int StoreId { get; set; }
+
+        [StringLength(300)]
         public string Name { get; set; }
+
+        [StringLength(300)]
         public string Address { get; set; }
+
+        [StringLength(300)]
         public string StoreName { get; set; }
     }
 }

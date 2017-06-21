@@ -60,12 +60,12 @@
                 <dx:GridViewDataCheckColumn Caption="Работает" FieldName="IsWork" Visible="False" VisibleIndex="14">
                     <EditFormSettings Visible="True" VisibleIndex="7" />
                 </dx:GridViewDataCheckColumn>
-                <dx:GridViewDataTextColumn FieldName="FIO" VisibleIndex="3" Caption="ФИО" ReadOnly="True" Width="200px">
+                <dx:GridViewDataTextColumn FieldName="FIO" VisibleIndex="3" Caption="ФИО" ReadOnly="True" Width="300px">
                     <EditFormSettings Visible="False" />
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewCommandColumn ButtonRenderMode="Image" ButtonType="Image" ShowDeleteButton="True" ShowEditButton="True" VisibleIndex="0" ShowNewButtonInHeader="True" Width="20px">
                 </dx:GridViewCommandColumn>
-                <dx:GridViewDataComboBoxColumn Caption="Подразделение" FieldName="DepartmentId" VisibleIndex="5">
+                <dx:GridViewDataComboBoxColumn Caption="Подразделение" FieldName="DepartmentId" VisibleIndex="5" Width="400px">
                     <PropertiesComboBox DataSourceID="SqlDataSourceDepartment" TextField="Name" ValueField="Id">
                     </PropertiesComboBox>
                     <EditFormSettings Visible="True" VisibleIndex="1" />
@@ -81,6 +81,11 @@
                     <RowStyle ForeColor="#999999" />
                 </dx:GridViewFormatConditionHighlight>
             </FormatConditions>
+            <Styles>
+                <Cell>
+                    <Paddings PaddingBottom="5px" PaddingTop="5px" />
+                </Cell>
+            </Styles>
         </dx:ASPxGridView>
         <asp:SqlDataSource ID="SqlDataSourceEmployee" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
             DeleteCommand="DELETE FROM [Employee] WHERE [Id] = @original_Id AND [TabN] = @original_TabN AND [Lastname] = @original_Lastname AND (([Firstname] = @original_Firstname) OR ([Firstname] IS NULL AND @original_Firstname IS NULL)) AND (([Patronymic] = @original_Patronymic) OR ([Patronymic] IS NULL AND @original_Patronymic IS NULL)) AND (([DepartmentId] = @original_DepartmentId) OR ([DepartmentId] IS NULL AND @original_DepartmentId IS NULL)) AND (([DateIn] = @original_DateIn) OR ([DateIn] IS NULL AND @original_DateIn IS NULL)) AND (([DateBirth] = @original_DateBirth) OR ([DateBirth] IS NULL AND @original_DateBirth IS NULL)) AND (([Category] = @original_Category) OR ([Category] IS NULL AND @original_Category IS NULL)) AND (([Department_Id] = @original_Department_Id) OR ([Department_Id] IS NULL AND @original_Department_Id IS NULL)) AND (([PositionId] = @original_PositionId) OR ([PositionId] IS NULL AND @original_PositionId IS NULL))" 
