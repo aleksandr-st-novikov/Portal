@@ -128,6 +128,14 @@ namespace Portal
                     };
                     itemMaintenance.Image.IconID = "actions_viewsetting_16x16devav";
 
+                    DevExpress.Web.MenuItem itemMaintenanceDepartmentWork = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Работа отдела",
+                        NavigateUrl = "~/Pages/Maintenance/DepartmentWork/ManageDepartmentWork.aspx"
+                    };
+                    itemMaintenanceDepartmentWork.Image.IconID = "view_meeting_16x16devav";
+                    itemMaintenance.Items.Add(itemMaintenanceDepartmentWork);
+
                     DevExpress.Web.MenuItem itemMaintenanceUKM = new DevExpress.Web.MenuItem()
                     {
                         Text = "УКМ, кассы",
