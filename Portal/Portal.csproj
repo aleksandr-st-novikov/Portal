@@ -336,12 +336,21 @@
     <Compile Include="Migrations\201706220729158_DepartmentWork1.Designer.cs">
       <DependentUpon>201706220729158_DepartmentWork1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706221810391_DepartmentWork2.cs" />
+    <Compile Include="Migrations\201706221810391_DepartmentWork2.Designer.cs">
+      <DependentUpon>201706221810391_DepartmentWork2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706221816046_DepartmentWork3.cs" />
+    <Compile Include="Migrations\201706221816046_DepartmentWork3.Designer.cs">
+      <DependentUpon>201706221816046_DepartmentWork3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Data.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
     <Compile Include="Models\EFContext\ApplicationContext.cs" />
     <Compile Include="Models\EFContext\DepartmentContext.cs" />
+    <Compile Include="Models\EFContext\DepartmentWorkContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
     <Compile Include="Models\EFContext\PositionContext.cs" />
     <Compile Include="Models\EFContext\StoreContext.cs" />
@@ -780,6 +789,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706220729158_DepartmentWork1.resx">
       <DependentUpon>201706220729158_DepartmentWork1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706221810391_DepartmentWork2.resx">
+      <DependentUpon>201706221810391_DepartmentWork2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706221816046_DepartmentWork3.resx">
+      <DependentUpon>201706221816046_DepartmentWork3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\AdmissionReport.resx">

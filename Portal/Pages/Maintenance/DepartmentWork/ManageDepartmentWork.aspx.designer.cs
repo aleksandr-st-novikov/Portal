@@ -40,6 +40,24 @@ namespace Portal.Pages.Maintenance.DepartmentWork {
         protected global::DevExpress.Web.ASPxPageControl ASPxPageControl1;
         
         /// <summary>
+        /// ASPxGridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
+        
+        /// <summary>
+        /// SqlDataSourceDepartmentWorkInWork control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDepartmentWorkInWork;
+        
+        /// <summary>
         /// ASPxCallbackPanelAddWork control.
         /// </summary>
         /// <remarks>
@@ -58,13 +76,13 @@ namespace Portal.Pages.Maintenance.DepartmentWork {
         protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlAddWork;
         
         /// <summary>
-        /// ASPxComboBox1 control.
+        /// ASPxComboBoxFromWhom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxComboBox1;
+        protected global::DevExpress.Web.ASPxComboBox ASPxComboBoxFromWhom;
         
         /// <summary>
         /// SqlDataSourceFromWhom control.
@@ -76,13 +94,13 @@ namespace Portal.Pages.Maintenance.DepartmentWork {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceFromWhom;
         
         /// <summary>
-        /// ASPxMemo1 control.
+        /// ASPxMemoDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxMemo ASPxMemo1;
+        protected global::DevExpress.Web.ASPxMemo ASPxMemoDescription;
         
         /// <summary>
         /// ASPxPanel1 control.

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
 
 namespace Portal.Pages.Maintenance.DepartmentWork
 {
@@ -23,6 +24,7 @@ namespace Portal.Pages.Maintenance.DepartmentWork
             {
                 Page.Title = "Работа отдела";
                 using (DepartmentContext context = new DepartmentContext())
+                using (EmployeeContext employeeContext = new EmployeeContext())
                 {
                     Department department = await context.GetDepartmentByUserAsync(User.Identity.Name);
                     if (department != null)
@@ -31,36 +33,35 @@ namespace Portal.Pages.Maintenance.DepartmentWork
                         Session["DepartmentId"] = department.Id;
                         Session["DepartmentNode"] = String.Join(",", (await context.GetNodeDepartmentAsync(department.Id)).ToArray());
                     }
+
+                    Employee employee = await employeeContext.GetEmployeeByUserAsync(User.Identity.Name);
+                    if(employee != null)
+                    {
+                        Session["EmployeeId"] = employee.Id;
+                    }
                 }
-
-
 
             }
         }
 
-        protected void ASPxCallbackSaveWork_Callback(object source, DevExpress.Web.CallbackEventArgs e)
+        protected async void ASPxCallbackSaveWork_Callback(object source, DevExpress.Web.CallbackEventArgs e)
         {
             if (Page.IsValid && ASPxCallbackSaveWork.IsCallback)
             {
-                //if (!User.IsInRole("Администраторы"))
-                //{
-                //    if (Convert.ToDateTime(ASPxDateEditTransport.Value) < new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0))
-                //    {
-                //        return;
-                //    }
-                //}
-                //using (TransportContext context = new TransportContext())
-                //{
-                //    Portal.Models.Entities.Transport transport = new Portal.Models.Entities.Transport()
-                //    {
-                //        EmployeeId = Convert.ToInt32(ASPxComboBoxEmployee.Value),
-                //        DateTransport = Convert.ToDateTime(ASPxDateEditTransport.Value),
-                //        Address = Convert.ToString(ASPxComboBoxAddress.Value)
-                //    };
-                //    await context.AddTransportAsync(transport);
-                //    await context.SaveChangesAsync();
-                //}
+                using (DepartmentWorkContext departmentWorkContext = new DepartmentWorkContext())
+                {
+                    await departmentWorkContext.AddOrUpdateAsync(new Models.Entities.DepartmentWork
+                    {
+                        DepartmentId = (int)Session["DepartmentId"],
+                        FromWhom = ASPxComboBoxFromWhom.Text,
+                        RegisterDate = DateTime.Now,
+                        RegisterDescription = ASPxMemoDescription.Text,
+                        RegisterEmployeeId = (int)Session["EmployeeId"],
+                        RegisterUserId = User.Identity.GetUserId()
+                    }, -1);
+                }
             }
         }
+
     }
 }

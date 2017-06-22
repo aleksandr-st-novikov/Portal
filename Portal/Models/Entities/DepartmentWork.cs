@@ -15,9 +15,8 @@ namespace Portal.Models.Entities
 
         public string RegisterUserId { get; set; }
         public int RegisterEmployeeId { get; set; }
-        public virtual Employee RegisterEmployee { get; set; }
-        public DateTime RegisterDate { get; set; }
-        public DateTime CloseDate { get; set; }
+        public DateTime? RegisterDate { get; set; }
+        public DateTime? CloseDate { get; set; }
 
         [StringLength(150)]
         public string FromWhom { get; set; }
@@ -27,7 +26,6 @@ namespace Portal.Models.Entities
 
         public string CloseUserId { get; set; }
         public int CloseEmployeeId { get; set; }
-        public virtual Employee CloseEmployee { get; set; }
         public string CloseDescription { get; set; }
         public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
