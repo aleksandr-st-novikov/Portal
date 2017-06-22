@@ -224,5 +224,7 @@ namespace Portal.Pages.Journal.Transport
             Session[sessionName] = Session[sessionName] == null ? 0 : Session[sessionName];
             return !((int)(Session[sessionName] = (((int)Session[sessionName]) + 1) % bypassCount) == 0);
         }
+
+
     }
 }

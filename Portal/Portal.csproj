@@ -332,6 +332,10 @@
     <Compile Include="Migrations\201706210815172_DepartmentWork.Designer.cs">
       <DependentUpon>201706210815172_DepartmentWork.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706220729158_DepartmentWork1.cs" />
+    <Compile Include="Migrations\201706220729158_DepartmentWork1.Designer.cs">
+      <DependentUpon>201706220729158_DepartmentWork1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Data.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
@@ -773,6 +777,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706210815172_DepartmentWork.resx">
       <DependentUpon>201706210815172_DepartmentWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706220729158_DepartmentWork1.resx">
+      <DependentUpon>201706220729158_DepartmentWork1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\AdmissionReport.resx">

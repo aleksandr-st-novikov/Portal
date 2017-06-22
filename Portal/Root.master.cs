@@ -144,13 +144,13 @@ namespace Portal
                     itemMaintenanceUKM.Image.IconID = "actions_buy_16x16devav";
                     itemMaintenance.Items.Add(itemMaintenanceUKM);
 
-                    DevExpress.Web.MenuItem itemMaintenanceUKMPosSetting = new DevExpress.Web.MenuItem()
-                    {
-                        Text = "Настройка кассы",
-                        NavigateUrl = "~/Pages/Maintenance/UKM/PosSetting/PosSetting.aspx"
-                    };
-                    //itemMaintenanceUKMReboot.Image.IconID = "people_usergroup_16x16office2013";
-                    itemMaintenanceUKM.Items.Add(itemMaintenanceUKMPosSetting);
+                    //DevExpress.Web.MenuItem itemMaintenanceUKMPosSetting = new DevExpress.Web.MenuItem()
+                    //{
+                    //    Text = "Настройка кассы",
+                    //    NavigateUrl = "~/Pages/Maintenance/UKM/PosSetting/PosSetting.aspx"
+                    //};
+                    ////itemMaintenanceUKMReboot.Image.IconID = "people_usergroup_16x16office2013";
+                    //itemMaintenanceUKM.Items.Add(itemMaintenanceUKMPosSetting);
 
                     //DevExpress.Web.MenuItem itemMaintenanceUKMSettings = new DevExpress.Web.MenuItem()
                     //{
