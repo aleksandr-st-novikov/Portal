@@ -19,35 +19,105 @@
                 <dx:TabPage Text="В работе">
                     <ContentCollection>
                         <dx:ContentControl runat="server">
-                            <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceDepartmentWorkInWork" KeyFieldName="Id" Width="900px">
-                                <SettingsDataSecurity AllowDelete="False" AllowInsert="False" />
+                            <dx:ASPxGridView ID="ASPxGridViewWorkInWork" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceDepartmentWorkInWork" KeyFieldName="Id" Width="1200px" ClientInstanceName="ASPxClientGridViewWorkInWork" Font-Size="Small">
+                                <ClientSideEvents CustomButtonClick="function(s, e) {
+	var key = s.GetRowKey(e.visibleIndex);
+                                    ASPxClientMemoCloseDescription.SetText(key);
+       ASPxClientPopupControlCloseWork.Show();
+                                    
+}" />
+                                <SettingsEditing Mode="PopupEditForm">
+                                </SettingsEditing>
+                                <SettingsDataSecurity AllowInsert="False" />
+                                <SettingsPopup>
+                                    <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
+                                </SettingsPopup>
                                 <SettingsSearchPanel Visible="True" />
+                                <StylesPopup>
+                                    <EditForm>
+                                        <Header BackColor="WhiteSmoke">
+                                        </Header>
+                                    </EditForm>
+                                </StylesPopup>
                                 <Columns>
-                                    <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="0">
+                                    <dx:GridViewCommandColumn ShowEditButton="True" ShowInCustomizationForm="True" VisibleIndex="0" ButtonRenderMode="Image" ButtonType="Image" Caption=" " ShowDeleteButton="True" Width="30px">
+                                        <CustomButtons>
+                                            <dx:GridViewCommandColumnCustomButton ID="WorkClose" Text="Закрыть заявку">
+                                                <Image IconID="programming_ide_16x16office2013">
+                                                </Image>
+                                            </dx:GridViewCommandColumnCustomButton>
+                                        </CustomButtons>
+                                    </dx:GridViewCommandColumn>
+                                    <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1" Caption="Код">
                                         <EditFormSettings Visible="False" />
+                                        <CellStyle HorizontalAlign="Center">
+                                        </CellStyle>
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="RegisterUserId" ShowInCustomizationForm="True" VisibleIndex="1">
+                                    <dx:GridViewDataTextColumn FieldName="RegisterUserId" ShowInCustomizationForm="True" VisibleIndex="2" Visible="False">
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="RegisterEmployeeId" ShowInCustomizationForm="True" VisibleIndex="2">
-                                    </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataDateColumn FieldName="RegisterDate" ShowInCustomizationForm="True" VisibleIndex="3">
+                                    <dx:GridViewDataDateColumn FieldName="RegisterDate" ShowInCustomizationForm="True" VisibleIndex="3" Caption="Дата регистрации" Width="130px">
+                                        <PropertiesDateEdit DisplayFormatString="g">
+                                        </PropertiesDateEdit>
+                                        <EditFormSettings Visible="False" />
                                     </dx:GridViewDataDateColumn>
-                                    <dx:GridViewDataDateColumn FieldName="CloseDate" ShowInCustomizationForm="True" VisibleIndex="4">
+                                    <dx:GridViewDataDateColumn FieldName="CloseDate" ShowInCustomizationForm="True" VisibleIndex="7" Visible="False">
                                     </dx:GridViewDataDateColumn>
-                                    <dx:GridViewDataTextColumn FieldName="FromWhom" ShowInCustomizationForm="True" VisibleIndex="5">
+                                    <dx:GridViewDataTextColumn FieldName="FromWhom" ShowInCustomizationForm="True" VisibleIndex="4" Caption="От кого заявка" Width="170px">
+                                        <PropertiesTextEdit>
+                                            <ValidationSettings Display="Dynamic" ValidationGroup="EditForm">
+                                                <RequiredField ErrorText="Обязательно для заполнения" IsRequired="True" />
+                                            </ValidationSettings>
+                                        </PropertiesTextEdit>
+                                        <EditFormSettings CaptionLocation="Top" ColumnSpan="2" />
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="RegisterDescription" ShowInCustomizationForm="True" VisibleIndex="6">
+                                    <dx:GridViewDataTextColumn FieldName="CloseUserId" ShowInCustomizationForm="True" VisibleIndex="8" Visible="False">
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="CloseUserId" ShowInCustomizationForm="True" VisibleIndex="7">
+                                    <dx:GridViewDataTextColumn FieldName="CloseDescription" ShowInCustomizationForm="True" VisibleIndex="10" Visible="False">
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="CloseEmployeeId" ShowInCustomizationForm="True" VisibleIndex="8">
+                                    <dx:GridViewDataTextColumn FieldName="DepartmentId" ShowInCustomizationForm="True" VisibleIndex="11" Visible="False">
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="CloseDescription" ShowInCustomizationForm="True" VisibleIndex="9">
-                                    </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="DepartmentId" ShowInCustomizationForm="True" VisibleIndex="10">
-                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataComboBoxColumn Caption="Кто принял" FieldName="RegisterEmployeeId" ShowInCustomizationForm="False" VisibleIndex="6">
+                                        <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" TextField="FIO" ValueField="Id">
+                                        </PropertiesComboBox>
+                                        <EditFormSettings Visible="False" />
+                                    </dx:GridViewDataComboBoxColumn>
+                                    <dx:GridViewDataMemoColumn Caption="Описание" FieldName="RegisterDescription" ShowInCustomizationForm="True" VisibleIndex="5" Width="350px">
+                                        <PropertiesMemoEdit Height="100px" Width="100%">
+                                            <ValidationSettings Display="Dynamic" ValidationGroup="&lt;DeleteButton&gt;">
+                                                <RequiredField ErrorText="Обязательно для заполнения" IsRequired="True" />
+                                            </ValidationSettings>
+                                        </PropertiesMemoEdit>
+                                        <EditFormSettings CaptionLocation="Top" ColumnSpan="2" />
+                                    </dx:GridViewDataMemoColumn>
+                                    <dx:GridViewDataComboBoxColumn Caption="Ответственный" FieldName="CloseEmployeeId" ShowInCustomizationForm="True" VisibleIndex="9">
+                                        <PropertiesComboBox AllowNull="True" DataSourceID="SqlDataSourceEmployee" TextField="FIO" ValueField="Id">
+                                            <ClearButton DisplayMode="OnHover">
+                                            </ClearButton>
+                                        </PropertiesComboBox>
+                                    </dx:GridViewDataComboBoxColumn>
                                 </Columns>
+                                <SettingsBehavior ConfirmDelete="True" />
+                                <SettingsCommandButton>
+                                    <ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
+                                    <HideAdaptiveDetailButton ButtonType="Image"></HideAdaptiveDetailButton>
+                                    <EditButton>
+                                        <Image ToolTip="Редактировать" IconID="edit_edit_16x16office2013" />
+                                    </EditButton>
+                                    <DeleteButton>
+                                        <Image ToolTip="Удалить" IconID="actions_deletelist_16x16office2013" />
+                                    </DeleteButton>
+                                    <UpdateButton RenderMode="Button">
+                                    </UpdateButton>
+                                    <CancelButton RenderMode="Button">
+                                    </CancelButton>
+                                </SettingsCommandButton>
                             </dx:ASPxGridView>
+                            <asp:SqlDataSource ID="SqlDataSourceEmployee" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], concat([Lastname], ' ', left([Firstname],1), '.', left([Patronymic],1), '.') as FIO, [DepartmentId] FROM [Employee] WHERE (([IsWork] = @IsWork) AND ([DepartmentId] = @DepartmentId))">
+                                <SelectParameters>
+                                    <asp:Parameter DefaultValue="True" Name="IsWork" Type="Boolean" />
+                                    <asp:SessionParameter Name="DepartmentId" SessionField="DepartmentId" Type="Int32" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSourceDepartmentWorkInWork" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" DeleteCommand="DELETE FROM [DepartmentWork] WHERE [Id] = @Id" InsertCommand="INSERT INTO [DepartmentWork] ([RegisterUserId], [RegisterEmployeeId], [RegisterDate], [CloseDate], [FromWhom], [RegisterDescription], [CloseUserId], [CloseEmployeeId], [CloseDescription], [DepartmentId]) VALUES (@RegisterUserId, @RegisterEmployeeId, @RegisterDate, @CloseDate, @FromWhom, @RegisterDescription, @CloseUserId, @CloseEmployeeId, @CloseDescription, @DepartmentId)" SelectCommand="SELECT * FROM [DepartmentWork] WHERE (([DepartmentId] = @DepartmentId) AND ([CloseDate] IS NULL))" UpdateCommand="UPDATE [DepartmentWork] SET [RegisterUserId] = @RegisterUserId, [RegisterEmployeeId] = @RegisterEmployeeId, [RegisterDate] = @RegisterDate, [CloseDate] = @CloseDate, [FromWhom] = @FromWhom, [RegisterDescription] = @RegisterDescription, [CloseUserId] = @CloseUserId, [CloseEmployeeId] = @CloseEmployeeId, [CloseDescription] = @CloseDescription, [DepartmentId] = @DepartmentId WHERE [Id] = @Id">
                                 <DeleteParameters>
                                     <asp:Parameter Name="Id" Type="Int32" />
@@ -98,11 +168,11 @@
 }" />
             <PanelCollection>
                 <dx:PanelContent runat="server">
-                    <dx:ASPxPopupControl ID="ASPxPopupControlAddWork" runat="server" HeaderText="Добавить задание" Modal="True" AllowDragging="True" ClientInstanceName="ASPxClientPopupControlAddWork" CloseOnEscape="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="200" Width="700px">
+                    <dx:ASPxPopupControl ID="ASPxPopupControlAddWork" runat="server" HeaderText="Добавить задание" Modal="True" AllowDragging="True" ClientInstanceName="ASPxClientPopupControlAddWork" CloseOnEscape="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="200" Width="900px">
                         <HeaderStyle BackColor="WhiteSmoke" />
                         <ContentCollection>
                             <dx:PopupControlContentControl runat="server">
-                                <dx:ASPxComboBox ID="ASPxComboBoxFromWhom" runat="server" Caption="Источник" DataSourceID="SqlDataSourceFromWhom" DropDownStyle="DropDown" TextField="FromWhom" ValueField="FromWhom" Width="100%">
+                                <dx:ASPxComboBox ID="ASPxComboBoxFromWhom" runat="server" Caption="От кого заявка" DataSourceID="SqlDataSourceFromWhom" DropDownStyle="DropDown" TextField="FromWhom" ValueField="FromWhom" Width="100%">
                                     <DropDownButton Visible="False">
                                     </DropDownButton>
                                     <CaptionSettings Position="Top" />
@@ -152,8 +222,31 @@ ASPxClientCallbackSaveWork.PerformCallback();
             <ClientSideEvents CallbackComplete="function(s, e) {
 ASPxClientEdit.ClearEditorsInContainerById('clientContainer')
 ASPxClientPopupControlAddWork.Hide();
-//ASPxClientGridViewHeadDepartment.Refresh();	
+ASPxClientGridViewWorkInWork.Refresh();
 }" />
         </dx:ASPxCallback>
+        <dx:ASPxPopupControl ID="ASPxPopupControlCloseWork" runat="server" ClientInstanceName="ASPxClientPopupControlCloseWork" CloseOnEscape="True" HeaderText="Закрыть заявку" Modal="True" Width="900px">
+            <HeaderStyle BackColor="WhiteSmoke" />
+            <ContentCollection>
+<dx:PopupControlContentControl runat="server">
+    <dx:ASPxMemo ID="ASPxMemoCloseDescription" runat="server" Caption="Описание решения" ClientInstanceName="ASPxClientMemoCloseDescription" Height="150px" Width="100%">
+        <CaptionSettings Position="Top" />
+        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="CloseForm">
+            <RequiredField ErrorText="Обязательно для заполнения" IsRequired="True" />
+        </ValidationSettings>
+    </dx:ASPxMemo>
+    <dx:ASPxPanel ID="ASPxPanel2" runat="server" RightToLeft="True" Width="100%">
+        <PanelCollection>
+            <dx:PanelContent runat="server">
+                <dx:ASPxButton ID="ASPxButton2" runat="server" Text="ASPxButton">
+                </dx:ASPxButton>
+                <dx:ASPxButton ID="ASPxButton1" runat="server" Text="ASPxButton">
+                </dx:ASPxButton>
+            </dx:PanelContent>
+        </PanelCollection>
+    </dx:ASPxPanel>
+                </dx:PopupControlContentControl>
+</ContentCollection>
+        </dx:ASPxPopupControl>
     </div>
 </asp:Content>

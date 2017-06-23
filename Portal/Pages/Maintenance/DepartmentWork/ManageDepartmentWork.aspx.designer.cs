@@ -40,13 +40,31 @@ namespace Portal.Pages.Maintenance.DepartmentWork {
         protected global::DevExpress.Web.ASPxPageControl ASPxPageControl1;
         
         /// <summary>
-        /// ASPxGridView1 control.
+        /// ASPxGridViewWorkInWork control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
+        protected global::DevExpress.Web.ASPxGridView ASPxGridViewWorkInWork;
+        
+        /// <summary>
+        /// WorkClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.GridViewCommandColumnCustomButton WorkClose;
+        
+        /// <summary>
+        /// SqlDataSourceEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEmployee;
         
         /// <summary>
         /// SqlDataSourceDepartmentWorkInWork control.
@@ -137,5 +155,50 @@ namespace Portal.Pages.Maintenance.DepartmentWork {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxCallback ASPxCallbackSaveWork;
+        
+        /// <summary>
+        /// ASPxPopupControlCloseWork control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlCloseWork;
+        
+        /// <summary>
+        /// ASPxMemoCloseDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxMemo ASPxMemoCloseDescription;
+        
+        /// <summary>
+        /// ASPxPanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel ASPxPanel2;
+        
+        /// <summary>
+        /// ASPxButton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButton2;
+        
+        /// <summary>
+        /// ASPxButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButton1;
     }
 }

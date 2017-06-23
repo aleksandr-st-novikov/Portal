@@ -55,6 +55,7 @@ namespace Portal
                     itemJournal.Image.IconID = "layout_paneloff_16x16devav";
                 }
 
+#if DEBUG
                 if ((Context.User.IsInRole("Администраторы")
                     || Context.User.IsInRole("Заявка на принадлежности - Сотрудник")
                     || Context.User.IsInRole("Заявка на принадлежности - Управление")
@@ -77,6 +78,7 @@ namespace Portal
                     }
 
                 };
+#endif
 
                 if (Context.User.IsInRole("Администраторы")
                     || Context.User.IsInRole("Допуски сотрудников"))
@@ -98,6 +100,7 @@ namespace Portal
 
                 };
 
+#if DEBUG
                 if (Context.User.IsInRole("Администраторы")
                     || Context.User.IsInRole("Транспорт - Руководители")
                     || Context.User.IsInRole("Транспорт - Служебный вход"))
@@ -118,6 +121,7 @@ namespace Portal
                     }
 
                 };
+#endif
 
                 if (Context.User.IsInRole("Администраторы"))
                 {
@@ -136,6 +140,7 @@ namespace Portal
                     itemMaintenanceDepartmentWork.Image.IconID = "view_meeting_16x16devav";
                     itemMaintenance.Items.Add(itemMaintenanceDepartmentWork);
 
+#if DEBUG
                     DevExpress.Web.MenuItem itemMaintenanceUKM = new DevExpress.Web.MenuItem()
                     {
                         Text = "УКМ, кассы",
@@ -143,6 +148,7 @@ namespace Portal
                     };
                     itemMaintenanceUKM.Image.IconID = "actions_buy_16x16devav";
                     itemMaintenance.Items.Add(itemMaintenanceUKM);
+#endif
 
                     //DevExpress.Web.MenuItem itemMaintenanceUKMPosSetting = new DevExpress.Web.MenuItem()
                     //{

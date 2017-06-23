@@ -55,7 +55,7 @@
             <Columns>
                 <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" ShowEditButton="True" ShowDeleteButton="True" ButtonRenderMode="Image" ButtonType="Image" FixedStyle="Left" Caption=" ">
                     <CustomButtons>
-                        <dx:GridViewCommandColumnCustomButton ID="ChangeRoles">
+                        <dx:GridViewCommandColumnCustomButton ID="ChangeRoles" Text="Изменить роли">
                             <Image IconID="people_role_16x16office2013">
                             </Image>
                         </dx:GridViewCommandColumnCustomButton>
