@@ -63,5 +63,25 @@ namespace Portal.Pages.Maintenance.DepartmentWork
             }
         }
 
+        protected async void ASPxCallbackSaveClose_Callback(object source, DevExpress.Web.CallbackEventArgs e)
+        {
+            if (Page.IsValid && ASPxCallbackSaveClose.IsCallback && ASPxHiddenFieldId.Get("Id") != null)
+            {
+                int id = 0;
+                if (Int32.TryParse(ASPxHiddenFieldId.Get("Id").ToString(), out id))
+                    {
+                    using (DepartmentWorkContext departmentWorkContext = new DepartmentWorkContext())
+                    {
+                        Models.Entities.DepartmentWork departmentWork = await departmentWorkContext.FindByIdAsync(id);
+                        departmentWork.CloseDate = DateTime.Now;
+                        departmentWork.CloseEmployeeId = (int)Session["EmployeeId"];
+                        departmentWork.CloseUserId = User.Identity.GetUserId();
+                        departmentWork.CloseDescription = ASPxMemoCloseDescription.Text;
+
+                        await departmentWorkContext.AddOrUpdateAsync(departmentWork, id);
+                    }
+                }
+            }
+        }
     }
 }
