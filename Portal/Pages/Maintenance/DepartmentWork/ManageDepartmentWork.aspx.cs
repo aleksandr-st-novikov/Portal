@@ -74,7 +74,7 @@ namespace Portal.Pages.Maintenance.DepartmentWork
                     {
                         Models.Entities.DepartmentWork departmentWork = await departmentWorkContext.FindByIdAsync(id);
                         departmentWork.CloseDate = DateTime.Now;
-                        departmentWork.CloseEmployeeId = (int)Session["EmployeeId"];
+                        departmentWork.CloseEmployeeId = departmentWork.CloseEmployeeId ?? (int)Session["EmployeeId"];
                         departmentWork.CloseUserId = User.Identity.GetUserId();
                         departmentWork.CloseDescription = ASPxMemoCloseDescription.Text;
 
