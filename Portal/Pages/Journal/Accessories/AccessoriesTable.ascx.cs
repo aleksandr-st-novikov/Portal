@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Portal.BL.Core;
 
 namespace Portal.Pages.Journal.Accessories
 {
@@ -19,8 +20,8 @@ namespace Portal.Pages.Journal.Accessories
 
                 if ((string)Session["AccessoriesIsOpen"] == "1" && (string)Session["AccessoriesCanEdit"] == "0")
                 {
-                    DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Models.Data.AccessoriesFirstDay, 0, 0, 0);
-                    DateTime toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Models.Data.AccessoriesLastDay, 0, 0, 0);
+                    DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Data.AccessoriesFirstDay, 0, 0, 0);
+                    DateTime toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Data.AccessoriesLastDay, 0, 0, 0);
                     if (DateTime.Now > toDate)
                     {
                         ASPxGridViewAccessoriesTable.SettingsEditing.Mode = DevExpress.Web.GridViewEditingMode.Inline; // .SettingsDataSecurity.AllowEdit = false;

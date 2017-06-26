@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using Portal.BL.Utils;
+using System.Threading.Tasks;
 
 namespace Portal.Pages.Maintenance.DepartmentWork
 {
@@ -59,6 +61,10 @@ namespace Portal.Pages.Maintenance.DepartmentWork
                         RegisterEmployeeId = (int)Session["EmployeeId"],
                         RegisterUserId = User.Identity.GetUserId()
                     }, -1);
+
+                    //send e-mail
+                    string message = $"<pre><p><b>От кого заявка:</b>{ASPxComboBoxFromWhom.Text}</p><p><b>Описание:</b></br>{ASPxMemoDescription.Text}</p></pre>";
+                    await Task.Run(() => Service.SendMessage("novikov.it@bobruysk.korona.by", "Новое задание", message));
                 }
             }
         }

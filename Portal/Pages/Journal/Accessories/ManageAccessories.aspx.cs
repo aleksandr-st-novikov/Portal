@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Portal.BL.Core;
 
 namespace Portal.Pages.Journal.Accessories
 {
@@ -37,8 +38,8 @@ namespace Portal.Pages.Journal.Accessories
                     }
                 }
 
-                DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Models.Data.AccessoriesFirstDay, 0, 0, 0);
-                DateTime toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Models.Data.AccessoriesLastDay, 0, 0, 0);
+                DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Data.AccessoriesFirstDay, 0, 0, 0);
+                DateTime toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Data.AccessoriesLastDay, 0, 0, 0);
                 if (DateTime.Now >= fromDate && DateTime.Now <= toDate)
                 {
                     ASPxButtonCreate.Visible = true;

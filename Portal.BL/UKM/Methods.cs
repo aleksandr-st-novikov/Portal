@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Portal.DAL;
 using MySql.Data.MySqlClient;
 using Portal.BL.UKM.Models;
+using Portal.BL.Core;
 
 namespace Portal.BL.UKM
 {
@@ -13,7 +14,7 @@ namespace Portal.BL.UKM
     {
         public static async Task<List<Store>> GetDataAsync()
         {
-            using (UKMConnection uKMConnection = new UKMConnection("192.168.24.254", "root", "CtHDbCGK.C"))
+            using (UKMConnection uKMConnection = new UKMConnection(Data.UKMHost, Data.UKMUser, Data.UKMPassword))
             {
                 string sqlText = "select * from ukmserver.trm_in_store where deleted = 0";
                 MySqlCommand com = new MySqlCommand(sqlText, uKMConnection.Con);
