@@ -64,7 +64,7 @@ namespace Portal.Pages.Maintenance.DepartmentWork
 
                     //send e-mail
                     string message = $"<pre><p><b>От кого заявка:</b>{ASPxComboBoxFromWhom.Text}</p><p><b>Описание:</b></br>{ASPxMemoDescription.Text}</p></pre>";
-                    await Task.Run(() => Service.SendMessage("novikov.it@bobruysk.korona.by", "Новое задание", message));
+                    await Task.Run(() => Service.SendMessage("it@bobruysk.korona.by", "Новое задание", message));
                 }
             }
         }
