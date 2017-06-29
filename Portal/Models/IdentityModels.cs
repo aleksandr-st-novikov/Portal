@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using System.Data.Entity;
 using Portal.Models.Entities;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -56,7 +54,7 @@ namespace Portal.Models
         public DbSet<Transport> Transport { get; set; }
         public DbSet<Store> Store { get; set; }
         public DbSet<DepartmentWork> DepartmentWork { get; set; }
-        
+        public DbSet<Manual> Manual { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

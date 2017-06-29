@@ -141,6 +141,14 @@ namespace Portal
                     itemMaintenance.Items.Add(itemMaintenanceDepartmentWork);
 
 #if DEBUG
+                    DevExpress.Web.MenuItem itemMaintenanceManual = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Инструкции",
+                        NavigateUrl = "~/Pages/Maintenance/Manual/ManageManual.aspx"
+                    };
+                    itemMaintenanceManual.Image.IconID = "support_article_16x16office2013";
+                    itemMaintenance.Items.Add(itemMaintenanceManual);
+
                     DevExpress.Web.MenuItem itemMaintenanceUKM = new DevExpress.Web.MenuItem()
                     {
                         Text = "УКМ, кассы",
