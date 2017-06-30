@@ -41,6 +41,7 @@ namespace Portal.Models.EFContext
                 entry.Patronymic = employee.Patronymic;
                 entry.DepartmentId = department.Id;
                 entry.PositionId = position.Id;
+                entry.IsWork = true;
             }
         }
 
