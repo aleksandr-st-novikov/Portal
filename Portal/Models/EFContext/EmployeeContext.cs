@@ -28,7 +28,8 @@ namespace Portal.Models.EFContext
                     DateIn = employee.DateIn,
                     DateBirth = employee.DateBirth,
                     DepartmentId = department == null ? (int?)null : department.Id,
-                    PositionId = position == null ? (int?)null : position.Id
+                    PositionId = position == null ? (int?)null : position.Id,
+                    IsWork = true
                 });
             }
             else
