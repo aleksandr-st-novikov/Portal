@@ -1,6 +1,7 @@
 <%@ Master Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="ManualMain.master.cs" Inherits="Portal.ManualMainMaster" %>
 
-<%@ Register assembly="DevExpress.Web.ASPxTreeList.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxTreeList" tagprefix="dx" %>
+
+<%@ Register Src="~/Pages/Maintenance/Manual/LeftTree.ascx" TagPrefix="uc1" TagName="LeftTree" %>
 
 <%-- DXCOMMENT: Page Main.master is a master page that contains central area layout --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
@@ -16,7 +17,7 @@
             </Pane>
         </Styles>
         <Panes>
-            <dx:SplitterPane Name="ContentLeft" ShowCollapseBackwardButton="True" Size="280px" MinSize="150px">
+            <dx:SplitterPane Name="ContentLeft" ShowCollapseBackwardButton="True" Size="380px" MinSize="200px">
                 <PaneStyle CssClass="leftPane">
                     <Paddings Padding="1px"></Paddings>
                 </PaneStyle>
@@ -26,9 +27,7 @@
                 <ContentCollection>
                     <dx:SplitterContentControl>
                         <div class="leftPanel">
-                            <%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
-                            <dx:ASPxTreeList ID="ASPxTreeList1" runat="server">
-                            </dx:ASPxTreeList>
+                            <uc1:LeftTree runat="server" id="LeftTree" />
                         </div>
                     </dx:SplitterContentControl>
                 </ContentCollection>

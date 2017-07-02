@@ -210,6 +210,7 @@
     <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
+    <Content Include="Pages\Maintenance\Manual\LeftTree.ascx" />
     <Content Include="Pages\Maintenance\DepartmentWork\ManageDepartmentWork.aspx" />
     <Content Include="Pages\Maintenance\Manual\ManageManual.aspx" />
     <Content Include="Pages\Maintenance\UKM\Setting.aspx" />
@@ -353,6 +354,14 @@
     <Compile Include="Migrations\201706290853041_Manual.cs" />
     <Compile Include="Migrations\201706290853041_Manual.Designer.cs">
       <DependentUpon>201706290853041_Manual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707021852510_Manual1.cs" />
+    <Compile Include="Migrations\201707021852510_Manual1.Designer.cs">
+      <DependentUpon>201707021852510_Manual1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707021925213_Manual2.cs" />
+    <Compile Include="Migrations\201707021925213_Manual2.Designer.cs">
+      <DependentUpon>201707021925213_Manual2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
@@ -660,6 +669,13 @@
     <Compile Include="Pages\Maintenance\DepartmentWork\DepartmentWorkMain.master.designer.cs">
       <DependentUpon>DepartmentWorkMain.master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Maintenance\Manual\LeftTree.ascx.cs">
+      <DependentUpon>LeftTree.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\LeftTree.ascx.designer.cs">
+      <DependentUpon>LeftTree.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Maintenance\DepartmentWork\ManageDepartmentWork.aspx.cs">
       <DependentUpon>ManageDepartmentWork.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -826,6 +842,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706290853041_Manual.resx">
       <DependentUpon>201706290853041_Manual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707021852510_Manual1.resx">
+      <DependentUpon>201707021852510_Manual1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707021925213_Manual2.resx">
+      <DependentUpon>201707021925213_Manual2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\AdmissionReport.resx">

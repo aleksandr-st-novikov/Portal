@@ -22,13 +22,13 @@ namespace Portal {
         protected global::DevExpress.Web.ASPxSplitter ContentSplitter;
         
         /// <summary>
-        /// ASPxTreeList1 control.
+        /// LeftTree control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTreeList.ASPxTreeList ASPxTreeList1;
+        protected global::Portal.Pages.Maintenance.DepartmentWork.LeftTree LeftTree;
         
         /// <summary>
         /// MainContent control.
