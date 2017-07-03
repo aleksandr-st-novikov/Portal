@@ -1,96 +1,69 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LeftTree.ascx.cs" Inherits="Portal.Pages.Maintenance.DepartmentWork.LeftTree" %>
 <%@ Register Assembly="DevExpress.Web.ASPxTreeList.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
-<table style="width: 100%;">
-    <tr>
-        <td>
-            <dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Категории" Font-Size="Large">
-            </dx:ASPxLabel>
-        </td>
-        <td style="text-align: right; padding-right: 10px;">
-            <dx:ASPxButton ID="ASPxButtonAddCategory" runat="server" HorizontalAlign="Right" Text="Добавить" AutoPostBack="False" ClientInstanceName="ASPxClientButtonAddCategory" ToolTip="Добавить категорию">
-                <ClientSideEvents Click="function(s, e) {
-	ASPxClientCallbackAddCategory.PerformCallback();
-}" />
-            </dx:ASPxButton>
-        </td>
-    </tr>
-</table>
+
 <div style="margin: 10px 0;">
-    <dx:ASPxTreeList ID="ASPxTreeListCategory" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCategory" KeyFieldName="Id" ParentFieldName="ParentId" ClientInstanceName="ASPxClientTreeListCategory" OnCustomDataCallback="ASPxTreeListCategory_CustomDataCallback">
+    <dx:ASPxTreeList ID="ASPxTreeListCategory" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCategory" KeyFieldName="Id" ParentFieldName="ParentId" ClientInstanceName="ASPxClientTreeListCategory" Height="100%" Width="100%">
         <Columns>
-            <dx:TreeListTextColumn FieldName="Name" VisibleIndex="0">
+            <dx:TreeListTextColumn FieldName="Name" VisibleIndex="0" Caption="Категории">
+                <CellStyle Wrap="False">
+                </CellStyle>
             </dx:TreeListTextColumn>
+            <dx:TreeListCommandColumn Caption=" " VisibleIndex="1" ButtonType="Image" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" Width="20%">
+                <EditButton Visible="True">
+                    <Image IconID="edit_edit_16x16office2013">
+                    </Image>
+                </EditButton>
+                <NewButton>
+                    <Image IconID="actions_additem_16x16office2013">
+                    </Image>
+                </NewButton>
+                <DeleteButton Visible="True">
+                    <Image IconID="actions_deletelist_16x16office2013">
+                    </Image>
+                </DeleteButton>
+                <UpdateButton>
+                    <Image IconID="save_save_16x16office2013">
+                    </Image>
+                </UpdateButton>
+                <CancelButton>
+                    <Image IconID="actions_cancel_16x16office2013">
+                    </Image>
+                </CancelButton>
+                <HeaderStyle HorizontalAlign="Center" />
+                <CellStyle HorizontalAlign="Center">
+                </CellStyle>
+            </dx:TreeListCommandColumn>
         </Columns>
-        <Settings ShowColumnHeaders="False" />
-        <SettingsDataSecurity AllowDelete="False" AllowEdit="False" AllowInsert="False" />
+        <SettingsBehavior AllowFocusedNode="True" AllowEllipsisInText="True" ExpandCollapseAction="NodeClick" />
+        <SettingsEditing AllowNodeDragDrop="True" />
+        <Styles>
+            <Header Font-Size="Large">
+            </Header>
+            <SelectedNode Font-Bold="False">
+            </SelectedNode>
+            <FocusedNode BackColor="WhiteSmoke" ForeColor="#484848">
+            </FocusedNode>
+        </Styles>
     </dx:ASPxTreeList>
 </div>
 
-<dx:ASPxCallback ID="ASPxCallbackAddCategory" runat="server" ClientInstanceName="ASPxClientCallbackAddCategory">
-    <ClientSideEvents EndCallback="function(s, e) {
-	ASPxClientPopupControlAddCategory.Show();
-}" />
-</dx:ASPxCallback>
-
-<asp:SqlDataSource ID="SqlDataSourceCategory" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], [ParentId], [Name] FROM [Manual] WHERE ([IsCategory] = @IsCategory) ORDER BY [Name]">
-    <SelectParameters>
-        <asp:Parameter DefaultValue="true" Name="IsCategory" Type="Boolean" />
-    </SelectParameters>
+<asp:SqlDataSource ID="SqlDataSourceCategory" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], [ParentId], [IsCategory], [Name] FROM [Manual] ORDER BY [Name]" DeleteCommand="DELETE FROM [Manual] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Manual] ([ParentId], [IsCategory], [Name]) VALUES (@ParentId, @IsCategory, @Name)" UpdateCommand="UPDATE [Manual] SET [ParentId] = @ParentId, [IsCategory] = @IsCategory, [Name] = @Name WHERE [Id] = @Id">
+    <DeleteParameters>
+        <asp:Parameter Name="Id" Type="Int32" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:Parameter Name="ParentId" Type="Int32" />
+        <asp:Parameter Name="IsCategory" Type="Boolean" />
+        <asp:Parameter Name="Name" Type="String" />
+    </InsertParameters>
+    <UpdateParameters>
+        <asp:Parameter Name="ParentId" Type="Int32" />
+        <asp:Parameter Name="IsCategory" Type="Boolean" />
+        <asp:Parameter Name="Name" Type="String" />
+        <asp:Parameter Name="Id" Type="Int32" />
+    </UpdateParameters>
 </asp:SqlDataSource>
 
 
-<dx:ASPxPopupControl ID="ASPxPopupControlAddCategory" runat="server" AllowDragging="True" ClientInstanceName="ASPxClientPopupControlAddCategory" HeaderText="Добавить категорию" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" Width="700px">
-    <HeaderStyle BackColor="WhiteSmoke" />
-    <ContentCollection>
-        <dx:PopupControlContentControl runat="server">
-            <div style="margin-bottom: 15px;">
-                <dx:ASPxTextBox ID="ASPxTextBoxNameCategory" runat="server" Caption="Название" Width="100%" ClientInstanceName="ASPxClientTextBoxNameCategory">
-                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" ValidationGroup="AddCategory">
-                        <RequiredField ErrorText="Обязательное поле" IsRequired="True" />
-                    </ValidationSettings>
-                    <CaptionCellStyle Width="110px">
-                    </CaptionCellStyle>
-                </dx:ASPxTextBox>
-            </div>
-            <div style="margin-bottom: 15px;">
-                <dx:ASPxComboBox ID="ASPxComboBoxParentCategory" runat="server" Caption="Поместить в" Width="100%" ClientInstanceName="ASPxClientComboBoxParentCategory" DataSourceID="SqlDataSourceCategory" DropDownStyle="DropDown" TextField="Name" ValueField="Id">
-                    <ClearButton DisplayMode="OnHover">
-                    </ClearButton>
-                    <CaptionCellStyle Width="110px">
-                    </CaptionCellStyle>
-                </dx:ASPxComboBox>
-            </div>
-            <dx:ASPxPanel ID="ASPxPanel1" runat="server" RightToLeft="True" Width="100%">
-                <Paddings PaddingBottom="10px" PaddingTop="10px" />
-                <PanelCollection>
-                    <dx:PanelContent runat="server">
-                        <dx:ASPxButton ID="ASPxButtonCancelCategory" runat="server" Text="Отмена" AutoPostBack="False" ClientInstanceName="ASPxClientButtonCancelCategory">
-                            <ClientSideEvents Click="function(s, e) {
-	ASPxClientPopupControlAddCategory.Hide();
-}" />
-                        </dx:ASPxButton>
-                        <dx:ASPxButton ID="ASPxButtonSaveCategory" runat="server" Text="Сохранить" AutoPostBack="False" ClientInstanceName="ASPxClientButtonSaveCategory" ValidationGroup="AddCategory">
-                            <ClientSideEvents Click="function(s, e) {
-                                    if(ASPxClientEdit.AreEditorsValid())
-                                    {
-                                        if(!ASPxClientCallbackSaveCategory.InCallback())
-                                        {	
-                                            ASPxClientCallbackSaveCategory.PerformCallback();
-                                        }
-                                    }
-                                    }" />
-                        </dx:ASPxButton>
-                    </dx:PanelContent>
-                </PanelCollection>
-            </dx:ASPxPanel>
-        </dx:PopupControlContentControl>
-    </ContentCollection>
-</dx:ASPxPopupControl>
-<dx:ASPxCallback ID="ASPxCallbackSaveCategory" runat="server" ClientInstanceName="ASPxClientCallbackSaveCategory" OnCallback="ASPxCallbackSaveCategory_Callback">
-    <ClientSideEvents EndCallback="function(s, e) {
-            ASPxClientEdit.ClearEditorsInContainerById('clientContainer');
-            ASPxClientPopupControlAddCategory.Hide();
-            ASPxClientTreeListCategory.PerformCallback();
-            }" />
-</dx:ASPxCallback>
+

@@ -13,24 +13,6 @@ namespace Portal.Pages.Maintenance.DepartmentWork {
     public partial class LeftTree {
         
         /// <summary>
-        /// ASPxLabel3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel ASPxLabel3;
-        
-        /// <summary>
-        /// ASPxButtonAddCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButtonAddCategory;
-        
-        /// <summary>
         /// ASPxTreeListCategory control.
         /// </summary>
         /// <remarks>
@@ -40,15 +22,6 @@ namespace Portal.Pages.Maintenance.DepartmentWork {
         protected global::DevExpress.Web.ASPxTreeList.ASPxTreeList ASPxTreeListCategory;
         
         /// <summary>
-        /// ASPxCallbackAddCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxCallback ASPxCallbackAddCategory;
-        
-        /// <summary>
         /// SqlDataSourceCategory control.
         /// </summary>
         /// <remarks>
@@ -56,68 +29,5 @@ namespace Portal.Pages.Maintenance.DepartmentWork {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCategory;
-        
-        /// <summary>
-        /// ASPxPopupControlAddCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlAddCategory;
-        
-        /// <summary>
-        /// ASPxTextBoxNameCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox ASPxTextBoxNameCategory;
-        
-        /// <summary>
-        /// ASPxComboBoxParentCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxComboBoxParentCategory;
-        
-        /// <summary>
-        /// ASPxPanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
-        
-        /// <summary>
-        /// ASPxButtonCancelCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButtonCancelCategory;
-        
-        /// <summary>
-        /// ASPxButtonSaveCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButtonSaveCategory;
-        
-        /// <summary>
-        /// ASPxCallbackSaveCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxCallback ASPxCallbackSaveCategory;
     }
 }

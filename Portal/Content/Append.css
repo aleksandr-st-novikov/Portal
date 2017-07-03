@@ -22,3 +22,7 @@ img[class^="dx"] /*Bootstrap correction*/ {
 .btnInline {
     display: inline-table;
 }
+
+.input-margin-bottom {
+    margin-bottom: 10px;
+}

@@ -14,27 +14,5 @@ namespace Portal.Pages.Maintenance.DepartmentWork
         {
 
         }
-
-        protected async void ASPxCallbackSaveCategory_Callback(object source, DevExpress.Web.CallbackEventArgs e)
-        {
-            if (Page.IsValid && ASPxCallbackSaveCategory.IsCallback)
-            {
-                using (ManualContext manualContext = new ManualContext())
-                {
-                    await manualContext.AddOrUpdateAsync(new Models.Entities.Manual
-                    {
-                        Name = ASPxTextBoxNameCategory.Text,
-                        ParentId = ASPxComboBoxParentCategory.Value == null? (int?)null: Convert.ToInt32(ASPxComboBoxParentCategory.Value),
-                        IsCategory = true
-                    }, -1);
-
-                }
-            }
-        }
-
-        protected void ASPxTreeListCategory_CustomDataCallback(object sender, DevExpress.Web.ASPxTreeList.TreeListCustomDataCallbackEventArgs e)
-        {
-            ASPxTreeListCategory.DataBind();
-        }
     }
 }
