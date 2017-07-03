@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Portal.Models.EFContext;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +14,23 @@ namespace Portal.Pages.Maintenance.Manual
         {
 
         }
+
+        protected async void ASPxCallbackSaveArticle_Callback(object source, DevExpress.Web.CallbackEventArgs e)
+        {
+            if (Page.IsValid && ASPxCallbackSaveArticle.IsCallback)
+            {
+                using (ManualContext manualContext = new ManualContext())
+                {
+                    await manualContext.AddOrUpdateAsync(new Models.Entities.Manual
+                    {
+                        DateCreate = DateTime.Now,
+                        EmployeeId = (int?)Session["EmployeeId"],
+                        Name = ASPxTextBoxName.Text,
+                        MainText = ASPxHtmlEditorMainText.Html
+                    }, -1);
+                }
+            }
+        }
+
     }
 }

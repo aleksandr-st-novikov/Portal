@@ -31,22 +31,22 @@ namespace Portal.Pages.Maintenance.Manual {
         protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
         
         /// <summary>
-        /// ASPxTextBox1 control.
+        /// ASPxTextBoxName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox ASPxTextBox1;
+        protected global::DevExpress.Web.ASPxTextBox ASPxTextBoxName;
         
         /// <summary>
-        /// ASPxRichEdit1 control.
+        /// ASPxHtmlEditorMainText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRichEdit.ASPxRichEdit ASPxRichEdit1;
+        protected global::DevExpress.Web.ASPxHtmlEditor.ASPxHtmlEditor ASPxHtmlEditorMainText;
         
         /// <summary>
         /// ASPxPanel2 control.
@@ -58,22 +58,22 @@ namespace Portal.Pages.Maintenance.Manual {
         protected global::DevExpress.Web.ASPxPanel ASPxPanel2;
         
         /// <summary>
-        /// ASPxButton1 control.
+        /// ASPxButtonCancelArticle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton1;
+        protected global::DevExpress.Web.ASPxButton ASPxButtonCancelArticle;
         
         /// <summary>
-        /// ASPxButton2 control.
+        /// ASPxButtonSaveArticle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton2;
+        protected global::DevExpress.Web.ASPxButton ASPxButtonSaveArticle;
         
         /// <summary>
         /// ASPxCallbackAddArticle control.
@@ -83,5 +83,14 @@ namespace Portal.Pages.Maintenance.Manual {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxCallback ASPxCallbackAddArticle;
+        
+        /// <summary>
+        /// ASPxCallbackSaveArticle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback ASPxCallbackSaveArticle;
     }
 }
