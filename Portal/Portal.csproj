@@ -214,10 +214,11 @@
     <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
-    <Content Include="Pages\Maintenance\Manual\AddArticle.ascx" />
+    <Content Include="Pages\Maintenance\Manual\AddManual.ascx" />
     <Content Include="Pages\Maintenance\Manual\LeftTree.ascx" />
     <Content Include="Pages\Maintenance\DepartmentWork\ManageDepartmentWork.aspx" />
     <Content Include="Pages\Maintenance\Manual\ManageManual.aspx" />
+    <Content Include="Pages\Maintenance\Manual\ViewManual.ascx" />
     <Content Include="Pages\Maintenance\UKM\Setting.aspx" />
     <Content Include="Reports\DocumentView.aspx" />
     <Content Include="Reports\AdmissionReportViewPopup.ascx" />
@@ -674,12 +675,12 @@
     <Compile Include="Pages\Maintenance\DepartmentWork\DepartmentWorkMain.master.designer.cs">
       <DependentUpon>DepartmentWorkMain.master</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Maintenance\Manual\AddArticle.ascx.cs">
-      <DependentUpon>AddArticle.ascx</DependentUpon>
+    <Compile Include="Pages\Maintenance\Manual\AddManual.ascx.cs">
+      <DependentUpon>AddManual.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Maintenance\Manual\AddArticle.ascx.designer.cs">
-      <DependentUpon>AddArticle.ascx</DependentUpon>
+    <Compile Include="Pages\Maintenance\Manual\AddManual.ascx.designer.cs">
+      <DependentUpon>AddManual.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Maintenance\Manual\LeftTree.ascx.cs">
       <DependentUpon>LeftTree.ascx</DependentUpon>
@@ -708,6 +709,13 @@
     </Compile>
     <Compile Include="Pages\Maintenance\Manual\ManualMain.master.designer.cs">
       <DependentUpon>ManualMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\ViewManual.ascx.cs">
+      <DependentUpon>ViewManual.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\ViewManual.ascx.designer.cs">
+      <DependentUpon>ViewManual.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Maintenance\UKM\Setting.aspx.cs">
       <DependentUpon>Setting.aspx</DependentUpon>

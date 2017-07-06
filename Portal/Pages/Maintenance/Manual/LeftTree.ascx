@@ -3,7 +3,7 @@
 
 
 <div style="margin: 10px 0;">
-    <dx:ASPxTreeList ID="ASPxTreeListCategory" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCategory" KeyFieldName="Id" ParentFieldName="ParentId" ClientInstanceName="ASPxClientTreeListCategory" Height="100%" Width="100%">
+    <dx:ASPxTreeList ID="ASPxTreeListCategory" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCategory" KeyFieldName="Id" ParentFieldName="ParentId" ClientInstanceName="ASPxClientTreeListCategory" Height="100%" Width="100%" OnHtmlRowPrepared="ASPxTreeListCategory_HtmlRowPrepared">
         <Columns>
             <dx:TreeListTextColumn FieldName="Name" VisibleIndex="0" Caption="Категории">
                 <CellStyle Wrap="False">
@@ -45,6 +45,11 @@
             <FocusedNode BackColor="WhiteSmoke" ForeColor="#484848">
             </FocusedNode>
         </Styles>
+        <ClientSideEvents FocusedNodeChanged="function(s, e) {
+var nodeKey = s.GetFocusedNodeKey();
+ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
+}" NodeFocusing="function(s, e) {
+}" />
     </dx:ASPxTreeList>
 </div>
 

@@ -26,6 +26,23 @@ namespace Portal.Models.Entities
         [StringLength(150)]
         public string Patronymic { get; set; }
 
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return $"{Lastname} {Firstname} {Patronymic}";
+            }
+        }
+
+        [NotMapped]
+        public string FIO
+        {
+            get
+            {
+                return $"{Lastname} {Firstname.Substring(0,1)}.{Patronymic.Substring(0,1)}.";
+            }
+        }
         public int? PositionId { get; set; }
 
         public int? DepartmentId { get; set; }
