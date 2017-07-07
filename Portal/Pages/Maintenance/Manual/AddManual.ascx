@@ -191,7 +191,10 @@
                         </dx:ASPxButton>
                         <dx:ASPxButton ID="ASPxButtonSaveManual" runat="server" Text="Сохранить" AutoPostBack="False" ClientInstanceName="ASPxClientButtonSaveManual" ValidationGroup="SaveManual">
                             <ClientSideEvents Click="function(s, e) {
-	ASPxClientCallbackSaveManual.PerformCallback();
+if(ASPxClientEdit.AreEditorsValid())
+{
+	ASPxClientCallbackSaveManual.PerformCallback(nodeKey);
+}
 }" />
                         </dx:ASPxButton>
                     </dx:PanelContent>

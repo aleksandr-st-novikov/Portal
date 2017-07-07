@@ -3,7 +3,7 @@
 
 
 <div style="margin: 10px 0;">
-    <dx:ASPxTreeList ID="ASPxTreeListCategory" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCategory" KeyFieldName="Id" ParentFieldName="ParentId" ClientInstanceName="ASPxClientTreeListCategory" Height="100%" Width="100%" OnHtmlRowPrepared="ASPxTreeListCategory_HtmlRowPrepared">
+    <dx:ASPxTreeList ID="ASPxTreeListCategory" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCategory" KeyFieldName="Id" ParentFieldName="ParentId" ClientInstanceName="ASPxClientTreeListCategory" Height="100%" Width="100%" OnHtmlRowPrepared="ASPxTreeListCategory_HtmlRowPrepared" OnCustomCallback="ASPxTreeListCategory_CustomCallback">
         <Columns>
             <dx:TreeListTextColumn FieldName="Name" VisibleIndex="0" Caption="Категории">
                 <CellStyle Wrap="False">
@@ -46,9 +46,11 @@
             </FocusedNode>
         </Styles>
         <ClientSideEvents FocusedNodeChanged="function(s, e) {
-var nodeKey = s.GetFocusedNodeKey();
+nodeKey = s.GetFocusedNodeKey();
 ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
 }" NodeFocusing="function(s, e) {
+}" EndCallback="function(s, e) {
+ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
 }" />
     </dx:ASPxTreeList>
 </div>
@@ -69,6 +71,22 @@ ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
         <asp:Parameter Name="Id" Type="Int32" />
     </UpdateParameters>
 </asp:SqlDataSource>
+
+
+
+
+
+
+
+
+<dx:ASPxHiddenField ID="ASPxHiddenFieldMaual" runat="server" ClientInstanceName="ASPxClientHiddenFieldMaual">
+</dx:ASPxHiddenField>
+
+
+
+
+
+
 
 
 

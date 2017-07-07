@@ -33,6 +33,14 @@ namespace Portal.Pages.Maintenance.Manual
                         Session["EmployeeId"] = employee.Id;
                     }
                 }
+
+                if (!ClientScript.IsStartupScriptRegistered("manual"))
+                {
+                    string script = @"
+                        var nodeKey;";
+
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "manual", script, true);
+                }
             }
         }
 

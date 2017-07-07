@@ -19,6 +19,9 @@ namespace Portal.Pages.Maintenance.Manual
         {
             if (Page.IsValid && ASPxCallbackSaveManual.IsCallback)
             {
+                int? parentId = (int?)null;
+                if (!String.IsNullOrEmpty(e.Parameter)) parentId = Int32.Parse(e.Parameter);
+
                 using (ManualContext manualContext = new ManualContext())
                 {
                     await manualContext.AddOrUpdateAsync(new Models.Entities.Manual
@@ -26,7 +29,8 @@ namespace Portal.Pages.Maintenance.Manual
                         DateCreate = DateTime.Now,
                         EmployeeId = (int?)Session["EmployeeId"],
                         Name = ASPxTextBoxName.Text,
-                        MainText = ASPxHtmlEditorMainText.Html
+                        MainText = ASPxHtmlEditorMainText.Html,
+                        ParentId = parentId
                     }, -1);
                 }
             }

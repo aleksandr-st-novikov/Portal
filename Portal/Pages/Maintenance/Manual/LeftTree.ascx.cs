@@ -21,5 +21,10 @@ namespace Portal.Pages.Maintenance.DepartmentWork
             if (Object.Equals(e.GetValue("IsCategory"), true))
                 e.Row.ForeColor = Color.SlateGray;
         }
+
+        protected void ASPxTreeListCategory_CustomCallback(object sender, DevExpress.Web.ASPxTreeList.TreeListCustomCallbackEventArgs e)
+        {
+            ASPxHiddenFieldMaual
+        }
     }
 }

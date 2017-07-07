@@ -7,7 +7,7 @@
     <div class="content">
         <div style="margin: 10px 0;">
 
-            <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Добавить инструкцию" AutoPostBack="False">
+            <dx:ASPxButton ID="ASPxButtonAddManual" runat="server" Text="Добавить инструкцию" AutoPostBack="False" ClientInstanceName="ASPxClientButtonAddManual" UseSubmitBehavior="False">
                 <ClientSideEvents Click="function(s, e) {
 	ASPxClientCallbackAddManual.PerformCallback();
 }" />
