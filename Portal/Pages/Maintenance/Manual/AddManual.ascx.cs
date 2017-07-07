@@ -30,7 +30,8 @@ namespace Portal.Pages.Maintenance.Manual
                         EmployeeId = (int?)Session["EmployeeId"],
                         Name = ASPxTextBoxName.Text,
                         MainText = ASPxHtmlEditorMainText.Html,
-                        ParentId = parentId
+                        ParentId = parentId,
+                        IsCategory = false
                     }, -1);
                 }
             }

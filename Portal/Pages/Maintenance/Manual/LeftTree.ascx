@@ -3,7 +3,7 @@
 
 
 <div style="margin: 10px 0;">
-    <dx:ASPxTreeList ID="ASPxTreeListCategory" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCategory" KeyFieldName="Id" ParentFieldName="ParentId" ClientInstanceName="ASPxClientTreeListCategory" Height="100%" Width="100%" OnHtmlRowPrepared="ASPxTreeListCategory_HtmlRowPrepared" OnCustomCallback="ASPxTreeListCategory_CustomCallback">
+    <dx:ASPxTreeList ID="ASPxTreeListCategory" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCategory" KeyFieldName="Id" ParentFieldName="ParentId" ClientInstanceName="ASPxClientTreeListCategory" Height="100%" Width="100%" OnHtmlRowPrepared="ASPxTreeListCategory_HtmlRowPrepared" OnNodeInserting="ASPxTreeListCategory_NodeInserting">
         <Columns>
             <dx:TreeListTextColumn FieldName="Name" VisibleIndex="0" Caption="Категории">
                 <CellStyle Wrap="False">
@@ -48,8 +48,10 @@
         <ClientSideEvents FocusedNodeChanged="function(s, e) {
 nodeKey = s.GetFocusedNodeKey();
 ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
-}" NodeFocusing="function(s, e) {
 }" EndCallback="function(s, e) {
+ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
+}" Init="function(s, e) {
+	nodeKey = s.GetFocusedNodeKey();
 ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
 }" />
     </dx:ASPxTreeList>
@@ -79,8 +81,7 @@ ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
 
 
 
-<dx:ASPxHiddenField ID="ASPxHiddenFieldMaual" runat="server" ClientInstanceName="ASPxClientHiddenFieldMaual">
-</dx:ASPxHiddenField>
+
 
 
 

@@ -10,9 +10,13 @@
             <dx:ASPxButton ID="ASPxButtonAddManual" runat="server" Text="Добавить инструкцию" AutoPostBack="False" ClientInstanceName="ASPxClientButtonAddManual" UseSubmitBehavior="False">
                 <ClientSideEvents Click="function(s, e) {
 	ASPxClientCallbackAddManual.PerformCallback();
+                    ASPxClientHiddenFieldManual.Set('IsEdit','0');
 }" />
             </dx:ASPxButton>
-            <dx:ASPxButton ID="ASPxButtonEditManual" runat="server" ClientInstanceName="ASPxClientButtonEditManual" Text="Редактировать" Visible="False">
+            <dx:ASPxButton ID="ASPxButtonEditManual" runat="server" ClientInstanceName="ASPxClientButtonEditManual" Text="Редактировать" Visible="True">
+                <ClientSideEvents Click="function(s, e) {
+	ASPxClientHiddenFieldManual.Set('IsEdit','1');
+}" />
             </dx:ASPxButton>
         </div>
     </div>

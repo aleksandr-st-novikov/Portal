@@ -1,4 +1,5 @@
-﻿using Portal.Models.EFContext;
+﻿using DevExpress.Web.ASPxTreeList;
+using Portal.Models.EFContext;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,9 +23,9 @@ namespace Portal.Pages.Maintenance.DepartmentWork
                 e.Row.ForeColor = Color.SlateGray;
         }
 
-        protected void ASPxTreeListCategory_CustomCallback(object sender, DevExpress.Web.ASPxTreeList.TreeListCustomCallbackEventArgs e)
+        protected void ASPxTreeListCategory_NodeInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            ASPxHiddenFieldMaual
+            e.NewValues["IsCategory"] = true;
         }
     }
 }

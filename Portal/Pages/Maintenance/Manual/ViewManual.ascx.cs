@@ -23,8 +23,11 @@ namespace Portal.Pages.Maintenance.Manual
             {
                 int id = Int32.Parse(e.Parameter);
                 Models.Entities.Manual manual = await manualContext.FindByIdAsync(id);
-                if (manual == null || manual.IsCategory == true) return;
 
+                if (manual == null) return;
+                ASPxHiddenFieldManual.Set("IsCategory", manual.IsCategory != true ? "0" : "1");
+
+                if (manual.IsCategory == true) return;
                 ASPxLabelAuthorDate.Text = $"{manual.Employee.FIO} / {((DateTime)manual.DateCreate).ToString("g")}";
                 ASPxLabelTitle.Text = manual.Name;
                 LiteralMainText.Text = manual.MainText;
