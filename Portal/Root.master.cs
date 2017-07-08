@@ -147,7 +147,7 @@ namespace Portal
                     };
                     itemMaintenanceManual.Image.IconID = "support_article_16x16office2013";
                     itemMaintenance.Items.Add(itemMaintenanceManual);
-#if DEBUG
+
                     DevExpress.Web.MenuItem itemMaintenanceContact = new DevExpress.Web.MenuItem()
                     {
                         Text = "Организации, контакты",
@@ -156,6 +156,7 @@ namespace Portal
                     itemMaintenanceContact.Image.IconID = "view_card_16x16devav";
                     itemMaintenance.Items.Add(itemMaintenanceContact);
 
+#if DEBUG
                     DevExpress.Web.MenuItem itemMaintenanceUKM = new DevExpress.Web.MenuItem()
                     {
                         Text = "УКМ, кассы",
