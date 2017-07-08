@@ -46,7 +46,7 @@
             </FocusedNode>
         </Styles>
         <ClientSideEvents FocusedNodeChanged="function(s, e) {
-nodeKey = s.GetFocusedNodeKey();
+	nodeKey = s.GetFocusedNodeKey();
 ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
 }" EndCallback="function(s, e) {
 ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
@@ -57,6 +57,12 @@ ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
 	var isCategory = e.targetElement.getAttribute('IsCategory');
             if (isCategory == '0') {
                 e.cancel = true;
+            }
+}" NodeClick="function(s, e) {
+nodeKey = s.GetFocusedNodeKey();
+            if(!ASPxClientCallbackPanelViewManual.InCallback())
+            {
+ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
             }
 }" />
     </dx:ASPxTreeList>

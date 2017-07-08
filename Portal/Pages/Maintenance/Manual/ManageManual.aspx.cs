@@ -36,9 +36,7 @@ namespace Portal.Pages.Maintenance.Manual
 
                 if (!ClientScript.IsStartupScriptRegistered("manual"))
                 {
-                    string script = @"
-                        var nodeKey;";
-
+                    string script = @"var nodeKey;";
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "manual", script, true);
                 }
             }

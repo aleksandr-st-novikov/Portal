@@ -17,11 +17,12 @@ namespace Portal.Pages.Maintenance.Manual
 
         protected async void ASPxCallbackPanelViewManual_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
         {
-            if (String.IsNullOrEmpty(e.Parameter)) return;
-
             using (ManualContext manualContext = new ManualContext())
             {
-                int id = Int32.Parse(e.Parameter);
+                int id = 0;
+                Int32.TryParse(e.Parameter,out id);
+                if (id == 0) return;
+
                 Models.Entities.Manual manual = await manualContext.FindByIdAsync(id);
 
                 if (manual == null) return;

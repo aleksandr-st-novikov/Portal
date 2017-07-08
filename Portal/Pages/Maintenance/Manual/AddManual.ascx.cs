@@ -19,14 +19,14 @@ namespace Portal.Pages.Maintenance.Manual
         {
             if (Page.IsValid && ASPxCallbackSaveManual.IsCallback)
             {
-                int? parentId = (int?)null;
-                if (!String.IsNullOrEmpty(e.Parameter)) parentId = Int32.Parse(e.Parameter);
+                int parentId = 0;
+                Int32.TryParse(e.Parameter, out parentId);
 
                 using (ManualContext manualContext = new ManualContext())
                 {
-                    Models.Entities.Manual manual = await manualContext.FindByIdAsync((int)parentId);
+                    Models.Entities.Manual manual = await manualContext.FindByIdAsync(parentId);
 
-                    if (manual.IsCategory != true && ASPxHiddenFieldEdit.Get("IsEdit").ToString() == "1")
+                    if (manual != null && manual.IsCategory != true && ASPxHiddenFieldEdit.Get("IsEdit").ToString() == "1")
                     {
                         await manualContext.AddOrUpdateAsync(new Models.Entities.Manual
                         {
@@ -37,7 +37,7 @@ namespace Portal.Pages.Maintenance.Manual
                             EmployeeId = manual.EmployeeId,
                             IsCategory = false,
                             ParentId = manual.ParentId
-                        }, (int)parentId);
+                        }, parentId);
                     }
 
                     if (ASPxHiddenFieldEdit.Get("IsEdit").ToString() == "0")
@@ -48,7 +48,7 @@ namespace Portal.Pages.Maintenance.Manual
                             EmployeeId = (int?)Session["EmployeeId"],
                             Name = ASPxTextBoxName.Text,
                             MainText = ASPxHtmlEditorMainText.Html,
-                            ParentId = manual.IsCategory == true ? parentId : null,
+                            ParentId = parentId != 0 ? manual != null ? manual.IsCategory == true ? (int?)parentId : null : null : null,
                             IsCategory = false
                         }, -1);
                     }
@@ -63,18 +63,13 @@ namespace Portal.Pages.Maintenance.Manual
                 if (ASPxHiddenFieldEdit.Get("IsEdit").ToString() == "0")
                 {
                     ASPxPopupControlAddManual.HeaderText = "Создание инструкции";
+                    ASPxTextBoxName.Text = ASPxHtmlEditorMainText.Html = null;
                 }
                 else
                 {
                     int id = 0;
-                    if (!String.IsNullOrEmpty(e.Parameter))
-                    {
-                        id = Int32.Parse(e.Parameter);
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    Int32.TryParse(e.Parameter, out id);
+                    if (id == 0) return;
 
                     using (ManualContext manualContext = new ManualContext())
                     {
