@@ -214,6 +214,7 @@
     <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
+    <Content Include="Pages\Maintenance\Contact\ManageContact.aspx" />
     <Content Include="Pages\Maintenance\Manual\AddManual.ascx" />
     <Content Include="Pages\Maintenance\Manual\LeftTree.ascx" />
     <Content Include="Pages\Maintenance\DepartmentWork\ManageDepartmentWork.aspx" />
@@ -244,6 +245,7 @@
     <Content Include="Pages\Maintenance\UKM\UKMMain.master" />
     <Content Include="Pages\Maintenance\DepartmentWork\DepartmentWorkMain.master" />
     <Content Include="Pages\Maintenance\Manual\ManualMain.master" />
+    <Content Include="Pages\Maintenance\Contact\ContactMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -369,6 +371,10 @@
     <Compile Include="Migrations\201707021925213_Manual2.Designer.cs">
       <DependentUpon>201707021925213_Manual2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707081105500_Contact.cs" />
+    <Compile Include="Migrations\201707081105500_Contact.Designer.cs">
+      <DependentUpon>201707081105500_Contact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
@@ -381,6 +387,7 @@
     <Compile Include="Models\EFContext\StoreContext.cs" />
     <Compile Include="Models\EFContext\TransportContext.cs" />
     <Compile Include="Models\Entities\Admission.cs" />
+    <Compile Include="Models\Entities\Contact.cs" />
     <Compile Include="Models\Entities\DepartmentWork.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Accessories.cs" />
@@ -668,6 +675,20 @@
     <Compile Include="Pages\Journal\Transport\TransportMain.master.designer.cs">
       <DependentUpon>TransportMain.master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Maintenance\Contact\ContactMain.master.cs">
+      <DependentUpon>ContactMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Contact\ContactMain.master.designer.cs">
+      <DependentUpon>ContactMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Contact\ManageContact.aspx.cs">
+      <DependentUpon>ManageContact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Contact\ManageContact.aspx.designer.cs">
+      <DependentUpon>ManageContact.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Maintenance\DepartmentWork\DepartmentWorkMain.master.cs">
       <DependentUpon>DepartmentWorkMain.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -868,6 +889,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707021925213_Manual2.resx">
       <DependentUpon>201707021925213_Manual2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707081105500_Contact.resx">
+      <DependentUpon>201707081105500_Contact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\AdmissionReport.resx">

@@ -55,6 +55,7 @@ namespace Portal.Models
         public DbSet<Store> Store { get; set; }
         public DbSet<DepartmentWork> DepartmentWork { get; set; }
         public DbSet<Manual> Manual { get; set; }
+        public DbSet<Contact> Contact { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
