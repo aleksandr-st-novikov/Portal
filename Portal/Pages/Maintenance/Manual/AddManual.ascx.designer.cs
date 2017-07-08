@@ -13,6 +13,15 @@ namespace Portal.Pages.Maintenance.Manual {
     public partial class AddManual {
         
         /// <summary>
+        /// ASPxCallbackPanelAddManual control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallbackPanel ASPxCallbackPanelAddManual;
+        
+        /// <summary>
         /// ASPxPopupControlAddManual control.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,13 @@ namespace Portal.Pages.Maintenance.Manual {
         protected global::DevExpress.Web.ASPxButton ASPxButtonSaveManual;
         
         /// <summary>
-        /// ASPxCallbackAddManual control.
+        /// ASPxHiddenFieldEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCallback ASPxCallbackAddManual;
+        protected global::DevExpress.Web.ASPxHiddenField ASPxHiddenFieldEdit;
         
         /// <summary>
         /// ASPxCallbackSaveManual control.

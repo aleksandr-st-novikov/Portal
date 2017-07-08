@@ -3,9 +3,9 @@
 
 
 <div style="margin: 10px 0;">
-    <dx:ASPxTreeList ID="ASPxTreeListCategory" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCategory" KeyFieldName="Id" ParentFieldName="ParentId" ClientInstanceName="ASPxClientTreeListCategory" Height="100%" Width="100%" OnHtmlRowPrepared="ASPxTreeListCategory_HtmlRowPrepared" OnNodeInserting="ASPxTreeListCategory_NodeInserting">
+    <dx:ASPxTreeList ID="ASPxTreeListCategory" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCategory" KeyFieldName="Id" ParentFieldName="ParentId" ClientInstanceName="ASPxClientTreeListCategory" Height="100%" Width="100%" OnHtmlRowPrepared="ASPxTreeListCategory_HtmlRowPrepared" OnNodeInserting="ASPxTreeListCategory_NodeInserting" OnCustomCallback="ASPxTreeListCategory_CustomCallback">
         <Columns>
-            <dx:TreeListTextColumn FieldName="Name" VisibleIndex="0" Caption="Категории">
+            <dx:TreeListTextColumn FieldName="Name" VisibleIndex="0" Caption="Инструкции">
                 <CellStyle Wrap="False">
                 </CellStyle>
             </dx:TreeListTextColumn>
@@ -53,6 +53,11 @@ ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
 }" Init="function(s, e) {
 	nodeKey = s.GetFocusedNodeKey();
 ASPxClientCallbackPanelViewManual.PerformCallback(nodeKey);
+}" EndDragNode="function(s, e) {
+	var isCategory = e.targetElement.getAttribute('IsCategory');
+            if (isCategory == '0') {
+                e.cancel = true;
+            }
 }" />
     </dx:ASPxTreeList>
 </div>

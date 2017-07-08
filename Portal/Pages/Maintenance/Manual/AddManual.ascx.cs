@@ -24,18 +24,70 @@ namespace Portal.Pages.Maintenance.Manual
 
                 using (ManualContext manualContext = new ManualContext())
                 {
-                    await manualContext.AddOrUpdateAsync(new Models.Entities.Manual
+                    Models.Entities.Manual manual = await manualContext.FindByIdAsync((int)parentId);
+
+                    if (manual.IsCategory != true && ASPxHiddenFieldEdit.Get("IsEdit").ToString() == "1")
                     {
-                        DateCreate = DateTime.Now,
-                        EmployeeId = (int?)Session["EmployeeId"],
-                        Name = ASPxTextBoxName.Text,
-                        MainText = ASPxHtmlEditorMainText.Html,
-                        ParentId = parentId,
-                        IsCategory = false
-                    }, -1);
+                        await manualContext.AddOrUpdateAsync(new Models.Entities.Manual
+                        {
+                            Id = (int)parentId,
+                            DateCreate = DateTime.Now,
+                            Name = ASPxTextBoxName.Text,
+                            MainText = ASPxHtmlEditorMainText.Html,
+                            EmployeeId = manual.EmployeeId,
+                            IsCategory = false,
+                            ParentId = manual.ParentId
+                        }, (int)parentId);
+                    }
+
+                    if (ASPxHiddenFieldEdit.Get("IsEdit").ToString() == "0")
+                    {
+                        await manualContext.AddOrUpdateAsync(new Models.Entities.Manual
+                        {
+                            DateCreate = DateTime.Now,
+                            EmployeeId = (int?)Session["EmployeeId"],
+                            Name = ASPxTextBoxName.Text,
+                            MainText = ASPxHtmlEditorMainText.Html,
+                            ParentId = manual.IsCategory == true ? parentId : null,
+                            IsCategory = false
+                        }, -1);
+                    }
                 }
             }
         }
 
+        protected async void ASPxCallbackPanelAddManual_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
+        {
+            if (ASPxCallbackPanelAddManual.IsCallback)
+            {
+                if (ASPxHiddenFieldEdit.Get("IsEdit").ToString() == "0")
+                {
+                    ASPxPopupControlAddManual.HeaderText = "Создание инструкции";
+                }
+                else
+                {
+                    int id = 0;
+                    if (!String.IsNullOrEmpty(e.Parameter))
+                    {
+                        id = Int32.Parse(e.Parameter);
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    using (ManualContext manualContext = new ManualContext())
+                    {
+                        Models.Entities.Manual manual = await manualContext.FindByIdAsync(id);
+                        if (manual == null || manual.IsCategory == true) return;
+
+                        ASPxTextBoxName.Text = manual.Name;
+                        ASPxHtmlEditorMainText.Html = manual.MainText;
+
+                        ASPxPopupControlAddManual.HeaderText = "Редактирование";
+                    }
+                }
+            }
+        }
     }
 }
