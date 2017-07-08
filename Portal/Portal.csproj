@@ -51,6 +51,10 @@
     <Reference Include="DevExpress.Pdf.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.SpellChecker.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxRichEdit.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxSpellChecker.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.ASPxTreeList.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.Resources.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpo.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -210,7 +214,11 @@
     <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
+    <Content Include="Pages\Maintenance\Manual\AddManual.ascx" />
+    <Content Include="Pages\Maintenance\Manual\LeftTree.ascx" />
     <Content Include="Pages\Maintenance\DepartmentWork\ManageDepartmentWork.aspx" />
+    <Content Include="Pages\Maintenance\Manual\ManageManual.aspx" />
+    <Content Include="Pages\Maintenance\Manual\ViewManual.ascx" />
     <Content Include="Pages\Maintenance\UKM\Setting.aspx" />
     <Content Include="Reports\DocumentView.aspx" />
     <Content Include="Reports\AdmissionReportViewPopup.ascx" />
@@ -235,6 +243,7 @@
     <Content Include="MainDefault.master" />
     <Content Include="Pages\Maintenance\UKM\UKMMain.master" />
     <Content Include="Pages\Maintenance\DepartmentWork\DepartmentWorkMain.master" />
+    <Content Include="Pages\Maintenance\Manual\ManualMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -348,6 +357,18 @@
     <Compile Include="Migrations\201706230857381_DepartmentWork4.Designer.cs">
       <DependentUpon>201706230857381_DepartmentWork4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706290853041_Manual.cs" />
+    <Compile Include="Migrations\201706290853041_Manual.Designer.cs">
+      <DependentUpon>201706290853041_Manual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707021852510_Manual1.cs" />
+    <Compile Include="Migrations\201707021852510_Manual1.Designer.cs">
+      <DependentUpon>201707021852510_Manual1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707021925213_Manual2.cs" />
+    <Compile Include="Migrations\201707021925213_Manual2.Designer.cs">
+      <DependentUpon>201707021925213_Manual2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
@@ -355,6 +376,7 @@
     <Compile Include="Models\EFContext\DepartmentContext.cs" />
     <Compile Include="Models\EFContext\DepartmentWorkContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
+    <Compile Include="Models\EFContext\ManualContext.cs" />
     <Compile Include="Models\EFContext\PositionContext.cs" />
     <Compile Include="Models\EFContext\StoreContext.cs" />
     <Compile Include="Models\EFContext\TransportContext.cs" />
@@ -362,6 +384,7 @@
     <Compile Include="Models\Entities\DepartmentWork.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Accessories.cs" />
+    <Compile Include="Models\Entities\Manual.cs" />
     <Compile Include="Models\Entities\Store.cs" />
     <Compile Include="Models\Entities\Transport.cs" />
     <Compile Include="Models\ViewModel\AccessoriesViewModel.cs" />
@@ -652,12 +675,47 @@
     <Compile Include="Pages\Maintenance\DepartmentWork\DepartmentWorkMain.master.designer.cs">
       <DependentUpon>DepartmentWorkMain.master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Maintenance\Manual\AddManual.ascx.cs">
+      <DependentUpon>AddManual.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\AddManual.ascx.designer.cs">
+      <DependentUpon>AddManual.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\LeftTree.ascx.cs">
+      <DependentUpon>LeftTree.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\LeftTree.ascx.designer.cs">
+      <DependentUpon>LeftTree.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Maintenance\DepartmentWork\ManageDepartmentWork.aspx.cs">
       <DependentUpon>ManageDepartmentWork.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Maintenance\DepartmentWork\ManageDepartmentWork.aspx.designer.cs">
       <DependentUpon>ManageDepartmentWork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\ManageManual.aspx.cs">
+      <DependentUpon>ManageManual.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\ManageManual.aspx.designer.cs">
+      <DependentUpon>ManageManual.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\ManualMain.master.cs">
+      <DependentUpon>ManualMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\ManualMain.master.designer.cs">
+      <DependentUpon>ManualMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\ViewManual.ascx.cs">
+      <DependentUpon>ViewManual.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Manual\ViewManual.ascx.designer.cs">
+      <DependentUpon>ViewManual.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Maintenance\UKM\Setting.aspx.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
@@ -801,6 +859,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706230857381_DepartmentWork4.resx">
       <DependentUpon>201706230857381_DepartmentWork4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706290853041_Manual.resx">
+      <DependentUpon>201706290853041_Manual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707021852510_Manual1.resx">
+      <DependentUpon>201707021852510_Manual1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707021925213_Manual2.resx">
+      <DependentUpon>201707021925213_Manual2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\AdmissionReport.resx">
