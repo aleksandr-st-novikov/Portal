@@ -102,6 +102,28 @@ namespace Portal
 
 #if DEBUG
                 if (Context.User.IsInRole("Администраторы")
+                    || Context.User.IsInRole("Служебный транспорт - Полный доступ")
+                    || Context.User.IsInRole("Служебный транспорт - Чтение"))
+                {
+                    DevExpress.Web.MenuItem itemJournalOfTransport = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Служебный транспорт",
+                        NavigateUrl = "~/Pages/Journal/OfTransport/ManageOfTransport.aspx"
+                    };
+                    itemJournalOfTransport.Image.IconID = "actions_driving_16x16devav";
+                    itemJournal.Items.Add(itemJournalOfTransport);
+                    itemJournal.DropDownMode = true;
+
+                    if (itemJournalAdd == false)
+                    {
+                        ASPxMenuMain.Items.Add(itemJournal);
+                        itemJournalAdd = true;
+                    }
+
+                };
+
+
+                if (Context.User.IsInRole("Администраторы")
                     || Context.User.IsInRole("Транспорт - Руководители")
                     || Context.User.IsInRole("Транспорт - Служебный вход"))
                 {
@@ -110,7 +132,7 @@ namespace Portal
                         Text = "Транспорт",
                         NavigateUrl = "~/Pages/Journal/Transport/ManageTransport.aspx"
                     };
-                    itemJournalTransport.Image.IconID = "actions_driving_16x16devav";
+                    itemJournalTransport.Image.IconID = "people_usergroup_16x16office2013";
                     itemJournal.Items.Add(itemJournalTransport);
                     itemJournal.DropDownMode = true;
 

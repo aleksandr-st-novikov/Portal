@@ -213,6 +213,8 @@
     <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
+    <Content Include="Pages\Journal\OfTransport\ManageOfTransport.aspx" />
+    <Content Include="Pages\Journal\OfTransport\OfTransportGrid.ascx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
     <Content Include="Pages\Maintenance\Contact\ManageContact.aspx" />
     <Content Include="Pages\Maintenance\Manual\AddManual.ascx" />
@@ -246,6 +248,7 @@
     <Content Include="Pages\Maintenance\DepartmentWork\DepartmentWorkMain.master" />
     <Content Include="Pages\Maintenance\Manual\ManualMain.master" />
     <Content Include="Pages\Maintenance\Contact\ContactMain.master" />
+    <Content Include="Pages\Journal\OfTransport\OfTransportMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -375,6 +378,10 @@
     <Compile Include="Migrations\201707081105500_Contact.Designer.cs">
       <DependentUpon>201707081105500_Contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707110544019_OfTransport.cs" />
+    <Compile Include="Migrations\201707110544019_OfTransport.Designer.cs">
+      <DependentUpon>201707110544019_OfTransport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
@@ -383,6 +390,7 @@
     <Compile Include="Models\EFContext\DepartmentWorkContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
     <Compile Include="Models\EFContext\ManualContext.cs" />
+    <Compile Include="Models\EFContext\OfTransportContext.cs" />
     <Compile Include="Models\EFContext\PositionContext.cs" />
     <Compile Include="Models\EFContext\StoreContext.cs" />
     <Compile Include="Models\EFContext\TransportContext.cs" />
@@ -392,6 +400,7 @@
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Accessories.cs" />
     <Compile Include="Models\Entities\Manual.cs" />
+    <Compile Include="Models\Entities\OfTransport.cs" />
     <Compile Include="Models\Entities\Store.cs" />
     <Compile Include="Models\Entities\Transport.cs" />
     <Compile Include="Models\ViewModel\AccessoriesViewModel.cs" />
@@ -661,6 +670,27 @@
     <Compile Include="Pages\Journal\Accessories\AccessoriesMain.master.designer.cs">
       <DependentUpon>AccessoriesMain.master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Journal\OfTransport\ManageOfTransport.aspx.cs">
+      <DependentUpon>ManageOfTransport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\OfTransport\ManageOfTransport.aspx.designer.cs">
+      <DependentUpon>ManageOfTransport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\OfTransport\OfTransportGrid.ascx.cs">
+      <DependentUpon>OfTransportGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\OfTransport\OfTransportGrid.ascx.designer.cs">
+      <DependentUpon>OfTransportGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\OfTransport\OfTransportMain.master.cs">
+      <DependentUpon>OfTransportMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\OfTransport\OfTransportMain.master.designer.cs">
+      <DependentUpon>OfTransportMain.master</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Journal\Transport\ManageTransport.aspx.cs">
       <DependentUpon>ManageTransport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -892,6 +922,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707081105500_Contact.resx">
       <DependentUpon>201707081105500_Contact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707110544019_OfTransport.resx">
+      <DependentUpon>201707110544019_OfTransport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\AdmissionReport.resx">
