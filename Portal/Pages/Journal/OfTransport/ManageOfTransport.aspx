@@ -6,6 +6,11 @@
     <div class="content">
         <dx:ASPxLabel ID="ASPxLabelMain" runat="server" Text="ASPxLabel" Font-Size="Large">
         </dx:ASPxLabel>
+        <dx:ASPxCallback ID="ASPxCallbackRefresh" runat="server" ClientInstanceName="ASPxClientCallbackRefresh" OnCallback="ASPxCallbackRefresh_Callback">
+            <ClientSideEvents EndCallback="function(s, e) {
+	ASPxClientGridViewOfTransport.Refresh();
+}" />
+        </dx:ASPxCallback>
         <table style="margin: 15px 0;">
             <tr>
                 <td>
@@ -23,7 +28,7 @@
                 <td style="padding-left: 10px;">
                     <dx:ASPxButton ID="ASPxButton4" runat="server" Text="Обновить" AutoPostBack="False" UseSubmitBehavior="False">
                         <ClientSideEvents Click="function(s, e) {
-	                        ASPxClientCallbackRefreshData.PerformCallback();
+	                        ASPxClientCallbackRefresh.PerformCallback();
                         }" />
                         <Image IconID="actions_refresh_16x16office2013">
                         </Image>

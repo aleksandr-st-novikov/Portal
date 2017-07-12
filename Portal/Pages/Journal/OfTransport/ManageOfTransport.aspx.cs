@@ -34,12 +34,18 @@ namespace Portal.Pages.Journal.OfTransport
                         Session["EmployeeId"] = employee.Id;
                     }
                 }
-                Session["DateFrom"] = ASPxDateEditGridFrom.Value =  ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-20).ToString("yyyy-MM-dd 00:00:00"));
-                Session["DateTo"] = ASPxDateEditGridTo.Value = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(10).ToString("yyyy-MM-dd 23:59:59"));
-
-
+                Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-20).ToString("yyyy-MM-dd 00:00:00"));
+                Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(10).ToString("yyyy-MM-dd 23:59:59"));
             }
+        }
 
+        protected void ASPxCallbackRefresh_Callback(object source, DevExpress.Web.CallbackEventArgs e)
+        {
+            if (ASPxCallbackRefresh.IsCallback)
+            {
+                Session["DateFrom"] = Convert.ToDateTime(ASPxDateEditGridFrom.Date.ToString("yyyy-MM-dd 00:00:00"));
+                Session["DateTo"] = Convert.ToDateTime(ASPxDateEditGridTo.Date.ToString("yyyy-MM-dd 23:59:59"));
+            }
         }
     }
 }

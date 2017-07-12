@@ -22,6 +22,15 @@ namespace Portal.Pages.Journal.OfTransport {
         protected global::DevExpress.Web.ASPxLabel ASPxLabelMain;
         
         /// <summary>
+        /// ASPxCallbackRefresh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback ASPxCallbackRefresh;
+        
+        /// <summary>
         /// ASPxDateEditGridFrom control.
         /// </summary>
         /// <remarks>

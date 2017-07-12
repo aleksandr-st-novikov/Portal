@@ -98,7 +98,7 @@ namespace Portal.Pages.Journal.Transport
                 ASPxButtonPrint.Visible = false;
 
                 Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd 00:00:00"));
-                Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd 00:00:00"));
+                Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd 23:59:59"));
             }
 
             if (User.IsInRole("Администраторы")
@@ -116,12 +116,12 @@ namespace Portal.Pages.Journal.Transport
                 if ((now > start) && (now < end))
                 {
                     Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 00:00:00"));
-                    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 00:00:00"));
+                    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 23:59:59"));
                 }
                 else
                 {
                     Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
-                    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+                    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
                 }
             }
             ASPxComboBoxAddress.DataBind();
@@ -157,7 +157,7 @@ namespace Portal.Pages.Journal.Transport
             if (ASPxCallbackRefreshData.IsCallback)
             {
                 Session["DateFrom"] = Convert.ToDateTime(((DateTime)ASPxDateEditGridFrom.Value).ToString("yyyy-MM-dd 00:00:00"));
-                Session["DateTo"] = Convert.ToDateTime(((DateTime)ASPxDateEditGridTo.Value).ToString("yyyy-MM-dd 00:00:00"));
+                Session["DateTo"] = Convert.ToDateTime(((DateTime)ASPxDateEditGridTo.Value).ToString("yyyy-MM-dd 23:59:59"));
             }
         }
 

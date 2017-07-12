@@ -14,13 +14,10 @@ namespace Portal.Pages.Journal.OfTransport
 
         }
 
-        protected void ASPxGridViewOfTransport_BatchUpdate(object sender, DevExpress.Web.Data.ASPxDataBatchUpdateEventArgs e)
-        {
-        }
-
         protected void ASPxGridViewOfTransport_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             e.NewValues["EmployeeId"] = Session["EmployeeId"];
         }
+
     }
 }
