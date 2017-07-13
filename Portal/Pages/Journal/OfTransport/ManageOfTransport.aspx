@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Journal/OfTransport/OfTransportMain.master" Async="true" AutoEventWireup="true" CodeBehind="ManageOfTransport.aspx.cs" Inherits="Portal.Pages.Journal.OfTransport.ManageOfTransport" %>
 
 <%@ Register Src="~/Pages/Journal/OfTransport/OfTransportGrid.ascx" TagPrefix="uc1" TagName="OfTransportGrid" %>
+<%@ Register Src="~/Pages/Journal/OfTransport/OfTransportReportViewPopup.ascx" TagPrefix="uc1" TagName="OfTransportReportViewPopup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="content">
@@ -35,7 +36,13 @@
                     </dx:ASPxButton>
                 </td>
                 <td style="padding-left: 50px;">
-                    <dx:ASPxButton ID="ASPxButtonPrint" runat="server" Text="Печать" AutoPostBack="False" UseSubmitBehavior="False"></dx:ASPxButton>
+                    <dx:ASPxButton ID="ASPxButtonPrint" runat="server" Text="Печать" AutoPostBack="False" UseSubmitBehavior="False" OnClick="ASPxButtonPrint_Click">
+                        <ClientSideEvents Click="function(s, e) {
+	ASPxClientCallbackPanelOfTransportReport.PerformCallback();
+}" />
+                        <Image IconID="print_print_16x16office2013">
+                        </Image>
+                    </dx:ASPxButton>
 
                 </td>
             </tr>
@@ -43,4 +50,6 @@
 
         <uc1:OfTransportGrid runat="server" ID="OfTransportGrid" />
     </div>
+
+    <uc1:OfTransportReportViewPopup runat="server" ID="OfTransportReportViewPopup" />
 </asp:Content>

@@ -74,5 +74,14 @@ namespace Portal.Pages.Journal.OfTransport {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Portal.Pages.Journal.OfTransport.OfTransportGrid OfTransportGrid;
+        
+        /// <summary>
+        /// OfTransportReportViewPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Reports.OfTransportReportViewPopup OfTransportReportViewPopup;
     }
 }

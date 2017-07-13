@@ -78,6 +78,8 @@
         </dx:GridViewDataMemoColumn>
     </Columns>
 </dx:ASPxGridView>
+<dx:ASPxGridViewExporter ID="ASPxGridViewExporterOfTransport" runat="server" GridViewID="ASPxGridViewOfTransport">
+</dx:ASPxGridViewExporter>
 <asp:SqlDataSource ID="SqlDataSourceOfTransport" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" DeleteCommand="DELETE FROM [OfTransport] WHERE [Id] = @original_Id AND [Date] = @original_Date AND (([Customer] = @original_Customer) OR ([Customer] IS NULL AND @original_Customer IS NULL)) AND (([Route] = @original_Route) OR ([Route] IS NULL AND @original_Route IS NULL)) AND (([Purpose] = @original_Purpose) OR ([Purpose] IS NULL AND @original_Purpose IS NULL)) AND (([Attendant] = @original_Attendant) OR ([Attendant] IS NULL AND @original_Attendant IS NULL)) AND [EmployeeId] = @original_EmployeeId" InsertCommand="INSERT INTO [OfTransport] ([Date], [Customer], [Route], [Purpose], [Attendant], [EmployeeId]) VALUES (@Date, @Customer, @Route, @Purpose, @Attendant, @EmployeeId)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [OfTransport] WHERE (([Date] &lt;= @Date2) AND ([Date] &gt;= @Date)) ORDER BY [Date] DESC" UpdateCommand="UPDATE [OfTransport] SET [Date] = @Date, [Customer] = @Customer, [Route] = @Route, [Purpose] = @Purpose, [Attendant] = @Attendant, [EmployeeId] = @EmployeeId WHERE [Id] = @original_Id AND [Date] = @original_Date AND (([Customer] = @original_Customer) OR ([Customer] IS NULL AND @original_Customer IS NULL)) AND (([Route] = @original_Route) OR ([Route] IS NULL AND @original_Route IS NULL)) AND (([Purpose] = @original_Purpose) OR ([Purpose] IS NULL AND @original_Purpose IS NULL)) AND (([Attendant] = @original_Attendant) OR ([Attendant] IS NULL AND @original_Attendant IS NULL)) AND [EmployeeId] = @original_EmployeeId">
     <DeleteParameters>
         <asp:Parameter Name="original_Id" Type="Int32" />
@@ -122,4 +124,5 @@
         <asp:Parameter DefaultValue="1" Name="isWork" Type="Int32" />
     </SelectParameters>
 </asp:SqlDataSource>
+
 

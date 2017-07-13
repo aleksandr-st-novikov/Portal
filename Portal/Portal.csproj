@@ -52,6 +52,7 @@
     <Reference Include="DevExpress.PivotGrid.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.SpellChecker.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.ASPxHtmlEditor.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.ASPxRichEdit.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.ASPxSpellChecker.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -61,6 +62,7 @@
     <Reference Include="DevExpress.XtraCharts.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGauges.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeParser.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v17.1.Web, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -215,6 +217,7 @@
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
     <Content Include="Pages\Journal\OfTransport\ManageOfTransport.aspx" />
     <Content Include="Pages\Journal\OfTransport\OfTransportGrid.ascx" />
+    <Content Include="Pages\Journal\OfTransport\OfTransportReportViewPopup.ascx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
     <Content Include="Pages\Maintenance\Contact\ManageContact.aspx" />
     <Content Include="Pages\Maintenance\Manual\AddManual.ascx" />
@@ -691,6 +694,19 @@
     <Compile Include="Pages\Journal\OfTransport\OfTransportMain.master.designer.cs">
       <DependentUpon>OfTransportMain.master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Journal\OfTransport\OfTransportReportViewPopup.ascx.cs">
+      <DependentUpon>OfTransportReportViewPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\OfTransport\OfTransportReportViewPopup.ascx.designer.cs">
+      <DependentUpon>OfTransportReportViewPopup.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\OfTransport\OfTransportReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\OfTransport\OfTransportReport.Designer.cs">
+      <DependentUpon>OfTransportReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Journal\Transport\ManageTransport.aspx.cs">
       <DependentUpon>ManageTransport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -925,6 +941,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707110544019_OfTransport.resx">
       <DependentUpon>201707110544019_OfTransport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Journal\OfTransport\OfTransportReport.resx">
+      <DependentUpon>OfTransportReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\AdmissionReport.resx">

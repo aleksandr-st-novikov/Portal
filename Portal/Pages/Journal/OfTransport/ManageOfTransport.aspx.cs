@@ -1,4 +1,6 @@
-﻿using Portal.Models.EFContext;
+﻿using DevExpress.Export;
+using DevExpress.XtraPrinting;
+using Portal.Models.EFContext;
 using Portal.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -46,6 +48,11 @@ namespace Portal.Pages.Journal.OfTransport
                 Session["DateFrom"] = Convert.ToDateTime(ASPxDateEditGridFrom.Date.ToString("yyyy-MM-dd 00:00:00"));
                 Session["DateTo"] = Convert.ToDateTime(ASPxDateEditGridTo.Date.ToString("yyyy-MM-dd 23:59:59"));
             }
+        }
+
+        protected void ASPxButtonPrint_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -22,6 +22,15 @@ namespace Portal.Pages.Journal.OfTransport {
         protected global::DevExpress.Web.ASPxGridView ASPxGridViewOfTransport;
         
         /// <summary>
+        /// ASPxGridViewExporterOfTransport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridViewExporter ASPxGridViewExporterOfTransport;
+        
+        /// <summary>
         /// SqlDataSourceOfTransport control.
         /// </summary>
         /// <remarks>
