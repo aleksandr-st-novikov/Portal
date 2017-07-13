@@ -36,7 +36,7 @@
                     </dx:ASPxButton>
                 </td>
                 <td style="padding-left: 50px;">
-                    <dx:ASPxButton ID="ASPxButtonPrint" runat="server" Text="Печать" AutoPostBack="False" UseSubmitBehavior="False" OnClick="ASPxButtonPrint_Click">
+                    <dx:ASPxButton ID="ASPxButtonOfTransportPrint" runat="server" AutoPostBack="False" ClientInstanceName="ASPxClientButtonOfTransportPrint" Text="Печать" UseSubmitBehavior="False">
                         <ClientSideEvents Click="function(s, e) {
 	ASPxClientCallbackPanelOfTransportReport.PerformCallback();
 }" />

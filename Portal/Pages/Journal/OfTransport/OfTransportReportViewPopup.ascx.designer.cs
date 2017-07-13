@@ -13,13 +13,13 @@ namespace Portal.Reports {
     public partial class OfTransportReportViewPopup {
         
         /// <summary>
-        /// ASPxPopupControlView control.
+        /// ASPxPopupControlViewOfTransport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlView;
+        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlViewOfTransport;
         
         /// <summary>
         /// ASPxCallbackPanelOfTransportReport control.

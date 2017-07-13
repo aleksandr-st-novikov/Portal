@@ -11,50 +11,19 @@ namespace Portal.Reports
 {
     public partial class OfTransportReportViewPopup : System.Web.UI.UserControl
     {
-        //private OfTransportReport ofTransportReport
-        //{
-        //    get
-        //    {
-        //        return (OfTransportReport)Session["OfTransportReport"];
-        //    }
-        //    set
-        //    {
-        //        Session["OfTransportReport"] = value;
-        //    }
-        //}
-
-        private OfTransportReport ofTransportReport;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["OfTransportReportLoaded"] != null)
-            //{
-            //    PrepareReportOfTransport();
-            //}
+            PrepareReportOfTransport();
         }
 
-        protected void ASPxCallbackPanelTransportReport_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
+        protected void ASPxCallbackPanelOfTransportReport_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
         {
-            //List<string> parameters = e.Parameter.Split(new char[] { '|' }).ToList();
-            //Session["reportName"] = parameters[0];
-            //for (int i = 1; i <= parameters.Count - 1; i++)
-            //{
-            //    Session["param" + i.ToString()] = parameters[i];
-            //}
-
-            //string reportName = (string)Session["reportName"];
-            //if (!String.IsNullOrEmpty(reportName))
-            //{
-            //    ASPxDocumentViewerReport.Report = null;
-                PrepareReportOfTransport();
-            //    Session["TransportReportLoaded"] = true;
-            //}
-
+            PrepareReportOfTransport();
         }
 
         private void PrepareReportOfTransport()
         {
-            ofTransportReport = new OfTransportReport();
+            OfTransportReport ofTransportReport = new OfTransportReport();
 
             List<OfTransport> data = null;
             using (OfTransportContext context = new OfTransportContext())
@@ -63,7 +32,7 @@ namespace Portal.Reports
             }
             ofTransportReport.DataSource = data;
 
-            ofTransportReport.DisplayName = "Отчет по транспорту";
+            ofTransportReport.DisplayName = "Отчет по служебному автотранспорту";
             ASPxDocumentViewerReport.Report = ofTransportReport;
         }
     }

@@ -74,6 +74,11 @@ namespace Portal.Models.EFContext
             return res;
         }
 
+        public T FindById(int id)
+        {
+            return context.Set<T>().Find(id);
+        }
+
         public async Task<T> FindByIdAsync(int id)
         {
             return await context.Set<T>().FindAsync(id);

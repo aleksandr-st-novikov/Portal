@@ -1,14 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OfTransportReportViewPopup.ascx.cs" Inherits="Portal.Reports.OfTransportReportViewPopup" %>
 <%@ Register assembly="DevExpress.XtraReports.v17.1.Web, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraReports.Web" tagprefix="dx" %>
 
-<dx:ASPxPopupControl ID="ASPxPopupControlView" runat="server" ClientInstanceName="ASPxClientPopupControlView" AllowDragging="True" CloseAction="CloseButton" HeaderText="Отчет" Height="800px" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="50" Width="1200px">
+<dx:ASPxPopupControl ID="ASPxPopupControlViewOfTransport" runat="server" ClientInstanceName="ASPxClientPopupControlViewOfTransport" AllowDragging="True" CloseAction="CloseButton" HeaderText="Отчет" Height="800px" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="50" Width="1200px">
     <ContentCollection>
         <dx:PopupControlContentControl runat="server">
             <dx:ASPxCallbackPanel ID="ASPxCallbackPanelOfTransportReport" ClientInstanceName="ASPxClientCallbackPanelOfTransportReport" 
-                runat="server" OnCallback="ASPxCallbackPanelTransportReport_Callback" Width="100%" Height="100%">
+                runat="server" OnCallback="ASPxCallbackPanelOfTransportReport_Callback" Width="100%" Height="100%">
                 <SettingsLoadingPanel Enabled="False" />
                 <ClientSideEvents EndCallback="function(s, e) {
-	                ASPxClientPopupControlView.Show();
+	                ASPxClientPopupControlViewOfTransport.Show();
                 }" />
                 <PanelCollection>
                     <dx:PanelContent runat="server">
