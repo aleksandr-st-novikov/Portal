@@ -226,6 +226,9 @@
     <Content Include="Pages\Maintenance\Manual\ManageManual.aspx" />
     <Content Include="Pages\Maintenance\Manual\ViewManual.ascx" />
     <Content Include="Pages\Maintenance\UKM\Setting.aspx" />
+    <Content Include="Pages\Unit\Birthday\BirthdayParams.ascx" />
+    <Content Include="Pages\Unit\Birthday\ManageBirthday.aspx" />
+    <Content Include="Pages\Unit\Birthday\CongratulateReportViewPopup.ascx" />
     <Content Include="Reports\DocumentView.aspx" />
     <Content Include="Reports\AdmissionReportViewPopup.ascx" />
     <Content Include="Reports\TransportReportViewPopup.ascx" />
@@ -252,6 +255,7 @@
     <Content Include="Pages\Maintenance\Manual\ManualMain.master" />
     <Content Include="Pages\Maintenance\Contact\ContactMain.master" />
     <Content Include="Pages\Journal\OfTransport\OfTransportMain.master" />
+    <Content Include="Pages\Unit\Birthday\BirthdayMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -408,6 +412,7 @@
     <Compile Include="Models\Entities\Transport.cs" />
     <Compile Include="Models\ViewModel\AccessoriesViewModel.cs" />
     <Compile Include="Models\ViewModel\AdmissionReportViewModel.cs" />
+    <Compile Include="Models\ViewModel\BirthdayReportViewModel.cs" />
     <Compile Include="Models\ViewModel\TransportReportViewModel.cs" />
     <Compile Include="Pages\Admin\Employee\EmployeeMain.master.cs">
       <DependentUpon>EmployeeMain.master</DependentUpon>
@@ -798,6 +803,46 @@
     <Compile Include="Pages\Maintenance\UKM\UKMMain.master.designer.cs">
       <DependentUpon>UKMMain.master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Unit\Birthday\BirthdayMain.master.cs">
+      <DependentUpon>BirthdayMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\BirthdayMain.master.designer.cs">
+      <DependentUpon>BirthdayMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\BirthdayParams.ascx.cs">
+      <DependentUpon>BirthdayParams.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\BirthdayParams.ascx.designer.cs">
+      <DependentUpon>BirthdayParams.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\ManageBirthday.aspx.cs">
+      <DependentUpon>ManageBirthday.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\ManageBirthday.aspx.designer.cs">
+      <DependentUpon>ManageBirthday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\CongratulateReportViewPopup.ascx.cs">
+      <DependentUpon>CongratulateReportViewPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\CongratulateReportViewPopup.ascx.designer.cs">
+      <DependentUpon>CongratulateReportViewPopup.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\ReportCongratulate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\ReportCongratulate.Designer.cs">
+      <DependentUpon>ReportCongratulate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\ReportCongratulateWeek.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\ReportCongratulateWeek.Designer.cs">
+      <DependentUpon>ReportCongratulateWeek.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\AdmissionReport.cs">
       <SubType>Component</SubType>
@@ -945,6 +990,12 @@
     <EmbeddedResource Include="Pages\Journal\OfTransport\OfTransportReport.resx">
       <DependentUpon>OfTransportReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Unit\Birthday\ReportCongratulate.resx">
+      <DependentUpon>ReportCongratulate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Unit\Birthday\ReportCongratulateWeek.resx">
+      <DependentUpon>ReportCongratulateWeek.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\AdmissionReport.resx">
       <DependentUpon>AdmissionReport.cs</DependentUpon>
@@ -962,9 +1013,7 @@
       <Name>Portal.BL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Unit\Birthday\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

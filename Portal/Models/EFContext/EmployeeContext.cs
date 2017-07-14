@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Portal.Models.Entities;
+using Portal.Models.ViewModel;
 using Portal.Pages.Admin.Employee;
 using System;
 using System.Collections.Generic;
@@ -73,6 +74,20 @@ namespace Portal.Models.EFContext
             ApplicationUser user = (UserManager.FindByNameAsync(userName)).Result;
 
             return user.Employee;
+        }
+
+        public async Task<List<BirthdayReportViewModel>> GetEmployyeBirthday(DateTime dateFrom, DateTime dateTo)
+        {
+            return await (from e in context.Employee
+                          where e.IsWork == true
+                          && ((DateTime)e.DateBirth).Day >= dateFrom.Day && ((DateTime)e.DateBirth).Day <= dateTo.Day
+                          && ((DateTime)e.DateBirth).Month >= dateFrom.Month && ((DateTime)e.DateBirth).Month <= dateTo.Month
+                          select new BirthdayReportViewModel {
+                              Name = e.FullName,
+                              DOB = (DateTime)e.DateBirth,
+                              Dep = e.Department.ShortName,
+                              Empl = e.Position.Name
+                          }).ToListAsync();
         }
     }
 }
