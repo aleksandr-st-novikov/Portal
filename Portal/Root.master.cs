@@ -100,7 +100,6 @@ namespace Portal
 
                 };
 
-#if DEBUG
                 if (Context.User.IsInRole("Администраторы")
                     || Context.User.IsInRole("Служебный транспорт - Полный доступ")
                     || Context.User.IsInRole("Служебный транспорт - Чтение"))
@@ -122,7 +121,7 @@ namespace Portal
 
                 };
 
-
+#if DEBUG
                 if (Context.User.IsInRole("Администраторы")
                     || Context.User.IsInRole("Транспорт - Руководители")
                     || Context.User.IsInRole("Транспорт - Служебный вход"))

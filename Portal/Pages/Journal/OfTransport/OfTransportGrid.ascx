@@ -126,3 +126,11 @@
 </asp:SqlDataSource>
 
 
+<dx:ASPxTimer ID="ASPxTimerRefershOfTransport" runat="server" ClientInstanceName="ASPxClientTimerRefershOfTransport" Interval="30000">
+    <ClientSideEvents Tick="function(s, e) {
+	ASPxClientGridViewOfTransport.Refresh();
+}" />
+</dx:ASPxTimer>
+
+
+
