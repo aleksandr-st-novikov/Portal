@@ -13,7 +13,15 @@ namespace Portal.Pages.Journal.OfTransport
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if ((Context.User.IsInRole("Администраторы")
+               || Context.User.IsInRole("Служебный транспорт - Полный доступ")))
+            {
+                ASPxGridViewOfTransport.Columns[0].Visible = true;
+            }
+            if (Context.User.IsInRole("Служебный транспорт - Чтение"))
+            {
+                ASPxGridViewOfTransport.Columns[0].Visible = false;
+            }
         }
 
         protected void ASPxGridViewOfTransport_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
