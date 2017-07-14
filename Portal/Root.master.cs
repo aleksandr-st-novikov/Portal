@@ -17,7 +17,7 @@ namespace Portal
         {
             ASPxLabel2.Text = "Portal [версия " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "]";  //DateTime.Now.Year + Server.HtmlDecode(" &copy; Copyright by [company name]");
 
-            if(!Page.IsCallback && !Page.IsPostBack)
+            if (!Page.IsCallback && !Page.IsPostBack)
             {
                 if (Context.User.Identity.IsAuthenticated)
                 {
@@ -44,6 +44,12 @@ namespace Portal
                 DevExpress.Web.MenuItem itemJournal = new DevExpress.Web.MenuItem();
                 bool itemJournalAdd = false;
 
+                DevExpress.Web.MenuItem itemUnit = new DevExpress.Web.MenuItem();
+                bool itemUnitAdd = false;
+
+                DevExpress.Web.MenuItem itemUnitSPiOP = new DevExpress.Web.MenuItem();
+                bool itemUnitSPiOPAdd = false;
+
                 if (!Context.User.Identity.IsAuthenticated)
                 {
                     ASPxMenuMain.Visible = false;
@@ -53,7 +59,14 @@ namespace Portal
                 {
                     itemJournal.Text = "Журналы";
                     itemJournal.Image.IconID = "layout_paneloff_16x16devav";
+
+                    itemUnit.Text = "Подразделения";
+                    itemUnit.Image.IconID = "people_team_16x16office2013";
+
+                    itemUnitSPiOP.Text = "Сектор подбора и обучения персонала";
                 }
+
+                #region Журналы
 
 #if DEBUG
                 if ((Context.User.IsInRole("Администраторы")
@@ -143,6 +156,41 @@ namespace Portal
 
                 };
 #endif
+                #endregion
+
+                #region Подразделения
+
+#if DEBUG
+                if ((Context.User.IsInRole("Администраторы")
+                    || Context.User.IsInRole("Подразделения - СПиОП - Дни рождения")))
+                {
+                    DevExpress.Web.MenuItem itemUnitBirthday = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Дни рождения",
+                        NavigateUrl = "~/Pages/Unit/Birthday/ManageBirthday.aspx"
+                    };
+                    itemUnitBirthday.Image.IconID = "print_tasklist_16x16devav";
+
+                    itemUnitSPiOP.Items.Add(itemUnitBirthday);
+                    itemUnitSPiOP.DropDownMode = true;
+
+                    if (itemUnitSPiOPAdd == false)
+                    {
+                        itemUnit.Items.Add(itemUnitSPiOP);
+                        itemUnitSPiOPAdd = true;
+                    }
+
+                    itemUnit.Items.Add(itemUnitSPiOP);
+                    itemUnit.DropDownMode = true;
+
+                    if (itemUnitAdd == false)
+                    {
+                        ASPxMenuMain.Items.Add(itemUnit);
+                        itemUnitAdd = true;
+                    }
+                };
+#endif
+                #endregion
 
                 if (Context.User.IsInRole("Администраторы"))
                 {
