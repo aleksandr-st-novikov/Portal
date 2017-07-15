@@ -1,11 +1,6 @@
 ﻿using Portal.Models.EFContext;
-using Portal.Models.Entities;
-using Portal.Models.ViewModel;
-using Portal.Pages.Journal.OfTransport;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web.UI.WebControls;
 
 namespace Portal.Pages.Journal.OfTransport
 {
