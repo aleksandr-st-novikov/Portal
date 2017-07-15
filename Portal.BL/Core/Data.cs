@@ -19,6 +19,6 @@ namespace Portal.BL.Core
         internal static int PostPort = 25;
         internal static string messageFrom = "portal@bobruysk.korona.by";
 
-        internal static string birthdayMessageBottom = "Желаем хорошего настроения, успехов в «Короне», улыбок близких и коллег!!!";
+        public static string BirthdayMessageBottom = "Желаем хорошего настроения, успехов в «Короне», улыбок близких и коллег!!!";
     }
 }

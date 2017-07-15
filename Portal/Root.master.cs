@@ -160,7 +160,6 @@ namespace Portal
 
                 #region Подразделения
 
-#if DEBUG
                 if ((Context.User.IsInRole("Администраторы")
                     || Context.User.IsInRole("Подразделения - СПиОП - Дни рождения")))
                 {
@@ -189,7 +188,7 @@ namespace Portal
                         itemUnitAdd = true;
                     }
                 };
-#endif
+
                 #endregion
 
                 if (Context.User.IsInRole("Администраторы"))

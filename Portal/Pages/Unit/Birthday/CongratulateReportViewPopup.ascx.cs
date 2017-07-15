@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
+using Portal.BL.Core;
 
 namespace Portal.Pages.Unit.Birthday
 {
@@ -13,27 +14,35 @@ namespace Portal.Pages.Unit.Birthday
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            PrepareReportCongratulate();
+            if (!ASPxCallbackPanelCongtatulate.IsCallback)
+            {
+                PrepareReportCongratulate();
+            }
         }
 
-        protected void ASPxCallbackPanelOfTransportReport_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
+        protected void ASPxCallbackPanelCongtatulate_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
         {
             PrepareReportCongratulate();
         }
 
         private void PrepareReportCongratulate()
         {
-            OfTransportReport ofTransportReport = new OfTransportReport();
+            ReportCongratulate rep = new ReportCongratulate();
 
-            List<OfTransport> data = null;
-            using (OfTransportContext context = new OfTransportContext())
+            List<BirthdayReportViewModel> data = null;
+            using (EmployeeContext context = new EmployeeContext())
             {
-                data = context.GetDataForReport((DateTime)Session["DateFrom"], (DateTime)Session["DateTo"]);
+                data = context.GetEmployyeBirthday((DateTime)Session["DateFrom"], (DateTime)Session["DateTo"]);
+                foreach (var d in data)
+                {
+                    d.DOB = new DateTime(2000, d.DOB.Month, d.DOB.Day);
+                }
             }
-            ofTransportReport.DataSource = data;
+            rep.DataSource = data;
+            rep.Parameters["message"].Value = Data.BirthdayMessageBottom;
 
-            ofTransportReport.DisplayName = "Поздравляем";
-            //ASPxDocumentViewerReport.Report = ofTransportReport;
+            rep.DisplayName = "Поздравляем";
+            ASPxDocumentViewerReportCongtatulate.Report = rep;
         }
     }
 }

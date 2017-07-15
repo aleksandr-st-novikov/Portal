@@ -82,6 +82,6 @@ namespace Portal.Pages.Journal.OfTransport {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Reports.OfTransportReportViewPopup OfTransportReportViewPopup;
+        protected global::Portal.Pages.Journal.OfTransport.OfTransportReportViewPopup OfTransportReportViewPopup;
     }
 }

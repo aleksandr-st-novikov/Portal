@@ -52,9 +52,5 @@ namespace Portal.Pages.Journal.OfTransport
             }
         }
 
-        protected void ASPxButtonPrint_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

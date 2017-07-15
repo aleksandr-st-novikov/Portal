@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
 
-namespace Portal.Reports
+namespace Portal.Pages.Journal.OfTransport
 {
     public partial class OfTransportReportViewPopup : System.Web.UI.UserControl
     {
@@ -25,7 +25,7 @@ namespace Portal.Reports
         {
             OfTransportReport ofTransportReport = new OfTransportReport();
 
-            List<OfTransport> data = null;
+            List<Models.Entities.OfTransport> data = null;
             using (OfTransportContext context = new OfTransportContext())
             {
                 data = context.GetDataForReport((DateTime)Session["DateFrom"], (DateTime)Session["DateTo"]);

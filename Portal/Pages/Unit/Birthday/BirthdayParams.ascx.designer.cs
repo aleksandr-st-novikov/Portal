@@ -65,5 +65,32 @@ namespace Portal.Pages.Unit.Birthday {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton ASPxButtonCongratulate;
+        
+        /// <summary>
+        /// ASPxCallbackDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback ASPxCallbackDate;
+        
+        /// <summary>
+        /// CongratulateReportViewPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Pages.Unit.Birthday.CongratulateReportViewPopup CongratulateReportViewPopup;
+        
+        /// <summary>
+        /// CongratulateWeekReportViewPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Pages.Unit.Birthday.CongratulateWeekReportViewPopup CongratulateWeekReportViewPopup;
     }
 }

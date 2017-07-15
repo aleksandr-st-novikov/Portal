@@ -37,7 +37,9 @@
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
-            //((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.message = new DevExpress.XtraReports.Parameters.Parameter();
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -106,6 +108,8 @@
             // 
             // xrLabel1
             // 
+            this.xrLabel1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding(this.message, "Text", "")});
             this.xrLabel1.Dpi = 254F;
             this.xrLabel1.Font = new System.Drawing.Font("Arial", 20F);
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 126.7883F);
@@ -114,7 +118,6 @@
             this.xrLabel1.SizeF = new System.Drawing.SizeF(2770F, 58.42F);
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.Text = "Желаем хорошего настроения, успехов в «Короне», улыбок близких и коллег!!!";
             this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // GroupFooter1
@@ -125,7 +128,17 @@
             this.GroupFooter1.HeightF = 185.2083F;
             this.GroupFooter1.Name = "GroupFooter1";
             // 
-            // Report1
+            // message
+            // 
+            this.message.Name = "message";
+            this.message.Visible = false;
+            // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.DataSource = typeof(Portal.Models.ViewModel.BirthdayReportViewModel);
+            this.objectDataSource1.Name = "objectDataSource1";
+            // 
+            // ReportCongratulate
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
@@ -133,17 +146,22 @@
             this.BottomMargin,
             this.GroupHeader1,
             this.GroupFooter1});
-            //this.DataSource = this.bindingSource1;
+            this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
+            this.objectDataSource1});
+            this.DataSource = this.objectDataSource1;
             this.Dpi = 254F;
             this.Landscape = true;
             this.Margins = new System.Drawing.Printing.Margins(100, 100, 700, 105);
             this.PageHeight = 2100;
             this.PageWidth = 2970;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
+            this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
+            this.message});
             this.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
             this.ShowPreviewMarginLines = false;
-            this.Version = "15.1";
-            //((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.SnapGridSize = 25F;
+            this.Version = "17.1";
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -159,5 +177,7 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel5;
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;
         private DevExpress.XtraReports.UI.GroupFooterBand GroupFooter1;
+        public DevExpress.XtraReports.Parameters.Parameter message;
+        private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
     }
 }

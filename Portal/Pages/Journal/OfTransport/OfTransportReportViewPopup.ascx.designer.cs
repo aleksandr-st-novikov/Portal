@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.Reports {
+namespace Portal.Pages.Journal.OfTransport {
     
     
     public partial class OfTransportReportViewPopup {

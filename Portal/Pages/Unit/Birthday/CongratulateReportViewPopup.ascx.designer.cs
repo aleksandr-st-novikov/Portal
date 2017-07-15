@@ -7,36 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.Reports {
+namespace Portal.Pages.Unit.Birthday {
     
     
     public partial class CongratulateReportViewPopup {
         
         /// <summary>
-        /// ASPxPopupControlViewOfTransport control.
+        /// ASPxPopupControlViewCongtatulate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlViewOfTransport;
+        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlViewCongtatulate;
         
         /// <summary>
-        /// ASPxCallbackPanelOfTransportReport control.
+        /// ASPxCallbackPanelCongtatulate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCallbackPanel ASPxCallbackPanelOfTransportReport;
+        protected global::DevExpress.Web.ASPxCallbackPanel ASPxCallbackPanelCongtatulate;
         
         /// <summary>
-        /// ASPxDocumentViewerReport control.
+        /// ASPxDocumentViewerReportCongtatulate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.XtraReports.Web.ASPxDocumentViewer ASPxDocumentViewerReport;
+        protected global::DevExpress.XtraReports.Web.ASPxDocumentViewer ASPxDocumentViewerReportCongtatulate;
     }
 }

@@ -227,6 +227,7 @@
     <Content Include="Pages\Maintenance\Manual\ViewManual.ascx" />
     <Content Include="Pages\Maintenance\UKM\Setting.aspx" />
     <Content Include="Pages\Unit\Birthday\BirthdayParams.ascx" />
+    <Content Include="Pages\Unit\Birthday\CongratulateWeekReportViewPopup.ascx" />
     <Content Include="Pages\Unit\Birthday\ManageBirthday.aspx" />
     <Content Include="Pages\Unit\Birthday\CongratulateReportViewPopup.ascx" />
     <Content Include="Reports\DocumentView.aspx" />
@@ -816,6 +817,13 @@
     </Compile>
     <Compile Include="Pages\Unit\Birthday\BirthdayParams.ascx.designer.cs">
       <DependentUpon>BirthdayParams.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\CongratulateWeekReportViewPopup.ascx.cs">
+      <DependentUpon>CongratulateWeekReportViewPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Unit\Birthday\CongratulateWeekReportViewPopup.ascx.designer.cs">
+      <DependentUpon>CongratulateWeekReportViewPopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Unit\Birthday\ManageBirthday.aspx.cs">
       <DependentUpon>ManageBirthday.aspx</DependentUpon>

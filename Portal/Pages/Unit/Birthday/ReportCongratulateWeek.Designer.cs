@@ -35,8 +35,8 @@
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
-            //this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            //((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -106,18 +106,21 @@
             this.xrLabel1.StylePriority.UseTextAlignment = false;
             this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
-            // bindingSource1
+            // objectDataSource1
             // 
-           // this.bindingSource1.DataSource = typeof(Birthday.ResultModel);
+            this.objectDataSource1.DataSource = typeof(Portal.Models.ViewModel.BirthdayReportViewModel);
+            this.objectDataSource1.Name = "objectDataSource1";
             // 
-            // Report2
+            // ReportCongratulateWeek
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
             this.TopMargin,
             this.BottomMargin,
             this.GroupHeader1});
-            //this.DataSource = this.bindingSource1;
+            this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
+            this.objectDataSource1});
+            this.DataSource = this.objectDataSource1;
             this.Dpi = 254F;
             this.Landscape = true;
             this.Margins = new System.Drawing.Printing.Margins(1750, 300, 650, 300);
@@ -126,8 +129,9 @@
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
             this.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
             this.ShowPreviewMarginLines = false;
-            this.Version = "15.1";
-            //((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.SnapGridSize = 25F;
+            this.Version = "17.1";
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -141,5 +145,6 @@
         //private System.Windows.Forms.BindingSource bindingSource1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel2;
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;
+        private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
     }
 }

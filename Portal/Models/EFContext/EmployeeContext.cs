@@ -76,18 +76,19 @@ namespace Portal.Models.EFContext
             return user.Employee;
         }
 
-        public async Task<List<BirthdayReportViewModel>> GetEmployyeBirthday(DateTime dateFrom, DateTime dateTo)
+        public List<BirthdayReportViewModel> GetEmployyeBirthday(DateTime dateFrom, DateTime dateTo)
         {
-            return await (from e in context.Employee
-                          where e.IsWork == true
-                          && ((DateTime)e.DateBirth).Day >= dateFrom.Day && ((DateTime)e.DateBirth).Day <= dateTo.Day
-                          && ((DateTime)e.DateBirth).Month >= dateFrom.Month && ((DateTime)e.DateBirth).Month <= dateTo.Month
-                          select new BirthdayReportViewModel {
-                              Name = e.FullName,
-                              DOB = (DateTime)e.DateBirth,
-                              Dep = e.Department.ShortName,
-                              Empl = e.Position.Name
-                          }).ToListAsync();
+            return (from e in context.Employee
+                    where e.IsWork == true
+                    && ((DateTime)e.DateBirth).Day >= dateFrom.Day && ((DateTime)e.DateBirth).Day <= dateTo.Day
+                    && ((DateTime)e.DateBirth).Month >= dateFrom.Month && ((DateTime)e.DateBirth).Month <= dateTo.Month
+                    select new BirthdayReportViewModel
+                    {
+                        Name = e.Lastname + " " + e.Firstname + " " + e.Patronymic,
+                        DOB = (DateTime)e.DateBirth,
+                        Dep = e.Department.ShortName ?? e.Department.Name,
+                        Empl = e.Position.Name
+                    }).ToList();
         }
     }
 }
