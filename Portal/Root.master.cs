@@ -129,7 +129,6 @@ namespace Portal
 
                 };
 
-#if DEBUG
                 if (Context.User.IsInRole("Администраторы")
                     || Context.User.IsInRole("Журналы - Транспорт - Руководители")
                     || Context.User.IsInRole("Журналы - Транспорт - Служебный вход"))
@@ -150,7 +149,7 @@ namespace Portal
                     }
 
                 };
-#endif
+
                 #endregion
 
                 #region Отчеты
