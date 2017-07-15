@@ -1,11 +1,7 @@
 ﻿using Portal.Models.EFContext;
-using Portal.Models.Entities;
 using Portal.Models.ViewModel;
-using Portal.Pages.Journal.OfTransport;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web.UI.WebControls;
 using Portal.BL.Core;
 
 namespace Portal.Pages.Unit.Birthday

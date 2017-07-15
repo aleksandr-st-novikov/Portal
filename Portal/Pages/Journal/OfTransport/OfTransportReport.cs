@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 using Portal.Models.EFContext;
-using System.Threading.Tasks;
 
 namespace Portal.Pages.Journal.OfTransport
 {

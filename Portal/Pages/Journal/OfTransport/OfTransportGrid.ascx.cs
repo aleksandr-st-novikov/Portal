@@ -1,11 +1,5 @@
-﻿using DevExpress.Export;
-using DevExpress.XtraPrinting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using System;
+using Portal.BL.Core;
 
 namespace Portal.Pages.Journal.OfTransport
 {
@@ -22,6 +16,7 @@ namespace Portal.Pages.Journal.OfTransport
             {
                 ASPxGridViewOfTransport.Columns[0].Visible = false;
             }
+            ASPxTimerRefershOfTransport.Interval = Data.TimeoutRefresh * 1000;
         }
 
         protected void ASPxGridViewOfTransport_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
