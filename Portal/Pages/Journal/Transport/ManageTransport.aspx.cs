@@ -35,21 +35,40 @@ namespace Portal.Pages.Journal.Transport
                         {
                             ASPxLabelDepartment.Text = "Транспорт (развоз сотрудников): " + department.Name;
                         }
+                        else
+                        {
+                            ASPxLabelDepartment.Text = "Транспорт (развоз сотрудников)";
+                        }
                         Session["DepartmentId"] = department.Id;
                         Session["DepartmentNode"] = String.Join(",", (await context.GetNodeDepartmentAsync(department.Id)).ToArray());
                     }
                 }
 
-                if (User.IsInRole("Журналы - Транспорт - Служебный вход"))
+                TimeSpan start = new TimeSpan(0, 0, 0);
+                TimeSpan end = new TimeSpan(5, 0, 0);
+                TimeSpan now = DateTime.Now.TimeOfDay;
+
+                if ((now > start) && (now < end))
                 {
                     Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 00:00:00"));
-                    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd 23:59:59"));
+                    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 23:59:59"));
                 }
                 else
                 {
-                    Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-20).ToString("yyyy-MM-dd 00:00:00"));
-                    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(10).ToString("yyyy-MM-dd 23:59:59"));
+                    Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+                    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
                 }
+
+                //if (User.IsInRole("Журналы - Транспорт - Служебный вход"))
+                //{
+                //    Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 00:00:00"));
+                //    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd 23:59:59"));
+                //}
+                //else
+                //{
+                //    Session["DateFrom"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-20).ToString("yyyy-MM-dd 00:00:00"));
+                //    Session["DateTo"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(10).ToString("yyyy-MM-dd 23:59:59"));
+                //}
 
             }
 
@@ -57,8 +76,8 @@ namespace Portal.Pages.Journal.Transport
                 || User.IsInRole("Журналы - Транспорт - Служебный вход")))
             {
                 ASPxButtonTransportPrint.Visible = true;
+                TransportReportViewPopup.Visible = true;
             }
-
         }
 
         protected void ASPxCallbackRefresh_Callback(object source, DevExpress.Web.CallbackEventArgs e)

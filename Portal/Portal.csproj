@@ -234,7 +234,7 @@
     <Content Include="Pages\Report\Birthday\CongratulateReportViewPopup.ascx" />
     <Content Include="Reports\DocumentView.aspx" />
     <Content Include="Reports\AdmissionReportViewPopup.ascx" />
-    <Content Include="Reports\TransportReportViewPopup.ascx" />
+    <Content Include="Pages\Journal\Transport\TransportReportViewPopup.ascx" />
     <Content Include="Reports\DocumentViewPopup.ascx" />
     <Content Include="Root.master" />
   </ItemGroup>
@@ -896,11 +896,11 @@
     <Compile Include="Reports\AdmissionReportViewPopup.ascx.designer.cs">
       <DependentUpon>AdmissionReportViewPopup.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\TransportReportViewPopup.ascx.cs">
+    <Compile Include="Pages\Journal\Transport\TransportReportViewPopup.ascx.cs">
       <DependentUpon>TransportReportViewPopup.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\TransportReportViewPopup.ascx.designer.cs">
+    <Compile Include="Pages\Journal\Transport\TransportReportViewPopup.ascx.designer.cs">
       <DependentUpon>TransportReportViewPopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Reports\DocumentViewPopup.ascx.cs">
@@ -916,10 +916,10 @@
     <Compile Include="Reports\TestReport.Designer.cs">
       <DependentUpon>TestReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\TransportReport.cs">
+    <Compile Include="Pages\Journal\Transport\TransportReport.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\TransportReport.Designer.cs">
+    <Compile Include="Pages\Journal\Transport\TransportReport.Designer.cs">
       <DependentUpon>TransportReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Root.master.cs">
@@ -1035,7 +1035,7 @@
     <EmbeddedResource Include="Reports\TestReport.resx">
       <DependentUpon>TestReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\TransportReport.resx">
+    <EmbeddedResource Include="Pages\Journal\Transport\TransportReport.resx">
       <DependentUpon>TransportReport.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

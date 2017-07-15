@@ -1,4 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TransportGrid.ascx.cs" Inherits="Portal.Pages.Journal.Transport.TransportGrid" %>
+<dx:ASPxTimer ID="ASPxTimerTransport" runat="server">
+    <ClientSideEvents Tick="function(s, e) {
+	ASPxClientGridViewTransport.Refresh();
+}" />
+</dx:ASPxTimer>
 <dx:ASPxGridView ID="ASPxGridViewTransport" runat="server" AutoGenerateColumns="False" ClientInstanceName="ASPxClientGridViewTransport" DataSourceID="SqlDataSourceTransport" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewTransport_InitNewRow" OnRowInserting="ASPxGridViewTransport_RowInserting">
     <SettingsPager PageSize="20">
     </SettingsPager>
@@ -47,7 +52,7 @@
                 </ValidationSettings>
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataComboBoxColumn Caption="Сотрудник" FieldName="EmployeeId" VisibleIndex="3" Width="300px">
+        <dx:GridViewDataComboBoxColumn Caption="Сотрудник" FieldName="EmployeeId" VisibleIndex="3" Width="300px" SortIndex="0" SortOrder="Ascending">
             <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" TextField="FIO" ValueField="Id">
                 <ValidationSettings Display="Dynamic">
                     <RequiredField ErrorText="Обязательное поле" IsRequired="True" />
@@ -55,7 +60,7 @@
             </PropertiesComboBox>
         </dx:GridViewDataComboBoxColumn>
         <dx:GridViewDataComboBoxColumn Caption="Адрес" FieldName="Address" VisibleIndex="4" Width="400px">
-            <PropertiesComboBox DropDownStyle="DropDown">
+            <PropertiesComboBox DropDownStyle="DropDown" DataSourceID="SqlDataSourceAddress" TextField="Address" ValueField="Address">
                 <DropDownButton ClientVisible="False">
                 </DropDownButton>
                 <ValidationSettings Display="Dynamic">
@@ -70,8 +75,15 @@
             <EditFormSettings Visible="False" />
         </dx:GridViewDataComboBoxColumn>
     </Columns>
+    <FormatConditions>
+        <dx:GridViewFormatConditionHighlight Expression="[DepartmentId] = 27">
+        </dx:GridViewFormatConditionHighlight>
+    </FormatConditions>
 </dx:ASPxGridView>
-<asp:SqlDataSource ID="SqlDataSourceTransport" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" DeleteCommand="DELETE FROM [Transport] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Transport] ([Address], [DateTransport], [EmployeeId], [DepartmentId]) VALUES (@Address, @DateTransport, @EmployeeId, @DepartmentId)" SelectCommand="SELECT * FROM [Transport] WHERE (([DateTransport] &gt;= @DateTransport) AND ([DateTransport] &lt;= @DateTransport2) AND ([DepartmentId] = @DepartmentId)) ORDER BY [DateTransport] DESC" UpdateCommand="UPDATE [Transport] SET [Address] = @Address, [DateTransport] = @DateTransport, [EmployeeId] = @EmployeeId, [DepartmentId] = @DepartmentId WHERE [Id] = @Id">
+<asp:SqlDataSource ID="SqlDataSourceTransport" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+    DeleteCommand="DELETE FROM [Transport] WHERE [Id] = @Id" 
+    InsertCommand="INSERT INTO [Transport] ([Address], [DateTransport], [EmployeeId], [DepartmentId]) VALUES (@Address, @DateTransport, @EmployeeId, @DepartmentId)" 
+    UpdateCommand="UPDATE [Transport] SET [Address] = @Address, [DateTransport] = @DateTransport, [EmployeeId] = @EmployeeId, [DepartmentId] = @DepartmentId WHERE [Id] = @Id" OnInit="SqlDataSourceTransport_Init">
     <DeleteParameters>
         <asp:Parameter Name="Id" Type="Int32" />
     </DeleteParameters>
@@ -96,6 +108,10 @@
 </asp:SqlDataSource>
 
 <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], [ShortName] FROM [Department]"></asp:SqlDataSource>
-<asp:SqlDataSource ID="SqlDataSourceEmployee" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], concat([Lastname], ' ', [Firstname], ' ', [Patronymic]) as FIO FROM [Employee]"></asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSourceEmployee" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" OnInit="SqlDataSourceEmployee_Init"></asp:SqlDataSource>
+
+
+<asp:SqlDataSource ID="SqlDataSourceAddress" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT DISTINCT [Address] FROM [Transport] ORDER BY [Address]"></asp:SqlDataSource>
+
 
 

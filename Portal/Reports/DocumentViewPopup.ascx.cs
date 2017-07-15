@@ -27,17 +27,17 @@ namespace Portal.Reports
             }
         }
 
-        private TransportReport transportReport
-        {
-            get
-            {
-                return (TransportReport)Session["TransportReport"];
-            }
-            set
-            {
-                Session["TransportReport"] = value;
-            }
-        }
+        //private TransportReport transportReport
+        //{
+        //    get
+        //    {
+        //        return (TransportReport)Session["TransportReport"];
+        //    }
+        //    set
+        //    {
+        //        Session["TransportReport"] = value;
+        //    }
+        //}
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -111,27 +111,27 @@ namespace Portal.Reports
 
         private void PrepareReportTransport()
         {
-            transportReport = new TransportReport();
+            //transportReport = new TransportReport();
 
-            List<TransportReportViewModel> data = null;
-            using (TransportContext context = new TransportContext())
-            {
-                if (Context.User.IsInRole("Транспорт - Руководители"))
-                {
-                    data = context.GetDataForReport(DateTime.Parse((string)Session["param1"]),
-                        DateTime.Parse((string)Session["param2"]),
-                        Int32.Parse(Session["DepartmentId"].ToString()));
-                }
-                else if(Context.User.IsInRole("Администраторы") || Context.User.IsInRole("Транспорт - Служебный вход"))
-                {
-                    data = context.GetDataForReport(DateTime.Parse((string)Session["param1"]),
-                        DateTime.Parse((string)Session["param2"]));
-                }
-            }
-            transportReport.DataSource = data;
+            //List<TransportReportViewModel> data = null;
+            //using (TransportContext context = new TransportContext())
+            //{
+            //    if (Context.User.IsInRole("Транспорт - Руководители"))
+            //    {
+            //        data = context.GetDataForReport(DateTime.Parse((string)Session["param1"]),
+            //            DateTime.Parse((string)Session["param2"]),
+            //            Int32.Parse(Session["DepartmentId"].ToString()));
+            //    }
+            //    else if(Context.User.IsInRole("Администраторы") || Context.User.IsInRole("Транспорт - Служебный вход"))
+            //    {
+            //        data = context.GetDataForReport(DateTime.Parse((string)Session["param1"]),
+            //            DateTime.Parse((string)Session["param2"]));
+            //    }
+            //}
+            //transportReport.DataSource = data;
 
-            transportReport.DisplayName = "Отчет по транспорту";
-            ASPxDocumentViewerReport.Report = transportReport;
+            //transportReport.DisplayName = "Отчет по транспорту";
+            //ASPxDocumentViewerReport.Report = transportReport;
         }
     }
 }

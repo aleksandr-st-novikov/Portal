@@ -13,6 +13,15 @@ namespace Portal.Pages.Journal.Transport {
     public partial class TransportGrid {
         
         /// <summary>
+        /// ASPxTimerTransport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTimer ASPxTimerTransport;
+        
+        /// <summary>
         /// ASPxGridViewTransport control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace Portal.Pages.Journal.Transport {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEmployee;
+        
+        /// <summary>
+        /// SqlDataSourceAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAddress;
     }
 }

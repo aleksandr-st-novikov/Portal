@@ -235,6 +235,6 @@ namespace Portal.Pages.Journal.Transport_old {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Reports.TransportReportViewPopup TransportReportViewPopup;
+        protected global::System.Web.UI.UserControl TransportReportViewPopup;
     }
 }

@@ -1,10 +1,6 @@
 ﻿using Portal.Models.EFContext;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using Portal.BL.Core;
 
 namespace Portal.Pages.Journal.Transport
 {
@@ -15,12 +11,18 @@ namespace Portal.Pages.Journal.Transport
             if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход"))
             {
                 ASPxGridViewTransport.Columns[0].Visible = false;
-                SqlDataSourceTransport.SelectCommand = "SELECT * FROM [Transport] WHERE (([DateTransport] >= @DateTransport) AND ([DateTransport] <= @DateTransport2)) ORDER BY [DateTransport] DESC";
+                DSTransportSelectCommandEntrance();
+                DSEmployeeSelectCommandEntrance();
             }
             else
             {
-                SqlDataSourceTransport.SelectCommand = "SELECT * FROM [Transport] WHERE (([DateTransport] >= @DateTransport) AND ([DateTransport] <= @DateTransport2)) AND [DepartmentId] IN (" + (String)Session["DepartmentNode"] + ") ORDER BY [DateTransport] DESC";
-                SqlDataSourceEmployee.SelectCommand = "SELECT[Id], concat([Lastname], ' ', [Firstname], ' ', [Patronymic]) as FIO FROM[Employee] WHERE [DepartmentId] IN (" + (String)Session["DepartmentNode"] + ") AND ([IsWork] = 1)";
+                DSTransportSelectCommand();
+                DSEmployeeSelectCommand();
+            }
+
+            if (!Page.IsPostBack && !Page.IsCallback)
+            {
+                ASPxTimerTransport.Interval = Data.TimeoutRefresh * 1000;
             }
         }
 
@@ -34,7 +36,56 @@ namespace Portal.Pages.Journal.Transport
 
         protected void ASPxGridViewTransport_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
-            e.NewValues["DateTransport"] = DateTime.Now;
+            e.NewValues["DateTransport"] = Convert.ToDateTime((DateTime.Now).ToString("yyyy-MM-dd 00:00:00"));
         }
+
+
+        protected void SqlDataSourceEmployee_Init(object sender, EventArgs e)
+        {
+            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход"))
+            {
+                DSEmployeeSelectCommandEntrance();
+            }
+            else
+            {
+                DSEmployeeSelectCommand();
+            }
+        }
+
+        protected void SqlDataSourceTransport_Init(object sender, EventArgs e)
+        {
+            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход"))
+            {
+                DSTransportSelectCommandEntrance();
+            }
+            else
+            {
+                DSTransportSelectCommand();
+            }
+        }
+
+
+        #region SelectCommand
+        private void DSEmployeeSelectCommand()
+        {
+            SqlDataSourceEmployee.SelectCommand = "SELECT [Id], concat([Lastname], ' ', [Firstname], ' ', [Patronymic]) as FIO FROM [Employee] WHERE [DepartmentId] IN (" + (String)Session["DepartmentNode"] + ") AND [IsWork] = 1";
+        }
+
+        private void DSTransportSelectCommand()
+        {
+            SqlDataSourceTransport.SelectCommand = "SELECT * FROM [Transport] INNER JOIN [Employee] ON [Transport].[EmployeeId] = [Employee].[Id] WHERE [Employee].[IsWork] = 1 AND (([Transport].[DateTransport] >= @DateTransport) AND ([Transport].[DateTransport] <= @DateTransport2)) AND [Transport].[DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")";
+        }
+
+        private void DSEmployeeSelectCommandEntrance()
+        {
+            SqlDataSourceEmployee.SelectCommand = "SELECT [Id], concat([Lastname], ' ', [Firstname], ' ', [Patronymic]) as FIO FROM [Employee]";
+        }
+
+        private void DSTransportSelectCommandEntrance()
+        {
+            SqlDataSourceTransport.SelectCommand = "SELECT * FROM [Transport] INNER JOIN [Employee] ON [Transport].[EmployeeId] = [Employee].[Id] WHERE [Employee].[IsWork] = 1 AND (([Transport].[DateTransport] >= @DateTransport) AND ([Transport].[DateTransport] <= @DateTransport2))";
+        }
+        #endregion
+
     }
 }

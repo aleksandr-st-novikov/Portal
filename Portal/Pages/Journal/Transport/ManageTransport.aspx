@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Journal/Transport/TransportMain.master" Async="true" AutoEventWireup="true" CodeBehind="ManageTransport.aspx.cs" Inherits="Portal.Pages.Journal.Transport.ManageTransport1" %>
 
 <%@ Register Src="~/Pages/Journal/Transport/TransportGrid.ascx" TagPrefix="uc1" TagName="TransportGrid" %>
+<%@ Register Src="~/Pages/Journal/Transport/TransportReportViewPopup.ascx" TagPrefix="uc1" TagName="TransportReportViewPopup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="content">
@@ -48,7 +49,7 @@
                 </td>
             </tr>
         </table>
-
-        <uc1:TransportGrid runat="server" id="TransportGrid" />
+        <uc1:TransportGrid runat="server" ID="TransportGrid" />
     </div>
+    <uc1:TransportReportViewPopup runat="server" id="TransportReportViewPopup" Visible="false"/>
 </asp:Content>
