@@ -219,6 +219,8 @@
     <Content Include="Pages\Journal\OfTransport\OfTransportGrid.ascx" />
     <Content Include="Pages\Journal\OfTransport\OfTransportReportViewPopup.ascx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
+    <Content Include="Pages\Journal\Transport\TransportGrid.ascx" />
+    <Content Include="Pages\Journal\Transport_old\ManageTransport_old.aspx" />
     <Content Include="Pages\Maintenance\Contact\ManageContact.aspx" />
     <Content Include="Pages\Maintenance\Manual\AddManual.ascx" />
     <Content Include="Pages\Maintenance\Manual\LeftTree.ascx" />
@@ -249,7 +251,7 @@
     <Content Include="Pages\Journal\Accessories\AccessoriesMain.master" />
     <Content Include="Pages\Admin\Employee\EmployeeMain.master" />
     <Content Include="Pages\Journal\Admission\AdmissionMain.master" />
-    <Content Include="Pages\Journal\Transport\TransportMain.master" />
+    <Content Include="Pages\Journal\Transport_old\Transport_oldMain.master" />
     <Content Include="MainDefault.master" />
     <Content Include="Pages\Maintenance\UKM\UKMMain.master" />
     <Content Include="Pages\Maintenance\DepartmentWork\DepartmentWorkMain.master" />
@@ -257,6 +259,7 @@
     <Content Include="Pages\Maintenance\Contact\ContactMain.master" />
     <Content Include="Pages\Journal\OfTransport\OfTransportMain.master" />
     <Content Include="Pages\Report\Birthday\BirthdayMain.master" />
+    <Content Include="Pages\Journal\Transport\TransportMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -720,12 +723,33 @@
     <Compile Include="Pages\Journal\Transport\ManageTransport.aspx.designer.cs">
       <DependentUpon>ManageTransport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Journal\Transport\TransportGrid.ascx.cs">
+      <DependentUpon>TransportGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\TransportGrid.ascx.designer.cs">
+      <DependentUpon>TransportGrid.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Journal\Transport\TransportMain.master.cs">
       <DependentUpon>TransportMain.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Journal\Transport\TransportMain.master.designer.cs">
       <DependentUpon>TransportMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport_old\ManageTransport_old.aspx.cs">
+      <DependentUpon>ManageTransport_old.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport_old\ManageTransport_old.aspx.designer.cs">
+      <DependentUpon>ManageTransport_old.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport_old\Transport_oldMain.master.cs">
+      <DependentUpon>Transport_oldMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport_old\Transport_oldMain.master.designer.cs">
+      <DependentUpon>Transport_oldMain.master</DependentUpon>
     </Compile>
     <Compile Include="Pages\Maintenance\Contact\ContactMain.master.cs">
       <DependentUpon>ContactMain.master</DependentUpon>

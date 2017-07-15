@@ -10,16 +10,7 @@
 namespace Portal.Pages.Journal.Transport {
     
     
-    public partial class ManageTransport {
-        
-        /// <summary>
-        /// ScriptManagerTransport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManagerTransport;
+    public partial class ManageTransport1 {
         
         /// <summary>
         /// ASPxLabelDepartment control.
@@ -31,31 +22,13 @@ namespace Portal.Pages.Journal.Transport {
         protected global::DevExpress.Web.ASPxLabel ASPxLabelDepartment;
         
         /// <summary>
-        /// ASPxCallbackRefreshData control.
+        /// ASPxCallbackRefresh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCallback ASPxCallbackRefreshData;
-        
-        /// <summary>
-        /// ASPxButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton1;
-        
-        /// <summary>
-        /// ASPxButtonPrint control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButtonPrint;
+        protected global::DevExpress.Web.ASPxCallback ASPxCallbackRefresh;
         
         /// <summary>
         /// ASPxDateEditGridFrom control.
@@ -85,156 +58,21 @@ namespace Portal.Pages.Journal.Transport {
         protected global::DevExpress.Web.ASPxButton ASPxButton4;
         
         /// <summary>
-        /// ASPxGridViewHeadDepartment control.
+        /// ASPxButtonTransportPrint control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView ASPxGridViewHeadDepartment;
+        protected global::DevExpress.Web.ASPxButton ASPxButtonTransportPrint;
         
         /// <summary>
-        /// SqlDataSourceTransportHeadDepartment control.
+        /// TransportGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceTransportHeadDepartment;
-        
-        /// <summary>
-        /// SqlDataSourceTransportEntrance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceTransportEntrance;
-        
-        /// <summary>
-        /// SqlDataSourceEmployeeHeadDepartment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEmployeeHeadDepartment;
-        
-        /// <summary>
-        /// SqlDataSourceEmployeeEntrance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEmployeeEntrance;
-        
-        /// <summary>
-        /// ASPxCallbackAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxCallback ASPxCallbackAdd;
-        
-        /// <summary>
-        /// SqlDataSourceDepartment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDepartment;
-        
-        /// <summary>
-        /// ASPxCallbackPanelPopup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxCallbackPanel ASPxCallbackPanelPopup;
-        
-        /// <summary>
-        /// ASPxPopupControlAddRecord control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlAddRecord;
-        
-        /// <summary>
-        /// ASPxDateEditTransport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEditTransport;
-        
-        /// <summary>
-        /// ASPxComboBoxEmployee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxComboBoxEmployee;
-        
-        /// <summary>
-        /// ASPxComboBoxAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxComboBoxAddress;
-        
-        /// <summary>
-        /// ASPxPanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
-        
-        /// <summary>
-        /// ASPxButtonAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButtonAdd;
-        
-        /// <summary>
-        /// ASPxButton2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton2;
-        
-        /// <summary>
-        /// SqlDataSourceAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceAddress;
-        
-        /// <summary>
-        /// TransportReportViewPopup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Portal.Reports.TransportReportViewPopup TransportReportViewPopup;
+        protected global::Portal.Pages.Journal.Transport.TransportGrid TransportGrid;
     }
 }

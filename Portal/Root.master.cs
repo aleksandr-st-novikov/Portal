@@ -131,12 +131,12 @@ namespace Portal
 
 #if DEBUG
                 if (Context.User.IsInRole("Администраторы")
-                    || Context.User.IsInRole("Транспорт - Руководители")
-                    || Context.User.IsInRole("Транспорт - Служебный вход"))
+                    || Context.User.IsInRole("Журналы - Транспорт - Руководители")
+                    || Context.User.IsInRole("Журналы - Транспорт - Служебный вход"))
                 {
                     DevExpress.Web.MenuItem itemJournalTransport = new DevExpress.Web.MenuItem()
                     {
-                        Text = "Транспорт",
+                        Text = "Транспорт (развоз сотрудников)",
                         NavigateUrl = "~/Pages/Journal/Transport/ManageTransport.aspx"
                     };
                     itemJournalTransport.Image.IconID = "people_usergroup_16x16office2013";
