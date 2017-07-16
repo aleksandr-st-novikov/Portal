@@ -14,6 +14,7 @@
         <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
     </SettingsPopup>
     <SettingsSearchPanel Visible="True" />
+    <SettingsLoadingPanel Mode="Disabled" />
     <StylesPopup>
         <EditForm>
             <Header BackColor="WhiteSmoke">
@@ -76,7 +77,7 @@
         </dx:GridViewDataComboBoxColumn>
     </Columns>
     <FormatConditions>
-        <dx:GridViewFormatConditionHighlight Expression="[DepartmentId] = 27">
+        <dx:GridViewFormatConditionHighlight Expression="[DepartmentId] = 27" ApplyToRow="True">
         </dx:GridViewFormatConditionHighlight>
     </FormatConditions>
 </dx:ASPxGridView>

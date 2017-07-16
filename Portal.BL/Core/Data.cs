@@ -20,6 +20,6 @@ namespace Portal.BL.Core
         internal static string messageFrom = "portal@bobruysk.korona.by";
 
         public static string BirthdayMessageBottom = "Желаем хорошего настроения, успехов в «Короне», улыбок близких и коллег!!!";
-        public static int TimeoutRefresh = 120;
+        public static int TimeoutRefresh = 90;
     }
 }

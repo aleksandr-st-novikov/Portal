@@ -1,14 +1,12 @@
 ﻿using Portal.Models.EFContext;
 using Portal.Models.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Portal.BL.Utils;
 using System.Threading.Tasks;
+using Portal.BL.Core;
 
 namespace Portal.Pages.Maintenance.DepartmentWork
 {
@@ -41,7 +39,7 @@ namespace Portal.Pages.Maintenance.DepartmentWork
                         Session["EmployeeId"] = employee.Id;
                     }
                 }
-
+                ASPxTimerDepartmentWork.Interval = Data.TimeoutRefresh * 1000;
             }
         }
 

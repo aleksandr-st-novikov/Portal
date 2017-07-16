@@ -20,6 +20,11 @@
                                     <asp:SessionParameter Name="DepartmentId" SessionField="DepartmentId" Type="Int32" />
                                 </SelectParameters>
                             </asp:SqlDataSource>
+        <dx:ASPxTimer ID="ASPxTimerDepartmentWork" runat="server">
+            <ClientSideEvents Tick="function(s, e) {
+	ASPxClientGridViewWorkInWork.Refresh();
+}" />
+        </dx:ASPxTimer>
         <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Width="100%">
             <TabPages>
                 <dx:TabPage Text="В работе">
@@ -39,6 +44,7 @@
                                     <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
                                 </SettingsPopup>
                                 <SettingsSearchPanel Visible="True" />
+                                <SettingsLoadingPanel Mode="Disabled" />
                                 <StylesPopup>
                                     <EditForm>
                                         <Header BackColor="WhiteSmoke">

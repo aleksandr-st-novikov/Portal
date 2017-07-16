@@ -40,6 +40,15 @@ namespace Portal.Pages.Maintenance.DepartmentWork {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEmployee;
         
         /// <summary>
+        /// ASPxTimerDepartmentWork control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTimer ASPxTimerDepartmentWork;
+        
+        /// <summary>
         /// ASPxPageControl1 control.
         /// </summary>
         /// <remarks>
