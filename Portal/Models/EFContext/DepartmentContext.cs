@@ -48,10 +48,13 @@ namespace Portal.Models.EFContext
             foreach (var dat in data)
             {
                 Department dep = await context.Department.FirstOrDefaultAsync(d => d.Name == dat.Department);
-                Employee empl = await context.Employee.FirstOrDefaultAsync(e => e.TabN == dat.TabNo);
-                if (dep != null)
+                if (dep != null && dep.NotChangeHead != true)
                 {
-                    dep.HeadId = empl.Id;
+                    Employee empl = await context.Employee.FirstOrDefaultAsync(e => e.TabN == dat.TabNo);
+                    if (dep != null)
+                    {
+                        dep.HeadId = empl.Id;
+                    }
                 }
             }
         }

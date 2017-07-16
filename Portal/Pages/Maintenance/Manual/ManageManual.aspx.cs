@@ -15,8 +15,6 @@ namespace Portal.Pages.Maintenance.Manual
         {
             if (!Page.IsPostBack && !Page.IsCallback)
             {
-                Page.Title = "Инструкции";
-
                 using (DepartmentContext context = new DepartmentContext())
                 using (EmployeeContext employeeContext = new EmployeeContext())
                 {
@@ -39,6 +37,14 @@ namespace Portal.Pages.Maintenance.Manual
                     string script = @"var nodeKey;";
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "manual", script, true);
                 }
+            }
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack && !Page.IsCallback)
+            {
+                Page.Title = "Поддержка - Инструкции";
             }
         }
 

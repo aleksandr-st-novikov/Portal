@@ -24,7 +24,6 @@ namespace Portal.Pages.Maintenance.DepartmentWork
 
             if (!Page.IsPostBack && !Page.IsCallback)
             {
-                Page.Title = "Работа отдела";
                 using (DepartmentContext context = new DepartmentContext())
                 using (EmployeeContext employeeContext = new EmployeeContext())
                 {
@@ -43,6 +42,14 @@ namespace Portal.Pages.Maintenance.DepartmentWork
                     }
                 }
 
+            }
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack && !Page.IsCallback)
+            {
+                Page.Title = "Поддержка - Работа отдела";
             }
         }
 

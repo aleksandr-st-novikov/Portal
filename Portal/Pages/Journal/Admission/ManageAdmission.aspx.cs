@@ -28,8 +28,6 @@ namespace Portal.Pages.Journal.Admission
 
             if (!Page.IsPostBack && !Page.IsCallback)
             {
-                Page.Title = "Допуски сотрудников";
-
                 ASPxLoadingPanelLoad.ContainerElementID = "ASPxPanel1";
                 using (DepartmentContext context = new DepartmentContext())
                 {
@@ -45,6 +43,11 @@ namespace Portal.Pages.Journal.Admission
 
             SqlDataSourceAdmission.SelectCommand = "SELECT * FROM[Admission] WHERE(([DepartmentId]  IN(" + 
                 (String)Session["DepartmentNode"] + ")) AND([IsWork] = @IsWork))";
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            Page.Title = "Журналы - Допуски сотрудников";
         }
 
         protected async void ASPxCallbackImportEmployee_Callback(object source, DevExpress.Web.CallbackEventArgs e)

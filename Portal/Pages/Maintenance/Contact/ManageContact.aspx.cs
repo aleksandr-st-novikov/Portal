@@ -11,9 +11,13 @@ namespace Portal.Pages.Maintenance.Contact
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
             if (!Page.IsPostBack && !Page.IsCallback)
             {
-                Page.Title = "Организации, контакты";
+                Page.Title = "Поддержка - Организации, контакты";
             }
         }
     }

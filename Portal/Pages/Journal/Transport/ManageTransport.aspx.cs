@@ -23,9 +23,6 @@ namespace Portal.Pages.Journal.Transport
 
             if (!Page.IsPostBack && !Page.IsCallback)
             {
-                Page.Title = "Транспорт (развоз сотрудников)";
-
-
                 using (DepartmentContext context = new DepartmentContext())
                 {
                     Department department = await context.GetDepartmentByUserAsync(User.Identity.Name);
@@ -78,6 +75,11 @@ namespace Portal.Pages.Journal.Transport
                 ASPxButtonTransportPrint.Visible = true;
                 TransportReportViewPopup.Visible = true;
             }
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            Page.Title = "Журналы - Транспорт (развоз сотрудников)";
         }
 
         protected void ASPxCallbackRefresh_Callback(object source, DevExpress.Web.CallbackEventArgs e)

@@ -97,6 +97,8 @@ namespace Portal.Models.Entities
         [ConcurrencyCheck]
         public Boolean IsActive { get; set; }
 
+        public Boolean? NotChangeHead { get; set; }
+
         public virtual ICollection<Employee> Employees { get; set; }
         public virtual Employee Head { get; set; }
         public virtual ICollection<AccessoriesDepartment> AccessoriesDepartment { get; set; }

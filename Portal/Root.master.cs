@@ -16,6 +16,7 @@ namespace Portal
         protected void Page_Load(object sender, EventArgs e)
         {
             ASPxLabel2.Text = "Portal [версия " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "]";  //DateTime.Now.Year + Server.HtmlDecode(" &copy; Copyright by [company name]");
+            Page.Title = "Бобруйский Торговый центр «Корона»";
 
             if (!Page.IsCallback && !Page.IsPostBack)
             {
