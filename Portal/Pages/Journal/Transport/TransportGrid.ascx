@@ -45,14 +45,14 @@
         <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" Visible="False" VisibleIndex="1">
             <EditFormSettings Visible="False" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn Caption="Дата" FieldName="DateTransport" VisibleIndex="2" Width="100px">
+        <dx:GridViewDataDateColumn Caption="Дата" FieldName="DateTransport" VisibleIndex="2" Width="100px" SortIndex="0" SortOrder="Descending">
             <PropertiesDateEdit>
                 <ValidationSettings Display="Dynamic">
                     <RequiredField ErrorText="Обязательное поле" IsRequired="True" />
                 </ValidationSettings>
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataComboBoxColumn Caption="Сотрудник" FieldName="EmployeeId" VisibleIndex="3" Width="300px" SortIndex="0" SortOrder="Ascending">
+        <dx:GridViewDataComboBoxColumn Caption="Сотрудник" FieldName="EmployeeId" VisibleIndex="3" Width="300px" SortIndex="1" SortOrder="Ascending">
             <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" TextField="FIO" ValueField="Id">
                 <ValidationSettings Display="Dynamic">
                     <RequiredField ErrorText="Обязательное поле" IsRequired="True" />

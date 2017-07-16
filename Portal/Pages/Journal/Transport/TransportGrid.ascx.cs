@@ -14,12 +14,16 @@ namespace Portal.Pages.Journal.Transport
                 DSTransportSelectCommandEntrance();
                 DSEmployeeSelectCommandEntrance();
             }
-            else
+            if (Context.User.IsInRole("Журналы - Транспорт - Руководители"))
             {
                 DSTransportSelectCommand();
                 DSEmployeeSelectCommand();
             }
-
+            if (Context.User.IsInRole("Администраторы"))
+            {
+                DSTransportSelectCommandEntrance();
+                DSEmployeeSelectCommandEntrance();
+            }
             if (!Page.IsPostBack && !Page.IsCallback)
             {
                 ASPxTimerTransport.Interval = Data.TimeoutRefresh * 1000;
@@ -42,7 +46,7 @@ namespace Portal.Pages.Journal.Transport
 
         protected void SqlDataSourceEmployee_Init(object sender, EventArgs e)
         {
-            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход"))
+            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход") || Context.User.IsInRole("Администраторы"))
             {
                 DSEmployeeSelectCommandEntrance();
             }
@@ -54,7 +58,7 @@ namespace Portal.Pages.Journal.Transport
 
         protected void SqlDataSourceTransport_Init(object sender, EventArgs e)
         {
-            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход"))
+            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход") || Context.User.IsInRole("Администраторы"))
             {
                 DSTransportSelectCommandEntrance();
             }
@@ -78,7 +82,7 @@ namespace Portal.Pages.Journal.Transport
 
         private void DSEmployeeSelectCommandEntrance()
         {
-            SqlDataSourceEmployee.SelectCommand = "SELECT [Id], concat([Lastname], ' ', [Firstname], ' ', [Patronymic]) as FIO FROM [Employee]";
+            SqlDataSourceEmployee.SelectCommand = "SELECT [Id], concat([Lastname], ' ', [Firstname], ' ', [Patronymic]) as FIO FROM [Employee] WHERE [IsWork] = 1";
         }
 
         private void DSTransportSelectCommandEntrance()
