@@ -95,8 +95,8 @@
         <asp:Parameter Name="DepartmentId" Type="Int32" />
     </InsertParameters>
     <SelectParameters>
-        <asp:SessionParameter Name="DateTransport" SessionField="DateFrom" Type="DateTime" />
-        <asp:SessionParameter Name="DateTransport2" SessionField="DateTo" Type="DateTime" />
+        <asp:SessionParameter Name="DateTransport" SessionField="DateFromTransport" Type="DateTime" />
+        <asp:SessionParameter Name="DateTransport2" SessionField="DateToTransport" Type="DateTime" />
         <asp:SessionParameter Name="DepartmentId" SessionField="DepartmentId" Type="Int32" />
     </SelectParameters>
     <UpdateParameters>

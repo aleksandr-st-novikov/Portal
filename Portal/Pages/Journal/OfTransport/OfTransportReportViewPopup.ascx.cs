@@ -23,7 +23,7 @@ namespace Portal.Pages.Journal.OfTransport
             List<Models.Entities.OfTransport> data = null;
             using (OfTransportContext context = new OfTransportContext())
             {
-                data = context.GetDataForReport((DateTime)Session["DateFrom"], (DateTime)Session["DateTo"]);
+                data = context.GetDataForReport((DateTime)Session["DateFromOfTransport"], (DateTime)Session["DateToOfTransport"]);
             }
             ofTransportReport.DataSource = data;
 

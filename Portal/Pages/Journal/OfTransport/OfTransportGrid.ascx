@@ -100,8 +100,8 @@
         <asp:Parameter Name="EmployeeId" Type="Int32" />
     </InsertParameters>
     <SelectParameters>
-        <asp:SessionParameter Name="Date2" SessionField="DateTo" Type="DateTime" />
-        <asp:SessionParameter Name="Date" SessionField="DateFrom" Type="DateTime" />
+        <asp:SessionParameter Name="Date2" SessionField="DateToOfTransport" Type="DateTime" />
+        <asp:SessionParameter Name="Date" SessionField="DateFromOfTransport" Type="DateTime" />
     </SelectParameters>
     <UpdateParameters>
         <asp:Parameter Name="Date" Type="DateTime" />

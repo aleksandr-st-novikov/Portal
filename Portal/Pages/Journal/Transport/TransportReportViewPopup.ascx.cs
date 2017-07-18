@@ -27,7 +27,7 @@ namespace Portal.Pages.Journal.Transport
             List<TransportReportViewModel> data = null;
             using (TransportContext context = new TransportContext())
             {
-                data = context.GetDataForReport((DateTime)Session["DateFrom"], (DateTime)Session["DateTo"]);
+                data = context.GetDataForReport((DateTime)Session["DateFromTransport"], (DateTime)Session["DateToTransport"]);
             }
             transportReport.DataSource = data;
 
