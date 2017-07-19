@@ -19,7 +19,8 @@ namespace Portal.Pages.Journal.Transport
                 DSTransportSelectCommand();
                 DSEmployeeSelectCommand();
             }
-            if (Context.User.IsInRole("Администраторы"))
+            if (Context.User.IsInRole("Администраторы")
+                || Context.User.IsInRole("Журналы - Транспорт - Руководители - Все сотрудники"))
             {
                 DSTransportSelectCommandEntrance();
                 DSEmployeeSelectCommandEntrance();
@@ -46,7 +47,9 @@ namespace Portal.Pages.Journal.Transport
 
         protected void SqlDataSourceEmployee_Init(object sender, EventArgs e)
         {
-            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход") || Context.User.IsInRole("Администраторы"))
+            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход") 
+                || Context.User.IsInRole("Администраторы")
+                || Context.User.IsInRole("Журналы - Транспорт - Руководители - Все сотрудники"))
             {
                 DSEmployeeSelectCommandEntrance();
             }
@@ -58,7 +61,9 @@ namespace Portal.Pages.Journal.Transport
 
         protected void SqlDataSourceTransport_Init(object sender, EventArgs e)
         {
-            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход") || Context.User.IsInRole("Администраторы"))
+            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход") 
+                || Context.User.IsInRole("Администраторы")
+                || Context.User.IsInRole("Журналы - Транспорт - Руководители - Все сотрудники"))
             {
                 DSTransportSelectCommandEntrance();
             }

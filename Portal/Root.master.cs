@@ -132,6 +132,7 @@ namespace Portal
 
                 if (Context.User.IsInRole("Администраторы")
                     || Context.User.IsInRole("Журналы - Транспорт - Руководители")
+                    || Context.User.IsInRole("Журналы - Транспорт - Руководители - Все сотрудники")
                     || Context.User.IsInRole("Журналы - Транспорт - Служебный вход"))
                 {
                     DevExpress.Web.MenuItem itemJournalTransport = new DevExpress.Web.MenuItem()

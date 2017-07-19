@@ -15,6 +15,7 @@ namespace Portal.Pages.Journal.Transport
         {
             if (!(User.IsInRole("Администраторы")
                 || User.IsInRole("Журналы - Транспорт - Руководители")
+                || User.IsInRole("Журналы - Транспорт - Руководители - Все сотрудники")
                 || User.IsInRole("Журналы - Транспорт - Служебный вход")))
             {
                 HttpContext.Current.Response.Redirect(ResolveUrl("~/"), false);
@@ -28,7 +29,7 @@ namespace Portal.Pages.Journal.Transport
                     Department department = await context.GetDepartmentByUserAsync(User.Identity.Name);
                     if (department != null)
                     {
-                        if (!User.IsInRole("Журналы - Транспорт - Служебный вход"))
+                        if (User.IsInRole("Журналы - Транспорт - Руководители"))
                         {
                             ASPxLabelDepartment.Text = "Транспорт (развоз сотрудников): " + department.Name;
                         }
