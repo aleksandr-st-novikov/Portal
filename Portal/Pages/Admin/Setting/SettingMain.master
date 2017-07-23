@@ -31,14 +31,14 @@
                                 <Groups>
                                     <dx:NavBarGroup Text="Настройки">
                                         <Items>
-                                            <dx:NavBarItem Text="Константы" NavigateUrl="~/Pages/Admin/Setting/ManageConstant.aspx">
+                                            <dx:NavBarItem Text="Справочник констант" NavigateUrl="~/Pages/Admin/Setting/ManageConstant.aspx">
                                                 <Image IconID="setup_pagesetup_16x16office2013">
                                                 </Image>
                                             </dx:NavBarItem>
-                                            <dx:NavBarItem Text="Выходы сотрудников - цели выхода" NavigateUrl="~/Pages/Admin/Setting/ManageEJPurpose.aspx">
+                                            <%--<dx:NavBarItem Text="Выходы сотрудников - цели выхода" NavigateUrl="~/Pages/Admin/Setting/ManageEJPurpose.aspx">
                                                 <Image IconID="people_assigntome_16x16office2013">
                                                 </Image>
-                                            </dx:NavBarItem>
+                                            </dx:NavBarItem>--%>
                                         </Items>
                                     </dx:NavBarGroup>
                                 </Groups>

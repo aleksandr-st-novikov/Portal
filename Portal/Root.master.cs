@@ -210,7 +210,6 @@ namespace Portal
                     itemMaintenanceContact.Image.IconID = "view_card_16x16devav";
                     itemMaintenance.Items.Add(itemMaintenanceContact);
 
-#if DEBUG
                     DevExpress.Web.MenuItem itemMaintenanceUKM = new DevExpress.Web.MenuItem()
                     {
                         Text = "УКМ, кассы",
@@ -218,7 +217,6 @@ namespace Portal
                     };
                     itemMaintenanceUKM.Image.IconID = "actions_buy_16x16devav";
                     itemMaintenance.Items.Add(itemMaintenanceUKM);
-#endif
 
                     //DevExpress.Web.MenuItem itemMaintenanceUKMPosSetting = new DevExpress.Web.MenuItem()
                     //{

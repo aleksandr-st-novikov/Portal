@@ -13,5 +13,10 @@ namespace Portal.Pages.Admin.Setting
         {
 
         }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            Page.Title = ASPxLabel1.Text = "Настройки - Справочник констант";
+        }
     }
 }

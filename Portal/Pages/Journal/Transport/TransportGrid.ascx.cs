@@ -26,7 +26,10 @@ namespace Portal.Pages.Journal.Transport
             }
             if (!Page.IsPostBack && !Page.IsCallback)
             {
-                ASPxTimerTransport.Interval = Data.TimeoutRefresh * 1000;
+                using (ConstantContext constantContext = new ConstantContext())
+                {
+                    ASPxTimerTransport.Interval = (constantContext.GetConstInt("TimeoutRefresh") == -1 ? Data.TimeoutRefresh : constantContext.GetConstInt("TimeoutRefresh")) * 1000;
+                }
             }
         }
 
