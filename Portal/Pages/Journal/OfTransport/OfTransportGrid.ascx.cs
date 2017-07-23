@@ -1,5 +1,6 @@
 ﻿using System;
 using Portal.BL.Core;
+using Portal.Models.EFContext;
 
 namespace Portal.Pages.Journal.OfTransport
 {
@@ -16,7 +17,10 @@ namespace Portal.Pages.Journal.OfTransport
             {
                 ASPxGridViewOfTransport.Columns[0].Visible = false;
             }
-            ASPxTimerRefershOfTransport.Interval = Data.TimeoutRefresh * 1000;
+            using (ConstantContext constantContext = new ConstantContext())
+            {
+                ASPxTimerRefershOfTransport.Interval = (constantContext.GetConstInt("TimeoutRefresh") == -1 ? Data.TimeoutRefresh : constantContext.GetConstInt("TimeoutRefresh")) * 1000;
+            }
         }
 
         protected void ASPxGridViewOfTransport_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)

@@ -39,7 +39,10 @@ namespace Portal.Pages.Maintenance.DepartmentWork
                         Session["EmployeeId"] = employee.Id;
                     }
                 }
-                ASPxTimerDepartmentWork.Interval = Data.TimeoutRefresh * 1000;
+                using (ConstantContext constantContext = new ConstantContext())
+                {
+                    ASPxTimerDepartmentWork.Interval = (constantContext.GetConstInt("TimeoutRefresh") == -1 ? Data.TimeoutRefresh : constantContext.GetConstInt("TimeoutRefresh")) * 1000;
+                }
             }
         }
 

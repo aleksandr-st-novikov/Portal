@@ -57,6 +57,7 @@ namespace Portal.Models
         public DbSet<Manual> Manual { get; set; }
         public DbSet<Contact> Contact { get; set; }
         public DbSet<OfTransport> OfTransport { get; set; }
+        public DbSet<Constant> Constant { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -211,7 +211,6 @@ namespace Portal
                     itemMaintenanceContact.Image.IconID = "view_card_16x16devav";
                     itemMaintenance.Items.Add(itemMaintenanceContact);
 
-#if DEBUG
                     DevExpress.Web.MenuItem itemMaintenanceUKM = new DevExpress.Web.MenuItem()
                     {
                         Text = "УКМ, кассы",
@@ -219,7 +218,6 @@ namespace Portal
                     };
                     itemMaintenanceUKM.Image.IconID = "actions_buy_16x16devav";
                     itemMaintenance.Items.Add(itemMaintenanceUKM);
-#endif
 
                     //DevExpress.Web.MenuItem itemMaintenanceUKMPosSetting = new DevExpress.Web.MenuItem()
                     //{
@@ -259,6 +257,17 @@ namespace Portal
                     };
                     itemAdminEmployee.Image.IconID = "people_team_16x16office2013";
                     itemAdmin.Items.Add(itemAdminEmployee);
+
+#if DEBUG
+                    DevExpress.Web.MenuItem itemAdminSetting = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Настройки",
+                        NavigateUrl = "~/Pages/Admin/Setting/ManageConstant.aspx",
+                        BeginGroup = true
+                    };
+                    itemAdminSetting.Image.IconID = "support_version_16x16office2013";
+                    itemAdmin.Items.Add(itemAdminSetting);
+#endif
 
                     ASPxMenuMain.Items.Add(itemMaintenance);
                     ASPxMenuMain.Items.Add(itemAdmin);

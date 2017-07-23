@@ -196,6 +196,7 @@
     <Content Include="Pages\Admin\Employee\ManageDepartment.aspx" />
     <Content Include="Pages\Admin\Employee\ManageEmployee.aspx" />
     <Content Include="Pages\Admin\Employee\ManagePosition.aspx" />
+    <Content Include="Pages\Admin\Setting\ManageConstant.aspx" />
     <Content Include="Pages\Admin\Users\AddUser.aspx" />
     <Content Include="Pages\Admin\Users\ManageRoles.aspx" />
     <Content Include="Pages\Admin\Users\ManageUsers.aspx" />
@@ -260,6 +261,7 @@
     <Content Include="Pages\Journal\OfTransport\OfTransportMain.master" />
     <Content Include="Pages\Report\Birthday\BirthdayMain.master" />
     <Content Include="Pages\Journal\Transport\TransportMain.master" />
+    <Content Include="Pages\Admin\Setting\SettingMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -397,10 +399,15 @@
     <Compile Include="Migrations\201707160811447_Department1.Designer.cs">
       <DependentUpon>201707160811447_Department1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707161838475_Constant.cs" />
+    <Compile Include="Migrations\201707161838475_Constant.Designer.cs">
+      <DependentUpon>201707161838475_Constant.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
     <Compile Include="Models\EFContext\ApplicationContext.cs" />
+    <Compile Include="Models\EFContext\ConstantContext.cs" />
     <Compile Include="Models\EFContext\DepartmentContext.cs" />
     <Compile Include="Models\EFContext\DepartmentWorkContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
@@ -410,6 +417,7 @@
     <Compile Include="Models\EFContext\StoreContext.cs" />
     <Compile Include="Models\EFContext\TransportContext.cs" />
     <Compile Include="Models\Entities\Admission.cs" />
+    <Compile Include="Models\Entities\Constant.cs" />
     <Compile Include="Models\Entities\Contact.cs" />
     <Compile Include="Models\Entities\DepartmentWork.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
@@ -455,6 +463,20 @@
     </Compile>
     <Compile Include="Pages\Admin\Employee\ManagePosition.aspx.designer.cs">
       <DependentUpon>ManagePosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Setting\ManageConstant.aspx.cs">
+      <DependentUpon>ManageConstant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Setting\ManageConstant.aspx.designer.cs">
+      <DependentUpon>ManageConstant.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Setting\SettingMain.master.cs">
+      <DependentUpon>SettingMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Setting\SettingMain.master.designer.cs">
+      <DependentUpon>SettingMain.master</DependentUpon>
     </Compile>
     <Compile Include="Pages\Admin\Users\UsersMain.master.cs">
       <DependentUpon>UsersMain.master</DependentUpon>
@@ -1025,6 +1047,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707160811447_Department1.resx">
       <DependentUpon>201707160811447_Department1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707161838475_Constant.resx">
+      <DependentUpon>201707161838475_Constant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Journal\OfTransport\OfTransportReport.resx">
       <DependentUpon>OfTransportReport.cs</DependentUpon>

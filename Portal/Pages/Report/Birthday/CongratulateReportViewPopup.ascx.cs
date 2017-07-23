@@ -35,7 +35,11 @@ namespace Portal.Pages.Report.Birthday
                 }
             }
             rep.DataSource = data;
-            rep.Parameters["message"].Value = Data.BirthdayMessageBottom;
+            using (ConstantContext constantContext = new ConstantContext())
+            {
+                rep.Parameters["message"].Value = String.IsNullOrEmpty(constantContext.GetConstString("BirthdayMessageBottom")) ? 
+                    Data.BirthdayMessageBottom : constantContext.GetConstString("BirthdayMessageBottom");
+            }
 
             rep.DisplayName = "Поздравляем";
             ASPxDocumentViewerReportCongtatulate.Report = rep;
