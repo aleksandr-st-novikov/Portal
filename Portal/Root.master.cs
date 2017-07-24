@@ -258,7 +258,6 @@ namespace Portal
                     itemAdminEmployee.Image.IconID = "people_team_16x16office2013";
                     itemAdmin.Items.Add(itemAdminEmployee);
 
-#if DEBUG
                     DevExpress.Web.MenuItem itemAdminSetting = new DevExpress.Web.MenuItem()
                     {
                         Text = "Настройки",
@@ -267,7 +266,6 @@ namespace Portal
                     };
                     itemAdminSetting.Image.IconID = "support_version_16x16office2013";
                     itemAdmin.Items.Add(itemAdminSetting);
-#endif
 
                     ASPxMenuMain.Items.Add(itemMaintenance);
                     ASPxMenuMain.Items.Add(itemAdmin);
