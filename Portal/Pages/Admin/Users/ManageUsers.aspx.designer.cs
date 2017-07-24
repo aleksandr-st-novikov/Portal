@@ -49,6 +49,15 @@ namespace Portal.Pages.Admin.Users {
         protected global::DevExpress.Web.GridViewCommandColumnCustomButton ChangeRoles;
         
         /// <summary>
+        /// ChangePassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.GridViewCommandColumnCustomButton ChangePassword;
+        
+        /// <summary>
         /// SqlDataSourceManageUsers control.
         /// </summary>
         /// <remarks>

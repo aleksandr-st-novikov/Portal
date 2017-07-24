@@ -56,7 +56,11 @@
                 <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" ShowEditButton="True" ShowDeleteButton="True" ButtonRenderMode="Image" ButtonType="Image" FixedStyle="Left" Caption=" ">
                     <CustomButtons>
                         <dx:GridViewCommandColumnCustomButton ID="ChangeRoles" Text="Изменить роли">
-                            <Image IconID="people_role_16x16office2013">
+                            <Image IconID="people_publicfix_16x16office2013">
+                            </Image>
+                        </dx:GridViewCommandColumnCustomButton>
+                        <dx:GridViewCommandColumnCustomButton ID="ChangePassword" Text="Изменить пароль">
+                            <Image IconID="programming_ide_16x16office2013">
                             </Image>
                         </dx:GridViewCommandColumnCustomButton>
                     </CustomButtons>
