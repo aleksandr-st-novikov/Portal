@@ -198,6 +198,7 @@
     <Content Include="Pages\Admin\Employee\ManagePosition.aspx" />
     <Content Include="Pages\Admin\Setting\ManageConstant.aspx" />
     <Content Include="Pages\Admin\Users\AddUser.aspx" />
+    <Content Include="Pages\Admin\Users\ChangePasswordPopup.ascx" />
     <Content Include="Pages\Admin\Users\ManageRoles.aspx" />
     <Content Include="Pages\Admin\Users\ManageUsers.aspx" />
     <Content Include="Pages\Default.aspx" />
@@ -477,6 +478,13 @@
     </Compile>
     <Compile Include="Pages\Admin\Setting\SettingMain.master.designer.cs">
       <DependentUpon>SettingMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\ChangePasswordPopup.ascx.cs">
+      <DependentUpon>ChangePasswordPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Users\ChangePasswordPopup.ascx.designer.cs">
+      <DependentUpon>ChangePasswordPopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Admin\Users\UsersMain.master.cs">
       <DependentUpon>UsersMain.master</DependentUpon>

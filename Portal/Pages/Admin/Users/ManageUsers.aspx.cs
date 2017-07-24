@@ -42,6 +42,17 @@ namespace Portal.Pages.Admin.Users
                         },
                         ManageUsersRolesPopupHide: function(s, e) {
                             ASPxClientPopupControlRoles.Hide();
+                        },
+                        ManageUsersPasswordClick: function (key) {
+                            ASPxClientCallbackPanelPassword.SetContentHtml('');
+                            ASPxClientPopupControlPassword.Show();
+                            keyValue = key;
+                        },
+                        ManageUsersPasswordPopupShown: function(s, e) {
+                            ASPxClientCallbackPanelPassword.PerformCallback(keyValue);
+                        },
+                        ManageUsersPasswordPopupHide: function(s, e) {
+                            ASPxClientPopupControlPassword.Hide();
                         }
                     }
 

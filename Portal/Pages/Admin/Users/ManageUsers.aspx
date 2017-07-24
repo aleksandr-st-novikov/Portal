@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Admin/Users/UsersMain.master" AutoEventWireup="true" CodeBehind="manageUsers.aspx.cs" Inherits="Portal.Pages.Admin.Users.manageUsers" Async="true" %>
 
+<%@ Register Src="~/Pages/Admin/Users/ChangePasswordPopup.ascx" TagPrefix="uc1" TagName="ChangePasswordPopup" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="SM" runat="server"></asp:ScriptManager>
     <dx:ASPxCallback ID="ASPxCallbackUpdateRoles" ClientInstanceName="ASPxClientCallbackUpdateRoles" runat="server" OnCallback="ASPxCallbackUpdateRoles_Callback">
@@ -17,7 +20,14 @@
 
             <ClientSideEvents CustomButtonClick="function(s, e) {
                     var key = s.GetRowKey(e.visibleIndex);
-                    admin.ManageUsersRolesClick(key);
+                    if(e.buttonID == 'ChangeRoles')
+                    {
+                        admin.ManageUsersRolesClick(key);
+                    }
+                    if(e.buttonID == 'ChangePassword')
+                    {
+                        admin.ManageUsersPasswordClick(key);
+                    }
                 }" />
 
             <SettingsEditing Mode="PopupEditForm"></SettingsEditing>
@@ -65,21 +75,21 @@
                         </dx:GridViewCommandColumnCustomButton>
                     </CustomButtons>
                 </dx:GridViewCommandColumn>
-                <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" VisibleIndex="8" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="Email" VisibleIndex="2" Caption="E-Mail" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataCheckColumn FieldName="EmailConfirmed" VisibleIndex="9" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
-                <dx:GridViewDataTextColumn FieldName="PasswordHash" VisibleIndex="10" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="SecurityStamp" VisibleIndex="11" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="PhoneNumber" VisibleIndex="5" Caption="Телефон" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataCheckColumn FieldName="PhoneNumberConfirmed" VisibleIndex="12" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
-                <dx:GridViewDataCheckColumn FieldName="TwoFactorEnabled" VisibleIndex="13" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
-                <dx:GridViewDataDateColumn FieldName="LockoutEndDateUtc" VisibleIndex="3" Caption="Дата разблокировки" ShowInCustomizationForm="True"></dx:GridViewDataDateColumn>
-                <dx:GridViewDataCheckColumn FieldName="LockoutEnabled" VisibleIndex="6" Caption="Разрешена блокировка" Visible="False" ShowInCustomizationForm="True">
+                <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" VisibleIndex="9" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="Email" VisibleIndex="3" Caption="E-Mail" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataCheckColumn FieldName="EmailConfirmed" VisibleIndex="10" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
+                <dx:GridViewDataTextColumn FieldName="PasswordHash" VisibleIndex="11" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="SecurityStamp" VisibleIndex="12" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="PhoneNumber" VisibleIndex="6" Caption="Телефон" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataCheckColumn FieldName="PhoneNumberConfirmed" VisibleIndex="13" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
+                <dx:GridViewDataCheckColumn FieldName="TwoFactorEnabled" VisibleIndex="14" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
+                <dx:GridViewDataDateColumn FieldName="LockoutEndDateUtc" VisibleIndex="4" Caption="Дата разблокировки" ShowInCustomizationForm="True"></dx:GridViewDataDateColumn>
+                <dx:GridViewDataCheckColumn FieldName="LockoutEnabled" VisibleIndex="7" Caption="Разрешена блокировка" Visible="False" ShowInCustomizationForm="True">
                     <EditFormSettings Visible="True" />
                 </dx:GridViewDataCheckColumn>
-                <dx:GridViewDataTextColumn FieldName="AccessFailedCount" VisibleIndex="7" Caption="Ошибка при входе" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="UserName" VisibleIndex="1" Caption="Имя пользователя" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataComboBoxColumn Caption="Сотрудник предприятия" FieldName="EmployeeId" Visible="False" VisibleIndex="4">
+                <dx:GridViewDataTextColumn FieldName="AccessFailedCount" VisibleIndex="8" Caption="Ошибка при входе" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="UserName" VisibleIndex="2" Caption="Имя пользователя" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataComboBoxColumn Caption="Сотрудник предприятия" FieldName="EmployeeId" Visible="False" VisibleIndex="5">
                     <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" TextField="FIO" ValueField="Id">
                     </PropertiesComboBox>
                     <EditFormSettings Visible="True" />
@@ -169,4 +179,5 @@
         </ContentCollection>
         <ClientSideEvents Shown="admin.ManageUsersRolesPopupShown" />
     </dx:ASPxPopupControl>
+    <uc1:ChangePasswordPopup runat="server" id="ChangePasswordPopup" />
 </asp:Content>

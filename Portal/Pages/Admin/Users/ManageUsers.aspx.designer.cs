@@ -137,5 +137,14 @@ namespace Portal.Pages.Admin.Users {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton ASPxButtonSave;
+        
+        /// <summary>
+        /// ChangePasswordPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Pages.Admin.Users.ChangePasswordPopup ChangePasswordPopup;
     }
 }
