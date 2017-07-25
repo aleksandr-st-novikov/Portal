@@ -49,22 +49,22 @@ namespace Portal.Pages.Admin.Users {
         protected global::DevExpress.Web.ASPxPanel ASPxPanel2;
         
         /// <summary>
-        /// ASPxTextBox1 control.
+        /// ASPxTextBoxPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox ASPxTextBox1;
+        protected global::DevExpress.Web.ASPxTextBox ASPxTextBoxPassword;
         
         /// <summary>
-        /// ASPxTextBox2 control.
+        /// ASPxTextBoxConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox ASPxTextBox2;
+        protected global::DevExpress.Web.ASPxTextBox ASPxTextBoxConfirmPassword;
         
         /// <summary>
         /// ASPxPanel1 control.
@@ -92,5 +92,14 @@ namespace Portal.Pages.Admin.Users {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton ASPxButtonSave;
+        
+        /// <summary>
+        /// ASPxCallbackUpdatePassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback ASPxCallbackUpdatePassword;
     }
 }
