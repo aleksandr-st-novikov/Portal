@@ -40,7 +40,7 @@
                                                 </Image>
                                             </dx:NavBarItem>
                                             <dx:NavBarItem Text="Роли" NavigateUrl="~/Pages/Admin/Users/ManageRoles.aspx">
-                                                <Image IconID="people_role_16x16office2013">
+                                                <Image IconID="people_publicfix_16x16office2013">
                                                 </Image>
                                             </dx:NavBarItem>
                                         </Items>

@@ -12,10 +12,10 @@
     </dx:ASPxCallback>
 
     <div class="content">
-        <dx:ASPxGridView ID="ASPxGridViewManageUsers" ClientInstanceName="ASPxClientGridViewManageUsers" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceManageUsers" KeyFieldName="Id">
+        <dx:ASPxGridView ID="ASPxGridViewManageUsers" ClientInstanceName="ASPxClientGridViewManageUsers" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceManageUsers" KeyFieldName="Id" Width="700px">
 
             <SettingsPopup>
-                <EditForm Width="900px" HorizontalAlign="WindowCenter" VerticalAlign="Above" Modal="True" VerticalOffset="0"></EditForm>
+                <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Width="800px" />
             </SettingsPopup>
 
             <ClientSideEvents CustomButtonClick="function(s, e) {
@@ -58,12 +58,18 @@
             </SettingsCommandButton>
 
             <SettingsPopup>
-                <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" />
+                <EditForm Width="900px" HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="True" VerticalOffset="0"></EditForm>
             </SettingsPopup>
 
             <SettingsSearchPanel Visible="True"></SettingsSearchPanel>
+            <StylesPopup>
+                <EditForm>
+                    <Header BackColor="WhiteSmoke">
+                    </Header>
+                </EditForm>
+            </StylesPopup>
             <Columns>
-                <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" ShowEditButton="True" ShowDeleteButton="True" ButtonRenderMode="Image" ButtonType="Image" FixedStyle="Left" Caption=" ">
+                <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" ShowEditButton="True" ShowDeleteButton="True" ButtonRenderMode="Image" ButtonType="Image" FixedStyle="Left" Caption=" " Width="20px">
                     <CustomButtons>
                         <dx:GridViewCommandColumnCustomButton ID="ChangeRoles" Text="Изменить роли">
                             <Image IconID="people_publicfix_16x16office2013">
@@ -76,23 +82,29 @@
                     </CustomButtons>
                 </dx:GridViewCommandColumn>
                 <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" VisibleIndex="9" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="Email" VisibleIndex="3" Caption="E-Mail" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="Email" VisibleIndex="3" Caption="E-Mail" ShowInCustomizationForm="True">
+                    <EditFormSettings VisibleIndex="1" />
+                </dx:GridViewDataTextColumn>
                 <dx:GridViewDataCheckColumn FieldName="EmailConfirmed" VisibleIndex="10" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
                 <dx:GridViewDataTextColumn FieldName="PasswordHash" VisibleIndex="11" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="SecurityStamp" VisibleIndex="12" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="PhoneNumber" VisibleIndex="6" Caption="Телефон" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataCheckColumn FieldName="PhoneNumberConfirmed" VisibleIndex="13" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
                 <dx:GridViewDataCheckColumn FieldName="TwoFactorEnabled" VisibleIndex="14" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataCheckColumn>
-                <dx:GridViewDataDateColumn FieldName="LockoutEndDateUtc" VisibleIndex="4" Caption="Дата разблокировки" ShowInCustomizationForm="True"></dx:GridViewDataDateColumn>
+                <dx:GridViewDataDateColumn FieldName="LockoutEndDateUtc" VisibleIndex="4" Caption="Дата разблокировки" ShowInCustomizationForm="True">
+                    <EditFormSettings VisibleIndex="3" />
+                </dx:GridViewDataDateColumn>
                 <dx:GridViewDataCheckColumn FieldName="LockoutEnabled" VisibleIndex="7" Caption="Разрешена блокировка" Visible="False" ShowInCustomizationForm="True">
-                    <EditFormSettings Visible="True" />
+                    <EditFormSettings Visible="True" VisibleIndex="2" />
                 </dx:GridViewDataCheckColumn>
                 <dx:GridViewDataTextColumn FieldName="AccessFailedCount" VisibleIndex="8" Caption="Ошибка при входе" Visible="False" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="UserName" VisibleIndex="2" Caption="Имя пользователя" ShowInCustomizationForm="True"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="UserName" VisibleIndex="2" Caption="Имя пользователя" ShowInCustomizationForm="True">
+                    <EditFormSettings VisibleIndex="0" />
+                </dx:GridViewDataTextColumn>
                 <dx:GridViewDataComboBoxColumn Caption="Сотрудник предприятия" FieldName="EmployeeId" Visible="False" VisibleIndex="5">
                     <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" TextField="FIO" ValueField="Id">
                     </PropertiesComboBox>
-                    <EditFormSettings Visible="True" />
+                    <EditFormSettings Visible="True" ColumnSpan="2" VisibleIndex="4" />
                 </dx:GridViewDataComboBoxColumn>
             </Columns>
         </dx:ASPxGridView>

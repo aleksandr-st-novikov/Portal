@@ -1,12 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Admin/Users/UsersMain.master" AutoEventWireup="true" CodeBehind="ManageRoles.aspx.cs" Inherits="Portal.Pages.Admin.Users.ManageRoles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <dx:ASPxGridView ID="ASPxGridViewManageRoles" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceManageRoles" KeyFieldName="Id" OnInitNewRow="ASPxGridViewManageRoles_InitNewRow" OnRowInserting="ASPxGridViewManageRoles_RowInserting">
+    <dx:ASPxGridView ID="ASPxGridViewManageRoles" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceManageRoles" KeyFieldName="Id" OnInitNewRow="ASPxGridViewManageRoles_InitNewRow" OnRowInserting="ASPxGridViewManageRoles_RowInserting" Width="700px">
         <SettingsAdaptivity AdaptivityMode="HideDataCells">
         </SettingsAdaptivity>
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
-        <Settings ShowFilterRow="True" />
         <SettingsBehavior ConfirmDelete="True" />
         <SettingsCommandButton>
             <ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
@@ -27,13 +26,23 @@
             </CancelButton>
         </SettingsCommandButton>
         <SettingsPopup>
-            <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" />
+            <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="True" Width="800px" />
         </SettingsPopup>
+        <SettingsSearchPanel Visible="True" />
+        <StylesPopup>
+            <EditForm>
+                <Header BackColor="WhiteSmoke">
+                </Header>
+            </EditForm>
+        </StylesPopup>
         <Columns>
-            <dx:GridViewCommandColumn ShowNewButtonInHeader="True" VisibleIndex="0" ShowEditButton="True" ShowDeleteButton="True" ButtonRenderMode="Image" ButtonType="Image"></dx:GridViewCommandColumn>
+            <dx:GridViewCommandColumn ShowNewButtonInHeader="True" VisibleIndex="0" ShowEditButton="True" ShowDeleteButton="True" ButtonRenderMode="Image" ButtonType="Image" Width="20px">
+                <HeaderStyle HorizontalAlign="Center" />
+            </dx:GridViewCommandColumn>
             <dx:GridViewDataTextColumn FieldName="Id" ReadOnly="True" VisibleIndex="1" Visible="False">
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="Name" VisibleIndex="2" Caption="Роль">
+                <EditFormSettings ColumnSpan="2" />
             </dx:GridViewDataTextColumn>
         </Columns>
     </dx:ASPxGridView>

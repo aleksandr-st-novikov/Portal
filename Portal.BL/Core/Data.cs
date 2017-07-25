@@ -23,5 +23,7 @@ namespace Portal.BL.Core
         public static string BirthdayMessageBottom = "Желаем хорошего настроения, успехов в «Короне», улыбок близких и коллег!!!";
         //const
         public static int TimeoutRefresh = 90;
+        //const
+        public static string PhotoEmployeePath = @"e:\1";
     }
 }
