@@ -55,7 +55,10 @@
                                     </dx:ASPxButton>
                                     <dx:ASPxButton ID="ASPxButtonSave" runat="server" Text="Сохранить" AutoPostBack="False" ValidationGroup="Password">
                                         <ClientSideEvents Click="function(s, e) {
+if(ASPxClientEdit.AreEditorsValid())
+                                                                {
 	                                                ASPxClientCallbackUpdatePassword.PerformCallback();
+}
                                                 }" />
                                     </dx:ASPxButton>
                                 </dx:PanelContent>

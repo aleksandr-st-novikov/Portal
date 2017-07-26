@@ -29,13 +29,16 @@ namespace Portal.Pages.Admin.Users
 
         protected async void ASPxCallbackUpdatePassword_Callback(object source, DevExpress.Web.CallbackEventArgs e)
         {
-            ApplicationDbContext mycontext = new ApplicationDbContext();
-            UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(mycontext);
-            ApplicationUserManager UserManager = new ApplicationUserManager(userStore);
+            if (Page.IsValid)
+            {
+                ApplicationDbContext mycontext = new ApplicationDbContext();
+                UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(mycontext);
+                ApplicationUserManager UserManager = new ApplicationUserManager(userStore);
 
-            ApplicationUser user = await UserManager.FindByIdAsync((string)Session["UserIdToEdit"]);
-            user.PasswordHash = UserManager.PasswordHasher.HashPassword(ASPxTextBoxPassword.Text);
-            await UserManager.UpdateAsync(user);
+                ApplicationUser user = await UserManager.FindByIdAsync((string)Session["UserIdToEdit"]);
+                user.PasswordHash = UserManager.PasswordHasher.HashPassword(ASPxTextBoxPassword.Text);
+                await UserManager.UpdateAsync(user);
+            }
         }
     }
 }
