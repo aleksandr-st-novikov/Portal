@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{869F5925-76C4-4AAC-A022-AA159D6954E7}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal.BL", "Portal.BL\Port
 	ProjectSection(ProjectDependencies) = postProject
 		{E4570949-E71B-4192-AE9D-27980AAC62D7} = {E4570949-E71B-4192-AE9D-27980AAC62D7}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal.Service", "Portal.Service\Portal.Service.csproj", "{D31B5A77-A9E7-4310-88B0-12103BF28A8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,14 @@ Global
 		{D02BB9AB-C54A-451D-84CF-DD51AC760D05}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D02BB9AB-C54A-451D-84CF-DD51AC760D05}.Release|x86.ActiveCfg = Release|Any CPU
 		{D02BB9AB-C54A-451D-84CF-DD51AC760D05}.Release|x86.Build.0 = Release|Any CPU
+		{D31B5A77-A9E7-4310-88B0-12103BF28A8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31B5A77-A9E7-4310-88B0-12103BF28A8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31B5A77-A9E7-4310-88B0-12103BF28A8A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D31B5A77-A9E7-4310-88B0-12103BF28A8A}.Debug|x86.Build.0 = Debug|Any CPU
+		{D31B5A77-A9E7-4310-88B0-12103BF28A8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31B5A77-A9E7-4310-88B0-12103BF28A8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31B5A77-A9E7-4310-88B0-12103BF28A8A}.Release|x86.ActiveCfg = Release|Any CPU
+		{D31B5A77-A9E7-4310-88B0-12103BF28A8A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
