@@ -211,6 +211,16 @@ namespace Portal
                     itemMaintenanceContact.Image.IconID = "view_card_16x16devav";
                     itemMaintenance.Items.Add(itemMaintenanceContact);
 
+                    DevExpress.Web.MenuItem itemMaintenanceSchedule = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Планировщик заданий",
+                        BeginGroup = true,
+                        NavigateUrl = "~/Pages/Maintenance/Schedule/ManageSchedule.aspx"
+                    };
+                    itemMaintenanceSchedule.Image.IconID = "scheduling_switchtimescalesto_16x16office2013";
+                    itemMaintenance.Items.Add(itemMaintenanceSchedule);
+
+#if DEBUG
                     DevExpress.Web.MenuItem itemMaintenanceUKM = new DevExpress.Web.MenuItem()
                     {
                         Text = "УКМ, кассы",
@@ -218,6 +228,7 @@ namespace Portal
                     };
                     itemMaintenanceUKM.Image.IconID = "actions_buy_16x16devav";
                     itemMaintenance.Items.Add(itemMaintenanceUKM);
+#endif
 
                     //DevExpress.Web.MenuItem itemMaintenanceUKMPosSetting = new DevExpress.Web.MenuItem()
                     //{

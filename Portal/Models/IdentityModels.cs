@@ -58,6 +58,8 @@ namespace Portal.Models
         public DbSet<Contact> Contact { get; set; }
         public DbSet<OfTransport> OfTransport { get; set; }
         public DbSet<Constant> Constant { get; set; }
+        public DbSet<Job> Job { get; set; }
+        public DbSet<JobResult> JobResult { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

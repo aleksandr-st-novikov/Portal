@@ -229,6 +229,8 @@
     <Content Include="Pages\Maintenance\DepartmentWork\ManageDepartmentWork.aspx" />
     <Content Include="Pages\Maintenance\Manual\ManageManual.aspx" />
     <Content Include="Pages\Maintenance\Manual\ViewManual.ascx" />
+    <Content Include="Pages\Maintenance\Schedule\JobGrid.ascx" />
+    <Content Include="Pages\Maintenance\Schedule\ManageSchedule.aspx" />
     <Content Include="Pages\Maintenance\UKM\Setting.aspx" />
     <Content Include="Pages\Report\Birthday\BirthdayParams.ascx" />
     <Content Include="Pages\Report\Birthday\CongratulateWeekReportViewPopup.ascx" />
@@ -263,6 +265,7 @@
     <Content Include="Pages\Report\Birthday\BirthdayMain.master" />
     <Content Include="Pages\Journal\Transport\TransportMain.master" />
     <Content Include="Pages\Admin\Setting\SettingMain.master" />
+    <Content Include="Pages\Maintenance\Schedule\ScheduleMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -404,6 +407,14 @@
     <Compile Include="Migrations\201707161838475_Constant.Designer.cs">
       <DependentUpon>201707161838475_Constant.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707280628366_Job.cs" />
+    <Compile Include="Migrations\201707280628366_Job.Designer.cs">
+      <DependentUpon>201707280628366_Job.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707280634323_Job1.cs" />
+    <Compile Include="Migrations\201707280634323_Job1.Designer.cs">
+      <DependentUpon>201707280634323_Job1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
@@ -423,6 +434,7 @@
     <Compile Include="Models\Entities\DepartmentWork.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Accessories.cs" />
+    <Compile Include="Models\Entities\Job.cs" />
     <Compile Include="Models\Entities\Manual.cs" />
     <Compile Include="Models\Entities\OfTransport.cs" />
     <Compile Include="Models\Entities\Store.cs" />
@@ -848,6 +860,27 @@
     <Compile Include="Pages\Maintenance\Manual\ViewManual.ascx.designer.cs">
       <DependentUpon>ViewManual.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Maintenance\Schedule\JobGrid.ascx.cs">
+      <DependentUpon>JobGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Schedule\JobGrid.ascx.designer.cs">
+      <DependentUpon>JobGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Schedule\ManageSchedule.aspx.cs">
+      <DependentUpon>ManageSchedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Schedule\ManageSchedule.aspx.designer.cs">
+      <DependentUpon>ManageSchedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Schedule\ScheduleMain.master.cs">
+      <DependentUpon>ScheduleMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Schedule\ScheduleMain.master.designer.cs">
+      <DependentUpon>ScheduleMain.master</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Maintenance\UKM\Setting.aspx.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1058,6 +1091,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707161838475_Constant.resx">
       <DependentUpon>201707161838475_Constant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707280628366_Job.resx">
+      <DependentUpon>201707280628366_Job.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707280634323_Job1.resx">
+      <DependentUpon>201707280634323_Job1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Journal\OfTransport\OfTransportReport.resx">
       <DependentUpon>OfTransportReport.cs</DependentUpon>
