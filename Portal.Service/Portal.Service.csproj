@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CronNET, Version=1.1.4939.24773, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CronNET.1.1.4939.24773\lib\net40\CronNET.dll</HintPath>
+    <Reference Include="NCron, Version=2.3.6107.20965, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NCron.2.3.0\lib\net40-Client\NCron.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cron\CronDaemon.cs" />
+    <Compile Include="Cron\CronJob.cs" />
+    <Compile Include="Cron\CronSchedule.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -62,6 +65,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Jobs\ImportFrom1C.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -8,12 +8,18 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Portal.Models.EFContext;
+using Portal.Models.Entities;
+using Portal.Service.Jobs;
+using NCron.Service;
+using NCron.Fluent.Crontab;
 
 namespace Portal.Service
 {
     public partial class Service : ServiceBase
     {
         private System.Timers.Timer timer = null;
+        SchedulingService schedulingService = new SchedulingService();
 
         public Service()
         {
@@ -23,9 +29,18 @@ namespace Portal.Service
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
         }
 
-        private void timer_Elapsed(object sender, ElapsedEventArgs e)
+        private async void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            throw new NotImplementedException();
+            using (JobContext jobContext = new JobContext())
+            {
+                List<Job> jobs = await jobContext.GetJobForServiceAsync();
+                foreach(Job j in jobs)
+                {
+                    schedulingService.At("0 12 * * 1").Run<ImportFrom1C>();
+                }
+                
+            }
+            schedulingService.Start();
         }
 
         protected override void OnStart(string[] args)

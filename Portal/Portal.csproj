@@ -423,6 +423,7 @@
     <Compile Include="Models\EFContext\DepartmentContext.cs" />
     <Compile Include="Models\EFContext\DepartmentWorkContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
+    <Compile Include="Models\EFContext\JobContext.cs" />
     <Compile Include="Models\EFContext\ManualContext.cs" />
     <Compile Include="Models\EFContext\OfTransportContext.cs" />
     <Compile Include="Models\EFContext\PositionContext.cs" />

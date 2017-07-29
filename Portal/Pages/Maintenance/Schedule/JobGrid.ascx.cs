@@ -39,5 +39,10 @@ namespace Portal.Pages.Maintenance.Schedule
         {
             e.NewValues["IsActive"] = false;
         }
+
+        protected void ASPxGridViewJob_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            e.NewValues["IsAdded"] = false;
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="JobGrid.ascx.cs" Inherits="Portal.Pages.Maintenance.Schedule.JobGrid" %>
-<dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewJob_InitNewRow" OnRowInserting="ASPxGridViewJob_RowInserting">
+<dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewJob_InitNewRow" OnRowInserting="ASPxGridViewJob_RowInserting" OnRowUpdating="ASPxGridViewJob_RowUpdating">
     <SettingsEditing Mode="PopupEditForm">
     </SettingsEditing>
     <SettingsBehavior ConfirmDelete="True" />
