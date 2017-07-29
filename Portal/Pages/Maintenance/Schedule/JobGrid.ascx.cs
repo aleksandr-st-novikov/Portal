@@ -28,5 +28,16 @@ namespace Portal.Pages.Maintenance.Schedule
         {
             
         }
+
+        protected void ASPxGridViewJob_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            e.NewValues["Status"] = Enums.Status.Ready;
+            e.NewValues["IsAdded"] = false;
+        }
+
+        protected void ASPxGridViewJob_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+        {
+            e.NewValues["IsActive"] = false;
+        }
     }
 }

@@ -16,6 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal.BL", "Portal.BL\Port
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal.Service", "Portal.Service\Portal.Service.csproj", "{D31B5A77-A9E7-4310-88B0-12103BF28A8A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{869F5925-76C4-4AAC-A022-AA159D6954E7} = {869F5925-76C4-4AAC-A022-AA159D6954E7}
+		{E4570949-E71B-4192-AE9D-27980AAC62D7} = {E4570949-E71B-4192-AE9D-27980AAC62D7}
+		{D02BB9AB-C54A-451D-84CF-DD51AC760D05} = {D02BB9AB-C54A-451D-84CF-DD51AC760D05}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

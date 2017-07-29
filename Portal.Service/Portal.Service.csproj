@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CronNET, Version=1.1.4939.24773, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CronNET.1.1.4939.24773\lib\net40\CronNET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
@@ -62,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ProjectInstaller.resx">
@@ -70,6 +74,20 @@
     <EmbeddedResource Include="Service.resx">
       <DependentUpon>Service.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Portal.BL\Portal.BL.csproj">
+      <Project>{d02bb9ab-c54a-451d-84cf-dd51ac760d05}</Project>
+      <Name>Portal.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Portal.DAL\Portal.DAL.csproj">
+      <Project>{e4570949-e71b-4192-ae9d-27980aac62d7}</Project>
+      <Name>Portal.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Portal\Portal.csproj">
+      <Project>{869f5925-76c4-4aac-a022-aa159d6954e7}</Project>
+      <Name>Portal</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

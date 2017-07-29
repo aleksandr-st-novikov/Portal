@@ -19,7 +19,7 @@ namespace Portal.Service
         {
             InitializeComponent();
 
-            timer = new System.Timers.Timer(60000);//создаём объект таймера 
+            timer = new System.Timers.Timer(30000);//создаём объект таймера 
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
         }
 

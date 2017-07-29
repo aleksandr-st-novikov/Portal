@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="JobGrid.ascx.cs" Inherits="Portal.Pages.Maintenance.Schedule.JobGrid" %>
-<dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px">
+<dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewJob_InitNewRow" OnRowInserting="ASPxGridViewJob_RowInserting">
     <SettingsEditing Mode="PopupEditForm">
     </SettingsEditing>
     <SettingsBehavior ConfirmDelete="True" />
@@ -25,13 +25,13 @@
         <dx:GridViewDataCheckColumn Caption="Активное" FieldName="IsActive" ShowInCustomizationForm="True" VisibleIndex="2" Width="50px">
             <EditFormSettings VisibleIndex="4" />
         </dx:GridViewDataCheckColumn>
-        <dx:GridViewDataCheckColumn Caption="Добавлено" FieldName="IsAdded" ShowInCustomizationForm="True" VisibleIndex="6" Width="50px">
+        <dx:GridViewDataCheckColumn Caption="Выполняется" FieldName="IsAdded" ShowInCustomizationForm="True" VisibleIndex="6" Width="50px">
             <EditFormSettings Visible="False" />
         </dx:GridViewDataCheckColumn>
         <dx:GridViewDataTextColumn Caption="Параметры" FieldName="Parameters" ShowInCustomizationForm="True" VisibleIndex="7">
             <EditFormSettings ColumnSpan="2" VisibleIndex="3" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataComboBoxColumn Caption="Задание" FieldName="TaskListId" ShowInCustomizationForm="True" VisibleIndex="3" Width="300px">
+        <dx:GridViewDataComboBoxColumn Caption="Задание" FieldName="TaskListId" ShowInCustomizationForm="True" VisibleIndex="3" Width="300px" SortIndex="0" SortOrder="Ascending">
             <EditFormSettings VisibleIndex="0" />
         </dx:GridViewDataComboBoxColumn>
         <dx:GridViewDataComboBoxColumn Caption="Статус" FieldName="Status" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Visible="False">
