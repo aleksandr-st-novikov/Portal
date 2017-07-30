@@ -11,15 +11,18 @@ using System.Timers;
 using Portal.Models.EFContext;
 using Portal.Models.Entities;
 using Portal.Service.Jobs;
-using NCron.Service;
-using NCron.Fluent.Crontab;
+using Quartz;
+using Quartz.Impl;
+using Quartz.Impl.Matchers;
 
 namespace Portal.Service
 {
     public partial class Service : ServiceBase
     {
         private System.Timers.Timer timer = null;
-        SchedulingService schedulingService = new SchedulingService();
+
+        static ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
+        IScheduler scheduler = schedulerFactory.GetScheduler();
 
         public Service()
         {
@@ -31,16 +34,37 @@ namespace Portal.Service
 
         private async void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
+            scheduler.Standby();
+            
+            //delete all not runnig jobs
+            List<JobKey> jobKeys = Helper.GetJobKeysForDelete(scheduler);
+            scheduler.DeleteJobs(jobKeys);
+            //scheduler.Clear();
+
             using (JobContext jobContext = new JobContext())
             {
                 List<Job> jobs = await jobContext.GetJobForServiceAsync();
-                foreach(Job j in jobs)
+                foreach (Job j in jobs)
                 {
-                    schedulingService.At("0 12 * * 1").Run<ImportFrom1C>();
+                    var jobKey = new JobKey(j.TaskList.Name);
+                    if (!scheduler.CheckExists(jobKey))
+                    {
+                        IJobDetail jobDetail = JobBuilder.Create<ImportFrom1C>()
+                            .WithIdentity(j.TaskList.Name)
+                            .Build();
+                        ITrigger trigger = TriggerBuilder.Create()
+                            .ForJob(jobDetail)
+                            .WithCronSchedule(j.CronSchedule)
+                            .WithIdentity(j.TaskList.Name)
+                            .StartNow()
+                            .Build();
+                        scheduler.ScheduleJob(jobDetail, trigger);
+                        j.IsAdded = true;
+                    }
                 }
-                
+                await jobContext.SaveChangesAsync();
             }
-            schedulingService.Start();
+            if(!scheduler.IsStarted) scheduler.Start();
         }
 
         protected override void OnStart(string[] args)
@@ -51,6 +75,9 @@ namespace Portal.Service
         protected override void OnStop()
         {
             timer.Stop();
+            scheduler.Shutdown();
         }
+
     }
+
 }

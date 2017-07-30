@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quartz;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Portal.Service.Jobs
 {
-    class ImportFrom1C : NCron.CronJob
+    class ImportFrom1C : IJob
     {
-        public override void Execute()
+        public void Execute(IJobExecutionContext context)
         {
             throw new NotImplementedException();
         }
