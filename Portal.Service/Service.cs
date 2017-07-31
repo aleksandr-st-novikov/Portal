@@ -43,7 +43,16 @@ namespace Portal.Service
 
             using (JobContext jobContext = new JobContext())
             {
+                List<Job> jobsAllActive = await jobContext.GetJobAllActiveAsync();
+                List<JobKey> jobsIsExist = new List<JobKey>();
+                foreach(Job j in jobsAllActive)
+                {
+                    jobsIsExist.Add(new JobKey(j.TaskList.Name));
+                }
+
+
                 List<Job> jobs = await jobContext.GetJobForServiceAsync();
+                
                 foreach (Job j in jobs)
                 {
                     var jobKey = new JobKey(j.TaskList.Name);

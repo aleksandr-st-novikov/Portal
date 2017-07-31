@@ -16,5 +16,12 @@ namespace Portal.Models.EFContext
                 .Where(j => j.IsActive == true && j.IsAdded == false && j.Status != BL.Core.Enums.Status.Running)
                 .ToListAsync();
         }
+
+        public Task<List<Job>> GetJobAllActiveAsync()
+        {
+            return context.Job
+                .Where(j => j.IsActive == true && j.Status != BL.Core.Enums.Status.Running)
+                .ToListAsync();
+        }
     }
 }
