@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="JobGrid.ascx.cs" Inherits="Portal.Pages.Maintenance.Schedule.JobGrid" %>
-<dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewJob_InitNewRow" OnRowInserting="ASPxGridViewJob_RowInserting" OnRowUpdating="ASPxGridViewJob_RowUpdating">
+<dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewJob_InitNewRow" OnRowInserting="ASPxGridViewJob_RowInserting" OnRowUpdating="ASPxGridViewJob_RowUpdating" ClientInstanceName="ASPxClientGridViewJob">
     <SettingsEditing Mode="PopupEditForm">
     </SettingsEditing>
     <SettingsBehavior ConfirmDelete="True" />
@@ -19,7 +19,7 @@
         <dx:GridViewDataTextColumn Caption="Код" FieldName="Id" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1" Visible="False">
             <EditFormSettings Visible="False" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Расписание" FieldName="CronSchedule" ShowInCustomizationForm="True" VisibleIndex="4" Width="250px">
+        <dx:GridViewDataTextColumn Caption="Расписание" FieldName="CronSchedule" ShowInCustomizationForm="True" VisibleIndex="4" Width="200px">
             <EditFormSettings VisibleIndex="1" />
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataCheckColumn Caption="Активное" FieldName="IsActive" ShowInCustomizationForm="True" VisibleIndex="2" Width="50px">
@@ -31,7 +31,7 @@
         <dx:GridViewDataTextColumn Caption="Параметры" FieldName="Parameters" ShowInCustomizationForm="True" VisibleIndex="7">
             <EditFormSettings ColumnSpan="2" VisibleIndex="3" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataComboBoxColumn Caption="Задание" FieldName="TaskListId" ShowInCustomizationForm="True" VisibleIndex="3" Width="300px" SortIndex="0" SortOrder="Ascending">
+        <dx:GridViewDataComboBoxColumn Caption="Задание" FieldName="TaskListId" ShowInCustomizationForm="True" VisibleIndex="3" Width="400px" SortIndex="0" SortOrder="Ascending">
             <EditFormSettings VisibleIndex="0" />
         </dx:GridViewDataComboBoxColumn>
         <dx:GridViewDataComboBoxColumn Caption="Статус" FieldName="Status" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Visible="False">
@@ -56,6 +56,10 @@
         <CancelButton RenderMode="Link">
         </CancelButton>
     </SettingsCommandButton>
+    <FormatConditions>
+        <dx:GridViewFormatConditionHighlight ApplyToRow="True" Expression="[Status] = 1">
+        </dx:GridViewFormatConditionHighlight>
+    </FormatConditions>
 </dx:ASPxGridView>
 <asp:SqlDataSource ID="SqlDataSourceJob" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" DeleteCommand="DELETE FROM [Job] WHERE [Id] = @original_Id AND [TaskListId] = @original_TaskListId AND (([CronSchedule] = @original_CronSchedule) OR ([CronSchedule] IS NULL AND @original_CronSchedule IS NULL)) AND [Status] = @original_Status AND [IsActive] = @original_IsActive AND [IsAdded] = @original_IsAdded AND (([Parameters] = @original_Parameters) OR ([Parameters] IS NULL AND @original_Parameters IS NULL))" InsertCommand="INSERT INTO [Job] ([TaskListId], [CronSchedule], [Status], [IsActive], [IsAdded], [Parameters]) VALUES (@TaskListId, @CronSchedule, @Status, @IsActive, @IsAdded, @Parameters)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Job]" UpdateCommand="UPDATE [Job] SET [TaskListId] = @TaskListId, [CronSchedule] = @CronSchedule, [Status] = @Status, [IsActive] = @IsActive, [IsAdded] = @IsAdded, [Parameters] = @Parameters WHERE [Id] = @original_Id AND [TaskListId] = @original_TaskListId AND (([CronSchedule] = @original_CronSchedule) OR ([CronSchedule] IS NULL AND @original_CronSchedule IS NULL)) AND [Status] = @original_Status AND [IsActive] = @original_IsActive AND [IsAdded] = @original_IsAdded AND (([Parameters] = @original_Parameters) OR ([Parameters] IS NULL AND @original_Parameters IS NULL))">
     <DeleteParameters>

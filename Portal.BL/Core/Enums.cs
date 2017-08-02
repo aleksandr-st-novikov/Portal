@@ -10,6 +10,7 @@ namespace Portal.BL.Core
     {
         public enum Result
         {
+            Start,
             Success,
             Error
         }

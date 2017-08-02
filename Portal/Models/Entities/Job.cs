@@ -21,7 +21,7 @@ namespace Portal.Models.Entities
         public static List<TaskList> getTaskLists()
         {
             List<TaskList> res = new List<TaskList> {
-                new TaskList{ Id = 1, Name = "Импорт сотрудников из 1С", ParametersDescribe = "Путь к файлу .dbf"},
+                new TaskList{ Id = 1, Name = "Общие - Импорт сотрудников из 1С", ParametersDescribe = "Путь к файлу .dbf"},
                 new TaskList{ Id = 2, Name = "Отчет по реализации акционных товаров (-50%)"}
             };
             return res;
@@ -54,6 +54,7 @@ namespace Portal.Models.Entities
         public virtual Job Job { get; set; }
         public DateTime DateRun { get; set; }
         public Enums.Result Result { get; set; }
+        public string Description { get; set; }
     }
 
 }

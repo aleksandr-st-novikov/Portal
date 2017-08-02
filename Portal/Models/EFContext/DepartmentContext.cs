@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Portal.Models.Entities;
+using Portal.Models.ViewModel;
 using Portal.Pages.Admin.Employee;
 using System;
 using System.Collections.Generic;

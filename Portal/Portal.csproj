@@ -415,6 +415,10 @@
     <Compile Include="Migrations\201707280634323_Job1.Designer.cs">
       <DependentUpon>201707280634323_Job1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708021725093_JobResult.cs" />
+    <Compile Include="Migrations\201708021725093_JobResult.Designer.cs">
+      <DependentUpon>201708021725093_JobResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
@@ -424,6 +428,7 @@
     <Compile Include="Models\EFContext\DepartmentWorkContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
     <Compile Include="Models\EFContext\JobContext.cs" />
+    <Compile Include="Models\EFContext\JobResultContext.cs" />
     <Compile Include="Models\EFContext\ManualContext.cs" />
     <Compile Include="Models\EFContext\OfTransportContext.cs" />
     <Compile Include="Models\EFContext\PositionContext.cs" />
@@ -443,6 +448,7 @@
     <Compile Include="Models\ViewModel\AccessoriesViewModel.cs" />
     <Compile Include="Models\ViewModel\AdmissionReportViewModel.cs" />
     <Compile Include="Models\ViewModel\BirthdayReportViewModel.cs" />
+    <Compile Include="Models\ViewModel\MidData.cs" />
     <Compile Include="Models\ViewModel\TransportReportViewModel.cs" />
     <Compile Include="Pages\Admin\Employee\EmployeeMain.master.cs">
       <DependentUpon>EmployeeMain.master</DependentUpon>
@@ -453,10 +459,12 @@
     </Compile>
     <Compile Include="Pages\Admin\Employee\ImportEmployee.aspx.cs">
       <DependentUpon>ImportEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Admin\Employee\ImportEmployee.aspx.designer.cs">
       <DependentUpon>ImportEmployee.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Admin\Employee\ImportEmployees.cs" />
     <Compile Include="Pages\Admin\Employee\ManageDepartment.aspx.cs">
       <DependentUpon>ManageDepartment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1098,6 +1106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707280634323_Job1.resx">
       <DependentUpon>201707280634323_Job1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708021725093_JobResult.resx">
+      <DependentUpon>201708021725093_JobResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Journal\OfTransport\OfTransportReport.resx">
       <DependentUpon>OfTransportReport.cs</DependentUpon>
