@@ -17,11 +17,23 @@ namespace Portal.Models.EFContext
                 .ToListAsync();
         }
 
+        public Task<List<Job>> GetJobForServiceFirstStartAsync()
+        {
+            return context.Job
+                .Where(j => j.IsActive == true && j.IsAdded == true)
+                .ToListAsync();
+        }
+
         public Task<List<Job>> GetJobAllActiveAsync()
         {
             return context.Job
                 .Where(j => j.IsActive == true && j.Status != BL.Core.Enums.Status.Running)
                 .ToListAsync();
+        }
+
+        public string GetTaskName(int taskListId)
+        {
+            return TaskList.getTaskLists().FirstOrDefault(t => t.Id == taskListId).Name;
         }
     }
 }

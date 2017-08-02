@@ -20,6 +20,7 @@ namespace Portal.Service
     public partial class Service : ServiceBase
     {
         private System.Timers.Timer timer = null;
+        private bool IsFirstStart = true;
 
         static ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
         IScheduler scheduler = schedulerFactory.GetScheduler();
@@ -35,45 +36,73 @@ namespace Portal.Service
         private async void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             scheduler.Standby();
-            
-            //delete all not runnig jobs
-            List<JobKey> jobKeys = Helper.GetJobKeysForDelete(scheduler);
-            scheduler.DeleteJobs(jobKeys);
-            //scheduler.Clear();
 
             using (JobContext jobContext = new JobContext())
             {
-                List<Job> jobsAllActive = await jobContext.GetJobAllActiveAsync();
-                List<JobKey> jobsIsExist = new List<JobKey>();
-                foreach(Job j in jobsAllActive)
+                if (!IsFirstStart)
                 {
-                    jobsIsExist.Add(new JobKey(j.TaskList.Name));
-                }
+                    //1.Delete jobs that are not in the scheduler.
+                    //select all not runnig jobs in service - jobsServiseNotRunning
+                    List<JobKey> jobsServiseNotRunning = Helper.GetJobKeysForDelete(scheduler);
 
-
-                List<Job> jobs = await jobContext.GetJobForServiceAsync();
-                
-                foreach (Job j in jobs)
-                {
-                    var jobKey = new JobKey(j.TaskList.Name);
-                    if (!scheduler.CheckExists(jobKey))
+                    //select all active jobs in scheduler - jobsSchedulerActive
+                    List<Job> jobsSchedulerActive = await jobContext.GetJobAllActiveAsync();
+                    List<JobKey> jobsServiseForDelete = new List<JobKey>();
+                    foreach (Job j in jobsSchedulerActive)
                     {
+                        jobsServiseForDelete.Add(new JobKey(jobContext.GetTaskName(j.TaskListId)));
+                    }
+
+                    //delete jobs that are not in jobsSchedulerActive from jobsServiseNotRunning
+                    foreach (var js in jobsServiseNotRunning)
+                    {
+                        if (!jobsServiseForDelete.Contains(js)) scheduler.DeleteJob(js);
+                    }
+
+                    //2. Add all other jobs in service.
+                    //select all not IsAdded jobs in the scheduler - jobsForAdd
+                    List<Job> jobsForAdd = await jobContext.GetJobForServiceAsync();
+                    foreach (Job j in jobsForAdd)
+                    {
+                        var jobKey = new JobKey(jobContext.GetTaskName(j.TaskListId));
+
+                        //if job exists in service then deleting
+                        if (scheduler.CheckExists(jobKey)) scheduler.DeleteJob(jobKey);
+
                         IJobDetail jobDetail = JobBuilder.Create<ImportFrom1C>()
-                            .WithIdentity(j.TaskList.Name)
+                            .WithIdentity(jobContext.GetTaskName(j.TaskListId))
                             .Build();
                         ITrigger trigger = TriggerBuilder.Create()
                             .ForJob(jobDetail)
                             .WithCronSchedule(j.CronSchedule)
-                            .WithIdentity(j.TaskList.Name)
+                            .WithIdentity(jobContext.GetTaskName(j.TaskListId))
                             .StartNow()
                             .Build();
                         scheduler.ScheduleJob(jobDetail, trigger);
                         j.IsAdded = true;
                     }
+                    await jobContext.SaveChangesAsync();
                 }
-                await jobContext.SaveChangesAsync();
+                else
+                {
+                    List<Job> jobsForAdd = await jobContext.GetJobForServiceFirstStartAsync();
+                    foreach (Job j in jobsForAdd)
+                    {
+                        IJobDetail jobDetail = JobBuilder.Create<ImportFrom1C>()
+                            .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                            .Build();
+                        ITrigger trigger = TriggerBuilder.Create()
+                            .ForJob(jobDetail)
+                            .WithCronSchedule(j.CronSchedule)
+                            .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                            .StartNow()
+                            .Build();
+                        scheduler.ScheduleJob(jobDetail, trigger);
+                    }
+                    IsFirstStart = false;
+                }
+                if (scheduler.InStandbyMode || !scheduler.IsStarted) scheduler.Start();
             }
-            if(!scheduler.IsStarted) scheduler.Start();
         }
 
         protected override void OnStart(string[] args)

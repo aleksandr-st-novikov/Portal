@@ -12,7 +12,7 @@ namespace Portal.Service.Jobs
     {
         public void Execute(IJobExecutionContext context)
         {
-            throw new NotImplementedException();
+            System.IO.File.WriteAllText(@"e:\WriteLines.txt", DateTime.Now.ToString());
         }
     }
 }
