@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using Portal.BL.Utils;
 
 namespace Portal.Pages.Maintenance.Schedule
 {
@@ -11,8 +8,10 @@ namespace Portal.Pages.Maintenance.Schedule
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ASPxHint1.Content =
-@"<pre>*    *    *    *    *    *    *
+            if (!Page.IsCallback && !Page.IsPostBack)
+            {
+                ASPxHint1.Content =
+    @"<pre>*    *    *    *    *    *    *
 ┬    ┬    ┬    ┬    ┬    ┬    ┬
 │    │    │    │    │    │    │
 │    │    │    │    │    │    └─ Год (необязательное поле) [, - * /]
@@ -38,11 +37,15 @@ namespace Portal.Pages.Maintenance.Schedule
 <li>Знак астериска (*) является подстановочным знаком и обозначает, что любое возможное значение может быть 
 принято для данного отдельного поля.</li></ul>
 </pre>";
+                ASPxLabelServiceState.Text = Service.GetServiceStatus("Portal.Service");
+            }
         }
 
         protected void Page_Prerender (object sender, EventArgs e)
         {
             Page.Title = ASPxLabelHead.Text = "Планировщик заданий";
         }
+
+        
     }
 }

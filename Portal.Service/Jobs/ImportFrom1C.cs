@@ -29,26 +29,29 @@ namespace Portal.Service.Jobs
                 //Id job = 1
                 Job job = await jobContext.FindByIdAsync(1);
                 job.Status = Enums.Status.Running;
+                await jobContext.SaveChangesAsync();
 
                 JobResult jobResultStart = new JobResult() { JobId = 1, DateRun = DateTime.Now, Result = Enums.Result.Start };
+                await jobResultContext.AddOrUpdateAsync(jobResultStart, -1);
 
                 try
                 {
-                    string filePath = String.IsNullOrEmpty(constantContext.GetConstString("PathFileImport1C")) ?
-                                Data.PathFileImport1C : constantContext.GetConstString("PathFileImport1C");
+                    string filePath = String.IsNullOrEmpty(job.Parameters) ? String.IsNullOrEmpty(constantContext.GetConstString("PathFileImport1C")) ?
+                                Data.PathFileImport1C : constantContext.GetConstString("PathFileImport1C") : job.Parameters;
                     await ImportEmployees.ExecuteAsync(filePath);
                 }
                 catch (Exception ex)
                 {
                     JobResult jobResultError = new JobResult() { JobId = 1, DateRun = DateTime.Now, Result = Enums.Result.Error, Description = ex.Message };
+                    await jobResultContext.AddOrUpdateAsync(jobResultError, -1);
                 }
                 finally
                 {
                     job.Status = Enums.Status.Ready;
+                    await jobContext.SaveChangesAsync();
                 }
                 JobResult jobResultSuccess = new JobResult() { JobId = 1, DateRun = DateTime.Now, Result = Enums.Result.Success };
-                await jobContext.SaveChangesAsync();
-                await jobResultContext.SaveChangesAsync();
+                await jobResultContext.AddOrUpdateAsync(jobResultSuccess, -1);
             }
             
         }

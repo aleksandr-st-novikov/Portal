@@ -6,6 +6,7 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using Portal.BL.Core;
+using System.ServiceProcess;
 
 namespace Portal.BL.Utils
 {
@@ -35,6 +36,28 @@ namespace Portal.BL.Utils
                 Message.Attachments.Add(attach);
             }
             Smtp.Send(Message);
+        }
+
+        public static string GetServiceStatus(string serviceName)
+        {
+            ServiceController sc = new ServiceController(serviceName);
+            if(sc == null) return "Служба не установлена";
+
+            switch (sc.Status)
+            {
+                case ServiceControllerStatus.Running:
+                    return "Запущена";
+                case ServiceControllerStatus.Stopped:
+                    return "Остановлена";
+                case ServiceControllerStatus.Paused:
+                    return "Пауза";
+                case ServiceControllerStatus.StopPending:
+                    return "Останавливается";
+                case ServiceControllerStatus.StartPending:
+                    return "Запускается";
+                default:
+                    return "Изменение статуса";
+            }
         }
 
     }

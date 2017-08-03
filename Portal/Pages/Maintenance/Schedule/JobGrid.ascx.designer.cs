@@ -22,6 +22,15 @@ namespace Portal.Pages.Maintenance.Schedule {
         protected global::DevExpress.Web.ASPxGridView ASPxGridViewJob;
         
         /// <summary>
+        /// Detail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.GridViewCommandColumnCustomButton Detail;
+        
+        /// <summary>
         /// SqlDataSourceJob control.
         /// </summary>
         /// <remarks>

@@ -229,6 +229,7 @@
     <Content Include="Pages\Maintenance\DepartmentWork\ManageDepartmentWork.aspx" />
     <Content Include="Pages\Maintenance\Manual\ManageManual.aspx" />
     <Content Include="Pages\Maintenance\Manual\ViewManual.ascx" />
+    <Content Include="Pages\Maintenance\Schedule\DetailPopup.ascx" />
     <Content Include="Pages\Maintenance\Schedule\JobGrid.ascx" />
     <Content Include="Pages\Maintenance\Schedule\ManageSchedule.aspx" />
     <Content Include="Pages\Maintenance\UKM\Setting.aspx" />
@@ -868,6 +869,13 @@
     </Compile>
     <Compile Include="Pages\Maintenance\Manual\ViewManual.ascx.designer.cs">
       <DependentUpon>ViewManual.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Schedule\DetailPopup.ascx.cs">
+      <DependentUpon>DetailPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Maintenance\Schedule\DetailPopup.ascx.designer.cs">
+      <DependentUpon>DetailPopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Maintenance\Schedule\JobGrid.ascx.cs">
       <DependentUpon>JobGrid.ascx</DependentUpon>

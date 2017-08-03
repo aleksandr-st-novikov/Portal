@@ -1,5 +1,12 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="JobGrid.ascx.cs" Inherits="Portal.Pages.Maintenance.Schedule.JobGrid" %>
 <dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewJob_InitNewRow" OnRowInserting="ASPxGridViewJob_RowInserting" OnRowUpdating="ASPxGridViewJob_RowUpdating" ClientInstanceName="ASPxClientGridViewJob">
+    <ClientSideEvents CustomButtonClick="function(s, e) {
+	var key = s.GetRowKey(e.visibleIndex);
+                    if(e.buttonID == 'Detail')
+                    {
+                        ASPxClientCallbackPanelDetail.PerformCallback(key);
+                    }
+}" />
     <SettingsEditing Mode="PopupEditForm">
     </SettingsEditing>
     <SettingsBehavior ConfirmDelete="True" />
@@ -15,6 +22,12 @@
     </StylesPopup>
     <Columns>
         <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonRenderMode="Image" ButtonType="Image" Width="20px">
+            <CustomButtons>
+                <dx:GridViewCommandColumnCustomButton ID="Detail" Text="История выполнения">
+                    <Image IconID="actions_support_16x16devav">
+                    </Image>
+                </dx:GridViewCommandColumnCustomButton>
+            </CustomButtons>
         </dx:GridViewCommandColumn>
         <dx:GridViewDataTextColumn Caption="Код" FieldName="Id" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1" Visible="False">
             <EditFormSettings Visible="False" />

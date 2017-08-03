@@ -13,6 +13,24 @@ namespace Portal.Pages.Maintenance.Schedule {
     public partial class ManageSchedule {
         
         /// <summary>
+        /// ASPxRoundPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel ASPxRoundPanel1;
+        
+        /// <summary>
+        /// ASPxLabelServiceState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel ASPxLabelServiceState;
+        
+        /// <summary>
         /// ASPxLabelHead control.
         /// </summary>
         /// <remarks>
@@ -47,5 +65,14 @@ namespace Portal.Pages.Maintenance.Schedule {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Portal.Pages.Maintenance.Schedule.JobGrid JobGrid;
+        
+        /// <summary>
+        /// DetailPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Pages.Maintenance.Schedule.DetailPopup DetailPopup;
     }
 }
