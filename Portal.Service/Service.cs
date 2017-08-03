@@ -73,31 +73,7 @@ namespace Portal.Service
 
                         IJobDetail jobDetail = null;
                         ITrigger trigger = null;
-                        switch (j.Id)
-                        {
-                            case 1:
-                                jobDetail = JobBuilder.Create<ImportFrom1C>()
-                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                                    .Build();
-                                trigger = TriggerBuilder.Create()
-                                    .ForJob(jobDetail)
-                                    .WithCronSchedule(j.CronSchedule)
-                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                                    .StartNow()
-                                    .Build();
-                                break;
-                            case 2:
-                                jobDetail = JobBuilder.Create<ReportDiscount50>()
-                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                                    .Build();
-                                trigger = TriggerBuilder.Create()
-                                    .ForJob(jobDetail)
-                                    .WithCronSchedule(j.CronSchedule)
-                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                                    .StartNow()
-                                    .Build();
-                                break;
-                        }
+                        CreateJob(jobContext, j, ref jobDetail, ref trigger);
                         scheduler.ScheduleJob(jobDetail, trigger);
                         j.IsAdded = true;
                     }
@@ -110,36 +86,52 @@ namespace Portal.Service
                     {
                         IJobDetail jobDetail = null;
                         ITrigger trigger = null;
-                        switch (j.Id)
-                        {
-                            case 1:
-                                jobDetail = JobBuilder.Create<ImportFrom1C>()
-                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                                    .Build();
-                                trigger = TriggerBuilder.Create()
-                                    .ForJob(jobDetail)
-                                    .WithCronSchedule(j.CronSchedule)
-                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                                    .StartNow()
-                                    .Build();
-                                break;
-                            case 2:
-                                jobDetail = JobBuilder.Create<ReportDiscount50>()
-                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                                    .Build();
-                                trigger = TriggerBuilder.Create()
-                                    .ForJob(jobDetail)
-                                    .WithCronSchedule(j.CronSchedule)
-                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                                    .StartNow()
-                                    .Build();
-                                break;
-                        }
+                        CreateJob(jobContext, j, ref jobDetail, ref trigger);
                         scheduler.ScheduleJob(jobDetail, trigger);
                     }
                     IsFirstStart = false;
                 }
                 if (scheduler.InStandbyMode || !scheduler.IsStarted) scheduler.Start();
+            }
+        }
+
+        private static void CreateJob(JobContext jobContext, Job j, ref IJobDetail jobDetail, ref ITrigger trigger)
+        {
+            switch (j.Id)
+            {
+                case 1:
+                    jobDetail = JobBuilder.Create<ImportFrom1C>()
+                        .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                        .Build();
+                    trigger = TriggerBuilder.Create()
+                        .ForJob(jobDetail)
+                        .WithCronSchedule(j.CronSchedule)
+                        .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                        .StartNow()
+                        .Build();
+                    break;
+                case 2:
+                    jobDetail = JobBuilder.Create<ReportDiscount50>()
+                        .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                        .Build();
+                    trigger = TriggerBuilder.Create()
+                        .ForJob(jobDetail)
+                        .WithCronSchedule(j.CronSchedule)
+                        .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                        .StartNow()
+                        .Build();
+                    break;
+                case 3:
+                    jobDetail = JobBuilder.Create<BackupDB>()
+                        .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                        .Build();
+                    trigger = TriggerBuilder.Create()
+                        .ForJob(jobDetail)
+                        .WithCronSchedule(j.CronSchedule)
+                        .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                        .StartNow()
+                        .Build();
+                    break;
             }
         }
 
