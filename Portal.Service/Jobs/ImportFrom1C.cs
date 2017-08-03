@@ -39,6 +39,9 @@ namespace Portal.Service.Jobs
                     string filePath = String.IsNullOrEmpty(job.Parameters) ? String.IsNullOrEmpty(constantContext.GetConstString("PathFileImport1C")) ?
                                 Data.PathFileImport1C : constantContext.GetConstString("PathFileImport1C") : job.Parameters;
                     await ImportEmployees.ExecuteAsync(filePath);
+
+                    JobResult jobResultSuccess = new JobResult() { JobId = 1, DateRun = DateTime.Now, Result = Enums.Result.Success };
+                    await jobResultContext.AddOrUpdateAsync(jobResultSuccess, -1);
                 }
                 catch (Exception ex)
                 {
@@ -50,8 +53,6 @@ namespace Portal.Service.Jobs
                     job.Status = Enums.Status.Ready;
                     await jobContext.SaveChangesAsync();
                 }
-                JobResult jobResultSuccess = new JobResult() { JobId = 1, DateRun = DateTime.Now, Result = Enums.Result.Success };
-                await jobResultContext.AddOrUpdateAsync(jobResultSuccess, -1);
             }
             
         }

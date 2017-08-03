@@ -65,6 +65,7 @@
     <Compile Include="Cron\CronJob.cs" />
     <Compile Include="Cron\CronSchedule.cs" />
     <Compile Include="Jobs\Helper.cs" />
+    <Compile Include="Jobs\Reports\ReportDiscount50.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>

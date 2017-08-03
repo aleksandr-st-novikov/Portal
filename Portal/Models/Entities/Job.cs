@@ -22,7 +22,7 @@ namespace Portal.Models.Entities
         {
             List<TaskList> res = new List<TaskList> {
                 new TaskList{ Id = 1, Name = "Общие - Импорт сотрудников из 1С", ParametersDescribe = "Путь к файлу .dbf"},
-                new TaskList{ Id = 2, Name = "Отчет по реализации акционных товаров (-50%)"}
+                new TaskList{ Id = 2, Name = "Отчеты - Реализации акционных товаров (-50%)", ParametersDescribe = "Набор артикулов через запятую;Id магазина (из УКМ);e-mail получателей через запятую"}
             };
             return res;
         }

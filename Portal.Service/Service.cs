@@ -14,6 +14,7 @@ using Portal.Service.Jobs;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Impl.Matchers;
+using Portal.Service.Jobs.Reports;
 
 namespace Portal.Service
 {
@@ -69,15 +70,33 @@ namespace Portal.Service
                         //if job exists in service then deleting
                         if (scheduler.CheckExists(jobKey)) scheduler.DeleteJob(jobKey);
 
-                        IJobDetail jobDetail = JobBuilder.Create<ImportFrom1C>()
-                            .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                            .Build();
-                        ITrigger trigger = TriggerBuilder.Create()
-                            .ForJob(jobDetail)
-                            .WithCronSchedule(j.CronSchedule)
-                            .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                            .StartNow()
-                            .Build();
+                        IJobDetail jobDetail = null;
+                        ITrigger trigger = null;
+                        switch (j.Id)
+                        {
+                            case 1:
+                                jobDetail = JobBuilder.Create<ImportFrom1C>()
+                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                                    .Build();
+                                trigger = TriggerBuilder.Create()
+                                    .ForJob(jobDetail)
+                                    .WithCronSchedule(j.CronSchedule)
+                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                                    .StartNow()
+                                    .Build();
+                                break;
+                            case 2:
+                                jobDetail = JobBuilder.Create<ReportDiscount50>()
+                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                                    .Build();
+                                trigger = TriggerBuilder.Create()
+                                    .ForJob(jobDetail)
+                                    .WithCronSchedule(j.CronSchedule)
+                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                                    .StartNow()
+                                    .Build();
+                                break;
+                        }
                         scheduler.ScheduleJob(jobDetail, trigger);
                         j.IsAdded = true;
                     }
@@ -88,15 +107,33 @@ namespace Portal.Service
                     List<Job> jobsForAdd = await jobContext.GetJobForServiceFirstStartAsync();
                     foreach (Job j in jobsForAdd)
                     {
-                        IJobDetail jobDetail = JobBuilder.Create<ImportFrom1C>()
-                            .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                            .Build();
-                        ITrigger trigger = TriggerBuilder.Create()
-                            .ForJob(jobDetail)
-                            .WithCronSchedule(j.CronSchedule)
-                            .WithIdentity(jobContext.GetTaskName(j.TaskListId))
-                            .StartNow()
-                            .Build();
+                        IJobDetail jobDetail = null;
+                        ITrigger trigger = null;
+                        switch (j.Id)
+                        {
+                            case 1:
+                                jobDetail = JobBuilder.Create<ImportFrom1C>()
+                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                                    .Build();
+                                trigger = TriggerBuilder.Create()
+                                    .ForJob(jobDetail)
+                                    .WithCronSchedule(j.CronSchedule)
+                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                                    .StartNow()
+                                    .Build();
+                                break;
+                            case 2:
+                                jobDetail = JobBuilder.Create<ReportDiscount50>()
+                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                                    .Build();
+                                trigger = TriggerBuilder.Create()
+                                    .ForJob(jobDetail)
+                                    .WithCronSchedule(j.CronSchedule)
+                                    .WithIdentity(jobContext.GetTaskName(j.TaskListId))
+                                    .StartNow()
+                                    .Build();
+                                break;
+                        }
                         scheduler.ScheduleJob(jobDetail, trigger);
                     }
                     IsFirstStart = false;

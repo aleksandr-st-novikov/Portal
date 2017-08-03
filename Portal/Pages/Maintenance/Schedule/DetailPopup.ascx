@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DetailPopup.ascx.cs" Inherits="Portal.Pages.Maintenance.Schedule.DetailPopup" %>
 
-<dx:ASPxPopupControl ID="ASPxPopupControlDetail" runat="server" ClientInstanceName="ASPxClientPopupControlDetail" HeaderText="История выполнения задания" Width="900px" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter">
+<dx:ASPxPopupControl ID="ASPxPopupControlDetail" runat="server" ClientInstanceName="ASPxClientPopupControlDetail" HeaderText="История выполнения задания" Width="900px" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="100">
     <HeaderStyle BackColor="WhiteSmoke" />
     <ContentCollection>
         <dx:PopupControlContentControl runat="server">
