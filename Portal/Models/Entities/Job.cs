@@ -21,8 +21,21 @@ namespace Portal.Models.Entities
         public static List<TaskList> getTaskLists()
         {
             List<TaskList> res = new List<TaskList> {
-                new TaskList{ Id = 1, Name = "Общие - Импорт сотрудников из 1С", ParametersDescribe = "Путь к файлу .dbf"},
-                new TaskList{ Id = 2, Name = "Отчеты - Реализации акционных товаров (-50%)", ParametersDescribe = "Набор артикулов через запятую;Id магазина (из УКМ);e-mail получателей через запятую"}
+                new TaskList{
+                    Id = 1,
+                    Name = "Общие - Импорт сотрудников из 1С",
+                    ParametersDescribe = "Путь к файлу .dbf"
+                },
+                new TaskList{
+                    Id = 2,
+                    Name = "Отчеты - Реализации акционных товаров (-50%)",
+                    ParametersDescribe = "Набор артикулов через запятую;Id магазина (из УКМ);e-mail получателей через запятую"
+                },
+                new TaskList{
+                    Id = 3,
+                    Name = "Общие - Бэкап базы данных",
+                    ParametersDescribe = "Путь к файлу бэкапа .bak"
+                }
             };
             return res;
         }

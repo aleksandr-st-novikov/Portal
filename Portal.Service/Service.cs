@@ -15,6 +15,7 @@ using Quartz;
 using Quartz.Impl;
 using Quartz.Impl.Matchers;
 using Portal.Service.Jobs.Reports;
+using Portal.Service.Jobs.General;
 
 namespace Portal.Service
 {

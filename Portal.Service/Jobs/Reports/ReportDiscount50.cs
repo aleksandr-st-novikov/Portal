@@ -6,7 +6,6 @@ using Quartz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Portal.Service.Jobs.Reports
@@ -28,16 +27,22 @@ namespace Portal.Service.Jobs.Reports
 
                 try
                 {
+                    //work with parameters
+                    List<string> parametersList = job.Parameters.Split(';').ToList();
+                    if(parametersList.Count < 3 || String.IsNullOrEmpty(parametersList[0]) || String.IsNullOrEmpty(parametersList[1]) || String.IsNullOrEmpty(parametersList[2]))
+                    {
+                        throw new ArgumentException("Parameter cannot be null");
+                    }
                     //get data
-                    List<ReportDiscount50Data> data = await BL.UKM.Methods.GetDataRepDiscount50Async("064332,299449", "1006");
+                    List<ReportDiscount50Data> data = await BL.UKM.Methods.GetDataRepDiscount50Async(parametersList[0], parametersList[1]);
                     //prepare message
                     string message = "";
                     foreach(var d in data)
                     {
-                        message += d.Article.PadRight(10) + d.Name.PadRight(40) + d.Quantity;
+                        message += d.Article.PadRight(10) + d.Name.PadRight(40) + d.Quantity + "/n";
                     }
                     //send message
-                    await Task.Run(() => Portal.BL.Utils.Service.SendMessage("novikov.it@bobruysk.korona.by", "отчет", message));
+                    await Task.Run(() => Portal.BL.Utils.Service.SendMessage(parametersList[2], "Реализации акционных товаров (-50%)", message));
 
                     JobResult jobResultSuccess = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Success };
                     await jobResultContext.AddOrUpdateAsync(jobResultSuccess, -1);

@@ -42,7 +42,7 @@ namespace Portal.BL.UKM
                     "SELECT i.item \"Артикул\", " +
                     "       i.name \"Наименование\", " +
                     "       SUM(IF(h.type IN (0,5), 1, -1) * i.quantity) \"Кол - во\" " +
-                    "  FROM trm_in_pos c " +
+                    "  FROM ukmserver.trm_in_pos c " +
                     "       INNER JOIN ukmserver.trm_out_receipt_header h " +
                     "          ON h.cash_id = c.cash_id " +
                     "       INNER JOIN ukmserver.trm_out_receipt_item i " +

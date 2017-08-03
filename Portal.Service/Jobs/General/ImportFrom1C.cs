@@ -1,22 +1,13 @@
 ﻿using Portal.BL.Core;
 using Portal.Models.EFContext;
 using Portal.Models.Entities;
-using Portal.Models.ViewModel;
 using Portal.Pages.Admin.Employee;
 using Quartz;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.OleDb;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace Portal.Service.Jobs
+namespace Portal.Service.Jobs.General
 {
-    
+
 
     class ImportFrom1C : IJob
     {
