@@ -52,7 +52,7 @@ namespace Portal.Service
                     List<JobKey> jobsServiseForDelete = new List<JobKey>();
                     foreach (Job j in jobsSchedulerActive)
                     {
-                        jobsServiseForDelete.Add(new JobKey(jobContext.GetTaskName(j.TaskListId)));
+                        jobsServiseForDelete.Add(new JobKey(j.TaskListId.ToString() + jobContext.GetTaskName(j.TaskListId)));
                     }
 
                     //delete jobs that are not in jobsSchedulerActive from jobsServiseNotRunning
@@ -66,7 +66,7 @@ namespace Portal.Service
                     List<Job> jobsForAdd = await jobContext.GetJobForServiceAsync();
                     foreach (Job j in jobsForAdd)
                     {
-                        var jobKey = new JobKey(jobContext.GetTaskName(j.TaskListId));
+                        var jobKey = new JobKey(j.TaskListId.ToString() + jobContext.GetTaskName(j.TaskListId));
 
                         //if job exists in service then deleting
                         if (scheduler.CheckExists(jobKey)) scheduler.DeleteJob(jobKey);
