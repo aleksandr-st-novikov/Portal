@@ -19,7 +19,7 @@ namespace Portal.Service.Jobs.General
             using (ApplicationDbContext ctxt = new ApplicationDbContext())
             {
                 //Id job = 3
-                Job job = await jobContext.FindByIdAsync(1);
+                Job job = await jobContext.FindByIdAsync(3);
                 job.Status = Enums.Status.Running;
                 await jobContext.SaveChangesAsync();
 
@@ -41,14 +41,14 @@ namespace Portal.Service.Jobs.General
                             "GO";
                         SqlCommand com = new SqlCommand(script, connection);
                         com.ExecuteNonQuery();
-                        if (File.Exists(job.Parameters))
-                        {
-                            using (ZipArchive zip = ZipFile.Open(Path.ChangeExtension(job.Parameters, "zip"), ZipArchiveMode.Create))
-                            {
-                                zip.CreateEntryFromFile(job.Parameters, Path.GetFileName(job.Parameters));
-                            }
-                            File.Delete(job.Parameters);
-                        }
+                        //if (File.Exists(job.Parameters))
+                        //{
+                        //    using (ZipArchive zip = ZipFile.Open(Path.ChangeExtension(job.Parameters, "zip"), ZipArchiveMode.Create))
+                        //    {
+                        //        zip.CreateEntryFromFile(job.Parameters, Path.GetFileName(job.Parameters));
+                        //    }
+                        //    File.Delete(job.Parameters);
+                        //}
                     }
                     JobResult jobResultSuccess = new JobResult() { JobId = 3, DateRun = DateTime.Now, Result = Enums.Result.Success };
                     await jobResultContext.AddOrUpdateAsync(jobResultSuccess, -1);

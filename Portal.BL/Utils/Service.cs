@@ -13,12 +13,12 @@ namespace Portal.BL.Utils
     public class Service
     {
 
-        public static void SendMessage(string messageTo, string subject, string message, string attachmentFile = "")
+        public static void SendMessage(string messageTo, string subject, string message, string attachmentFile = "", bool isBodyHtml = true)
         {
             SmtpClient Smtp = new SmtpClient(Data.PostHost, Data.PostPort);
             //Smtp.Credentials = new NetworkCredential("login", "password");
             MailMessage Message = new MailMessage();
-            Message.IsBodyHtml = true;
+            Message.IsBodyHtml = isBodyHtml;
 
             Message.From = new MailAddress(Data.messageFrom);
             string[] listTo = messageTo.Split(',');

@@ -53,6 +53,19 @@ namespace Portal.Models.EFContext
             }
         }
 
+        public bool SaveChanges()
+        {
+            try
+            {
+                context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public async Task<T> AddOrUpdateAsync(T updated, int id)
         {
             if (updated == null) return null;
@@ -69,6 +82,27 @@ namespace Portal.Models.EFContext
             {
                 context.Set<T>().Add(updated);
                 await context.SaveChangesAsync();
+                res = updated;
+            }
+            return res;
+        }
+
+        public T AddOrUpdate(T updated, int id)
+        {
+            if (updated == null) return null;
+
+            T res;
+            T existing = context.Set<T>().Find(id);
+            if (existing != null)
+            {
+                context.Entry(existing).CurrentValues.SetValues(updated);
+                context.SaveChanges();
+                res = existing;
+            }
+            else
+            {
+                context.Set<T>().Add(updated);
+                context.SaveChanges();
                 res = updated;
             }
             return res;

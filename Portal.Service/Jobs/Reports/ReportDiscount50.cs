@@ -12,7 +12,55 @@ namespace Portal.Service.Jobs.Reports
 {
     public class ReportDiscount50 : IJob
     {
-        public async void Execute(IJobExecutionContext context)
+        public void Execute(IJobExecutionContext context)
+        {
+            using (JobContext jobContext = new JobContext())
+            using (JobResultContext jobResultContext = new JobResultContext())
+            {
+                //Id job = 2
+                Job job = jobContext.FindById(2);
+                job.Status = Enums.Status.Running;
+                jobContext.SaveChanges();
+
+                JobResult jobResultStart = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Start };
+                jobResultContext.AddOrUpdate(jobResultStart, -1);
+
+                try
+                {
+                    //work with parameters
+                    List<string> parametersList = job.Parameters.Split(';').ToList();
+                    if (parametersList.Count < 3 || String.IsNullOrEmpty(parametersList[0]) || String.IsNullOrEmpty(parametersList[1]) || String.IsNullOrEmpty(parametersList[2]))
+                    {
+                        throw new ArgumentException("Parameter cannot be null");
+                    }
+                    //get data
+                    List<ReportDiscount50Data> data = BL.UKM.Methods.GetDataRepDiscount50(parametersList[0], parametersList[1]);
+                    //prepare message
+                    List<string> message = new List<string>();
+                    foreach (var d in data)
+                    {
+                        message.Add(d.Article.PadRight(10) + d.Name.PadRight(50) + d.Quantity.ToString().PadLeft(10));
+                    }
+                    //send message
+                    Portal.BL.Utils.Service.SendMessage(parametersList[2], "Реализация акционных товаров (-50%)", String.Join("\n", message), isBodyHtml: false);
+
+                    JobResult jobResultSuccess = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Success };
+                    jobResultContext.AddOrUpdate(jobResultSuccess, -1);
+                }
+                catch (Exception ex)
+                {
+                    JobResult jobResultError = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Error, Description = ex.Message };
+                    jobResultContext.AddOrUpdate(jobResultError, -1);
+                }
+                finally
+                {
+                    job.Status = Enums.Status.Ready;
+                    jobContext.SaveChanges();
+                }
+            }
+        }
+
+        public async void ExecuteAsync(IJobExecutionContext context)
         {
             using (JobContext jobContext = new JobContext())
             using (JobResultContext jobResultContext = new JobResultContext())
@@ -36,13 +84,13 @@ namespace Portal.Service.Jobs.Reports
                     //get data
                     List<ReportDiscount50Data> data = await BL.UKM.Methods.GetDataRepDiscount50Async(parametersList[0], parametersList[1]);
                     //prepare message
-                    string message = "";
+                    List<string> message = new List<string>();
                     foreach(var d in data)
                     {
-                        message += d.Article.PadRight(10) + d.Name.PadRight(40) + d.Quantity + "/n";
+                        message.Add(d.Article.PadRight(10) + d.Name.PadRight(50) + d.Quantity.ToString().PadLeft(10));
                     }
                     //send message
-                    await Task.Run(() => Portal.BL.Utils.Service.SendMessage(parametersList[2], "Реализации акционных товаров (-50%)", message));
+                    await Task.Run(() => Portal.BL.Utils.Service.SendMessage(parametersList[2], "Реализация акционных товаров (-50%)", String.Join("\n", message), isBodyHtml: false));
 
                     JobResult jobResultSuccess = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Success };
                     await jobResultContext.AddOrUpdateAsync(jobResultSuccess, -1);
