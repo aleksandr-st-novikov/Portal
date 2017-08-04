@@ -215,7 +215,7 @@ namespace Portal
                     {
                         Text = "Планировщик заданий",
                         BeginGroup = true,
-                        NavigateUrl = "~/Pages/Maintenance/Schedule/ManageSchedule.aspx"
+                        NavigateUrl = "~/Pages/Maintenance/Scheduler/ManageScheduler.aspx"
                     };
                     itemMaintenanceSchedule.Image.IconID = "scheduling_switchtimescalesto_16x16office2013";
                     itemMaintenance.Items.Add(itemMaintenanceSchedule);

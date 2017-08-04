@@ -12,18 +12,18 @@ namespace Portal.Service.Jobs.Reports
 {
     public class ReportDiscount50 : IJob
     {
-        public void Execute(IJobExecutionContext context)
+        public async void Execute(IJobExecutionContext context)
         {
             using (JobContext jobContext = new JobContext())
             using (JobResultContext jobResultContext = new JobResultContext())
             {
                 //Id job = 2
-                Job job = jobContext.FindById(2);
+                Job job = await jobContext.FindByTaskIdAsync(2);
                 job.Status = Enums.Status.Running;
-                jobContext.SaveChanges();
+                await jobContext.SaveChangesAsync();
 
-                JobResult jobResultStart = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Start };
-                jobResultContext.AddOrUpdate(jobResultStart, -1);
+                JobResult jobResultStart = new JobResult() { JobId = job.Id, DateRun = DateTime.Now, Result = Enums.Result.Start };
+                await jobResultContext.AddOrUpdateAsync(jobResultStart, -1);
 
                 try
                 {
@@ -34,7 +34,7 @@ namespace Portal.Service.Jobs.Reports
                         throw new ArgumentException("Parameter cannot be null");
                     }
                     //get data
-                    List<ReportDiscount50Data> data = BL.UKM.Methods.GetDataRepDiscount50(parametersList[0], parametersList[1]);
+                    List<ReportDiscount50Data> data = await BL.UKM.Methods.GetDataRepDiscount50Async(parametersList[0], parametersList[1]);
                     //prepare message
                     List<string> message = new List<string>();
                     foreach (var d in data)
@@ -42,62 +42,14 @@ namespace Portal.Service.Jobs.Reports
                         message.Add(d.Article.PadRight(10) + d.Name.PadRight(50) + d.Quantity.ToString().PadLeft(10));
                     }
                     //send message
-                    Portal.BL.Utils.Service.SendMessage(parametersList[2], "Реализация акционных товаров (-50%)", String.Join("\n", message), isBodyHtml: false);
-
-                    JobResult jobResultSuccess = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Success };
-                    jobResultContext.AddOrUpdate(jobResultSuccess, -1);
-                }
-                catch (Exception ex)
-                {
-                    JobResult jobResultError = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Error, Description = ex.Message };
-                    jobResultContext.AddOrUpdate(jobResultError, -1);
-                }
-                finally
-                {
-                    job.Status = Enums.Status.Ready;
-                    jobContext.SaveChanges();
-                }
-            }
-        }
-
-        public async void ExecuteAsync(IJobExecutionContext context)
-        {
-            using (JobContext jobContext = new JobContext())
-            using (JobResultContext jobResultContext = new JobResultContext())
-            {
-                //Id job = 2
-                Job job = await jobContext.FindByIdAsync(2);
-                job.Status = Enums.Status.Running;
-                await jobContext.SaveChangesAsync();
-
-                JobResult jobResultStart = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Start };
-                await jobResultContext.AddOrUpdateAsync(jobResultStart, -1);
-
-                try
-                {
-                    //work with parameters
-                    List<string> parametersList = job.Parameters.Split(';').ToList();
-                    if(parametersList.Count < 3 || String.IsNullOrEmpty(parametersList[0]) || String.IsNullOrEmpty(parametersList[1]) || String.IsNullOrEmpty(parametersList[2]))
-                    {
-                        throw new ArgumentException("Parameter cannot be null");
-                    }
-                    //get data
-                    List<ReportDiscount50Data> data = await BL.UKM.Methods.GetDataRepDiscount50Async(parametersList[0], parametersList[1]);
-                    //prepare message
-                    List<string> message = new List<string>();
-                    foreach(var d in data)
-                    {
-                        message.Add(d.Article.PadRight(10) + d.Name.PadRight(50) + d.Quantity.ToString().PadLeft(10));
-                    }
-                    //send message
                     await Task.Run(() => Portal.BL.Utils.Service.SendMessage(parametersList[2], "Реализация акционных товаров (-50%)", String.Join("\n", message), isBodyHtml: false));
 
-                    JobResult jobResultSuccess = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Success };
+                    JobResult jobResultSuccess = new JobResult() { JobId = job.Id, DateRun = DateTime.Now, Result = Enums.Result.Success };
                     await jobResultContext.AddOrUpdateAsync(jobResultSuccess, -1);
                 }
                 catch (Exception ex)
                 {
-                    JobResult jobResultError = new JobResult() { JobId = 2, DateRun = DateTime.Now, Result = Enums.Result.Error, Description = ex.Message };
+                    JobResult jobResultError = new JobResult() { JobId = job.Id, DateRun = DateTime.Now, Result = Enums.Result.Error, Description = ex.Message };
                     await jobResultContext.AddOrUpdateAsync(jobResultError, -1);
                 }
                 finally

@@ -37,7 +37,7 @@ namespace Portal.Service
 
         private async void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            //scheduler.Standby();
+            scheduler.Standby();
 
             using (JobContext jobContext = new JobContext())
             {

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DetailPopup.ascx.cs" Inherits="Portal.Pages.Maintenance.Schedule.DetailPopup" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DetailPopup.ascx.cs" Inherits="Portal.Pages.Maintenance.Scheduler.DetailPopup" %>
 
 <dx:ASPxPopupControl ID="ASPxPopupControlDetail" runat="server" ClientInstanceName="ASPxClientPopupControlDetail" HeaderText="История выполнения задания" Width="900px" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalOffset="100">
     <HeaderStyle BackColor="WhiteSmoke" />
@@ -29,6 +29,14 @@
                                 <dx:GridViewDataComboBoxColumn Caption="Результат" FieldName="Result" ShowInCustomizationForm="True" VisibleIndex="3" Width="70px">
                                 </dx:GridViewDataComboBoxColumn>
                             </Columns>
+                            <Styles>
+                                <Table>
+                                    <Paddings PaddingBottom="5px" PaddingTop="5px" />
+                                </Table>
+                                <Cell>
+                                    <Paddings PaddingBottom="5px" PaddingTop="5px" />
+                                </Cell>
+                            </Styles>
                         </dx:ASPxGridView>
                         <asp:SqlDataSource ID="SqlDataSourceJobResult" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT * FROM [JobResult] WHERE ([JobId] = @JobId) ORDER BY [DateRun] DESC">
                             <SelectParameters>

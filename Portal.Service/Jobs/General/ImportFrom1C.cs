@@ -18,11 +18,11 @@ namespace Portal.Service.Jobs.General
             using (JobResultContext jobResultContext = new JobResultContext())
             {
                 //Id job = 1
-                Job job = await jobContext.FindByIdAsync(1);
+                Job job = await jobContext.FindByTaskIdAsync(1);
                 job.Status = Enums.Status.Running;
                 await jobContext.SaveChangesAsync();
 
-                JobResult jobResultStart = new JobResult() { JobId = 1, DateRun = DateTime.Now, Result = Enums.Result.Start };
+                JobResult jobResultStart = new JobResult() { JobId = job.Id, DateRun = DateTime.Now, Result = Enums.Result.Start };
                 await jobResultContext.AddOrUpdateAsync(jobResultStart, -1);
 
                 try
@@ -31,12 +31,12 @@ namespace Portal.Service.Jobs.General
                                 Data.PathFileImport1C : constantContext.GetConstString("PathFileImport1C") : job.Parameters;
                     await ImportEmployees.ExecuteAsync(filePath);
 
-                    JobResult jobResultSuccess = new JobResult() { JobId = 1, DateRun = DateTime.Now, Result = Enums.Result.Success };
+                    JobResult jobResultSuccess = new JobResult() { JobId = job.Id, DateRun = DateTime.Now, Result = Enums.Result.Success };
                     await jobResultContext.AddOrUpdateAsync(jobResultSuccess, -1);
                 }
                 catch (Exception ex)
                 {
-                    JobResult jobResultError = new JobResult() { JobId = 1, DateRun = DateTime.Now, Result = Enums.Result.Error, Description = ex.Message };
+                    JobResult jobResultError = new JobResult() { JobId = job.Id, DateRun = DateTime.Now, Result = Enums.Result.Error, Description = ex.Message };
                     await jobResultContext.AddOrUpdateAsync(jobResultError, -1);
                 }
                 finally

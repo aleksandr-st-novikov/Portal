@@ -24,6 +24,11 @@ namespace Portal.Models.EFContext
                 .ToListAsync();
         }
 
+        public async Task<Job> FindByTaskIdAsync(int v)
+        {
+            return await context.Job.FirstOrDefaultAsync(j => j.TaskListId == v);
+        }
+
         public Task<List<Job>> GetJobAllActiveAsync()
         {
             return context.Job

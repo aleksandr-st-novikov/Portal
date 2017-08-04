@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Portal.Pages.Maintenance.Schedule
+namespace Portal.Pages.Maintenance.Scheduler
 {
     public partial class DetailPopup : System.Web.UI.UserControl
     {

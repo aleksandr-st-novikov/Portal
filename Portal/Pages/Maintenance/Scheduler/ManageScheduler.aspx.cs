@@ -2,9 +2,9 @@
 using System.Web.UI;
 using Portal.BL.Utils;
 
-namespace Portal.Pages.Maintenance.Schedule
+namespace Portal.Pages.Maintenance.Scheduler
 {
-    public partial class ManageSchedule : System.Web.UI.Page
+    public partial class ManageScheduler : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

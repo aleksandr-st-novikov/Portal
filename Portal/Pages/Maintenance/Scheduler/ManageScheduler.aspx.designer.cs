@@ -7,63 +7,72 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.Pages.Maintenance.Schedule {
+namespace Portal.Pages.Maintenance.Scheduler {
     
     
-    public partial class DetailPopup {
+    public partial class ManageScheduler {
         
         /// <summary>
-        /// ASPxPopupControlDetail control.
+        /// ASPxRoundPanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControlDetail;
+        protected global::DevExpress.Web.ASPxRoundPanel ASPxRoundPanel1;
         
         /// <summary>
-        /// ASPxCallbackPanelDetail control.
+        /// ASPxLabelServiceState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCallbackPanel ASPxCallbackPanelDetail;
+        protected global::DevExpress.Web.ASPxLabel ASPxLabelServiceState;
         
         /// <summary>
-        /// ASPxGridViewDetail control.
+        /// ASPxLabelHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView ASPxGridViewDetail;
+        protected global::DevExpress.Web.ASPxLabel ASPxLabelHead;
         
         /// <summary>
-        /// SqlDataSourceJobResult control.
+        /// ASPxLabelFormat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceJobResult;
+        protected global::DevExpress.Web.ASPxLabel ASPxLabelFormat;
         
         /// <summary>
-        /// ASPxPanel1 control.
+        /// ASPxHint1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
+        protected global::DevExpress.Web.ASPxHint ASPxHint1;
         
         /// <summary>
-        /// ASPxButton1 control.
+        /// JobGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton1;
+        protected global::Portal.Pages.Maintenance.Scheduler.JobGrid JobGrid;
+        
+        /// <summary>
+        /// DetailPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Pages.Maintenance.Scheduler.DetailPopup DetailPopup;
     }
 }

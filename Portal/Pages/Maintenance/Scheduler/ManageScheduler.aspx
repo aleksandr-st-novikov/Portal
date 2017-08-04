@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Maintenance/Schedule/ScheduleMain.master" AutoEventWireup="true" CodeBehind="ManageSchedule.aspx.cs" Inherits="Portal.Pages.Maintenance.Schedule.ManageSchedule" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Maintenance/Scheduler/SchedulerMain.master" AutoEventWireup="true" CodeBehind="ManageScheduler.aspx.cs" Inherits="Portal.Pages.Maintenance.Scheduler.ManageScheduler" %>
 
-<%@ Register Src="~/Pages/Maintenance/Schedule/JobGrid.ascx" TagPrefix="uc1" TagName="JobGrid" %>
-<%@ Register Src="~/Pages/Maintenance/Schedule/DetailPopup.ascx" TagPrefix="uc1" TagName="DetailPopup" %>
+<%@ Register Src="~/Pages/Maintenance/Scheduler/JobGrid.ascx" TagPrefix="uc1" TagName="JobGrid" %>
+<%@ Register Src="~/Pages/Maintenance/Scheduler/DetailPopup.ascx" TagPrefix="uc1" TagName="DetailPopup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="content">

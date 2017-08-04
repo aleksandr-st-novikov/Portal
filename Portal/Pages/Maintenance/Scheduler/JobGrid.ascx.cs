@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Portal.BL.Core;
 
-namespace Portal.Pages.Maintenance.Schedule
+namespace Portal.Pages.Maintenance.Scheduler
 {
     public partial class JobGrid : System.Web.UI.UserControl
     {
