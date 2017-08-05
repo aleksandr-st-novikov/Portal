@@ -103,6 +103,7 @@ namespace Portal.Service
             switch (j.TaskListId)
             {
                 case 1:
+                    jobDetail.JobDataMap["Id"] = j.Id;
                     jobDetail = JobBuilder.Create<ImportFrom1C>()
                         .WithIdentity(j.Id.ToString() + jobContext.GetTaskName(j.TaskListId))
                         .Build();
@@ -114,6 +115,7 @@ namespace Portal.Service
                         .Build();
                     break;
                 case 2:
+                    jobDetail.JobDataMap["Id"] = j.Id;
                     jobDetail = JobBuilder.Create<ReportDiscount50>()
                         .WithIdentity(j.Id.ToString() + jobContext.GetTaskName(j.TaskListId))
                         .Build();
@@ -125,6 +127,7 @@ namespace Portal.Service
                         .Build();
                     break;
                 case 3:
+                    jobDetail.JobDataMap["Id"] = j.Id;
                     jobDetail = JobBuilder.Create<BackupDB>()
                         .WithIdentity(j.Id.ToString() + jobContext.GetTaskName(j.TaskListId))
                         .Build();

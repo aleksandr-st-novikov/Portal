@@ -14,12 +14,14 @@ namespace Portal.Service.Jobs.General
     {
         public async void Execute(IJobExecutionContext context)
         {
+            JobDataMap dataMap = context.JobDetail.JobDataMap;
+
             using (JobContext jobContext = new JobContext())
             using (JobResultContext jobResultContext = new JobResultContext())
             using (ApplicationDbContext ctxt = new ApplicationDbContext())
             {
                 //Id job = 3
-                Job job = await jobContext.FindByTaskIdAsync(3);
+                Job job = await jobContext.FindByIdAsync(dataMap.GetInt("Id"));
                 job.Status = Enums.Status.Running;
                 await jobContext.SaveChangesAsync();
 

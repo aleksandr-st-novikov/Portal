@@ -13,12 +13,14 @@ namespace Portal.Service.Jobs.General
     {
         public async void Execute(IJobExecutionContext context)
         {
+            JobDataMap dataMap = context.JobDetail.JobDataMap;
+
             using (ConstantContext constantContext = new ConstantContext())
             using (JobContext jobContext = new JobContext())
             using (JobResultContext jobResultContext = new JobResultContext())
             {
                 //Id job = 1
-                Job job = await jobContext.FindByTaskIdAsync(1);
+                Job job = await jobContext.FindByIdAsync(dataMap.GetInt("Id"));
                 job.Status = Enums.Status.Running;
                 await jobContext.SaveChangesAsync();
 
@@ -27,8 +29,9 @@ namespace Portal.Service.Jobs.General
 
                 try
                 {
-                    string filePath = String.IsNullOrEmpty(job.Parameters) ? String.IsNullOrEmpty(constantContext.GetConstString("PathFileImport1C")) ?
-                                Data.PathFileImport1C : constantContext.GetConstString("PathFileImport1C") : job.Parameters;
+                    string filePath = String.IsNullOrEmpty(job.Parameters) ? 
+                        String.IsNullOrEmpty(constantContext.GetConstString("PathFileImport1C")) ?
+                        Data.PathFileImport1C : constantContext.GetConstString("PathFileImport1C") : job.Parameters;
                     await ImportEmployees.ExecuteAsync(filePath);
 
                     JobResult jobResultSuccess = new JobResult() { JobId = job.Id, DateRun = DateTime.Now, Result = Enums.Result.Success };

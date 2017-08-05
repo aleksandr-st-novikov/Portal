@@ -14,11 +14,13 @@ namespace Portal.Service.Jobs.Reports
     {
         public async void Execute(IJobExecutionContext context)
         {
+            JobDataMap dataMap = context.JobDetail.JobDataMap;
+
             using (JobContext jobContext = new JobContext())
             using (JobResultContext jobResultContext = new JobResultContext())
             {
                 //Id job = 2
-                Job job = await jobContext.FindByTaskIdAsync(2);
+                Job job = await jobContext.FindByIdAsync(dataMap.GetInt("Id"));
                 job.Status = Enums.Status.Running;
                 await jobContext.SaveChangesAsync();
 
