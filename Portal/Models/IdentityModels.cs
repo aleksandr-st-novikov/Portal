@@ -60,6 +60,8 @@ namespace Portal.Models
         public DbSet<Constant> Constant { get; set; }
         public DbSet<Job> Job { get; set; }
         public DbSet<JobResult> JobResult { get; set; }
+        public DbSet<Exit> Exit { get; set; }
+        public DbSet<ExitPurpose> ExitPurpose { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -87,6 +87,28 @@ namespace Portal
                     }
 
                 };
+
+                if (Context.User.IsInRole("Администраторы")
+                    || Context.User.IsInRole("Журналы - Согласование выходов - Руководители")
+                    || Context.User.IsInRole("Журналы - Согласование выходов - Руководители - Все сотрудники")
+                    || Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
+                {
+                    DevExpress.Web.MenuItem itemJournalExit = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Согласование выходов/входов сотрудников",
+                        NavigateUrl = "~/Pages/Journal/Exit/ManageExit.aspx"
+                    };
+                    itemJournalExit.Image.IconID = "actions_newitem_16x16devav";
+                    itemJournal.Items.Add(itemJournalExit);
+                    itemJournal.DropDownMode = true;
+
+                    if (itemJournalAdd == false)
+                    {
+                        ASPxMenuMain.Items.Add(itemJournal);
+                        itemJournalAdd = true;
+                    }
+
+                };
 #endif
 
                 if (Context.User.IsInRole("Администраторы")

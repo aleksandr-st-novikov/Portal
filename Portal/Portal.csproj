@@ -216,6 +216,7 @@
     <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
+    <Content Include="Pages\Journal\Exit\ManageExit.aspx" />
     <Content Include="Pages\Journal\OfTransport\ManageOfTransport.aspx" />
     <Content Include="Pages\Journal\OfTransport\OfTransportGrid.ascx" />
     <Content Include="Pages\Journal\OfTransport\OfTransportReportViewPopup.ascx" />
@@ -266,6 +267,7 @@
     <Content Include="Pages\Journal\Transport\TransportMain.master" />
     <Content Include="Pages\Admin\Setting\SettingMain.master" />
     <Content Include="Pages\Maintenance\Scheduler\SchedulerMain.master" />
+    <Content Include="Pages\Journal\Exit\ExitMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -440,6 +442,7 @@
     <Compile Include="Models\Entities\DepartmentWork.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Accessories.cs" />
+    <Compile Include="Models\Entities\Exit.cs" />
     <Compile Include="Models\Entities\Job.cs" />
     <Compile Include="Models\Entities\Manual.cs" />
     <Compile Include="Models\Entities\OfTransport.cs" />
@@ -736,6 +739,20 @@
     </Compile>
     <Compile Include="Pages\Journal\Accessories\AccessoriesMain.master.designer.cs">
       <DependentUpon>AccessoriesMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\ExitMain.master.cs">
+      <DependentUpon>ExitMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\ExitMain.master.designer.cs">
+      <DependentUpon>ExitMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\ManageExit.aspx.cs">
+      <DependentUpon>ManageExit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\ManageExit.aspx.designer.cs">
+      <DependentUpon>ManageExit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Journal\OfTransport\ManageOfTransport.aspx.cs">
       <DependentUpon>ManageOfTransport.aspx</DependentUpon>
