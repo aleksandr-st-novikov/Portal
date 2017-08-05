@@ -16,6 +16,7 @@ using Quartz.Impl;
 using Quartz.Impl.Matchers;
 using Portal.Service.Jobs.Reports;
 using Portal.Service.Jobs.General;
+using System.Threading;
 
 namespace Portal.Service
 {
@@ -37,6 +38,7 @@ namespace Portal.Service
 
         private async void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
+            //Thread.Sleep(30000);
             scheduler.Standby();
 
             using (JobContext jobContext = new JobContext())
@@ -103,10 +105,10 @@ namespace Portal.Service
             switch (j.TaskListId)
             {
                 case 1:
-                    jobDetail.JobDataMap["Id"] = j.Id;
                     jobDetail = JobBuilder.Create<ImportFrom1C>()
                         .WithIdentity(j.Id.ToString() + jobContext.GetTaskName(j.TaskListId))
                         .Build();
+                    jobDetail.JobDataMap["Id"] = j.Id;
                     trigger = TriggerBuilder.Create()
                         .ForJob(jobDetail)
                         .WithCronSchedule(j.CronSchedule)
@@ -115,10 +117,10 @@ namespace Portal.Service
                         .Build();
                     break;
                 case 2:
-                    jobDetail.JobDataMap["Id"] = j.Id;
                     jobDetail = JobBuilder.Create<ReportDiscount50>()
                         .WithIdentity(j.Id.ToString() + jobContext.GetTaskName(j.TaskListId))
                         .Build();
+                    jobDetail.JobDataMap["Id"] = j.Id;
                     trigger = TriggerBuilder.Create()
                         .ForJob(jobDetail)
                         .WithCronSchedule(j.CronSchedule)
@@ -127,10 +129,10 @@ namespace Portal.Service
                         .Build();
                     break;
                 case 3:
-                    jobDetail.JobDataMap["Id"] = j.Id;
                     jobDetail = JobBuilder.Create<BackupDB>()
                         .WithIdentity(j.Id.ToString() + jobContext.GetTaskName(j.TaskListId))
                         .Build();
+                    jobDetail.JobDataMap["Id"] = j.Id;
                     trigger = TriggerBuilder.Create()
                         .ForJob(jobDetail)
                         .WithCronSchedule(j.CronSchedule)
@@ -143,6 +145,7 @@ namespace Portal.Service
 
         protected override void OnStart(string[] args)
         {
+            
             timer.Start();
         }
 
