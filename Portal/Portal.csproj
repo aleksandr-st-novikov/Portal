@@ -216,8 +216,10 @@
     <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
+    <Content Include="Pages\Journal\Exit\EntranceGrid.ascx" />
     <Content Include="Pages\Journal\Exit\ExitGrid.ascx" />
     <Content Include="Pages\Journal\Exit\ManageExit.aspx" />
+    <Content Include="Pages\Journal\Exit\Pages.ascx" />
     <Content Include="Pages\Journal\OfTransport\ManageOfTransport.aspx" />
     <Content Include="Pages\Journal\OfTransport\OfTransportGrid.ascx" />
     <Content Include="Pages\Journal\OfTransport\OfTransportReportViewPopup.ascx" />
@@ -745,6 +747,13 @@
     <Compile Include="Pages\Journal\Accessories\AccessoriesMain.master.designer.cs">
       <DependentUpon>AccessoriesMain.master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Journal\Exit\EntranceGrid.ascx.cs">
+      <DependentUpon>EntranceGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\EntranceGrid.ascx.designer.cs">
+      <DependentUpon>EntranceGrid.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Journal\Exit\ExitGrid.ascx.cs">
       <DependentUpon>ExitGrid.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -765,6 +774,13 @@
     </Compile>
     <Compile Include="Pages\Journal\Exit\ManageExit.aspx.designer.cs">
       <DependentUpon>ManageExit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\Pages.ascx.cs">
+      <DependentUpon>Pages.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\Pages.ascx.designer.cs">
+      <DependentUpon>Pages.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Journal\OfTransport\ManageOfTransport.aspx.cs">
       <DependentUpon>ManageOfTransport.aspx</DependentUpon>

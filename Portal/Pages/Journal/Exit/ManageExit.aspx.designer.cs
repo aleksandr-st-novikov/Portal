@@ -22,12 +22,12 @@ namespace Portal.Pages.Journal.Exit {
         protected global::DevExpress.Web.ASPxLabel ASPxLabelDepartment;
         
         /// <summary>
-        /// ExitGrid control.
+        /// Pages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Pages.Journal.Exit.ExitGrid ExitGrid;
+        protected global::Portal.Pages.Journal.Exit.Pages Pages;
     }
 }
