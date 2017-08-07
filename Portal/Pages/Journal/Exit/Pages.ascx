@@ -4,17 +4,24 @@
 
 <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0">
     <TabPages>
-        <dx:TabPage Text="Согласование ВЫХОДОВ сотрудников">
+        <dx:TabPage Text="Согласование ВЫХОДОВ">
             <ContentCollection>
                 <dx:ContentControl runat="server">
                     <uc1:ExitGrid runat="server" ID="ExitGrid" />
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>
-        <dx:TabPage Text="Согласование ВХОДОВ сотрудников">
+        <dx:TabPage Text="Согласование ВХОДОВ">
             <ContentCollection>
                 <dx:ContentControl runat="server">
                     <uc1:EntranceGrid runat="server" id="EntranceGrid" />
+                </dx:ContentControl>
+            </ContentCollection>
+        </dx:TabPage>
+        <dx:TabPage Text="Настройки">
+            <ContentCollection>
+                <dx:ContentControl runat="server">
+                    
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>
