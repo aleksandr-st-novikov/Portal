@@ -9,9 +9,10 @@
         </dx:ASPxLabel>
         <dx:ASPxCallback ID="ASPxCallbackRefresh" runat="server" ClientInstanceName="ASPxClientCallbackRefresh" OnCallback="ASPxCallbackRefresh_Callback">
             <ClientSideEvents EndCallback="function(s, e) {
-	ASPxClientGridViewOfTransport.Refresh();
-}" />
+                ASPxClientGridViewOfTransport.Refresh();
+            }" />
         </dx:ASPxCallback>
+
         <table style="margin: 15px 0;">
             <tr>
                 <td>

@@ -1,5 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OfTransportGrid.ascx.cs" Inherits="Portal.Pages.Journal.OfTransport.OfTransportGrid" %>
+
 <dx:ASPxGridView ID="ASPxGridViewOfTransport" runat="server" AutoGenerateColumns="False" ClientInstanceName="ASPxClientGridViewOfTransport" DataSourceID="SqlDataSourceOfTransport" KeyFieldName="Id" OnRowInserting="ASPxGridViewOfTransport_RowInserting" Width="1200px">
+    <ClientSideEvents BeginCallback="function(s, e) {
+	if (e.command == 'STARTEDIT' || e.command == 'ADDNEWROW') {
+                    isDataEdit = true;
+                }
+                else {
+                    isDataEdit = false;
+                }
+}" />
     <SettingsEditing Mode="PopupEditForm">
     </SettingsEditing>
     <SettingsPopup>
@@ -15,23 +24,23 @@
     </StylesPopup>
     <SettingsBehavior ConfirmDelete="True" />
     <SettingsCommandButton>
-                <ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
-                <HideAdaptiveDetailButton ButtonType="Image"></HideAdaptiveDetailButton>
-                <NewButton>
-                    <Image ToolTip="Создать" IconID="actions_additem_16x16office2013">
-                    </Image>
-                </NewButton>
-                <EditButton>
-                    <Image ToolTip="Редактировать" IconID="edit_edit_16x16office2013" />
-                </EditButton>
-                <DeleteButton>
-                    <Image ToolTip="Удалить" IconID="actions_deletelist_16x16office2013" />
-                </DeleteButton>
-                <UpdateButton RenderMode="Button">
-                </UpdateButton>
-                <CancelButton RenderMode="Link">
-                </CancelButton>
-            </SettingsCommandButton>
+        <ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
+        <HideAdaptiveDetailButton ButtonType="Image"></HideAdaptiveDetailButton>
+        <NewButton>
+            <Image ToolTip="Создать" IconID="actions_additem_16x16office2013">
+            </Image>
+        </NewButton>
+        <EditButton>
+            <Image ToolTip="Редактировать" IconID="edit_edit_16x16office2013" />
+        </EditButton>
+        <DeleteButton>
+            <Image ToolTip="Удалить" IconID="actions_deletelist_16x16office2013" />
+        </DeleteButton>
+        <UpdateButton RenderMode="Button">
+        </UpdateButton>
+        <CancelButton RenderMode="Link">
+        </CancelButton>
+    </SettingsCommandButton>
     <Columns>
         <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonRenderMode="Image" ButtonType="Image" Width="30px">
             <HeaderStyle HorizontalAlign="Center" />
@@ -53,12 +62,12 @@
             </PropertiesComboBox>
         </dx:GridViewDataComboBoxColumn>
         <dx:GridViewDataComboBoxColumn Caption="Сопровождающий" FieldName="Attendant" VisibleIndex="7">
-            <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" DropDownStyle="DropDown" TextField="FIO" ValueField="Id">
+            <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" DropDownStyle="DropDown" TextField="FIO" ValueField="FIO">
             </PropertiesComboBox>
             <EditFormSettings ColumnSpan="2" />
         </dx:GridViewDataComboBoxColumn>
         <dx:GridViewDataComboBoxColumn Caption="Заказчик" FieldName="Customer" VisibleIndex="3" Width="250px">
-            <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" DropDownStyle="DropDown" TextField="FIO" ValueField="Id">
+            <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" DropDownStyle="DropDown" TextField="FIO" ValueField="FIO">
                 <ValidationSettings Display="Dynamic">
                     <RequiredField ErrorText="Обязательное поле" IsRequired="True" />
                 </ValidationSettings>
@@ -129,7 +138,10 @@
 
 <dx:ASPxTimer ID="ASPxTimerRefershOfTransport" runat="server" ClientInstanceName="ASPxClientTimerRefershOfTransport" Interval="30000">
     <ClientSideEvents Tick="function(s, e) {
-	ASPxClientGridViewOfTransport.Refresh();
+        if(isDataEdit == false)
+        {
+	        ASPxClientGridViewOfTransport.Refresh();
+        }
 }" />
 </dx:ASPxTimer>
 

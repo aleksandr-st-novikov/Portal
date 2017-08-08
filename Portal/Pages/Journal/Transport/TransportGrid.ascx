@@ -1,10 +1,23 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TransportGrid.ascx.cs" Inherits="Portal.Pages.Journal.Transport.TransportGrid" %>
+
 <dx:ASPxTimer ID="ASPxTimerTransport" runat="server">
     <ClientSideEvents Tick="function(s, e) {
-	ASPxClientGridViewTransport.Refresh();
+        if(isDataEdit == false)
+        {
+            ASPxClientGridViewTransport.Refresh();
+        }
 }" />
 </dx:ASPxTimer>
 <dx:ASPxGridView ID="ASPxGridViewTransport" runat="server" AutoGenerateColumns="False" ClientInstanceName="ASPxClientGridViewTransport" DataSourceID="SqlDataSourceTransport" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewTransport_InitNewRow" OnRowInserting="ASPxGridViewTransport_RowInserting">
+    <ClientSideEvents
+        BeginCallback="function(s, e) {
+            if (e.command == 'STARTEDIT' || e.command == 'ADDNEWROW') {
+                    isDataEdit = true;
+                }
+                else {
+                    isDataEdit = false;
+                }
+        }" />
     <SettingsPager PageSize="20">
     </SettingsPager>
     <SettingsEditing Mode="PopupEditForm">
@@ -81,9 +94,9 @@
         </dx:GridViewFormatConditionHighlight>
     </FormatConditions>
 </dx:ASPxGridView>
-<asp:SqlDataSource ID="SqlDataSourceTransport" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
-    DeleteCommand="DELETE FROM [Transport] WHERE [Id] = @Id" 
-    InsertCommand="INSERT INTO [Transport] ([Address], [DateTransport], [EmployeeId], [DepartmentId]) VALUES (@Address, @DateTransport, @EmployeeId, @DepartmentId)" 
+<asp:SqlDataSource ID="SqlDataSourceTransport" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"
+    DeleteCommand="DELETE FROM [Transport] WHERE [Id] = @Id"
+    InsertCommand="INSERT INTO [Transport] ([Address], [DateTransport], [EmployeeId], [DepartmentId]) VALUES (@Address, @DateTransport, @EmployeeId, @DepartmentId)"
     UpdateCommand="UPDATE [Transport] SET [Address] = @Address, [DateTransport] = @DateTransport, [EmployeeId] = @EmployeeId, [DepartmentId] = @DepartmentId WHERE [Id] = @Id" OnInit="SqlDataSourceTransport_Init">
     <DeleteParameters>
         <asp:Parameter Name="Id" Type="Int32" />

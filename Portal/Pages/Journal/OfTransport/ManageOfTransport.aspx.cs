@@ -36,6 +36,9 @@ namespace Portal.Pages.Journal.OfTransport
                 Session["DateFromOfTransport"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-20).ToString("yyyy-MM-dd 00:00:00"));
                 Session["DateToOfTransport"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(10).ToString("yyyy-MM-dd 23:59:59"));
             }
+
+            string scriptSetVar = @"var isDataEdit = false;";
+            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "SetVar", scriptSetVar, true);
         }
 
         protected void Page_PreRender(object sender, EventArgs e)

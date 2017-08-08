@@ -32,6 +32,9 @@ namespace Portal.Pages.Journal.Transport
                     ASPxTimerTransport.Interval = (constantContext.GetConstInt("TimeoutRefresh") == -1 ? Data.TimeoutRefresh : constantContext.GetConstInt("TimeoutRefresh")) * 1000;
                 }
             }
+
+            string scriptSetVar = @"var isDataEdit = false;";
+            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "SetVar", scriptSetVar, true);
         }
 
         protected void ASPxGridViewTransport_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -50,7 +53,7 @@ namespace Portal.Pages.Journal.Transport
 
         protected void SqlDataSourceEmployee_Init(object sender, EventArgs e)
         {
-            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход") 
+            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход")
                 || Context.User.IsInRole("Администраторы")
                 || Context.User.IsInRole("Журналы - Транспорт - Руководители - Все сотрудники"))
             {
@@ -64,7 +67,7 @@ namespace Portal.Pages.Journal.Transport
 
         protected void SqlDataSourceTransport_Init(object sender, EventArgs e)
         {
-            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход") 
+            if (Context.User.IsInRole("Журналы - Транспорт - Служебный вход")
                 || Context.User.IsInRole("Администраторы")
                 || Context.User.IsInRole("Журналы - Транспорт - Руководители - Все сотрудники"))
             {
@@ -97,7 +100,9 @@ namespace Portal.Pages.Journal.Transport
         {
             SqlDataSourceTransport.SelectCommand = "SELECT * FROM [Transport] INNER JOIN [Employee] ON [Transport].[EmployeeId] = [Employee].[Id] WHERE [Employee].[IsWork] = 1 AND (([Transport].[DateTransport] >= @DateTransport) AND ([Transport].[DateTransport] <= @DateTransport2))";
         }
+
         #endregion
+
 
     }
 }
