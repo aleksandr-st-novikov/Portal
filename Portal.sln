@@ -29,6 +29,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal.appPortal", "Portal.
 		{D02BB9AB-C54A-451D-84CF-DD51AC760D05} = {D02BB9AB-C54A-451D-84CF-DD51AC760D05}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B4C897D2-DABC-4C7C-BD66-D808A03C924D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal.UnitTest", "Portal.UnitTest\Portal.UnitTest.csproj", "{45D8ED0E-28DF-4C15-8DF8-E0CF0E7FD3EA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{869F5925-76C4-4AAC-A022-AA159D6954E7} = {869F5925-76C4-4AAC-A022-AA159D6954E7}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,8 +84,19 @@ Global
 		{D7F4BD22-BB49-4EA0-B99B-D8A2DD9DA114}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D7F4BD22-BB49-4EA0-B99B-D8A2DD9DA114}.Release|x86.ActiveCfg = Release|Any CPU
 		{D7F4BD22-BB49-4EA0-B99B-D8A2DD9DA114}.Release|x86.Build.0 = Release|Any CPU
+		{45D8ED0E-28DF-4C15-8DF8-E0CF0E7FD3EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45D8ED0E-28DF-4C15-8DF8-E0CF0E7FD3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45D8ED0E-28DF-4C15-8DF8-E0CF0E7FD3EA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{45D8ED0E-28DF-4C15-8DF8-E0CF0E7FD3EA}.Debug|x86.Build.0 = Debug|Any CPU
+		{45D8ED0E-28DF-4C15-8DF8-E0CF0E7FD3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45D8ED0E-28DF-4C15-8DF8-E0CF0E7FD3EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45D8ED0E-28DF-4C15-8DF8-E0CF0E7FD3EA}.Release|x86.ActiveCfg = Release|Any CPU
+		{45D8ED0E-28DF-4C15-8DF8-E0CF0E7FD3EA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{45D8ED0E-28DF-4C15-8DF8-E0CF0E7FD3EA} = {B4C897D2-DABC-4C7C-BD66-D808A03C924D}
 	EndGlobalSection
 EndGlobal
