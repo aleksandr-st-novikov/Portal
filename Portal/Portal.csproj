@@ -220,6 +220,7 @@
     <Content Include="Pages\Journal\Exit\ExitGrid.ascx" />
     <Content Include="Pages\Journal\Exit\ManageExit.aspx" />
     <Content Include="Pages\Journal\Exit\Pages.ascx" />
+    <Content Include="Pages\Journal\Exit\PurposeGrid.ascx" />
     <Content Include="Pages\Journal\OfTransport\ManageOfTransport.aspx" />
     <Content Include="Pages\Journal\OfTransport\OfTransportGrid.ascx" />
     <Content Include="Pages\Journal\OfTransport\OfTransportReportViewPopup.ascx" />
@@ -781,6 +782,13 @@
     </Compile>
     <Compile Include="Pages\Journal\Exit\Pages.ascx.designer.cs">
       <DependentUpon>Pages.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\PurposeGrid.ascx.cs">
+      <DependentUpon>PurposeGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\PurposeGrid.ascx.designer.cs">
+      <DependentUpon>PurposeGrid.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Journal\OfTransport\ManageOfTransport.aspx.cs">
       <DependentUpon>ManageOfTransport.aspx</DependentUpon>

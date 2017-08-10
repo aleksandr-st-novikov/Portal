@@ -13,13 +13,13 @@ namespace Portal.Pages.Journal.Exit {
     public partial class ExitGrid {
         
         /// <summary>
-        /// ASPxGridView1 control.
+        /// ASPxGridViewExit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
+        protected global::DevExpress.Web.ASPxGridView ASPxGridViewExit;
         
         /// <summary>
         /// SqlDataSourceExit control.
@@ -47,5 +47,23 @@ namespace Portal.Pages.Journal.Exit {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourcePetmitEmployee;
+        
+        /// <summary>
+        /// SqlDataSourceExitPurpose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceExitPurpose;
+        
+        /// <summary>
+        /// SqlDataSourceDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDepartment;
     }
 }

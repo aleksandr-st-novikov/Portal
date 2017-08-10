@@ -25,7 +25,11 @@ namespace Portal.Pages.Journal.Exit
             if (!Page.IsPostBack && !Page.IsCallback)
             {
                 using (DepartmentContext context = new DepartmentContext())
+                using (EmployeeContext employeeContext = new EmployeeContext())
                 {
+                    Employee employee = await employeeContext.GetEmployeeByUserAsync(User.Identity.Name);
+                    Session["PetmitEmployeeId"] = employee.Id;
+
                     Department department = await context.GetDepartmentByUserAsync(User.Identity.Name);
                     if (department != null)
                     {
@@ -41,6 +45,11 @@ namespace Portal.Pages.Journal.Exit
                         Session["DepartmentNode"] = String.Join(",", (await context.GetNodeDepartmentAsync(department.Id)).ToArray());
                     }
                 }
+
+                //Session["DateFromExit"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+                //Session["DateToExit"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
+                Session["DateFromExit"] = Convert.ToDateTime(DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd 00:00:00"));
+                Session["DateToExit"] = Convert.ToDateTime(DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd 23:59:59"));
             }
         }
 

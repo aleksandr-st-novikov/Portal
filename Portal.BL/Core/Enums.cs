@@ -23,8 +23,8 @@ namespace Portal.BL.Core
 
         public enum RunType
         {
-            Выход,
-            Вход
+            Exit,
+            Entrance
         }
     }
 }

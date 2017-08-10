@@ -38,5 +38,23 @@ namespace Portal.Pages.Journal.Exit {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Portal.Pages.Journal.Exit.EntranceGrid EntranceGrid;
+        
+        /// <summary>
+        /// ASPxLabel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel ASPxLabel1;
+        
+        /// <summary>
+        /// PurposeGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Pages.Journal.Exit.PurposeGrid PurposeGrid;
     }
 }
