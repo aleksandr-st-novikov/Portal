@@ -1,28 +1,29 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ExitGrid.ascx.cs" Inherits="Portal.Pages.Journal.Exit.ExitGrid" %>
-<dx:ASPxGridView ID="ASPxGridViewExit" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceExit" KeyFieldName="Id" Width="1200px" Font-Size="Small" ClientInstanceName="ASPxClientGridViewExit" OnRowInserting="ASPxGridViewExit_RowInserting" OnInitNewRow="ASPxGridViewExit_InitNewRow" OnStartRowEditing="ASPxGridViewExit_StartRowEditing">
+
+<dx:ASPxGridView ID="ASPxGridViewExit" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceExit" KeyFieldName="Id" Width="1200px" Font-Size="Small" ClientInstanceName="ASPxClientGridViewExit" OnRowInserting="ASPxGridViewExit_RowInserting" OnInitNewRow="ASPxGridViewExit_InitNewRow" OnStartRowEditing="ASPxGridViewExit_StartRowEditing" OnHtmlEditFormCreated="ASPxGridViewExit_HtmlEditFormCreated">
     <SettingsPopup>
         <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
     </SettingsPopup>
     <SettingsSearchPanel Visible="True" />
     <Templates>
         <EditForm>
-            <dx:ASPxCallbackPanel ID="ASPxCallbackPanelDescription" runat="server" Width="100%" ClientInstanceName="ASPxClientCallbackPanelDescription" OnCallback="ASPxCallbackPanelDescription_Callback">
+            <dx:ASPxCallbackPanel ID="ASPxCallbackPanelDescription" runat="server" Height="100px" Width="100%" ClientInstanceName="ASPxClientCallbackPanelDescription" OnCallback="ASPxCallbackPanelDescription_Callback">
                 <PanelCollection>
                     <dx:PanelContent runat="server">
                         <table style="margin: 0 17px 10px 0; height: 100px; width: 100%">
                             <tr>
                                 <td style="width: 204px; text-align: center;">
-                                    <dx:ASPxImage ID="ASPxImagePhoto" runat="server" ImageUrl="~\Content\Photo\Новиков Александр Станиставович.jpg" ShowLoadingImage="True" Width="120px">
+                                    <dx:ASPxImage ID="ASPxImagePhoto" runat="server" ShowLoadingImage="True" Width="120px">
                                     </dx:ASPxImage>
                                 </td>
                                 <td>
-                                    <dx:ASPxLabel ID="ASPxLabelFIO" runat="server" Font-Size="Large" Text="Новиков Александр Станиславович">
+                                    <dx:ASPxLabel ID="ASPxLabelFIO" runat="server" Font-Size="Large" Text="">
                                     </dx:ASPxLabel>
                                     <br />
-                                    <dx:ASPxLabel ID="ASPxLabelPosition" runat="server" Text="Начальник">
+                                    <dx:ASPxLabel ID="ASPxLabelPosition" runat="server" Text="">
                                     </dx:ASPxLabel>
                                     <br />
-                                    <dx:ASPxLabel ID="ASPxLabelDepartment" runat="server" Text="Отдел информационных технологий">
+                                    <dx:ASPxLabel ID="ASPxLabelDepartment" runat="server" Text="">
                                     </dx:ASPxLabel>
                                 </td>
                             </tr>
@@ -84,33 +85,33 @@
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataTextColumn FieldName="RunType" Visible="False" VisibleIndex="2">
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn Caption="Время выхода" FieldName="DateFrom" VisibleIndex="5">
+        <dx:GridViewDataDateColumn Caption="Время выхода" FieldName="DateFrom" VisibleIndex="5" Width="65px">
             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" UseMaskBehavior="True">
                 <TimeSectionProperties Visible="True">
                 </TimeSectionProperties>
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn Caption="Отметка выхода" FieldName="DateFromCheck" VisibleIndex="7">
+        <dx:GridViewDataDateColumn Caption="Отметка выхода" FieldName="DateFromCheck" VisibleIndex="7" Width="65px">
             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" UseMaskBehavior="True">
                 <TimeSectionProperties Visible="True">
                 </TimeSectionProperties>
             </PropertiesDateEdit>
             <EditFormSettings Visible="False" />
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn Caption="Время входа" FieldName="DateTo" VisibleIndex="6">
+        <dx:GridViewDataDateColumn Caption="Время входа" FieldName="DateTo" VisibleIndex="6" Width="65px">
             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="Custom" EditFormatString="dd/MM/yyyy HH:mm" NullText="до конца рабочего дня" UseMaskBehavior="True" NullDisplayText="до конца рабочего дня">
                 <TimeSectionProperties Visible="True">
                 </TimeSectionProperties>
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataDateColumn Caption="Отметка входа" FieldName="DateToCheck" VisibleIndex="8">
+        <dx:GridViewDataDateColumn Caption="Отметка входа" FieldName="DateToCheck" VisibleIndex="8" Width="65px">
             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" UseMaskBehavior="True">
                 <TimeSectionProperties Visible="True">
                 </TimeSectionProperties>
             </PropertiesDateEdit>
             <EditFormSettings Visible="False" />
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataComboBoxColumn Caption="Сотрудник" FieldName="EmployeeId" VisibleIndex="3">
+        <dx:GridViewDataComboBoxColumn Caption="Сотрудник" FieldName="EmployeeId" VisibleIndex="3" SortIndex="0" SortOrder="Ascending">
             <PropertiesComboBox DataSourceID="SqlDataSourceEmployee" TextField="FIO" ValueField="Id">
                 <ClientSideEvents SelectedIndexChanged="function(s, e) {
 	                ASPxClientCallbackPanelDescription.PerformCallback(s.GetValue());
@@ -144,6 +145,10 @@
             <EditFormSettings ColumnSpan="2" Visible="True" />
         </dx:GridViewDataMemoColumn>
     </Columns>
+    <Styles>
+        <Header Wrap="True">
+        </Header>
+    </Styles>
 </dx:ASPxGridView>
 <asp:SqlDataSource ID="SqlDataSourceExit" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"
     DeleteCommand="DELETE FROM [Exit] WHERE [Id] = @original_Id AND [RunType] = @original_RunType AND [DateFrom] = @original_DateFrom AND (([DateFromCheck] = @original_DateFromCheck) OR ([DateFromCheck] IS NULL AND @original_DateFromCheck IS NULL)) AND (([DateTo] = @original_DateTo) OR ([DateTo] IS NULL AND @original_DateTo IS NULL)) AND (([DateToCheck] = @original_DateToCheck) OR ([DateToCheck] IS NULL AND @original_DateToCheck IS NULL)) AND (([EmployeeId] = @original_EmployeeId) OR ([EmployeeId] IS NULL AND @original_EmployeeId IS NULL)) AND (([PetmitEmployeeId] = @original_PetmitEmployeeId) OR ([PetmitEmployeeId] IS NULL AND @original_PetmitEmployeeId IS NULL)) AND (([ExitPurposeId] = @original_ExitPurposeId) OR ([ExitPurposeId] IS NULL AND @original_ExitPurposeId IS NULL)) AND (([DescriptionOne] = @original_DescriptionOne) OR ([DescriptionOne] IS NULL AND @original_DescriptionOne IS NULL)) AND (([DescriptionTwo] = @original_DescriptionTwo) OR ([DescriptionTwo] IS NULL AND @original_DescriptionTwo IS NULL)) AND (([DepartmentId] = @original_DepartmentId) OR ([DepartmentId] IS NULL AND @original_DepartmentId IS NULL))"

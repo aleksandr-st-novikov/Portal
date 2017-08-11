@@ -13,6 +13,9 @@ namespace Portal.Pages.Journal.Exit
 {
     public partial class ExitGrid : System.Web.UI.UserControl
     {
+        ASPxLabel labelFIO, labelPosition, labelDepartment;
+        ASPxImage imagePhoto;
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }
@@ -40,7 +43,7 @@ namespace Portal.Pages.Journal.Exit
 
         private void DSExitSelectCommand()
         {
-            SqlDataSourceExit.SelectCommand = "SELECT * FROM [Exit] LEFT JOIN [Employee] ON [Exit].[EmployeeId] = [Employee].[Id] WHERE [Exit].[RunType] = 0 AND [Employee].[IsWork] = 1 AND (([Exit].[DateFrom] >= @DateFrom) AND ([Exit].[DateTo] IS NULL OR [Exit].[DateTo] <= @DateTo)) AND [Exit].[DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")";
+            SqlDataSourceExit.SelectCommand = "SELECT * FROM [Exit] LEFT JOIN [Employee] ON [Exit].[EmployeeId] = [Employee].[Id] WHERE [Exit].[RunType] = 0 AND [Employee].[IsWork] = 1 AND [Exit].[DateFrom] >= @DateFrom AND ([Exit].[DateTo] IS NULL OR [Exit].[DateTo] <= @DateTo) AND [Exit].[DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")";
         }
 
         private void DSExitAllSelectCommand()
@@ -91,6 +94,8 @@ namespace Portal.Pages.Journal.Exit
         protected void ASPxGridViewExit_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
             ASPxGridViewExit.SettingsText.PopupEditFormCaption = "Согласовать выход сотрудника";
+            GetElements(out labelFIO, out labelPosition, out labelDepartment, out imagePhoto);
+            labelFIO.Text = labelPosition.Text = labelDepartment.Text = imagePhoto.ImageUrl = String.Empty;
         }
 
         protected void ASPxGridViewExit_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
@@ -101,11 +106,30 @@ namespace Portal.Pages.Journal.Exit
         protected async void ASPxCallbackPanelDescription_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
         {
             int id = Int32.Parse(e.Parameter);
-            ASPxCallbackPanel cp = ASPxGridViewExit.FindEditFormTemplateControl("ASPxCallbackPanelDescription") as ASPxCallbackPanel;
-            ASPxLabel labelFIO = cp.FindControl("ASPxLabelFIO") as ASPxLabel;
-            ASPxLabel labelPosition = cp.FindControl("ASPxLabelPosition") as ASPxLabel;
-            ASPxLabel labelDepartment = cp.FindControl("ASPxLabelDepartment") as ASPxLabel;
-            ASPxImage imagePhoto = cp.FindControl("ASPxImagePhoto") as ASPxImage;
+            await SetElemetsValue(id);
+        }
+
+        protected void ASPxGridViewExit_HtmlEditFormCreated(object sender, ASPxGridViewEditFormEventArgs e)
+        {
+            if (ASPxGridViewExit.EditingRowVisibleIndex > -1)
+            {
+                int id = (int)ASPxGridViewExit.GetRowValues(ASPxGridViewExit.EditingRowVisibleIndex, "EmployeeId");
+
+                GetElements(out labelFIO, out labelPosition, out labelDepartment, out imagePhoto);
+                using (EmployeeContext employeeContext = new EmployeeContext())
+                {
+                    Employee employee = employeeContext.FindById(id);
+                    labelFIO.Text = employee.FullName;
+                    labelPosition.Text = employee.Position.Name;
+                    labelDepartment.Text = employee.Department.Name;
+                    imagePhoto.ImageUrl = @"~\Content\Photo\" + employee.FullName.Trim() + ".jpg";
+                }
+            }
+        }
+
+        private async System.Threading.Tasks.Task SetElemetsValue(int id)
+        {
+            GetElements(out labelFIO, out labelPosition, out labelDepartment, out imagePhoto);
             using (EmployeeContext employeeContext = new EmployeeContext())
             {
                 Employee employee = await employeeContext.FindByIdAsync(id);
@@ -114,6 +138,15 @@ namespace Portal.Pages.Journal.Exit
                 labelDepartment.Text = employee.Department.Name;
                 imagePhoto.ImageUrl = @"~\Content\Photo\" + employee.FullName.Trim() + ".jpg";
             }
+        }
+
+        private void GetElements(out ASPxLabel labelFIO, out ASPxLabel labelPosition, out ASPxLabel labelDepartment, out ASPxImage imagePhoto)
+        {
+            ASPxCallbackPanel cp = ASPxGridViewExit.FindEditFormTemplateControl("ASPxCallbackPanelDescription") as ASPxCallbackPanel;
+            labelFIO = cp.FindControl("ASPxLabelFIO") as ASPxLabel;
+            labelPosition = cp.FindControl("ASPxLabelPosition") as ASPxLabel;
+            labelDepartment = cp.FindControl("ASPxLabelDepartment") as ASPxLabel;
+            imagePhoto = cp.FindControl("ASPxImagePhoto") as ASPxImage;
         }
     }
 }
