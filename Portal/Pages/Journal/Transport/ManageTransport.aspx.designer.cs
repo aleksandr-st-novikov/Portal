@@ -10,7 +10,7 @@
 namespace Portal.Pages.Journal.Transport {
     
     
-    public partial class ManageTransport1 {
+    public partial class ManageTransport {
         
         /// <summary>
         /// ASPxLabelDepartment control.

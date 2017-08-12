@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Portal.Pages.Journal.Transport
 {
-    public partial class ManageTransport1 : System.Web.UI.Page
+    public partial class ManageTransport : System.Web.UI.Page
     {
         protected async void Page_Load(object sender, EventArgs e)
         {
@@ -37,8 +37,8 @@ namespace Portal.Pages.Journal.Transport
                         {
                             ASPxLabelDepartment.Text = "Транспорт (развоз сотрудников)";
                         }
-                        Session["DepartmentId"] = department.Id;
-                        Session["DepartmentNode"] = String.Join(",", (await context.GetNodeDepartmentAsync(department.Id)).ToArray());
+                        //Session["DepartmentId"] = department.Id;
+                        //Session["DepartmentNode"] = String.Join(",", (await context.GetNodeDepartmentAsync(department.Id)).ToArray());
                     }
                 }
 

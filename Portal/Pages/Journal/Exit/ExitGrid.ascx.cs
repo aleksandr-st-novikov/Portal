@@ -18,7 +18,20 @@ namespace Portal.Pages.Journal.Exit
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Context.User.IsInRole("Журналы - Согласование выходов - Руководители"))
+            {
+                DSExitSelectCommand();
+                DSEmployeeSelectCommand();
+            }
+            if (Context.User.IsInRole("Администраторы")
+                || Context.User.IsInRole("Журналы - Согласование выходов - Руководители - Все сотрудники")
+                || Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
+            {
+                DSExitAllSelectCommand();
+                DSEmployeeAllSelectCommand();
+            }
         }
+
 
         protected void SqlDataSourcePetmitEmployee_Init(object sender, EventArgs e)
         {
@@ -26,9 +39,10 @@ namespace Portal.Pages.Journal.Exit
         }
 
         #region SelectCommand
+
         private void DSEmployeeSelectCommand()
         {
-            SqlDataSourceEmployee.SelectCommand = "SELECT [Id], concat([Lastname], ' ', [Firstname], ' ', [Patronymic]) as FIO FROM [Employee] WHERE [DepartmentId] IN (" + (String)Session["DepartmentNode"] + ") AND [IsWork] = 1 ORDER BY concat([Lastname], ' ', [Firstname], ' ', [Patronymic])";
+            SqlDataSourceEmployee.SelectCommand = "SELECT [Id], concat([Lastname], ' ', [Firstname], ' ', [Patronymic]) as FIO FROM [Employee] WHERE [DepartmentId] IN (" + Session["DepartmentNode"] + ") AND [IsWork] = 1 ORDER BY concat([Lastname], ' ', [Firstname], ' ', [Patronymic])";
         }
 
         private void DSEmployeeAllSelectCommand()
@@ -43,13 +57,12 @@ namespace Portal.Pages.Journal.Exit
 
         private void DSExitSelectCommand()
         {
-            SqlDataSourceExit.SelectCommand = "SELECT * FROM [Exit] LEFT JOIN [Employee] ON [Exit].[EmployeeId] = [Employee].[Id] WHERE [Exit].[RunType] = 0 AND [Employee].[IsWork] = 1 AND [Exit].[DateFrom] >= @DateFrom AND ([Exit].[DateTo] IS NULL OR [Exit].[DateTo] <= @DateTo) AND [Exit].[DepartmentId] IN (" + (String)Session["DepartmentNode"] + ")";
+            SqlDataSourceExit.SelectCommand = "SELECT * FROM [Exit] LEFT JOIN [Employee] ON [Exit].[EmployeeId] = [Employee].[Id] WHERE [Exit].[RunType] = 0 AND [Employee].[IsWork] = 1 AND [Exit].[DateFrom] >= @DateFrom AND (([Exit].[DateTo] IS NULL) OR ([Exit].[DateTo] <= @DateTo)) AND ([Exit].[DepartmentId] IN (" + Session["DepartmentNode"] + "))";
         }
 
         private void DSExitAllSelectCommand()
         {
             SqlDataSourceExit.SelectCommand = "SELECT * FROM [Exit] LEFT JOIN [Employee] ON [Exit].[EmployeeId] = [Employee].[Id] WHERE [Exit].[RunType] = 0 AND [Employee].[IsWork] = 1 AND (([Exit].[DateFrom] >= @DateFrom) AND ([Exit].[DateTo] IS NULL OR ([Exit].[DateTo] <= @DateTo)))";
-            //SqlDataSourceExit.SelectCommand = "SELECT * FROM [Exit] LEFT JOIN [Employee] ON [Exit].[EmployeeId] = [Employee].[Id]";
         }
         #endregion
 
@@ -61,7 +74,7 @@ namespace Portal.Pages.Journal.Exit
             {
                 DSEmployeeAllSelectCommand();
             }
-            else
+            else if (Context.User.IsInRole("Журналы - Согласование выходов - Руководители"))
             {
                 DSEmployeeSelectCommand();
             }
@@ -75,7 +88,7 @@ namespace Portal.Pages.Journal.Exit
             {
                 DSExitAllSelectCommand();
             }
-            else
+            else if (Context.User.IsInRole("Журналы - Согласование выходов - Руководители"))
             {
                 DSExitSelectCommand();
             }
@@ -126,6 +139,7 @@ namespace Portal.Pages.Journal.Exit
                 }
             }
         }
+
 
         private async System.Threading.Tasks.Task SetElemetsValue(int id)
         {

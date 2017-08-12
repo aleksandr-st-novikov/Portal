@@ -11,7 +11,7 @@ namespace Portal.Pages.Journal.Exit
 {
     public partial class ManageExit : System.Web.UI.Page
     {
-        protected async void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!(User.IsInRole("Администраторы")
                 || Context.User.IsInRole("Журналы - Согласование выходов - Руководители")
@@ -24,25 +24,21 @@ namespace Portal.Pages.Journal.Exit
 
             if (!Page.IsPostBack && !Page.IsCallback)
             {
-                using (DepartmentContext context = new DepartmentContext())
+                using (DepartmentContext departmentContext = new DepartmentContext())
                 using (EmployeeContext employeeContext = new EmployeeContext())
                 {
-                    Employee employee = await employeeContext.GetEmployeeByUserAsync(User.Identity.Name);
-                    Session["PetmitEmployeeId"] = employee.Id;
-
-                    Department department = await context.GetDepartmentByUserAsync(User.Identity.Name);
-                    if (department != null)
+                    Employee employee = employeeContext.GetEmployeeByUser(Context.User.Identity.Name);
+                    if (employee != null)
                     {
+                        Session["PetmitEmployeeId"] = Session["EmployeeId"] = employee.Id;
                         if (User.IsInRole("Журналы - Согласование выходов - Руководители"))
                         {
-                            ASPxLabelDepartment.Text = "Согласование выходов/входов сотрудников: " + department.Name;
+                            ASPxLabelDepartment.Text = "Согласование выходов/входов сотрудников: " + employee.Department.Name;
                         }
                         else
                         {
                             ASPxLabelDepartment.Text = "Согласование выходов/входов сотрудников";
                         }
-                        Session["DepartmentId"] = department.Id;
-                        Session["DepartmentNode"] = String.Join(",", (await context.GetNodeDepartmentAsync(department.Id)).ToArray());
                     }
                 }
 
@@ -57,5 +53,6 @@ namespace Portal.Pages.Journal.Exit
         {
             Page.Title = "Журналы - Согласование выходов/входов сотрудников";
         }
+
     }
 }

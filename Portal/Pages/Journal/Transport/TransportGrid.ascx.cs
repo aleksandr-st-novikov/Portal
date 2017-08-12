@@ -56,7 +56,7 @@ namespace Portal.Pages.Journal.Transport
             {
                 DSEmployeeSelectCommandEntrance();
             }
-            else
+            else if (Context.User.IsInRole("Журналы - Транспорт - Руководители"))
             {
                 DSEmployeeSelectCommand();
             }
@@ -70,7 +70,7 @@ namespace Portal.Pages.Journal.Transport
             {
                 DSTransportSelectCommandEntrance();
             }
-            else
+            else if (Context.User.IsInRole("Журналы - Транспорт - Руководители"))
             {
                 DSTransportSelectCommand();
             }

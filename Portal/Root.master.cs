@@ -22,12 +22,16 @@ namespace Portal
             {
                 if (Context.User.Identity.IsAuthenticated)
                 {
-                    using (EmployeeContext context = new EmployeeContext())
+                    using (EmployeeContext employeeContext = new EmployeeContext())
+                    using (DepartmentContext departmentContext = new DepartmentContext())
                     {
-                        Employee employee = context.GetEmployeeByUser(Context.User.Identity.Name);
+                        Employee employee = employeeContext.GetEmployeeByUser(Context.User.Identity.Name);
                         if (employee != null)
                         {
                             ASPxLabelEmployee.Text = employee.Lastname + " " + employee.Firstname + " " + employee.Patronymic;
+                            Session["PetmitEmployeeId"] = Session["EmployeeId"] = employee.Id;
+                            Session["DepartmentId"] = employee.DepartmentId;
+                            Session["DepartmentNode"] = String.Join(",", (departmentContext.GetNodeDepartment((int)employee.DepartmentId)).ToArray());
                         }
                     }
                 }

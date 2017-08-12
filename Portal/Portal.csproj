@@ -226,6 +226,7 @@
     <Content Include="Pages\Journal\OfTransport\OfTransportReportViewPopup.ascx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
     <Content Include="Pages\Journal\Transport\TransportGrid.ascx" />
+    <Content Include="Pages\Journal\Transport\UserInfoPopup.ascx" />
     <Content Include="Pages\Journal\Transport_old\ManageTransport_old.aspx" />
     <Content Include="Pages\Maintenance\Contact\ManageContact.aspx" />
     <Content Include="Pages\Maintenance\Manual\AddManual.ascx" />
@@ -844,6 +845,13 @@
     </Compile>
     <Compile Include="Pages\Journal\Transport\TransportMain.master.designer.cs">
       <DependentUpon>TransportMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\UserInfoPopup.ascx.cs">
+      <DependentUpon>UserInfoPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\UserInfoPopup.ascx.designer.cs">
+      <DependentUpon>UserInfoPopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Journal\Transport_old\ManageTransport_old.aspx.cs">
       <DependentUpon>ManageTransport_old.aspx</DependentUpon>
