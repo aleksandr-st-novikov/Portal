@@ -18,11 +18,11 @@ namespace Portal.DAL
             if (String.IsNullOrEmpty(dataSource) || String.IsNullOrEmpty(initialCatalog) || String.IsNullOrEmpty(userId) || String.IsNullOrEmpty(password))
                 return;
 
-            _connectionString = @"Data Source = " + 
-                dataSource + "; Initial Catalog = " +
-                initialCatalog + "; Persist Security Info = False; User ID = " +
-                userId + "; Password=" +
-                password + "; Pooling = False; MultipleActiveResultSets = False; Encrypt = False; TrustServerCertificate = True";
+            _connectionString = @"Data Source=" + 
+                dataSource + ";Initial Catalog=" +
+                initialCatalog + ";Persist Security Info=False;User ID=" +
+                userId + ";Password=" +
+                password + ";Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=True";
 
             Con = new SqlConnection(_connectionString);
             Con.Open();

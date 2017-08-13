@@ -19,6 +19,11 @@ namespace Portal.BL.Core
         internal static int PostPort = 25;
         internal static string messageFrom = "portal@bobruysk.korona.by";
 
+        internal static string DB01KBDataSource = @"DB01KB\DB01KB";
+        internal static string DB01KBInitialCatalog = "TimeControl";
+        internal static string DB01KBUser = "administrator";
+        internal static string DB01KBPassword = "128500";
+
         //const
         public static string BirthdayMessageBottom = "Желаем хорошего настроения, успехов в «Короне», улыбок близких и коллег!!!";
         //const

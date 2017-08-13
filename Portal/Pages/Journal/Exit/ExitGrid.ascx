@@ -16,7 +16,7 @@
                                     <dx:ASPxImage ID="ASPxImagePhoto" runat="server" ShowLoadingImage="True" Width="120px">
                                     </dx:ASPxImage>
                                 </td>
-                                <td>
+                                <td style="width: 490px;">
                                     <dx:ASPxLabel ID="ASPxLabelFIO" runat="server" Font-Size="Large" Text="">
                                     </dx:ASPxLabel>
                                     <br />
@@ -24,6 +24,19 @@
                                     </dx:ASPxLabel>
                                     <br />
                                     <dx:ASPxLabel ID="ASPxLabelDepartment" runat="server" Text="">
+                                    </dx:ASPxLabel>
+                                </td>
+                                <td>
+                                    <dx:ASPxLabel ID="ASPxLabelJobTime" runat="server" Font-Bold="true" Font-Size="Small" Text="">
+                                    </dx:ASPxLabel>
+                                    <br />
+                                    <dx:ASPxLabel ID="ASPxLabelOne" runat="server" Font-Size="Small" Text="">
+                                    </dx:ASPxLabel>
+                                    <br />
+                                    <dx:ASPxLabel ID="ASPxLabelTwo" runat="server" Font-Size="Small" Text="">
+                                    </dx:ASPxLabel>
+                                    <br />
+                                    <dx:ASPxLabel ID="ASPxLabelThree" runat="server" Font-Size="Small" Text="">
                                     </dx:ASPxLabel>
                                 </td>
                             </tr>

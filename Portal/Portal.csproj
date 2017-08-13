@@ -438,6 +438,7 @@
     <Compile Include="Models\EFContext\DepartmentContext.cs" />
     <Compile Include="Models\EFContext\DepartmentWorkContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
+    <Compile Include="Models\EFContext\ExitContext.cs" />
     <Compile Include="Models\EFContext\JobContext.cs" />
     <Compile Include="Models\EFContext\JobResultContext.cs" />
     <Compile Include="Models\EFContext\ManualContext.cs" />
