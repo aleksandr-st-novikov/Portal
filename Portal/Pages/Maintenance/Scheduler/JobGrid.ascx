@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="JobGrid.ascx.cs" Inherits="Portal.Pages.Maintenance.Scheduler.JobGrid" %>
-<dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewJob_InitNewRow" OnRowInserting="ASPxGridViewJob_RowInserting" OnRowUpdating="ASPxGridViewJob_RowUpdating" ClientInstanceName="ASPxClientGridViewJob">
+<dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewJob_InitNewRow" OnRowInserting="ASPxGridViewJob_RowInserting" OnRowUpdating="ASPxGridViewJob_RowUpdating" ClientInstanceName="ASPxClientGridViewJob" Font-Size="Small">
     <ClientSideEvents CustomButtonClick="function(s, e) {
 	var key = s.GetRowKey(e.visibleIndex);
                     if(e.buttonID == 'Detail')
@@ -9,6 +9,7 @@
 }" />
     <SettingsEditing Mode="PopupEditForm">
     </SettingsEditing>
+    <Settings UseFixedTableLayout="True" />
     <SettingsBehavior ConfirmDelete="True" />
     <SettingsPopup>
         <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
@@ -21,7 +22,7 @@
         </EditForm>
     </StylesPopup>
     <Columns>
-        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonRenderMode="Image" ButtonType="Image" Width="20px">
+        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonRenderMode="Image" ButtonType="Image" Width="85px">
             <CustomButtons>
                 <dx:GridViewCommandColumnCustomButton ID="Detail" Text="История выполнения">
                     <Image IconID="actions_support_16x16devav">
@@ -35,21 +36,24 @@
         <dx:GridViewDataTextColumn Caption="Расписание" FieldName="CronSchedule" ShowInCustomizationForm="True" VisibleIndex="4" Width="200px">
             <EditFormSettings VisibleIndex="1" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataCheckColumn Caption="Активное" FieldName="IsActive" ShowInCustomizationForm="True" VisibleIndex="2" Width="50px">
+        <dx:GridViewDataCheckColumn Caption="Активное" FieldName="IsActive" ShowInCustomizationForm="True" VisibleIndex="2" Width="70px">
             <EditFormSettings VisibleIndex="4" />
         </dx:GridViewDataCheckColumn>
-        <dx:GridViewDataCheckColumn Caption="Выполняется" FieldName="IsAdded" ShowInCustomizationForm="True" VisibleIndex="6" Width="50px">
+        <dx:GridViewDataCheckColumn Caption="Выполняется" FieldName="IsAdded" ShowInCustomizationForm="True" VisibleIndex="6" Width="85px">
             <EditFormSettings Visible="False" />
         </dx:GridViewDataCheckColumn>
-        <dx:GridViewDataTextColumn Caption="Параметры" FieldName="Parameters" ShowInCustomizationForm="True" VisibleIndex="7">
-            <EditFormSettings ColumnSpan="2" VisibleIndex="3" />
-        </dx:GridViewDataTextColumn>
         <dx:GridViewDataComboBoxColumn Caption="Задание" FieldName="TaskListId" ShowInCustomizationForm="True" VisibleIndex="3" Width="400px" SortIndex="0" SortOrder="Ascending">
             <EditFormSettings VisibleIndex="0" />
         </dx:GridViewDataComboBoxColumn>
         <dx:GridViewDataComboBoxColumn Caption="Статус" FieldName="Status" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="5" Visible="False">
             <EditFormSettings Visible="False" />
         </dx:GridViewDataComboBoxColumn>
+        <dx:GridViewDataMemoColumn Caption="Параметры" FieldName="Parameters" VisibleIndex="7" Width="200px">
+            <PropertiesMemoEdit Columns="1" Height="200px">
+            </PropertiesMemoEdit>
+            <Settings AllowEllipsisInText="True" />
+            <EditFormSettings ColumnSpan="2" VisibleIndex="3" />
+        </dx:GridViewDataMemoColumn>
     </Columns>
     <SettingsCommandButton>
         <ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
