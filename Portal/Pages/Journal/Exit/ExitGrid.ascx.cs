@@ -104,6 +104,7 @@ namespace Portal.Pages.Journal.Exit
             {
                 e.NewValues["DepartmentId"] = employeeContext.FindById((int)e.NewValues["EmployeeId"]).DepartmentId;
             }
+            e.NewValues["DateCreate"] = DateTime.Now;
         }
 
         protected void ASPxGridViewExit_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
@@ -112,11 +113,80 @@ namespace Portal.Pages.Journal.Exit
             GetElements(out labelFIO, out labelPosition, out labelDepartment, out imagePhoto);
             labelFIO.Text = labelPosition.Text = labelDepartment.Text = imagePhoto.ImageUrl = labelJobTime.Text
                 = labelOne.Text = labelTwo.Text = labelThree.Text = String.Empty;
+            e.NewValues["DateFrom"] = DateTime.Now.AddMinutes(5);
         }
 
         protected void ASPxGridViewExit_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
         {
             ASPxGridViewExit.SettingsText.PopupEditFormCaption = "Согласование выхода сотрудника";
+        }
+
+        protected void ASPxGridViewExit_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
+        {
+            if (!Context.User.IsInRole("Администраторы"))
+            {
+                if (e.VisibleIndex > -1)
+                {
+                    DateTime dateFrom = (DateTime)ASPxGridViewExit.GetRowValues(e.VisibleIndex, "DateFrom");
+                    if (dateFrom <= DateTime.Now)
+                    {
+                        if (e.Column.FieldName == "DateFrom")
+                        {
+                            (e.Editor as ASPxDateEdit).Enabled = false;
+                        }
+                        if (e.Column.FieldName == "DateTo")
+                        {
+                            (e.Editor as ASPxDateEdit).Enabled = false;
+                        }
+                        if (e.Column.FieldName == "EmployeeId")
+                        {
+                            (e.Editor as ASPxComboBox).Enabled = false;
+                        }
+                        if (e.Column.FieldName == "ExitPurposeId")
+                        {
+                            (e.Editor as ASPxComboBox).Enabled = false;
+                        }
+                        if (e.Column.FieldName == "DescriptionOne")
+                        {
+                            (e.Editor as ASPxMemo).Enabled = false;
+                        }
+                    }
+                }
+
+                if (e.Column.FieldName == "DateFrom")
+                {
+                    (e.Editor as ASPxDateEdit).MinDate = DateTime.Now.Date;
+                }
+                if (e.Column.FieldName == "DateTo")
+                {
+                    (e.Editor as ASPxDateEdit).MinDate = DateTime.Now.Date;
+                }
+            }
+        }
+
+        protected void ASPxGridViewExit_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
+        {
+            if (!Context.User.IsInRole("Администраторы"))
+            {
+                if (e.VisibleIndex > -1)
+                {
+                    var obj = ASPxGridViewExit.GetRowValues(e.VisibleIndex, "DateFrom");
+                    if (obj != null)
+                    {
+                        DateTime dateFrom = (DateTime)obj;
+                        if (dateFrom <= DateTime.Now && e.ButtonType == ColumnCommandButtonType.Delete)
+                            e.Enabled = false;
+                    }
+                }
+            }
+        }
+
+        protected void ASPxGridViewExit_Init(object sender, EventArgs e)
+        {
+            if (Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
+            {
+                ASPxGridViewExit.FormatConditions.Clear();
+            }
         }
 
         protected async void ASPxCallbackPanelDescription_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
@@ -153,6 +223,7 @@ namespace Portal.Pages.Journal.Exit
                         labelThree.Text = tabelData[2];
                     }
                 }
+
             }
         }
 

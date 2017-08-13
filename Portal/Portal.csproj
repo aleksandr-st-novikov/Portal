@@ -430,6 +430,10 @@
     <Compile Include="Migrations\201708060702341_Exit.Designer.cs">
       <DependentUpon>201708060702341_Exit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708131734476_Exit1.cs" />
+    <Compile Include="Migrations\201708131734476_Exit1.Designer.cs">
+      <DependentUpon>201708131734476_Exit1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
@@ -1181,6 +1185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708060702341_Exit.resx">
       <DependentUpon>201708060702341_Exit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708131734476_Exit1.resx">
+      <DependentUpon>201708131734476_Exit1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Journal\OfTransport\OfTransportReport.resx">
       <DependentUpon>OfTransportReport.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ExitGrid.ascx.cs" Inherits="Portal.Pages.Journal.Exit.ExitGrid" %>
 
-<dx:ASPxGridView ID="ASPxGridViewExit" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceExit" KeyFieldName="Id" Width="1200px" Font-Size="Small" ClientInstanceName="ASPxClientGridViewExit" OnRowInserting="ASPxGridViewExit_RowInserting" OnInitNewRow="ASPxGridViewExit_InitNewRow" OnStartRowEditing="ASPxGridViewExit_StartRowEditing" OnHtmlEditFormCreated="ASPxGridViewExit_HtmlEditFormCreated">
+<dx:ASPxGridView ID="ASPxGridViewExit" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceExit" KeyFieldName="Id" Width="1200px" Font-Size="Small" ClientInstanceName="ASPxClientGridViewExit" OnRowInserting="ASPxGridViewExit_RowInserting" OnInitNewRow="ASPxGridViewExit_InitNewRow" OnStartRowEditing="ASPxGridViewExit_StartRowEditing" OnHtmlEditFormCreated="ASPxGridViewExit_HtmlEditFormCreated" OnCellEditorInitialize="ASPxGridViewExit_CellEditorInitialize" OnCommandButtonInitialize="ASPxGridViewExit_CommandButtonInitialize" OnInit="ASPxGridViewExit_Init">
     <SettingsPopup>
         <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
     </SettingsPopup>
@@ -99,9 +99,22 @@
         <dx:GridViewDataTextColumn FieldName="RunType" Visible="False" VisibleIndex="2">
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn Caption="Время выхода" FieldName="DateFrom" VisibleIndex="5" Width="65px">
-            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" UseMaskBehavior="True">
+            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" UseMaskBehavior="True" ClientInstanceName="ClientDateFrom" ShowOutOfRangeWarning="False">
+                <CalendarProperties FirstDayOfWeek="Monday">
+                </CalendarProperties>
                 <TimeSectionProperties Visible="True">
                 </TimeSectionProperties>
+                <ClientSideEvents Init="function(s, e) {
+	//s.SetMinDate(new Date());
+}" Validation="function(s, e) {
+                    if(isAdmin != true)
+                    {
+	e.isValid = (ClientDateFrom.GetDate() &gt;= new Date())
+                    }
+}" />
+                <ValidationSettings Display="Dynamic">
+                    <RequiredField ErrorText="Обязательное поле" IsRequired="True" />
+                </ValidationSettings>
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn Caption="Отметка выхода" FieldName="DateFromCheck" VisibleIndex="7" Width="65px">
@@ -112,9 +125,15 @@
             <EditFormSettings Visible="False" />
         </dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn Caption="Время входа" FieldName="DateTo" VisibleIndex="6" Width="65px">
-            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="Custom" EditFormatString="dd/MM/yyyy HH:mm" NullText="до конца рабочего дня" UseMaskBehavior="True" NullDisplayText="до конца рабочего дня">
+            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="Custom" EditFormatString="dd/MM/yyyy HH:mm" UseMaskBehavior="True" ClientInstanceName="ClientDateTo" ShowOutOfRangeWarning="False">
                 <TimeSectionProperties Visible="True">
                 </TimeSectionProperties>
+                <ClientSideEvents Validation="function(s, e) {
+	e.isValid = (ClientDateFrom.GetDate() &lt; ClientDateTo.GetDate())
+}" />
+                <ValidationSettings Display="Dynamic">
+                    <RequiredField ErrorText="Обязательное поле" IsRequired="True" />
+                </ValidationSettings>
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn Caption="Отметка входа" FieldName="DateToCheck" VisibleIndex="8" Width="65px">
@@ -129,6 +148,9 @@
                 <ClientSideEvents SelectedIndexChanged="function(s, e) {
 	                ASPxClientCallbackPanelDescription.PerformCallback(s.GetValue());
                 }" />
+                <ValidationSettings Display="Dynamic">
+                    <RequiredField ErrorText="Обязательное поле" IsRequired="True" />
+                </ValidationSettings>
             </PropertiesComboBox>
             <EditFormSettings ColumnSpan="2" />
         </dx:GridViewDataComboBoxColumn>
@@ -144,6 +166,9 @@
         </dx:GridViewDataComboBoxColumn>
         <dx:GridViewDataComboBoxColumn Caption="Цель выхода" FieldName="ExitPurposeId" VisibleIndex="4">
             <PropertiesComboBox DataSourceID="SqlDataSourceExitPurpose" TextField="Name" ValueField="Id">
+                <ValidationSettings Display="Dynamic">
+                    <RequiredField ErrorText="Обязательное поле" IsRequired="True" />
+                </ValidationSettings>
             </PropertiesComboBox>
             <EditFormSettings ColumnSpan="2" />
         </dx:GridViewDataComboBoxColumn>
@@ -158,6 +183,11 @@
             <EditFormSettings ColumnSpan="2" Visible="True" />
         </dx:GridViewDataMemoColumn>
     </Columns>
+    <FormatConditions>
+        <dx:GridViewFormatConditionHighlight ApplyToRow="True" Expression="[DateFrom] &lt;= Now()" FieldName="DateFrom" Format="Custom">
+            <RowStyle ForeColor="#999999" />
+        </dx:GridViewFormatConditionHighlight>
+    </FormatConditions>
     <Styles>
         <Header Wrap="True">
         </Header>

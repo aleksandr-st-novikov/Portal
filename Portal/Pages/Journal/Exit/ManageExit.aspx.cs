@@ -24,7 +24,6 @@ namespace Portal.Pages.Journal.Exit
 
             if (!Page.IsPostBack && !Page.IsCallback)
             {
-                using (DepartmentContext departmentContext = new DepartmentContext())
                 using (EmployeeContext employeeContext = new EmployeeContext())
                 {
                     Employee employee = employeeContext.GetEmployeeByUser(Context.User.Identity.Name);
@@ -47,6 +46,24 @@ namespace Portal.Pages.Journal.Exit
                 Session["DateFromExit"] = Convert.ToDateTime(DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd 00:00:00"));
                 Session["DateToExit"] = Convert.ToDateTime(DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd 23:59:59"));
             }
+
+
+            if (!ClientScript.IsClientScriptBlockRegistered("setVarAdmin"))
+            {
+                string script = "";
+                if (User.IsInRole("Администраторы"))
+                {
+                    script = @"var isAdmin = true;";
+                }
+                else if (Context.User.IsInRole("Журналы - Согласование выходов - Руководители")
+                        || Context.User.IsInRole("Журналы - Согласование выходов - Руководители - Все сотрудники")
+                        || Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
+                {
+                    script = @"var isAdmin = false;";
+                }
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "setVarAdmin", script, true);
+            }
+
         }
 
         protected void Page_PreRender(object sender, EventArgs e)

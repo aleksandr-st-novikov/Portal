@@ -31,6 +31,7 @@ namespace Portal.Models.Entities
 
         [StringLength(500)]
         public string DescriptionTwo { get; set; }
+        public DateTime DateCreate { get; set; }
     }
 
     public class ExitPurpose
