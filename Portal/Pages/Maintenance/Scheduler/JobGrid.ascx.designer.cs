@@ -38,5 +38,14 @@ namespace Portal.Pages.Maintenance.Scheduler {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceJob;
+        
+        /// <summary>
+        /// ASPxHintGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxHint ASPxHintGrid;
     }
 }

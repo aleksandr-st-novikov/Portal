@@ -15,7 +15,7 @@ namespace Portal.Pages.Maintenance.Scheduler
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            ((GridViewDataComboBoxColumn)ASPxGridViewJob.Columns["TaskListId"]).PropertiesComboBox.DataSource = TaskList.getTaskLists();
+            ((GridViewDataComboBoxColumn)ASPxGridViewJob.Columns["TaskListId"]).PropertiesComboBox.DataSource = TaskList.GetTaskLists();
             ((GridViewDataComboBoxColumn)ASPxGridViewJob.Columns["TaskListId"]).PropertiesComboBox.TextField = "Name";
             ((GridViewDataComboBoxColumn)ASPxGridViewJob.Columns["TaskListId"]).PropertiesComboBox.ValueField = "Id";
 
@@ -43,6 +43,15 @@ namespace Portal.Pages.Maintenance.Scheduler
         protected void ASPxGridViewJob_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             e.NewValues["IsAdded"] = false;
+        }
+
+
+        protected void ASPxGridViewJob_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
+        {
+            if (e.DataColumn.FieldName == "Parameters")
+            {
+                e.Cell.ToolTip = TaskList.GetParametersDescrive((int)e.GetValue("TaskListId"));
+            }
         }
     }
 }

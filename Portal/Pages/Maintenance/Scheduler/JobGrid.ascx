@@ -1,11 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="JobGrid.ascx.cs" Inherits="Portal.Pages.Maintenance.Scheduler.JobGrid" %>
-<dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewJob_InitNewRow" OnRowInserting="ASPxGridViewJob_RowInserting" OnRowUpdating="ASPxGridViewJob_RowUpdating" ClientInstanceName="ASPxClientGridViewJob" Font-Size="Small">
+<dx:ASPxGridView ID="ASPxGridViewJob" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceJob" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewJob_InitNewRow" OnRowInserting="ASPxGridViewJob_RowInserting" OnRowUpdating="ASPxGridViewJob_RowUpdating" ClientInstanceName="ASPxClientGridViewJob" Font-Size="Small" CssClass=".forHint" OnHtmlDataCellPrepared="ASPxGridViewJob_HtmlDataCellPrepared">
     <ClientSideEvents CustomButtonClick="function(s, e) {
 	var key = s.GetRowKey(e.visibleIndex);
                     if(e.buttonID == 'Detail')
                     {
                         ASPxClientCallbackPanelDetail.PerformCallback(key);
                     }
+}" EndCallback="function(s, e) {
+	ASPxClientHintGrid.Update();
 }" />
     <SettingsEditing Mode="PopupEditForm">
     </SettingsEditing>
@@ -112,3 +114,5 @@
         <asp:Parameter Name="original_Parameters" Type="String" />
     </UpdateParameters>
 </asp:SqlDataSource>
+<dx:ASPxHint ID="ASPxHintGrid" runat="server" ClientInstanceName="ASPxClientHintGrid" TargetSelector=".dxgv">
+</dx:ASPxHint>

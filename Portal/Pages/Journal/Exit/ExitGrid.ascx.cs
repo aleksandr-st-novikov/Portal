@@ -189,6 +189,14 @@ namespace Portal.Pages.Journal.Exit
             }
         }
 
+        protected void ASPxGridViewExit_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
+        {
+            if(e.DataColumn.FieldName == "EmployeeId")
+            {
+                e.Cell.ToolTip = e.GetValue("EmployeeId").ToString();
+            }
+        }
+
         protected async void ASPxCallbackPanelDescription_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
         {
             int id = Int32.Parse(e.Parameter);
@@ -205,6 +213,7 @@ namespace Portal.Pages.Journal.Exit
                 GetElements(out labelFIO, out labelPosition, out labelDepartment, out imagePhoto);
                 using (EmployeeContext employeeContext = new EmployeeContext())
                 using (ExitContext exitContext = new ExitContext())
+                using (ConstantContext constantContext = new ConstantContext())
                 {
                     Employee employee = employeeContext.FindById(employeeId);
                     Portal.Models.Entities.Exit exit = exitContext.FindById(id);
@@ -214,13 +223,17 @@ namespace Portal.Pages.Journal.Exit
                     labelDepartment.Text = employee.Department.Name;
                     imagePhoto.ImageUrl = @"~\Content\Photo\" + employee.FullName.Trim() + ".jpg";
 
-                    List<string> tabelData = GetDataTabel(exit.DateFrom, employee.TabN.Remove(employee.TabN.Length - 3));
-                    if (tabelData.Count() > 0)
+                    if ((String.IsNullOrEmpty(constantContext.GetConstString("ConnectToTabel")) ?
+                        Data.ConnectToTabel : constantContext.GetConstString("ConnectToTabel")) == "1")
                     {
-                        labelJobTime.Text = "Время работы по графику:";
-                        labelOne.Text = tabelData[0];
-                        labelTwo.Text = tabelData[1];
-                        labelThree.Text = tabelData[2];
+                        List<string> tabelData = GetDataTabel(exit.DateFrom, employee.TabN.Remove(employee.TabN.Length - 3));
+                        if (tabelData.Count() > 0)
+                        {
+                            labelJobTime.Text = "Время работы по графику:";
+                            labelOne.Text = tabelData[0];
+                            labelTwo.Text = tabelData[1];
+                            labelThree.Text = tabelData[2];
+                        }
                     }
                 }
 
@@ -231,8 +244,9 @@ namespace Portal.Pages.Journal.Exit
         private async System.Threading.Tasks.Task SetElemetsValue(int id)
         {
             GetElements(out labelFIO, out labelPosition, out labelDepartment, out imagePhoto);
-            
+
             using (EmployeeContext employeeContext = new EmployeeContext())
+            using (ConstantContext constantContext = new ConstantContext())
             {
                 Employee employee = await employeeContext.FindByIdAsync(id);
 
@@ -241,13 +255,17 @@ namespace Portal.Pages.Journal.Exit
                 labelDepartment.Text = employee.Department.Name;
                 imagePhoto.ImageUrl = @"~\Content\Photo\" + employee.FullName.Trim() + ".jpg";
 
-                List<string> tabelData = await GetDataTabelAsync(DateTime.Now, employee.TabN.Remove(employee.TabN.Length - 3));
-                if(tabelData.Count() > 0)
+                if ((String.IsNullOrEmpty(constantContext.GetConstString("ConnectToTabel")) ?
+                        Data.ConnectToTabel : constantContext.GetConstString("ConnectToTabel")) == "1")
                 {
-                    labelJobTime.Text = "Время работы по графику:";
-                    labelOne.Text = tabelData[0];
-                    labelTwo.Text = tabelData[1];
-                    labelThree.Text = tabelData[2];
+                    List<string> tabelData = await GetDataTabelAsync(DateTime.Now, employee.TabN.Remove(employee.TabN.Length - 3));
+                    if (tabelData.Count() > 0)
+                    {
+                        labelJobTime.Text = "Время работы по графику:";
+                        labelOne.Text = tabelData[0];
+                        labelTwo.Text = tabelData[1];
+                        labelThree.Text = tabelData[2];
+                    }
                 }
             }
         }

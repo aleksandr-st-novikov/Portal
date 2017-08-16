@@ -38,7 +38,7 @@ namespace Portal.Models.EFContext
 
         public string GetTaskName(int taskListId)
         {
-            return TaskList.getTaskLists().FirstOrDefault(t => t.Id == taskListId).Name;
+            return TaskList.GetTaskLists().FirstOrDefault(t => t.Id == taskListId).Name;
         }
     }
 }
