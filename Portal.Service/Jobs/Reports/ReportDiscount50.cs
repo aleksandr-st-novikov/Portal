@@ -41,12 +41,13 @@ namespace Portal.Service.Jobs.Reports
                     List<string> message = new List<string>();
                     foreach (var d in data)
                     {
-                        message.Add(d.Article.PadRight(10) + d.Name.PadRight(50) + d.Quantity.ToString().PadLeft(10));
+                        message.Add(d.Article.PadRight(10) + d.Name.PadRight(80) + d.Quantity.ToString().PadLeft(10));
                     }
                     //send message
                     await Task.Run(() => Portal.BL.Utils.Service.SendMessage(parametersList[2], "Реализация акционных товаров (-50%)", String.Join("\n", message), isBodyHtml: false));
 
-                    JobResult jobResultSuccess = new JobResult() { JobId = job.Id, DateRun = DateTime.Now, Result = Enums.Result.Success };
+                    JobResult jobResultSuccess = new JobResult() { JobId = job.Id, DateRun = DateTime.Now, Result = Enums.Result.Success,
+                        Description = context.NextFireTimeUtc.ToString() + (context.Result != null ? " / " + context.Result : "")};
                     await jobResultContext.AddOrUpdateAsync(jobResultSuccess, -1);
                 }
                 catch (Exception ex)
