@@ -20,5 +20,11 @@ namespace Portal.BL.Core
             Ready,
             Running
         }
+
+        public enum RunType
+        {
+            Exit,
+            Entrance
+        }
     }
 }

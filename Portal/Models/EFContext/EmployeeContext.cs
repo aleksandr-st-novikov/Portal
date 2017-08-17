@@ -13,7 +13,7 @@ namespace Portal.Models.EFContext
 {
     public class EmployeeContext : ApplicationContext<Employee>
     {
-        public async Task AddEmployeeAsync(MidData employee)
+        internal async Task AddEmployeeAsync(MidData employee)
         {
             Employee entry = await context.Employee.FirstOrDefaultAsync(d => d.TabN == employee.TabNo);
             Department department = await context.Department.FirstOrDefaultAsync(d => d.Name == employee.Department);
@@ -46,7 +46,7 @@ namespace Portal.Models.EFContext
             }
         }
 
-        public async Task SetFiredAsync(List<MidData> data)
+        internal async Task SetFiredAsync(List<MidData> data)
         {
             List<string> dataTabN = data.Select(d => d.TabNo).ToList();
             List<Employee> uv = await context.Employee.Where(e => !dataTabN.Contains(e.TabN)).ToListAsync();
@@ -56,7 +56,7 @@ namespace Portal.Models.EFContext
             }
         }
 
-        public async Task<Employee> GetEmployeeByUserAsync(string userName)
+        internal async Task<Employee> GetEmployeeByUserAsync(string userName)
         {
             ApplicationDbContext mycontext = new ApplicationDbContext();
             UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(mycontext);
@@ -66,7 +66,7 @@ namespace Portal.Models.EFContext
             return user.Employee;
         }
 
-        public Employee GetEmployeeByUser(string userName)
+        internal Employee GetEmployeeByUser(string userName)
         {
             ApplicationDbContext mycontext = new ApplicationDbContext();
             UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(mycontext);
@@ -76,7 +76,7 @@ namespace Portal.Models.EFContext
             return user.Employee;
         }
 
-        public List<BirthdayReportViewModel> GetEmployyeBirthday(DateTime dateFrom, DateTime dateTo)
+        internal List<BirthdayReportViewModel> GetEmployyeBirthday(DateTime dateFrom, DateTime dateTo)
         {
             return (from e in context.Employee
                     where e.IsWork == true

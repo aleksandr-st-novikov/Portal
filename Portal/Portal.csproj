@@ -216,11 +216,17 @@
     <Content Include="Pages\Journal\Admission\ManageAdmission.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessories.aspx" />
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
+    <Content Include="Pages\Journal\Exit\EntranceGrid.ascx" />
+    <Content Include="Pages\Journal\Exit\ExitGrid.ascx" />
+    <Content Include="Pages\Journal\Exit\ManageExit.aspx" />
+    <Content Include="Pages\Journal\Exit\Pages.ascx" />
+    <Content Include="Pages\Journal\Exit\PurposeGrid.ascx" />
     <Content Include="Pages\Journal\OfTransport\ManageOfTransport.aspx" />
     <Content Include="Pages\Journal\OfTransport\OfTransportGrid.ascx" />
     <Content Include="Pages\Journal\OfTransport\OfTransportReportViewPopup.ascx" />
     <Content Include="Pages\Journal\Transport\ManageTransport.aspx" />
     <Content Include="Pages\Journal\Transport\TransportGrid.ascx" />
+    <Content Include="Pages\Journal\Transport\UserInfoPopup.ascx" />
     <Content Include="Pages\Journal\Transport_old\ManageTransport_old.aspx" />
     <Content Include="Pages\Maintenance\Contact\ManageContact.aspx" />
     <Content Include="Pages\Maintenance\Manual\AddManual.ascx" />
@@ -266,6 +272,7 @@
     <Content Include="Pages\Journal\Transport\TransportMain.master" />
     <Content Include="Pages\Admin\Setting\SettingMain.master" />
     <Content Include="Pages\Maintenance\Scheduler\SchedulerMain.master" />
+    <Content Include="Pages\Journal\Exit\ExitMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -419,6 +426,14 @@
     <Compile Include="Migrations\201708021725093_JobResult.Designer.cs">
       <DependentUpon>201708021725093_JobResult.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708060702341_Exit.cs" />
+    <Compile Include="Migrations\201708060702341_Exit.Designer.cs">
+      <DependentUpon>201708060702341_Exit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708131734476_Exit1.cs" />
+    <Compile Include="Migrations\201708131734476_Exit1.Designer.cs">
+      <DependentUpon>201708131734476_Exit1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
@@ -427,6 +442,7 @@
     <Compile Include="Models\EFContext\DepartmentContext.cs" />
     <Compile Include="Models\EFContext\DepartmentWorkContext.cs" />
     <Compile Include="Models\EFContext\EmployeeContext.cs" />
+    <Compile Include="Models\EFContext\ExitContext.cs" />
     <Compile Include="Models\EFContext\JobContext.cs" />
     <Compile Include="Models\EFContext\JobResultContext.cs" />
     <Compile Include="Models\EFContext\ManualContext.cs" />
@@ -440,6 +456,7 @@
     <Compile Include="Models\Entities\DepartmentWork.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Accessories.cs" />
+    <Compile Include="Models\Entities\Exit.cs" />
     <Compile Include="Models\Entities\Job.cs" />
     <Compile Include="Models\Entities\Manual.cs" />
     <Compile Include="Models\Entities\OfTransport.cs" />
@@ -737,6 +754,48 @@
     <Compile Include="Pages\Journal\Accessories\AccessoriesMain.master.designer.cs">
       <DependentUpon>AccessoriesMain.master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Journal\Exit\EntranceGrid.ascx.cs">
+      <DependentUpon>EntranceGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\EntranceGrid.ascx.designer.cs">
+      <DependentUpon>EntranceGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\ExitGrid.ascx.cs">
+      <DependentUpon>ExitGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\ExitGrid.ascx.designer.cs">
+      <DependentUpon>ExitGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\ExitMain.master.cs">
+      <DependentUpon>ExitMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\ExitMain.master.designer.cs">
+      <DependentUpon>ExitMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\ManageExit.aspx.cs">
+      <DependentUpon>ManageExit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\ManageExit.aspx.designer.cs">
+      <DependentUpon>ManageExit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\Pages.ascx.cs">
+      <DependentUpon>Pages.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\Pages.ascx.designer.cs">
+      <DependentUpon>Pages.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\PurposeGrid.ascx.cs">
+      <DependentUpon>PurposeGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\PurposeGrid.ascx.designer.cs">
+      <DependentUpon>PurposeGrid.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Journal\OfTransport\ManageOfTransport.aspx.cs">
       <DependentUpon>ManageOfTransport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -791,6 +850,13 @@
     </Compile>
     <Compile Include="Pages\Journal\Transport\TransportMain.master.designer.cs">
       <DependentUpon>TransportMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\UserInfoPopup.ascx.cs">
+      <DependentUpon>UserInfoPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Transport\UserInfoPopup.ascx.designer.cs">
+      <DependentUpon>UserInfoPopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Journal\Transport_old\ManageTransport_old.aspx.cs">
       <DependentUpon>ManageTransport_old.aspx</DependentUpon>
@@ -1116,6 +1182,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708021725093_JobResult.resx">
       <DependentUpon>201708021725093_JobResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708060702341_Exit.resx">
+      <DependentUpon>201708060702341_Exit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708131734476_Exit1.resx">
+      <DependentUpon>201708131734476_Exit1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Journal\OfTransport\OfTransportReport.resx">
       <DependentUpon>OfTransportReport.cs</DependentUpon>

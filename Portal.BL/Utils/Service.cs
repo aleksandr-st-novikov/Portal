@@ -40,9 +40,10 @@ namespace Portal.BL.Utils
 
         public static string GetServiceStatus(string serviceName)
         {
-            ServiceController sc = new ServiceController(serviceName);
-            if(sc == null) return "Служба не установлена";
+            var serviceExists = ServiceController.GetServices().FirstOrDefault(s => s.ServiceName == serviceName);
+            if (serviceExists == null) return "Служба не установлена";
 
+            ServiceController sc = new ServiceController(serviceName);
             switch (sc.Status)
             {
                 case ServiceControllerStatus.Running:

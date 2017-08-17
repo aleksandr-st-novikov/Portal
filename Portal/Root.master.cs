@@ -22,12 +22,16 @@ namespace Portal
             {
                 if (Context.User.Identity.IsAuthenticated)
                 {
-                    using (EmployeeContext context = new EmployeeContext())
+                    using (EmployeeContext employeeContext = new EmployeeContext())
+                    using (DepartmentContext departmentContext = new DepartmentContext())
                     {
-                        Employee employee = context.GetEmployeeByUser(Context.User.Identity.Name);
+                        Employee employee = employeeContext.GetEmployeeByUser(Context.User.Identity.Name);
                         if (employee != null)
                         {
                             ASPxLabelEmployee.Text = employee.Lastname + " " + employee.Firstname + " " + employee.Patronymic;
+                            Session["PetmitEmployeeId"] = Session["EmployeeId"] = employee.Id;
+                            Session["DepartmentId"] = employee.DepartmentId;
+                            Session["DepartmentNode"] = String.Join(",", (departmentContext.GetNodeDepartment((int)employee.DepartmentId)).ToArray());
                         }
                     }
                 }
@@ -78,6 +82,28 @@ namespace Portal
                     };
                     itemJournalAccesories.Image.IconID = "print_tasklist_16x16devav";
                     itemJournal.Items.Add(itemJournalAccesories);
+                    itemJournal.DropDownMode = true;
+
+                    if (itemJournalAdd == false)
+                    {
+                        ASPxMenuMain.Items.Add(itemJournal);
+                        itemJournalAdd = true;
+                    }
+
+                };
+
+                if (Context.User.IsInRole("Администраторы")
+                    || Context.User.IsInRole("Журналы - Согласование выходов - Руководители")
+                    || Context.User.IsInRole("Журналы - Согласование выходов - Руководители - Все сотрудники")
+                    || Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
+                {
+                    DevExpress.Web.MenuItem itemJournalExit = new DevExpress.Web.MenuItem()
+                    {
+                        Text = "Согласование выходов/входов сотрудников",
+                        NavigateUrl = "~/Pages/Journal/Exit/ManageExit.aspx"
+                    };
+                    itemJournalExit.Image.IconID = "actions_newitem_16x16devav";
+                    itemJournal.Items.Add(itemJournalExit);
                     itemJournal.DropDownMode = true;
 
                     if (itemJournalAdd == false)
