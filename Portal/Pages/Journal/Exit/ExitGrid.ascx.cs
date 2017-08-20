@@ -1,5 +1,6 @@
 ﻿using DevExpress.Web;
 using Portal.BL.Core;
+using BLTabel = Portal.BL.Tabel;
 using Portal.BL.Tabel.Models;
 using Portal.Models.EFContext;
 using Portal.Models.Entities;
@@ -181,6 +182,14 @@ namespace Portal.Pages.Journal.Exit
             }
         }
 
+        protected void ASPxGridViewExit_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            using (EmployeeContext employeeContext = new EmployeeContext())
+            {
+                e.NewValues["DepartmentId"] = employeeContext.FindById((int)e.NewValues["EmployeeId"]).DepartmentId;
+            }
+        }
+
         protected void ASPxGridViewExit_Init(object sender, EventArgs e)
         {
             if (Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
@@ -193,32 +202,8 @@ namespace Portal.Pages.Journal.Exit
         {
             if (e.DataColumn.FieldName == "EmployeeId")
             {
-                using (EmployeeContext employeeContext = new EmployeeContext())
-                using (ExitContext exitContext = new ExitContext())
-                using (ConstantContext constantContext = new ConstantContext())
-                {
-                    Employee employee = employeeContext.FindById((int)e.GetValue("EmployeeId"));
-                    Employee permitEmployee = employeeContext.FindById((int)e.GetValue("PetmitEmployeeId"));
-                    Portal.Models.Entities.Exit exit = exitContext.FindById((int)e.GetValue("Id"));
-                    string content = "<div class=\"hintContent\">" +
-                        "<img src=\"" + "../../../Content/Photo/" + employee.FullName.Trim() + ".jpg\" />" +
-                        "<div> <strong>" + employee.FullName + "</strong></br>" + employee.Position.Name + "</br>" + employee.Department.ShortName + "</br></br>" +
-                        "Время выхода: " + exit.DateFrom.ToString("dd.MM.yyyy HH:mm") + "</br>" +
-                        "Время входа: " + ((DateTime)exit.DateTo).ToString("dd.MM.yyyy HH:mm") + "</br>" +
-                        "Согласовано: " + permitEmployee.FIO + "</br></br>";
-
-                    if ((String.IsNullOrEmpty(constantContext.GetConstString("ConnectToTabel")) ?
-                        Data.ConnectToTabel : constantContext.GetConstString("ConnectToTabel")) == "1")
-                    {
-                        List<string> tabelData = GetDataTabel(exit.DateFrom, employee.TabN.Remove(employee.TabN.Length - 3));
-                        if (tabelData.Count() > 0)
-                        {
-                            content += "Время работы по графику " + tabelData[0];
-                        }
-                    }
-                    content += "</div></div><div class=\"hintContent\">Комментарий: " + exit.DescriptionOne + "</br>Дополнение: " + exit.DescriptionTwo + "</div>";
-                    e.Cell.ToolTip = content;
-                }
+                e.Cell.Attributes.Add("onclick", "ASPxClientCallbackInfo.PerformCallback('" +
+                    e.GetValue("EmployeeId") + ";" + e.GetValue("PetmitEmployeeId") + ";" + e.GetValue("Id") + "');");
             }
         }
 
@@ -251,7 +236,7 @@ namespace Portal.Pages.Journal.Exit
                     if ((String.IsNullOrEmpty(constantContext.GetConstString("ConnectToTabel")) ?
                         Data.ConnectToTabel : constantContext.GetConstString("ConnectToTabel")) == "1")
                     {
-                        List<string> tabelData = GetDataTabel(exit.DateFrom, employee.TabN.Remove(employee.TabN.Length - 3));
+                        List<string> tabelData = BLTabel.Methods.GetDataTabel(exit.DateFrom, employee.TabN.Remove(employee.TabN.Length - 3));
                         if (tabelData.Count() > 0)
                         {
                             labelJobTime.Text = "Время работы по графику:";
@@ -283,7 +268,7 @@ namespace Portal.Pages.Journal.Exit
                 if ((String.IsNullOrEmpty(constantContext.GetConstString("ConnectToTabel")) ?
                         Data.ConnectToTabel : constantContext.GetConstString("ConnectToTabel")) == "1")
                 {
-                    List<string> tabelData = await GetDataTabelAsync(DateTime.Now, employee.TabN.Remove(employee.TabN.Length - 3));
+                    List<string> tabelData = await BLTabel.Methods.GetDataTabelAsync(DateTime.Now, employee.TabN.Remove(employee.TabN.Length - 3));
                     if (tabelData.Count() > 0)
                     {
                         labelJobTime.Text = "Время работы по графику:";
@@ -295,71 +280,7 @@ namespace Portal.Pages.Journal.Exit
             }
         }
 
-        private async Task<List<string>> GetDataTabelAsync(DateTime date, string tabN)
-        {
-            List<string> result = new List<string>();
-            List<DataTabelEmployee3Days> rawData = await BL.Tabel.Methods.GetDataTabelEmployee3DaysAsync(date, tabN);
-            if (rawData != null)
-            {
-                int count = 1;
-                string firstTime = "", secondTime = "";
-                foreach (var d in rawData)
-                {
-                    if (count % 2 != 0)
-                    {
-                        firstTime = d.DataTabel != null ? ((DateTime)d.DataTabel).ToString("HH:mm") : String.Empty;
-                    }
-                    else
-                    {
-                        secondTime = d.DataTabel != null ? ((DateTime)d.DataTabel).ToString("HH:mm") : String.Empty;
-                        if (String.IsNullOrEmpty(firstTime))
-                        {
-                            result.Add(date.ToShortDateString() + ": " + "Выходной");
-                        }
-                        else
-                        {
-                            result.Add(date.ToShortDateString() + ": " + firstTime + " - " + secondTime);
-                        }
-                        date = date.AddDays(1);
-                    }
-                    count++;
-                }
-            }
-            return result;
-        }
-
-        private List<string> GetDataTabel(DateTime date, string tabN)
-        {
-            List<string> result = new List<string>();
-            List<DataTabelEmployee3Days> rawData = BL.Tabel.Methods.GetDataTabelEmployee3Days(date, tabN);
-            if (rawData.Count() > 0)
-            {
-                int count = 1;
-                string firstTime = "", secondTime = "";
-                foreach (var d in rawData)
-                {
-                    if (count % 2 != 0)
-                    {
-                        firstTime = d.DataTabel != null ? ((DateTime)d.DataTabel).ToString("HH:mm") : String.Empty;
-                    }
-                    else
-                    {
-                        secondTime = d.DataTabel != null ? ((DateTime)d.DataTabel).ToString("HH:mm") : String.Empty;
-                        if (String.IsNullOrEmpty(firstTime))
-                        {
-                            result.Add(date.ToShortDateString() + ": " + "Выходной");
-                        }
-                        else
-                        {
-                            result.Add(date.ToShortDateString() + ": " + firstTime + " - " + secondTime);
-                        }
-                        date = date.AddDays(1);
-                    }
-                    count++;
-                }
-            }
-            return result;
-        }
+        
 
         private void GetElements(out ASPxLabel labelFIO, out ASPxLabel labelPosition, out ASPxLabel labelDepartment, out ASPxImage imagePhoto)
         {

@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ExitGrid.ascx.cs" Inherits="Portal.Pages.Journal.Exit.ExitGrid" %>
+<%@ Register Src="~/Pages/Journal/Exit/InfoPopup.ascx" TagPrefix="uc1" TagName="InfoPopup" %>
 
-<dx:ASPxGridView ID="ASPxGridViewExit" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceExit" KeyFieldName="Id" Width="1200px" Font-Size="Small" ClientInstanceName="ASPxClientGridViewExit" OnRowInserting="ASPxGridViewExit_RowInserting" OnInitNewRow="ASPxGridViewExit_InitNewRow" OnStartRowEditing="ASPxGridViewExit_StartRowEditing" OnHtmlEditFormCreated="ASPxGridViewExit_HtmlEditFormCreated" OnCellEditorInitialize="ASPxGridViewExit_CellEditorInitialize" OnCommandButtonInitialize="ASPxGridViewExit_CommandButtonInitialize" OnInit="ASPxGridViewExit_Init" OnHtmlDataCellPrepared="ASPxGridViewExit_HtmlDataCellPrepared">
+<dx:ASPxGridView ID="ASPxGridViewExit" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceExit" KeyFieldName="Id" Width="1200px" Font-Size="Small" ClientInstanceName="ASPxClientGridViewExit" OnRowInserting="ASPxGridViewExit_RowInserting" OnInitNewRow="ASPxGridViewExit_InitNewRow" OnStartRowEditing="ASPxGridViewExit_StartRowEditing" OnHtmlEditFormCreated="ASPxGridViewExit_HtmlEditFormCreated" OnCellEditorInitialize="ASPxGridViewExit_CellEditorInitialize" OnCommandButtonInitialize="ASPxGridViewExit_CommandButtonInitialize" OnInit="ASPxGridViewExit_Init" OnHtmlDataCellPrepared="ASPxGridViewExit_HtmlDataCellPrepared" OnRowUpdating="ASPxGridViewExit_RowUpdating">
     <SettingsPopup>
         <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
     </SettingsPopup>
@@ -268,6 +269,7 @@
 
 <asp:SqlDataSource ID="SqlDataSourceExitPurpose" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT * FROM [ExitPurpose] ORDER BY [Name]"></asp:SqlDataSource>
 <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], [ShortName] FROM [Department] ORDER BY [ShortName]"></asp:SqlDataSource>
-<dx:ASPxHint ID="ASPxHintInfo" runat="server" ClientInstanceName="ASPxClientHintInfo" Position="Right" TargetSelector=".dxgv" Theme="Metropolis" TriggerAction="Click">
+<dx:ASPxHint ID="ASPxHintInfo" runat="server" ClientInstanceName="ASPxClientHintInfo" Position="Right" TargetSelector=".dxgv" Theme="Metropolis" TriggerAction="None">
 </dx:ASPxHint>
 
+<uc1:InfoPopup runat="server" id="InfoPopup" />

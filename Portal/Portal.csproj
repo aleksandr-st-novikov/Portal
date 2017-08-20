@@ -24,6 +24,7 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <UpgradeBackupLocation />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -218,6 +219,7 @@
     <Content Include="Pages\Journal\Accessories\ManageAccessoriesType.aspx" />
     <Content Include="Pages\Journal\Exit\EntranceGrid.ascx" />
     <Content Include="Pages\Journal\Exit\ExitGrid.ascx" />
+    <Content Include="Pages\Journal\Exit\InfoPopup.ascx" />
     <Content Include="Pages\Journal\Exit\ManageExit.aspx" />
     <Content Include="Pages\Journal\Exit\Pages.ascx" />
     <Content Include="Pages\Journal\Exit\PurposeGrid.ascx" />
@@ -774,6 +776,13 @@
     </Compile>
     <Compile Include="Pages\Journal\Exit\ExitMain.master.designer.cs">
       <DependentUpon>ExitMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\InfoPopup.ascx.cs">
+      <DependentUpon>InfoPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Journal\Exit\InfoPopup.ascx.designer.cs">
+      <DependentUpon>InfoPopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Journal\Exit\ManageExit.aspx.cs">
       <DependentUpon>ManageExit.aspx</DependentUpon>

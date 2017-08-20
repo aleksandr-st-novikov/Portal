@@ -216,5 +216,71 @@ namespace Portal.BL.Tabel
                 return data;
             }
         }
+
+        public static async Task<List<string>> GetDataTabelAsync(DateTime date, string tabN)
+        {
+            List<string> result = new List<string>();
+            List<DataTabelEmployee3Days> rawData = await BL.Tabel.Methods.GetDataTabelEmployee3DaysAsync(date, tabN);
+            if (rawData != null)
+            {
+                int count = 1;
+                string firstTime = "", secondTime = "";
+                foreach (var d in rawData)
+                {
+                    if (count % 2 != 0)
+                    {
+                        firstTime = d.DataTabel != null ? ((DateTime)d.DataTabel).ToString("HH:mm") : String.Empty;
+                    }
+                    else
+                    {
+                        secondTime = d.DataTabel != null ? ((DateTime)d.DataTabel).ToString("HH:mm") : String.Empty;
+                        if (String.IsNullOrEmpty(firstTime))
+                        {
+                            result.Add(date.ToShortDateString() + ": " + "Выходной");
+                        }
+                        else
+                        {
+                            result.Add(date.ToShortDateString() + ": " + firstTime + " - " + secondTime);
+                        }
+                        date = date.AddDays(1);
+                    }
+                    count++;
+                }
+            }
+            return result;
+        }
+
+        public static List<string> GetDataTabel(DateTime date, string tabN)
+        {
+            List<string> result = new List<string>();
+            List<DataTabelEmployee3Days> rawData = BL.Tabel.Methods.GetDataTabelEmployee3Days(date, tabN);
+            if (rawData.Count() > 0)
+            {
+                int count = 1;
+                string firstTime = "", secondTime = "";
+                foreach (var d in rawData)
+                {
+                    if (count % 2 != 0)
+                    {
+                        firstTime = d.DataTabel != null ? ((DateTime)d.DataTabel).ToString("HH:mm") : String.Empty;
+                    }
+                    else
+                    {
+                        secondTime = d.DataTabel != null ? ((DateTime)d.DataTabel).ToString("HH:mm") : String.Empty;
+                        if (String.IsNullOrEmpty(firstTime))
+                        {
+                            result.Add(date.ToShortDateString() + ": " + "Выходной");
+                        }
+                        else
+                        {
+                            result.Add(date.ToShortDateString() + ": " + firstTime + " - " + secondTime);
+                        }
+                        date = date.AddDays(1);
+                    }
+                    count++;
+                }
+            }
+            return result;
+        }
     }
 }

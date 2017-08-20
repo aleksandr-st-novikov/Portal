@@ -74,5 +74,14 @@ namespace Portal.Pages.Journal.Exit {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxHint ASPxHintInfo;
+        
+        /// <summary>
+        /// InfoPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Portal.Pages.Journal.Exit.InfoPopup InfoPopup;
     }
 }
