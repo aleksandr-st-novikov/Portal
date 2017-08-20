@@ -30,6 +30,7 @@ img[class^="dx"] /*Bootstrap correction*/ {
 .hintContent {
     display: table;
     max-width:550px;
+    color: #484848;
 }
 
     .hintContent > img {

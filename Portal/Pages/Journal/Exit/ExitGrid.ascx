@@ -6,10 +6,6 @@
         <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
     </SettingsPopup>
     <SettingsSearchPanel Visible="True" />
-    <ClientSideEvents EndCallback="function(s, e) {
-	ASPxClientHintInfo.Update();
-}" BeginCallback="function(s, e) {
-	}" />
     <Templates>
         <EditForm>
             <dx:ASPxCallbackPanel ID="ASPxCallbackPanelDescription" runat="server" Height="100px" Width="100%" ClientInstanceName="ASPxClientCallbackPanelDescription" OnCallback="ASPxCallbackPanelDescription_Callback">
@@ -93,7 +89,7 @@
         </EditForm>
     </StylesPopup>
     <Columns>
-        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonRenderMode="Image" ButtonType="Image">
+        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonRenderMode="Image" ButtonType="Image" Caption=" ">
             <CellStyle>
                 <Paddings PaddingBottom="3px" PaddingTop="3px" />
             </CellStyle>
@@ -269,7 +265,5 @@
 
 <asp:SqlDataSource ID="SqlDataSourceExitPurpose" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT * FROM [ExitPurpose] ORDER BY [Name]"></asp:SqlDataSource>
 <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], [ShortName] FROM [Department] ORDER BY [ShortName]"></asp:SqlDataSource>
-<dx:ASPxHint ID="ASPxHintInfo" runat="server" ClientInstanceName="ASPxClientHintInfo" Position="Right" TargetSelector=".dxgv" Theme="Metropolis" TriggerAction="None">
-</dx:ASPxHint>
 
 <uc1:InfoPopup runat="server" id="InfoPopup" />

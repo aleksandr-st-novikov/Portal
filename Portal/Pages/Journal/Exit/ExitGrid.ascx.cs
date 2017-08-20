@@ -120,6 +120,17 @@ namespace Portal.Pages.Journal.Exit
         protected void ASPxGridViewExit_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
         {
             ASPxGridViewExit.SettingsText.PopupEditFormCaption = "Согласование выхода сотрудника";
+
+            if (Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
+            {
+                ((GridViewDataColumn)ASPxGridViewExit.Columns["DateFromCheck"]).EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.True;
+                ((GridViewDataColumn)ASPxGridViewExit.Columns["DateToCheck"]).EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.True;
+                ((GridViewDataColumn)ASPxGridViewExit.Columns["DescriptionOne"]).CellStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#BBBBBB");
+                ((GridViewDataColumn)ASPxGridViewExit.Columns["DescriptionTwo"]).EditFormCaptionStyle.ForeColor
+                    = ((GridViewDataColumn)ASPxGridViewExit.Columns["DateFromCheck"]).EditFormCaptionStyle.ForeColor
+                    = ((GridViewDataColumn)ASPxGridViewExit.Columns["DateToCheck"]).EditFormCaptionStyle.ForeColor 
+                    = System.Drawing.ColorTranslator.FromHtml("#484848");
+            }
         }
 
         protected void ASPxGridViewExit_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
@@ -150,6 +161,7 @@ namespace Portal.Pages.Journal.Exit
                         if (e.Column.FieldName == "DescriptionOne")
                         {
                             (e.Editor as ASPxMemo).Enabled = false;
+                            (e.Editor as ASPxMemo).ForeColor = System.Drawing.ColorTranslator.FromHtml("#BBBBBB");
                         }
                     }
                 }
@@ -167,6 +179,12 @@ namespace Portal.Pages.Journal.Exit
 
         protected void ASPxGridViewExit_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
         {
+            if (Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
+            {
+                if (e.ButtonType == ColumnCommandButtonType.New || e.ButtonType == ColumnCommandButtonType.Delete)
+                    e.Visible = false;
+            }
+
             if (!Context.User.IsInRole("Администраторы"))
             {
                 if (e.VisibleIndex > -1)
@@ -192,10 +210,10 @@ namespace Portal.Pages.Journal.Exit
 
         protected void ASPxGridViewExit_Init(object sender, EventArgs e)
         {
-            if (Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
-            {
-                ASPxGridViewExit.FormatConditions.Clear();
-            }
+            //if (Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
+            //{
+            //    ASPxGridViewExit.FormatConditions.Clear();
+            //}
         }
 
         protected void ASPxGridViewExit_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
@@ -280,7 +298,7 @@ namespace Portal.Pages.Journal.Exit
             }
         }
 
-        
+
 
         private void GetElements(out ASPxLabel labelFIO, out ASPxLabel labelPosition, out ASPxLabel labelDepartment, out ASPxImage imagePhoto)
         {

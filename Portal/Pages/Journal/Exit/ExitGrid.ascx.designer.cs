@@ -67,15 +67,6 @@ namespace Portal.Pages.Journal.Exit {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDepartment;
         
         /// <summary>
-        /// ASPxHintInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxHint ASPxHintInfo;
-        
-        /// <summary>
         /// InfoPopup control.
         /// </summary>
         /// <remarks>
