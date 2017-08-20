@@ -47,7 +47,7 @@ namespace Portal.Service.Jobs.Reports
                     await Task.Run(() => Portal.BL.Utils.Service.SendMessage(parametersList[2], "Реализация акционных товаров (-50%)", String.Join("\n", message), isBodyHtml: false));
 
                     JobResult jobResultSuccess = new JobResult() { JobId = job.Id, DateRun = DateTime.Now, Result = Enums.Result.Success,
-                        Description = context.NextFireTimeUtc.ToString() + (context.Result != null ? " / " + context.Result : "")};
+                        Description = context.NextFireTimeUtc.Value.ToLocalTime().ToString() + (context.Result != null ? " / " + context.Result : "")};
                     await jobResultContext.AddOrUpdateAsync(jobResultSuccess, -1);
                 }
                 catch (Exception ex)

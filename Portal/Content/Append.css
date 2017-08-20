@@ -26,3 +26,20 @@ img[class^="dx"] /*Bootstrap correction*/ {
 .input-margin-bottom {
     margin-bottom: 10px;
 }
+
+.hintContent {
+    display: table;
+    max-width:550px;
+}
+
+    .hintContent > img {
+        width: 180px;
+        display: table-cell;
+        margin-right: 10px;
+        margin-bottom:10px;
+    }
+
+    .hintContent > div {
+        display: table-cell;
+        vertical-align: top;
+    }

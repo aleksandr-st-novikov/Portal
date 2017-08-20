@@ -7,7 +7,8 @@
     <SettingsSearchPanel Visible="True" />
     <ClientSideEvents EndCallback="function(s, e) {
 	ASPxClientHintInfo.Update();
-}" />
+}" BeginCallback="function(s, e) {
+	}" />
     <Templates>
         <EditForm>
             <dx:ASPxCallbackPanel ID="ASPxCallbackPanelDescription" runat="server" Height="100px" Width="100%" ClientInstanceName="ASPxClientCallbackPanelDescription" OnCallback="ASPxCallbackPanelDescription_Callback">
@@ -267,6 +268,6 @@
 
 <asp:SqlDataSource ID="SqlDataSourceExitPurpose" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT * FROM [ExitPurpose] ORDER BY [Name]"></asp:SqlDataSource>
 <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], [ShortName] FROM [Department] ORDER BY [ShortName]"></asp:SqlDataSource>
-<dx:ASPxHint ID="ASPxHintInfo" runat="server" ClientInstanceName="ASPxClientHintInfo" Position="Right" TargetSelector=".dxgv">
+<dx:ASPxHint ID="ASPxHintInfo" runat="server" ClientInstanceName="ASPxClientHintInfo" Position="Right" TargetSelector=".dxgv" Theme="Metropolis" TriggerAction="Click">
 </dx:ASPxHint>
 

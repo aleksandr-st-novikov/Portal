@@ -191,9 +191,34 @@ namespace Portal.Pages.Journal.Exit
 
         protected void ASPxGridViewExit_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
         {
-            if(e.DataColumn.FieldName == "EmployeeId")
+            if (e.DataColumn.FieldName == "EmployeeId")
             {
-                e.Cell.ToolTip = e.GetValue("EmployeeId").ToString();
+                using (EmployeeContext employeeContext = new EmployeeContext())
+                using (ExitContext exitContext = new ExitContext())
+                using (ConstantContext constantContext = new ConstantContext())
+                {
+                    Employee employee = employeeContext.FindById((int)e.GetValue("EmployeeId"));
+                    Employee permitEmployee = employeeContext.FindById((int)e.GetValue("PetmitEmployeeId"));
+                    Portal.Models.Entities.Exit exit = exitContext.FindById((int)e.GetValue("Id"));
+                    string content = "<div class=\"hintContent\">" +
+                        "<img src=\"" + "../../../Content/Photo/" + employee.FullName.Trim() + ".jpg\" />" +
+                        "<div> <strong>" + employee.FullName + "</strong></br>" + employee.Position.Name + "</br>" + employee.Department.ShortName + "</br></br>" +
+                        "Время выхода: " + exit.DateFrom.ToString("dd.MM.yyyy HH:mm") + "</br>" +
+                        "Время входа: " + ((DateTime)exit.DateTo).ToString("dd.MM.yyyy HH:mm") + "</br>" +
+                        "Согласовано: " + permitEmployee.FIO + "</br></br>";
+
+                    if ((String.IsNullOrEmpty(constantContext.GetConstString("ConnectToTabel")) ?
+                        Data.ConnectToTabel : constantContext.GetConstString("ConnectToTabel")) == "1")
+                    {
+                        List<string> tabelData = GetDataTabel(exit.DateFrom, employee.TabN.Remove(employee.TabN.Length - 3));
+                        if (tabelData.Count() > 0)
+                        {
+                            content += "Время работы по графику " + tabelData[0];
+                        }
+                    }
+                    content += "</div></div><div class=\"hintContent\">Комментарий: " + exit.DescriptionOne + "</br>Дополнение: " + exit.DescriptionTwo + "</div>";
+                    e.Cell.ToolTip = content;
+                }
             }
         }
 
