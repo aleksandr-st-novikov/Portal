@@ -777,6 +777,7 @@
     <Compile Include="Pages\Journal\Exit\ExitMain.master.designer.cs">
       <DependentUpon>ExitMain.master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Journal\Exit\Helper.cs" />
     <Compile Include="Pages\Journal\Exit\InfoPopup.ascx.cs">
       <DependentUpon>InfoPopup.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

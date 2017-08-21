@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ExitGrid.ascx.cs" Inherits="Portal.Pages.Journal.Exit.ExitGrid" %>
 <%@ Register Src="~/Pages/Journal/Exit/InfoPopup.ascx" TagPrefix="uc1" TagName="InfoPopup" %>
 
-<dx:ASPxGridView ID="ASPxGridViewExit" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceExit" KeyFieldName="Id" Width="1200px" Font-Size="Small" ClientInstanceName="ASPxClientGridViewExit" OnRowInserting="ASPxGridViewExit_RowInserting" OnInitNewRow="ASPxGridViewExit_InitNewRow" OnStartRowEditing="ASPxGridViewExit_StartRowEditing" OnHtmlEditFormCreated="ASPxGridViewExit_HtmlEditFormCreated" OnCellEditorInitialize="ASPxGridViewExit_CellEditorInitialize" OnCommandButtonInitialize="ASPxGridViewExit_CommandButtonInitialize" OnInit="ASPxGridViewExit_Init" OnHtmlDataCellPrepared="ASPxGridViewExit_HtmlDataCellPrepared" OnRowUpdating="ASPxGridViewExit_RowUpdating">
+<dx:ASPxGridView ID="ASPxGridViewExit" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceExit" KeyFieldName="Id" Width="1200px" Font-Size="Small" ClientInstanceName="ASPxClientGridViewExit" OnRowInserting="ASPxGridViewExit_RowInserting" OnInitNewRow="ASPxGridViewExit_InitNewRow" OnStartRowEditing="ASPxGridViewExit_StartRowEditing" OnHtmlEditFormCreated="ASPxGridViewExit_HtmlEditFormCreated" OnCellEditorInitialize="ASPxGridViewExit_CellEditorInitialize" OnCommandButtonInitialize="ASPxGridViewExit_CommandButtonInitialize" OnInit="ASPxGridViewExit_Init" OnHtmlDataCellPrepared="ASPxGridViewExit_HtmlDataCellPrepared" OnRowUpdating="ASPxGridViewExit_RowUpdating" OnCustomButtonInitialize="ASPxGridViewExit_CustomButtonInitialize">
     <SettingsPopup>
         <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
     </SettingsPopup>
@@ -90,6 +90,16 @@
     </StylesPopup>
     <Columns>
         <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonRenderMode="Image" ButtonType="Image" Caption=" ">
+            <CustomButtons>
+                <dx:GridViewCommandColumnCustomButton ID="ButtonCheckExit" Text="Отметить выход">
+                    <Image IconID="navigation_backward_16x16office2013">
+                    </Image>
+                </dx:GridViewCommandColumnCustomButton>
+                <dx:GridViewCommandColumnCustomButton ID="ButtonCheckEntrance" Text="Отметить вход">
+                    <Image IconID="navigation_forward_16x16office2013">
+                    </Image>
+                </dx:GridViewCommandColumnCustomButton>
+            </CustomButtons>
             <CellStyle>
                 <Paddings PaddingBottom="3px" PaddingTop="3px" />
             </CellStyle>

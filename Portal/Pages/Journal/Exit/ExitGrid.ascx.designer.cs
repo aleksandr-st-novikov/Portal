@@ -22,6 +22,24 @@ namespace Portal.Pages.Journal.Exit {
         protected global::DevExpress.Web.ASPxGridView ASPxGridViewExit;
         
         /// <summary>
+        /// ButtonCheckExit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.GridViewCommandColumnCustomButton ButtonCheckExit;
+        
+        /// <summary>
+        /// ButtonCheckEntrance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.GridViewCommandColumnCustomButton ButtonCheckEntrance;
+        
+        /// <summary>
         /// SqlDataSourceExit control.
         /// </summary>
         /// <remarks>
