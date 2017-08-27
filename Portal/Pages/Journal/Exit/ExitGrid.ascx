@@ -1,11 +1,30 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ExitGrid.ascx.cs" Inherits="Portal.Pages.Journal.Exit.ExitGrid" %>
 <%@ Register Src="~/Pages/Journal/Exit/InfoPopup.ascx" TagPrefix="uc1" TagName="InfoPopup" %>
 
-<dx:ASPxGridView ID="ASPxGridViewExit" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceExit" KeyFieldName="Id" Width="1200px" Font-Size="Small" ClientInstanceName="ASPxClientGridViewExit" OnRowInserting="ASPxGridViewExit_RowInserting" OnInitNewRow="ASPxGridViewExit_InitNewRow" OnStartRowEditing="ASPxGridViewExit_StartRowEditing" OnHtmlEditFormCreated="ASPxGridViewExit_HtmlEditFormCreated" OnCellEditorInitialize="ASPxGridViewExit_CellEditorInitialize" OnCommandButtonInitialize="ASPxGridViewExit_CommandButtonInitialize" OnInit="ASPxGridViewExit_Init" OnHtmlDataCellPrepared="ASPxGridViewExit_HtmlDataCellPrepared" OnRowUpdating="ASPxGridViewExit_RowUpdating" OnCustomButtonInitialize="ASPxGridViewExit_CustomButtonInitialize">
+<dx:ASPxGridView ID="ASPxGridViewExit" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceExit" KeyFieldName="Id" Width="1200px" Font-Size="Small" ClientInstanceName="ASPxClientGridViewExit" OnRowInserting="ASPxGridViewExit_RowInserting" OnInitNewRow="ASPxGridViewExit_InitNewRow" OnStartRowEditing="ASPxGridViewExit_StartRowEditing" OnHtmlEditFormCreated="ASPxGridViewExit_HtmlEditFormCreated" OnCellEditorInitialize="ASPxGridViewExit_CellEditorInitialize" OnCommandButtonInitialize="ASPxGridViewExit_CommandButtonInitialize" OnHtmlDataCellPrepared="ASPxGridViewExit_HtmlDataCellPrepared" OnRowUpdating="ASPxGridViewExit_RowUpdating" OnCustomButtonInitialize="ASPxGridViewExit_CustomButtonInitialize">
     <SettingsPopup>
         <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" Width="900px" />
     </SettingsPopup>
     <SettingsSearchPanel Visible="True" />
+    <ClientSideEvents CustomButtonClick="function(s, e) {
+	var key = s.GetRowKey(e.visibleIndex);
+       if(e.buttonID == 'ButtonCheckExit')
+       {
+       	ASPxClientCallbackExit.PerformCallback(key);
+       }
+       if(e.buttonID == 'ButtonCheckEntrance')
+       {
+       	ASPxClientCallbackEntrance.PerformCallback(key);
+       }
+}" EndCallback="function(s, e) {
+       // alert(e.command);
+	//ASPxClientCallbackPanelPages.PerformCallback();
+}" BeginCallback="function(s, e) {
+	if(e.command == 'UPDATEEDIT' || e.command == 'REFRESH')
+        {
+        //ASPxClientCallbackPanelPages.PerformCallback();
+        }
+}" />
     <Templates>
         <EditForm>
             <dx:ASPxCallbackPanel ID="ASPxCallbackPanelDescription" runat="server" Height="100px" Width="100%" ClientInstanceName="ASPxClientCallbackPanelDescription" OnCallback="ASPxCallbackPanelDescription_Callback">
@@ -129,9 +148,11 @@
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn Caption="Отметка выхода" FieldName="DateFromCheck" VisibleIndex="7" Width="65px">
-            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" UseMaskBehavior="True">
+            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" UseMaskBehavior="True" DateOnError="Null" ShowOutOfRangeWarning="False">
                 <TimeSectionProperties Visible="True">
                 </TimeSectionProperties>
+                <ClearButton DisplayMode="OnHover">
+                </ClearButton>
             </PropertiesDateEdit>
             <EditFormSettings Visible="False" />
         </dx:GridViewDataDateColumn>
@@ -148,9 +169,11 @@
             </PropertiesDateEdit>
         </dx:GridViewDataDateColumn>
         <dx:GridViewDataDateColumn Caption="Отметка входа" FieldName="DateToCheck" VisibleIndex="8" Width="65px">
-            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" UseMaskBehavior="True">
+            <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormat="DateTime" EditFormatString="dd/MM/yyyy HH:mm" UseMaskBehavior="True" DateOnError="Null" ShowOutOfRangeWarning="False">
                 <TimeSectionProperties Visible="True">
                 </TimeSectionProperties>
+                <ClearButton DisplayMode="OnHover">
+                </ClearButton>
             </PropertiesDateEdit>
             <EditFormSettings Visible="False" />
         </dx:GridViewDataDateColumn>
@@ -202,6 +225,8 @@
     <Styles>
         <Header Wrap="True">
         </Header>
+        <FocusedRow BackColor="WhiteSmoke">
+        </FocusedRow>
     </Styles>
 </dx:ASPxGridView>
 <asp:SqlDataSource ID="SqlDataSourceExit" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"
@@ -277,3 +302,13 @@
 <asp:SqlDataSource ID="SqlDataSourceDepartment" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" SelectCommand="SELECT [Id], [ShortName] FROM [Department] ORDER BY [ShortName]"></asp:SqlDataSource>
 
 <uc1:InfoPopup runat="server" id="InfoPopup" />
+<dx:ASPxCallback ID="ASPxCallbackExit" runat="server" ClientInstanceName="ASPxClientCallbackExit" OnCallback="ASPxCallbackExit_Callback">
+    <ClientSideEvents CallbackComplete="function(s, e) {
+	ASPxClientGridViewExit.Refresh();
+}" />
+</dx:ASPxCallback>
+<dx:ASPxCallback ID="ASPxCallbackEntrance" runat="server" ClientInstanceName="ASPxClientCallbackEntrance" OnCallback="ASPxCallbackEntrance_Callback">
+    <ClientSideEvents CallbackComplete="function(s, e) {
+	ASPxClientGridViewExit.Refresh();	
+}" />
+</dx:ASPxCallback>

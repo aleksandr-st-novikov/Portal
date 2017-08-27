@@ -16,7 +16,7 @@ namespace Portal.Pages.Journal.Exit
         internal static ASPxLabel labelFIO, labelPosition, labelDepartment, labelJobTime, labelOne, labelTwo, labelThree;
         internal static ASPxImage imagePhoto;
 
-        internal static void OnCustomButtonInitialize(ASPxGridViewCustomButtonEventArgs e)
+        internal static void OnCustomButtonInitialize(ASPxGridView ASPxGridViewExit, ASPxGridViewCustomButtonEventArgs e)
         {
             if (HttpContext.Current.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
             {
@@ -24,6 +24,25 @@ namespace Portal.Pages.Journal.Exit
                 {
                     e.Visible = DevExpress.Utils.DefaultBoolean.True;
                 }
+                DateTime dateFrom = (DateTime)ASPxGridViewExit.GetRowValues(e.VisibleIndex, "DateFrom");
+                DateTime dateTo = (DateTime)ASPxGridViewExit.GetRowValues(e.VisibleIndex, "DateTo");
+                if (e.ButtonID == "ButtonCheckExit" && dateFrom.AddHours(12) <= DateTime.Now)
+                    e.Enabled = false;
+                if (e.ButtonID == "ButtonCheckEntrance" && dateTo.AddHours(12) <= DateTime.Now)
+                    e.Enabled = false;
+
+                try
+                {
+                    DateTime dateFromCheck = (DateTime)ASPxGridViewExit.GetRowValues(e.VisibleIndex, "DateFromCheck");
+                    if (e.ButtonID == "ButtonCheckExit") e.Enabled = false;
+                }
+                catch { }
+                try
+                {
+                    DateTime dateToCheck = (DateTime)ASPxGridViewExit.GetRowValues(e.VisibleIndex, "DateToCheck");
+                    if (e.ButtonID == "ButtonCheckEntrance") e.Enabled = false;
+                }
+                catch { }
             }
             else
             {
@@ -74,27 +93,7 @@ namespace Portal.Pages.Journal.Exit
                     DateTime dateFrom = (DateTime)ASPxGridViewExit.GetRowValues(e.VisibleIndex, "DateFrom");
                     if (dateFrom <= DateTime.Now)
                     {
-                        if (e.Column.FieldName == "DateFrom")
-                        {
-                            (e.Editor as ASPxDateEdit).Enabled = false;
-                        }
-                        if (e.Column.FieldName == "DateTo")
-                        {
-                            (e.Editor as ASPxDateEdit).Enabled = false;
-                        }
-                        if (e.Column.FieldName == "EmployeeId")
-                        {
-                            (e.Editor as ASPxComboBox).Enabled = false;
-                        }
-                        if (e.Column.FieldName == "ExitPurposeId")
-                        {
-                            (e.Editor as ASPxComboBox).Enabled = false;
-                        }
-                        if (e.Column.FieldName == "DescriptionOne")
-                        {
-                            (e.Editor as ASPxMemo).Enabled = false;
-                            (e.Editor as ASPxMemo).ForeColor = System.Drawing.ColorTranslator.FromHtml("#BBBBBB");
-                        }
+                        DisableElements(e);
                     }
                 }
 
@@ -106,6 +105,86 @@ namespace Portal.Pages.Journal.Exit
                 {
                     (e.Editor as ASPxDateEdit).MinDate = DateTime.Now.Date;
                 }
+
+                if (HttpContext.Current.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
+                {
+                    DisableElements(e);
+
+                    int hourShift = 0;
+                    using (ConstantContext constantContext = new ConstantContext())
+                    {
+                        hourShift = (constantContext.GetConstInt("HourShiftExit") == 0) ?
+                            Data.HourShiftExit : constantContext.GetConstInt("HourShiftExit");
+                    }
+
+                    DateTime dateNow = DateTime.Now;
+                    DateTime dateFrom = (DateTime)ASPxGridViewExit.GetRowValues(e.VisibleIndex, "DateFrom");
+                    if (!(dateNow <= dateFrom.AddHours(hourShift) || dateNow >= dateFrom.AddHours(-hourShift)))
+                    {
+                        if (e.Column.FieldName == "DateFromCheck")
+                        {
+                            (e.Editor as ASPxDateEdit).Enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        if (e.Column.FieldName == "DateFromCheck")
+                        {
+                            (e.Editor as ASPxDateEdit).MinDate = dateFrom.Date;
+                            (e.Editor as ASPxDateEdit).MaxDate = dateFrom.AddDays(1).Date;
+                        }
+                    }
+
+                    DateTime dateTo = (DateTime)ASPxGridViewExit.GetRowValues(e.VisibleIndex, "DateTo");
+                    if (!(dateNow <= dateTo.AddHours(hourShift + 2) || dateNow >= dateTo.AddHours(-hourShift - 2)))
+                    {
+                        if (e.Column.FieldName == "DateToCheck")
+                        {
+                            (e.Editor as ASPxDateEdit).Enabled = false;
+                        }
+                        if (e.Column.FieldName == "DescriptionTwo")
+                        {
+                            (e.Editor as ASPxMemo).Enabled = false;
+                            (e.Editor as ASPxMemo).ForeColor = System.Drawing.ColorTranslator.FromHtml("#BBBBBB");
+                        }
+                    }
+                    else
+                    {
+                        if (e.Column.FieldName == "DateToCheck")
+                        {
+                            (e.Editor as ASPxDateEdit).MinDate = dateTo.Date;
+                            (e.Editor as ASPxDateEdit).MaxDate = dateTo.AddDays(1).Date;
+                        }
+                    }
+
+                    
+                    
+                }
+            }
+        }
+
+        private static void DisableElements(ASPxGridViewEditorEventArgs e)
+        {
+            if (e.Column.FieldName == "DateFrom")
+            {
+                (e.Editor as ASPxDateEdit).Enabled = false;
+            }
+            if (e.Column.FieldName == "DateTo")
+            {
+                (e.Editor as ASPxDateEdit).Enabled = false;
+            }
+            if (e.Column.FieldName == "EmployeeId")
+            {
+                (e.Editor as ASPxComboBox).Enabled = false;
+            }
+            if (e.Column.FieldName == "ExitPurposeId")
+            {
+                (e.Editor as ASPxComboBox).Enabled = false;
+            }
+            if (e.Column.FieldName == "DescriptionOne")
+            {
+                (e.Editor as ASPxMemo).Enabled = false;
+                (e.Editor as ASPxMemo).ForeColor = System.Drawing.ColorTranslator.FromHtml("#BBBBBB");
             }
         }
 
@@ -243,6 +322,24 @@ namespace Portal.Pages.Journal.Exit
             {
                 ((GridViewDataColumn)ASPxGridViewExit.Columns["DateFromCheck"]).EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.True;
                 ((GridViewDataColumn)ASPxGridViewExit.Columns["DateToCheck"]).EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.True;
+            }
+        }
+
+        internal static async Task SetCheckDateAsync(int typeAction, CallbackEventArgs e)
+        {
+            int id = Int32.Parse(e.Parameter);
+            using (ExitContext exitContext = new ExitContext())
+            {
+                switch (typeAction)
+                {
+                    case 1:
+                        await exitContext.SetDateFromCheckAsync(id);
+                        break;
+                    case 2:
+                        await exitContext.SetDateToCheckAsync(id);
+                        break;
+                }
+
             }
         }
     }

@@ -13,13 +13,13 @@ namespace Portal.Pages.Journal.Exit {
     public partial class Pages {
         
         /// <summary>
-        /// ASPxPageControl1 control.
+        /// ASPxPageControlExit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPageControl ASPxPageControl1;
+        protected global::DevExpress.Web.ASPxPageControl ASPxPageControlExit;
         
         /// <summary>
         /// ExitGrid control.

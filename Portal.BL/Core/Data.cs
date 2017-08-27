@@ -33,5 +33,7 @@ namespace Portal.BL.Core
         public static string PathFileImport1C = @"\\gs01kb\export$\1c\Export\exp_ej.DBF";
         //const
         public static string ConnectToTabel = "0";
+        //
+        public static int HourShiftExit = 1;
     }
 }

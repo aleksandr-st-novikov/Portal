@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="InfoPopup.ascx.cs" Inherits="Portal.Pages.Journal.Exit.InfoPopup" %>
 
-<dx:ASPxPopupControl ID="ASPxPopupControlInfo" runat="server" HeaderText="Информация о согласовании" Width="550px" ClientInstanceName="ASPxClientPopupControlInfo" CloseOnEscape="True" PopupHorizontalAlign="OutsideRight">
+<dx:ASPxPopupControl ID="ASPxPopupControlInfo" runat="server" HeaderText="Информация о согласовании" Width="630px" ClientInstanceName="ASPxClientPopupControlInfo" CloseOnEscape="True" PopupHorizontalAlign="OutsideRight" Font-Size="Small">
     <HeaderStyle BackColor="WhiteSmoke" />
     <ContentCollection>
         <dx:PopupControlContentControl runat="server">

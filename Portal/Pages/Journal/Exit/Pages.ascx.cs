@@ -13,8 +13,9 @@ namespace Portal.Pages.Journal.Exit
         {
             if (!Context.User.IsInRole("Администраторы"))
             {
-                ASPxPageControl1.TabPages[2].Visible = false;
+                ASPxPageControlExit.TabPages[2].Visible = false;
             }
         }
+
     }
 }

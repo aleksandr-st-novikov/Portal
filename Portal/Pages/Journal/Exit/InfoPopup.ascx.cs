@@ -19,7 +19,7 @@ namespace Portal.Pages.Journal.Exit
         }
 
 
-        protected async void ASPxCallbackInfo_Callback(object source, DevExpress.Web.CallbackEventArgs e)
+        protected void ASPxCallbackInfo_Callback(object source, DevExpress.Web.CallbackEventArgs e)
         {
             string[] param = e.Parameter.Split(';');
 
@@ -40,7 +40,7 @@ namespace Portal.Pages.Journal.Exit
                 if ((String.IsNullOrEmpty(constantContext.GetConstString("ConnectToTabel")) ?
                     Data.ConnectToTabel : constantContext.GetConstString("ConnectToTabel")) == "1")
                 {
-                    List<string> tabelData = await BLTabel.Methods.GetDataTabelAsync(exit.DateFrom, employee.TabN.Remove(employee.TabN.Length - 3));
+                    List<string> tabelData = BLTabel.Methods.GetDataTabel(exit.DateFrom, employee.TabN.Remove(employee.TabN.Length - 3));
                     if (tabelData.Count() > 0)
                     {
                         content += "Время работы по графику " + tabelData[0];

@@ -1,16 +1,6 @@
 ﻿using DevExpress.Web;
 using Portal.BL.Core;
-using BLTabel = Portal.BL.Tabel;
-using Portal.BL.Tabel.Models;
-using Portal.Models.EFContext;
-using Portal.Models.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Portal.Pages.Journal.Exit
 {
@@ -99,60 +89,40 @@ namespace Portal.Pages.Journal.Exit
             Helper.OnRowInserting(Enums.RunType.Exit, e);
         }
 
-        
-
         protected void ASPxGridViewExit_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
             Helper.OnInitNewRow(ASPxGridViewExit, "Согласовать выход сотрудника", e);
         }
-
-        
 
         protected void ASPxGridViewExit_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
         {
             Helper.OnStartRowEditing(ASPxGridViewExit);
         }
 
-       
-
         protected void ASPxGridViewExit_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
             Helper.OnCellEditorInitialize(ASPxGridViewExit, e);
         }
-
-       
 
         protected void ASPxGridViewExit_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
         {
             Helper.OnCommandButtonInitialize(ASPxGridViewExit, e);
         }
 
-
         protected void ASPxGridViewExit_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             Helper.OnRowUpdating(e);
         }
 
-
         protected void ASPxGridViewExit_CustomButtonInitialize(object sender, ASPxGridViewCustomButtonEventArgs e)
         {
-            Helper.OnCustomButtonInitialize(e);
-        }
-
-        protected void ASPxGridViewExit_Init(object sender, EventArgs e)
-        {
-            //if (Context.User.IsInRole("Журналы - Согласование выходов - Служебный вход"))
-            //{
-            //    ASPxGridViewExit.FormatConditions.Clear();
-            //}
+            Helper.OnCustomButtonInitialize(ASPxGridViewExit, e);
         }
 
         protected void ASPxGridViewExit_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
         {
             Helper.OnHtmlDataCellPrepared(e);
         }
-
-        
 
         protected async void ASPxCallbackPanelDescription_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)
         {
@@ -164,12 +134,15 @@ namespace Portal.Pages.Journal.Exit
             Helper.OnHtmlEditFormCreated(ASPxGridViewExit);
         }
 
-        
+        protected async void ASPxCallbackExit_Callback(object source, CallbackEventArgs e)
+        {
+            await Helper.SetCheckDateAsync(1, e);
+        }
 
-
-
-
-
+        protected async void ASPxCallbackEntrance_Callback(object source, CallbackEventArgs e)
+        {
+            await Helper.SetCheckDateAsync(2, e);
+        }
 
     }
 }

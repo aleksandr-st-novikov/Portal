@@ -3,7 +3,8 @@
 <%@ Register Src="~/Pages/Journal/Exit/EntranceGrid.ascx" TagPrefix="uc1" TagName="EntranceGrid" %>
 <%@ Register Src="~/Pages/Journal/Exit/PurposeGrid.ascx" TagPrefix="uc1" TagName="PurposeGrid" %>
 
-<dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0">
+
+<dx:ASPxPageControl ID="ASPxPageControlExit" runat="server" ActiveTabIndex="0" ClientInstanceName="ASPxClientPageControlExit" EnableCallBacks="True">
     <TabPages>
         <dx:TabPage Text="Согласование ВЫХОДОВ">
             <ContentCollection>
@@ -15,7 +16,7 @@
         <dx:TabPage Text="Согласование ВХОДОВ">
             <ContentCollection>
                 <dx:ContentControl runat="server">
-                    <uc1:EntranceGrid runat="server" id="EntranceGrid" />
+                    <uc1:EntranceGrid runat="server" ID="EntranceGrid" />
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>
@@ -23,7 +24,7 @@
             <ContentCollection>
                 <dx:ContentControl runat="server">
                     <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Цели выхода" Font-Size="Large"></dx:ASPxLabel>
-                    <uc1:PurposeGrid runat="server" id="PurposeGrid" />
+                    <uc1:PurposeGrid runat="server" ID="PurposeGrid" />
                 </dx:ContentControl>
             </ContentCollection>
         </dx:TabPage>
