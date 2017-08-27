@@ -15,7 +15,33 @@ namespace Portal.Pages.Journal.Exit
             {
                 ASPxPageControlExit.TabPages[2].Visible = false;
             }
+
+            if(!Page.IsCallback && !Page.IsPostBack)
+            {
+                TimeSpan start = new TimeSpan(0, 0, 0);
+                TimeSpan end = new TimeSpan(5, 0, 0);
+                TimeSpan now = DateTime.Now.TimeOfDay;
+
+                if ((now > start) && (now < end))
+                {
+                    Session["DateFromExit"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 00:00:00"));
+                    Session["DateToExit"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd 23:59:59"));
+                }
+                else
+                {
+                    Session["DateFromExit"] = ASPxDateEditGridFrom.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+                    Session["DateToExit"] = ASPxDateEditGridTo.Value = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
+                }
+            }
         }
 
+        protected void ASPxCallbackRefresh_Callback(object source, DevExpress.Web.CallbackEventArgs e)
+        {
+            if (ASPxCallbackRefresh.IsCallback)
+            {
+                Session["DateFromExit"] = Convert.ToDateTime(ASPxDateEditGridFrom.Date.ToString("yyyy-MM-dd 00:00:00"));
+                Session["DateToExit"] = Convert.ToDateTime(ASPxDateEditGridTo.Date.ToString("yyyy-MM-dd 23:59:59"));
+            }
+        }
     }
 }

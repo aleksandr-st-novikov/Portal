@@ -218,7 +218,7 @@
         </dx:GridViewDataMemoColumn>
     </Columns>
     <FormatConditions>
-        <dx:GridViewFormatConditionHighlight ApplyToRow="True" Expression="[DateFrom] &lt;= Now()" FieldName="DateFrom" Format="Custom">
+        <dx:GridViewFormatConditionHighlight ApplyToRow="True" Expression="[DateTo] &lt;= Now()" FieldName="DateFrom" Format="Custom">
             <RowStyle ForeColor="#999999" />
         </dx:GridViewFormatConditionHighlight>
     </FormatConditions>
@@ -227,6 +227,9 @@
         </Header>
         <FocusedRow BackColor="WhiteSmoke">
         </FocusedRow>
+        <Cell>
+            <Paddings PaddingBottom="3px" PaddingLeft="5px" PaddingRight="5px" PaddingTop="3px" />
+        </Cell>
     </Styles>
 </dx:ASPxGridView>
 <asp:SqlDataSource ID="SqlDataSourceExit" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"

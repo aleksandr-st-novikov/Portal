@@ -13,6 +13,42 @@ namespace Portal.Pages.Journal.Exit {
     public partial class Pages {
         
         /// <summary>
+        /// ASPxDateEditGridFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEditGridFrom;
+        
+        /// <summary>
+        /// ASPxDateEditGridTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit ASPxDateEditGridTo;
+        
+        /// <summary>
+        /// ASPxButton4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButton4;
+        
+        /// <summary>
+        /// ASPxButtonTransportPrint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButtonTransportPrint;
+        
+        /// <summary>
         /// ASPxPageControlExit control.
         /// </summary>
         /// <remarks>
@@ -56,5 +92,14 @@ namespace Portal.Pages.Journal.Exit {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Portal.Pages.Journal.Exit.PurposeGrid PurposeGrid;
+        
+        /// <summary>
+        /// ASPxCallbackRefresh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback ASPxCallbackRefresh;
     }
 }

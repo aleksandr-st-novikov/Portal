@@ -8,7 +8,7 @@
         }
 }" />
 </dx:ASPxTimer>
-<dx:ASPxGridView ID="ASPxGridViewTransport" runat="server" AutoGenerateColumns="False" ClientInstanceName="ASPxClientGridViewTransport" DataSourceID="SqlDataSourceTransport" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewTransport_InitNewRow" OnRowInserting="ASPxGridViewTransport_RowInserting">
+<dx:ASPxGridView ID="ASPxGridViewTransport" runat="server" AutoGenerateColumns="False" ClientInstanceName="ASPxClientGridViewTransport" DataSourceID="SqlDataSourceTransport" KeyFieldName="Id" Width="1200px" OnInitNewRow="ASPxGridViewTransport_InitNewRow" OnRowInserting="ASPxGridViewTransport_RowInserting" Font-Size="Small">
     <ClientSideEvents
         BeginCallback="function(s, e) {
             if (e.command == 'STARTEDIT' || e.command == 'ADDNEWROW') {
@@ -93,6 +93,11 @@
         <dx:GridViewFormatConditionHighlight Expression="[DepartmentId] = 27" ApplyToRow="True">
         </dx:GridViewFormatConditionHighlight>
     </FormatConditions>
+    <Styles>
+        <Cell>
+            <Paddings PaddingBottom="3px" PaddingLeft="5px" PaddingRight="5px" PaddingTop="3px" />
+        </Cell>
+    </Styles>
 </dx:ASPxGridView>
 <asp:SqlDataSource ID="SqlDataSourceTransport" runat="server" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"
     DeleteCommand="DELETE FROM [Transport] WHERE [Id] = @Id"
