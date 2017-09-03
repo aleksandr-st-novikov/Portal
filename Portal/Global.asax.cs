@@ -47,7 +47,9 @@ namespace Portal
         protected void Application_EndRequest(object sender, EventArgs e)
         {
             if (HttpContext.Current != null && HttpContext.Current.User != null && !IsPostCallBack() && HttpContext.Current.User.Identity.Name != "anovikov"
-                && (Request.Url.AbsolutePath.ToString().Contains(".aspx") || Request.Url.AbsolutePath.ToString() == "/"))
+                && (Request.Url.AbsolutePath.ToString().Contains(".aspx") 
+                    || Request.Url.AbsolutePath.ToString() == "/portal/"
+                    || Request.Url.AbsolutePath.ToString() == "/portal"))
             {
                 HttpContext context = ((HttpApplication)sender).Context;
                 string ipv4 = context.Request.UserHostAddress;
