@@ -196,6 +196,8 @@
     <Content Include="Pages\Admin\Employee\ManageDepartment.aspx" />
     <Content Include="Pages\Admin\Employee\ManageEmployee.aspx" />
     <Content Include="Pages\Admin\Employee\ManagePosition.aspx" />
+    <Content Include="Pages\Admin\Logs\GridUserLogs.ascx" />
+    <Content Include="Pages\Admin\Logs\ManageLogs.aspx" />
     <Content Include="Pages\Admin\Setting\ManageConstant.aspx" />
     <Content Include="Pages\Admin\Users\AddUser.aspx" />
     <Content Include="Pages\Admin\Users\ChangePasswordPopup.ascx" />
@@ -275,6 +277,7 @@
     <Content Include="Pages\Admin\Setting\SettingMain.master" />
     <Content Include="Pages\Maintenance\Scheduler\SchedulerMain.master" />
     <Content Include="Pages\Journal\Exit\ExitMain.master" />
+    <Content Include="Pages\Admin\Logs\LogsMain.master" />
     <None Include="Properties\PublishProfiles\portal01kb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -436,6 +439,14 @@
     <Compile Include="Migrations\201708131734476_Exit1.Designer.cs">
       <DependentUpon>201708131734476_Exit1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709030547107_UserLog.cs" />
+    <Compile Include="Migrations\201709030547107_UserLog.Designer.cs">
+      <DependentUpon>201709030547107_UserLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709030749119_UserLog1.cs" />
+    <Compile Include="Migrations\201709030749119_UserLog1.Designer.cs">
+      <DependentUpon>201709030749119_UserLog1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EFContext\AccessoriesContext.cs" />
     <Compile Include="Models\EFContext\AdmissionContext.cs" />
@@ -452,6 +463,7 @@
     <Compile Include="Models\EFContext\PositionContext.cs" />
     <Compile Include="Models\EFContext\StoreContext.cs" />
     <Compile Include="Models\EFContext\TransportContext.cs" />
+    <Compile Include="Models\EFContext\UserLogContext.cs" />
     <Compile Include="Models\Entities\Admission.cs" />
     <Compile Include="Models\Entities\Constant.cs" />
     <Compile Include="Models\Entities\Contact.cs" />
@@ -460,6 +472,7 @@
     <Compile Include="Models\Entities\Accessories.cs" />
     <Compile Include="Models\Entities\Exit.cs" />
     <Compile Include="Models\Entities\Job.cs" />
+    <Compile Include="Models\Entities\Logs.cs" />
     <Compile Include="Models\Entities\Manual.cs" />
     <Compile Include="Models\Entities\OfTransport.cs" />
     <Compile Include="Models\Entities\Store.cs" />
@@ -504,6 +517,27 @@
     </Compile>
     <Compile Include="Pages\Admin\Employee\ManagePosition.aspx.designer.cs">
       <DependentUpon>ManagePosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Logs\GridUserLogs.ascx.cs">
+      <DependentUpon>GridUserLogs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Logs\GridUserLogs.ascx.designer.cs">
+      <DependentUpon>GridUserLogs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Logs\LogsMain.master.cs">
+      <DependentUpon>LogsMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Logs\LogsMain.master.designer.cs">
+      <DependentUpon>LogsMain.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\Logs\ManageLogs.aspx.cs">
+      <DependentUpon>ManageLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\Logs\ManageLogs.aspx.designer.cs">
+      <DependentUpon>ManageLogs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Admin\Setting\ManageConstant.aspx.cs">
       <DependentUpon>ManageConstant.aspx</DependentUpon>
@@ -1198,6 +1232,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708131734476_Exit1.resx">
       <DependentUpon>201708131734476_Exit1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030547107_UserLog.resx">
+      <DependentUpon>201709030547107_UserLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030749119_UserLog1.resx">
+      <DependentUpon>201709030749119_UserLog1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Journal\OfTransport\OfTransportReport.resx">
       <DependentUpon>OfTransportReport.cs</DependentUpon>

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="content">
         <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Справочник констант" Font-Bold="False" Font-Size="Large"></dx:ASPxLabel>
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceConstant" KeyFieldName="Id" Width="800px">
+        <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceConstant" KeyFieldName="Id" Width="1200px">
             <SettingsPager Visible="False">
             </SettingsPager>
             <SettingsEditing Mode="PopupEditForm">

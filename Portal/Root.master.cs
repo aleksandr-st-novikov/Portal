@@ -308,6 +308,17 @@ namespace Portal
                     itemAdminSetting.Image.IconID = "support_version_16x16office2013";
                     itemAdmin.Items.Add(itemAdminSetting);
 
+                    if(Context.User.Identity.Name == "anovikov")
+                    {
+                        DevExpress.Web.MenuItem itemAdminLog = new DevExpress.Web.MenuItem()
+                        {
+                            Text = "Логи",
+                            NavigateUrl = "~/Pages/Admin/Logs/ManageLogs.aspx"
+                        };
+                        itemAdminLog.Image.IconID = "layout_list_16x16devav";
+                        itemAdmin.Items.Add(itemAdminLog);
+                    }
+
                     ASPxMenuMain.Items.Add(itemMaintenance);
                     ASPxMenuMain.Items.Add(itemAdmin);
                 }

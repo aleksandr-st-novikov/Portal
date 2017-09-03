@@ -62,6 +62,7 @@ namespace Portal.Models
         public DbSet<JobResult> JobResult { get; set; }
         public DbSet<Exit> Exit { get; set; }
         public DbSet<ExitPurpose> ExitPurpose { get; set; }
+        public DbSet<UserLog> UserLog { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
