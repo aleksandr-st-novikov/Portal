@@ -3,7 +3,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="content">
 
-        <dx:ASPxGridView ID="ASPxGridViewEmployee" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceEmployee" KeyFieldName="Id" Width="900px">
+        <dx:ASPxGridView ID="ASPxGridViewEmployee" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceEmployee" KeyFieldName="Id" Width="900px" OnHtmlEditFormCreated="ASPxGridViewEmployee_HtmlEditFormCreated">
+            <Templates>
+                <EditForm>
+                    <table>
+                        <tr>
+                            <td style="width: 200px;padding-top:15px;" valign="top">
+                                <dx:ASPxImage runat="server" ShowLoadingImage="True" Width="200px" ID="ASPxImagePhoto"></dx:ASPxImage>
+                            </td>
+                            <td style="width: 900px;">
+                                <dx:ASPxGridViewTemplateReplacement ID="ASPxGridViewTemplateReplacement1" runat="server" />
+                            </td>
+                        </tr>
+                    </table>
+                </EditForm>
+            </Templates>
             <SettingsPager PageSize="50">
             </SettingsPager>
             <SettingsEditing Mode="PopupEditForm">
@@ -29,7 +43,7 @@
                 </CancelButton>
             </SettingsCommandButton>
             <SettingsPopup>
-                <EditForm VerticalAlign="Above" Width="900px" />
+                <EditForm VerticalAlign="WindowCenter" Width="1100px" HorizontalAlign="WindowCenter" Modal="True" />
             </SettingsPopup>
             <SettingsSearchPanel Visible="True" />
             <Columns>
@@ -87,10 +101,10 @@
                 </Cell>
             </Styles>
         </dx:ASPxGridView>
-        <asp:SqlDataSource ID="SqlDataSourceEmployee" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
-            DeleteCommand="DELETE FROM [Employee] WHERE [Id] = @original_Id AND [TabN] = @original_TabN AND [Lastname] = @original_Lastname AND (([Firstname] = @original_Firstname) OR ([Firstname] IS NULL AND @original_Firstname IS NULL)) AND (([Patronymic] = @original_Patronymic) OR ([Patronymic] IS NULL AND @original_Patronymic IS NULL)) AND (([DepartmentId] = @original_DepartmentId) OR ([DepartmentId] IS NULL AND @original_DepartmentId IS NULL)) AND (([DateIn] = @original_DateIn) OR ([DateIn] IS NULL AND @original_DateIn IS NULL)) AND (([DateBirth] = @original_DateBirth) OR ([DateBirth] IS NULL AND @original_DateBirth IS NULL)) AND (([Category] = @original_Category) OR ([Category] IS NULL AND @original_Category IS NULL)) AND (([Department_Id] = @original_Department_Id) OR ([Department_Id] IS NULL AND @original_Department_Id IS NULL)) AND (([PositionId] = @original_PositionId) OR ([PositionId] IS NULL AND @original_PositionId IS NULL))" 
+        <asp:SqlDataSource ID="SqlDataSourceEmployee" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:ApplicationServices %>"
+            DeleteCommand="DELETE FROM [Employee] WHERE [Id] = @original_Id AND [TabN] = @original_TabN AND [Lastname] = @original_Lastname AND (([Firstname] = @original_Firstname) OR ([Firstname] IS NULL AND @original_Firstname IS NULL)) AND (([Patronymic] = @original_Patronymic) OR ([Patronymic] IS NULL AND @original_Patronymic IS NULL)) AND (([DepartmentId] = @original_DepartmentId) OR ([DepartmentId] IS NULL AND @original_DepartmentId IS NULL)) AND (([DateIn] = @original_DateIn) OR ([DateIn] IS NULL AND @original_DateIn IS NULL)) AND (([DateBirth] = @original_DateBirth) OR ([DateBirth] IS NULL AND @original_DateBirth IS NULL)) AND (([Category] = @original_Category) OR ([Category] IS NULL AND @original_Category IS NULL)) AND (([Department_Id] = @original_Department_Id) OR ([Department_Id] IS NULL AND @original_Department_Id IS NULL)) AND (([PositionId] = @original_PositionId) OR ([PositionId] IS NULL AND @original_PositionId IS NULL))"
             InsertCommand="INSERT INTO [Employee] ([TabN], [Lastname], [Firstname], [Patronymic], [DepartmentId], [DateIn], [DateBirth], [Category], [Department_Id], [PositionId], [IsWork]) VALUES (@TabN, @Lastname, @Firstname, @Patronymic, @DepartmentId, @DateIn, @DateBirth, @Category, @Department_Id, @PositionId, @IsWork)" OldValuesParameterFormatString="original_{0}"
-            SelectCommand="SELECT *, CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] ORDER BY [Lastname], [Firstname], [Patronymic]" 
+            SelectCommand="SELECT *, CONCAT([Lastname], ' ', [Firstname], ' ', [Patronymic]) AS FIO FROM [Employee] ORDER BY [Lastname], [Firstname], [Patronymic]"
             UpdateCommand="UPDATE [Employee] SET [TabN] = @TabN, [Lastname] = @Lastname, [Firstname] = @Firstname, [Patronymic] = @Patronymic, [DepartmentId] = @DepartmentId, [DateIn] = @DateIn, [DateBirth] = @DateBirth, [Category] = @Category, [Department_Id] = @Department_Id, [PositionId] = @PositionId, [IsWork] = @IsWork WHERE [Id] = @original_Id AND [TabN] = @original_TabN AND [Lastname] = @original_Lastname AND [IsWork] = @original_IsWork AND (([Firstname] = @original_Firstname) OR ([Firstname] IS NULL AND @original_Firstname IS NULL)) AND (([Patronymic] = @original_Patronymic) OR ([Patronymic] IS NULL AND @original_Patronymic IS NULL)) AND (([DepartmentId] = @original_DepartmentId) OR ([DepartmentId] IS NULL AND @original_DepartmentId IS NULL)) AND (([DateIn] = @original_DateIn) OR ([DateIn] IS NULL AND @original_DateIn IS NULL)) AND (([DateBirth] = @original_DateBirth) OR ([DateBirth] IS NULL AND @original_DateBirth IS NULL)) AND (([Category] = @original_Category) OR ([Category] IS NULL AND @original_Category IS NULL)) AND (([Department_Id] = @original_Department_Id) OR ([Department_Id] IS NULL AND @original_Department_Id IS NULL)) AND (([PositionId] = @original_PositionId) OR ([PositionId] IS NULL AND @original_PositionId IS NULL))">
             <DeleteParameters>
                 <asp:Parameter Name="original_Id" Type="Int32" />

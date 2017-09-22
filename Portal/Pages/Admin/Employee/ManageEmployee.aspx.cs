@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevExpress.Web;
+using Portal.Models.EFContext;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,6 +17,18 @@ namespace Portal.Pages.Admin.Employee
             {
                 Response.Redirect("/");
                 return;
+            }
+        }
+
+        protected void ASPxGridViewEmployee_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridViewEditFormEventArgs e)
+        {
+            ASPxImage imagePhoto = ASPxGridViewEmployee.FindEditFormTemplateControl("ASPxImagePhoto") as ASPxImage;
+            using (EmployeeContext employeeContext = new EmployeeContext())
+            {
+                int id = (int)ASPxGridViewEmployee.GetRowValues(ASPxGridViewEmployee.EditingRowVisibleIndex, "Id");
+                Portal.Models.Entities.Employee employee = employeeContext.FindById(id);
+
+                imagePhoto.ImageUrl = @"~\Content\Photo\" + employee.FullName.Trim() + ".jpg";
             }
         }
     }
