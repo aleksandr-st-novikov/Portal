@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 
 namespace Portal.Pages.Report.Birthday
 {
@@ -6,6 +7,12 @@ namespace Portal.Pages.Report.Birthday
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!(User.IsInRole("Администраторы")
+                || User.IsInRole("Отчеты - Дни рождения")))
+            {
+                HttpContext.Current.Response.Redirect(ResolveUrl("~/"), false);
+                return;
+            }
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
