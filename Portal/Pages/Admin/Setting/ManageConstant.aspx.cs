@@ -11,7 +11,11 @@ namespace Portal.Pages.Admin.Setting
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!(User.IsInRole("Администраторы")))
+            {
+                HttpContext.Current.Response.Redirect(ResolveUrl("~/"), false);
+                return;
+            }
         }
 
         protected void Page_PreRender(object sender, EventArgs e)

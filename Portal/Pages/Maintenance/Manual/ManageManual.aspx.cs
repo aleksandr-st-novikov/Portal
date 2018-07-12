@@ -13,6 +13,12 @@ namespace Portal.Pages.Maintenance.Manual
     {
         protected async void Page_Load(object sender, EventArgs e)
         {
+            if (!User.IsInRole("Администраторы"))
+            {
+                HttpContext.Current.Response.Redirect(ResolveUrl("~/"), false);
+                return;
+            }
+
             if (!Page.IsPostBack && !Page.IsCallback)
             {
                 using (DepartmentContext context = new DepartmentContext())

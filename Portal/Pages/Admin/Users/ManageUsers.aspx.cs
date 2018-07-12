@@ -5,6 +5,7 @@ using Portal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 
@@ -14,9 +15,9 @@ namespace Portal.Pages.Admin.Users
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!User.IsInRole("Администраторы"))
+            if (!(User.IsInRole("Администраторы")))
             {
-                Response.Redirect("/");
+                HttpContext.Current.Response.Redirect(ResolveUrl("~/"), false);
                 return;
             }
 

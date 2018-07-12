@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.UI;
 using Portal.BL.Utils;
 
@@ -8,6 +9,12 @@ namespace Portal.Pages.Maintenance.Scheduler
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.IsInRole("Администраторы") && User.Identity.Name != "anovikov")
+            {
+                HttpContext.Current.Response.Redirect(ResolveUrl("~/"), false);
+                return;
+            }
+
             if (!Page.IsCallback && !Page.IsPostBack)
             {
                 ASPxHint1.Content =

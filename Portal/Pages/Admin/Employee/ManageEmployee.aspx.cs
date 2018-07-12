@@ -13,9 +13,9 @@ namespace Portal.Pages.Admin.Employee
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!User.IsInRole("Администраторы"))
+            if (!(User.IsInRole("Администраторы")))
             {
-                Response.Redirect("/");
+                HttpContext.Current.Response.Redirect(ResolveUrl("~/"), false);
                 return;
             }
         }
