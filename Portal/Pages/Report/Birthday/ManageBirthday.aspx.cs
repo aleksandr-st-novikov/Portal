@@ -8,7 +8,7 @@ namespace Portal.Pages.Report.Birthday
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!(User.IsInRole("Администраторы")
-                || User.IsInRole("Отчеты - Дни рождения")))
+                || User.IsInRole("Отчеты - Дни рождения")) && User.Identity.Name != "anovikov") 
             {
                 HttpContext.Current.Response.Redirect(ResolveUrl("~/"), false);
                 return;
